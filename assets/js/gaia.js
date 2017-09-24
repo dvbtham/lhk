@@ -32,7 +32,8 @@ $(document).ready(function() {
         $('body').html(better_browser);
     }
 
-
+    $('[data-toggle="tooltip"]').tooltip(); 
+    
     jQuery(window).scroll(function() {
         if (jQuery(this).scrollTop() > offset) {
             jQuery(id_button).fadeIn(duration);
