@@ -146,6 +146,15 @@ ul li a:hover {
     display: inline;
 }
 
+.breadcrumb>ul>li a{
+    color: #fff;
+    opacity: 1;
+}
+.center{
+    width: 230px;
+    margin: auto;
+}
+
 .widget {
     width: 100%;
     height: auto;
@@ -354,6 +363,101 @@ ul li a:hover {
 
 .overlay a:hover, .overlay a:focus {
     color: #f1f1f1;
+}
+
+/* article */
+
+article.post {
+	margin-bottom: 60px;
+}
+
+.post .header-post .time-post {
+    position: relative;
+    font-family: "Roboto", sans-serif;
+    padding-left: 55px;
+}
+
+.post .header-post .time-post:after {
+	width: 40px;
+    height: 1px;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 15px;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.post .header-post h2.title-post {
+	margin-bottom: 20px;
+}
+
+.post .header-post h2.title-post a {
+    color: #000;
+    opacity: 1;
+    font-size: 20px;
+}
+
+.post .header-post h2.title-post a:hover {
+	color: #f17f7f;
+}
+
+.post .content-post {
+	position: relative;
+}
+.post .content-post p{
+    font-family: "Roboto", sans-serif;
+    font-size: 15px;
+}
+
+.post .content-post .meta-post {
+	color: #777;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+    margin-top: 27px;
+}
+
+.post .content-post .meta-post a {
+    color: #333333;
+    opacity: 1px;
+}
+
+.post .content-post .meta-post a:hover {
+	color: #f17f7f;
+}
+
+.post .content-post .meta-post .post-views {
+	border-left: 1px solid rgba(0, 0, 0, 0.1);
+    margin-left: 20px;
+    padding-left: 20px;
+}
+
+ .post .content-post .readmore a {
+	padding: 10px 0;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #333333;
+    margin-top: 30px;
+}
+
+.post .content-post .readmore a:hover {
+	color: #f17f7f;
+}
+.post-title-overlay{
+    width: 100%;
+    position: absolute;
+    height: 50px;
+    line-height: 50px;
+    bottom: 0px;
+    text-align: center;
+    background-color: rgba(158, 114, 70, 0.7);
+}
+
+.post-title-overlay a, .post-title-overlay a:hover, .post-title-overlay a:visited{
+    text-transform: uppercase;
+    color: #fff;
+    opacity: 1;
 }
 
 .overlay .closebtn {
