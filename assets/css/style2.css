@@ -1,0 +1,196 @@
+body {
+    background-color: #fff;
+    width: 80%;
+    margin: auto;
+}
+
+.container {
+    width: 100%;
+    height: auto;
+}
+
+.parallax {
+    width: 100%;
+    height: 400px;
+}
+
+.parallax img {
+    width: 95.6%;
+    height: 100%;
+    margin-left: 17px;
+}
+
+.posts-area {
+    width: 100%;
+    background-color: #000;
+}
+
+.post-box {
+    float: left;
+    width: 18%;
+    margin-top: 10px;
+    margin-left: 16px;
+}
+
+.post {
+    width:100%;
+}
+
+.image-post {
+    width: 100%;
+    position: relative;
+}
+
+.image-post a img {
+    width: 100%;
+    height: 100%;
+}
+
+.post-title-overlay {
+    position: absolute;
+    height: 30px;
+    text-align: center;
+    width: 100%;
+    bottom: 0px;
+    line-height: 30px;
+    background-color: rgba(147, 93, 50, 0.6);
+}
+
+.post-title-overlay a {
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+footer {
+    float: left;
+    display: block;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    width: 96%;
+    margin-left: 16px;
+    margin-top: 10px;
+}
+
+footer>h4 {
+    text-align: center;
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+/* Medium Devices, Desktops */
+
+@media only screen and (max-width: 950px) {
+    body {
+        width: 100%;
+    }
+    .parallax {
+        width: 100%;
+        height: 350px;
+    }
+    .post-box {
+        width: 31%;
+        margin-left: 8px;
+    }
+    .post {
+        width: 100%;
+    }
+    .image-post a img {
+        width: 100%;
+        height: 200px;
+    }
+    footer {
+        margin-left: 10px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    body {
+        width: 100%;
+    }
+    .parallax {
+        width: 100%;
+        height: 350px;
+    }
+    .parallax img {
+        height: 100%;
+        margin-left: 10px;
+    }
+    .post-box {
+        margin-left: 10px;
+        width: 47%;
+    }
+    .post {
+        width: 100%;
+    }
+    .image-post a img {
+        width: 100%;
+        height: 200px;
+    }
+    footer {
+        margin-left: 10px;
+    }
+}
+
+
+/* Extra Small Devices, Phones */
+
+@media only screen and (max-width: 480px) {
+    body {
+        width: 100%;
+    }
+    .parallax {
+        width: 100%;
+        height: 250px;
+    }
+    .parallax img {
+        height: 100%;
+        margin-left: 10px;
+    }
+    .post-box {
+        margin-left: 10px;
+        width: 95%;
+    }
+    .post {
+        width: 100%;
+    }
+    .image-post a img {
+        width: 100%;
+        height: 200px;
+    }
+    footer {
+        margin-left: 10px;
+    }
+}
+
+
+/* Custom, iPhone Retina */
+
+@media only screen and (max-width: 320px) {
+    body {
+        width: 100%;
+    }
+    .parallax {
+        width: 100%;
+        height: 170px;
+    }
+    .parallax img {
+        height: 100%;
+        margin-left: 10px;
+    }
+    .post-box {
+        width: 95%;
+        margin-left: 10px;
+    }
+    .post {
+        width: 100%;
+        height: 200px;
+    }
+    .image-post a img {
+        width: 100%;
+        height: 200px;
+    }
+}
