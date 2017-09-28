@@ -1,12 +1,49 @@
-body {
-    background-color: #fff;
-    width: 80%;
-    margin: auto;
+html {
+    background-color: #ccc;
 }
 
-.container {
+body {
+    background-color: #fff;
+    max-width: 900px;
+    margin: auto;
+    font-family: "Roboto", sans-serif;
+    position: relative;
+}
+
+
+/* Header */
+
+header {
+    position: absolute;
+    top: 0px;
+    background-color: rgba(0, 0, 0, 0.6);
     width: 100%;
-    height: auto;
+    height: 40px;
+    line-height: 40px;
+}
+header ul{
+    width: 300px;
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    float: right;
+}
+header ul li{
+    display: inline;
+    margin-left: 30px;
+    transition: 0.2s ease-out;
+}
+header ul li:hover, li.active {
+    border-bottom: 2px solid #fff;
+    padding-bottom: 2px;
+    transition: 0.2s ease-in;
+}
+header ul li a{
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 12px;
+    text-decoration: none;
 }
 
 .parallax {
@@ -15,30 +52,35 @@ body {
 }
 
 .parallax img {
-    width: 95.6%;
-    height: 100%;
-    margin-left: 17px;
-}
-
-.posts-area {
     width: 100%;
-    background-color: #000;
+    height: 100%;
 }
 
-.post-box {
-    float: left;
-    width: 18%;
-    margin-top: 10px;
-    margin-left: 16px;
+.container {
+    width: 100%;
+    overflow: auto;
+    padding-bottom: 20px;
+    height: auto;
+    background-color: #fff;
 }
+
+
+/* Posts Area */
 
 .post {
-    width:100%;
+    float: left;
+    width: 18.7%;
+    margin-top: 18px;
+    margin-left: 10px;
 }
 
 .image-post {
     width: 100%;
     position: relative;
+}
+
+.single-post-container{
+    padding-top: 50px;
 }
 
 .image-post a img {
@@ -63,131 +105,454 @@ body {
     font-size: 13px;
 }
 
+
+/* Bottom Widget */
+
+.bottom-widget {
+    background-color: #f0f0f0;
+}
+
+
+/* Footer */
+
 footer {
     float: left;
     display: block;
     height: 40px;
     background-color: rgba(0, 0, 0, 0.6);
     color: white;
-    width: 96%;
-    margin-left: 16px;
-    margin-top: 10px;
+    width: 100%;
 }
 
-footer>h4 {
+footer> p {
+    font-size: 13px;
     text-align: center;
     text-align: center;
     margin-top: 10px;
 }
 
+/* Left */
+
+.left{
+    width: 65%;
+    margin: 0;
+    float: left;
+}
+.breadcrumb{
+    margin-left: 10px;
+    margin-top: 5px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.breadcrumb ul {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    list-style: none;
+}
+.breadcrumb ul li{
+    display: inline;
+    font-size: 14px;
+    color: #fff;
+}
+.breadcrumb ul li a{
+   text-decoration: none;
+   color: #fff;
+}
+.post-list{
+    margin-left: 10px;
+    width: 100%;
+}
+.single-post {
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.single-post .feature-post {
+	margin-bottom: 30px;
+}
+
+.single-post .header-post .time-post {
+	position: relative;
+	margin-bottom: 10px;
+	padding-left: 55px;
+}
+
+.single-post .header-post .time-post:after {
+	width: 40px;
+    height: 1px;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 15px;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.single-post .header-post h2.title-post {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.single-post .header-post h2.title-post a {
+	color: #333333;
+}
+
+.single-post a{
+    text-decoration: none;
+}
+
+.single-post .content-post {
+    position: relative;
+}
+.single-post .content-post small{
+    text-align: center;
+    margin: auto;
+}
+
+.single-post .content-post .meta-post {
+	color: #777;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+    margin-top: 27px;
+}
+
+.single-post .content-post .meta-post a {
+	color: #333333;
+}
+
+.single-post .content-post .meta-post .post-views {
+	border-left: 1px solid rgba(0, 0, 0, 0.1);
+    margin-left: 20px;
+    padding-left: 20px;
+}
+
+.single-post .content-post .readmore a {
+	padding: 10px 0;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #333333;
+    margin-top: 30px;
+}
+
+
+/* Right */
+
+.right{
+    width: 30%;
+    float: left;
+    padding-left: 30px;
+}
+
+.right .search{
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.search > input{
+    padding: 6px; 
+}
+.search > input:focus{
+    box-shadow: none;
+    border: 2px solid rgba(0, 0, 0, 0.4);
+}
+.search button{
+    padding: 8px 9px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+/* Widget */
+
+.widget {
+    margin-bottom: 60px;
+}
+
+.widget:last-child {
+    margin-bottom: 0;
+}
+
+.widget .widget-title {
+    font-size: 15px;
+    margin-bottom: 35px;
+    margin-top: 0;
+    padding: 0 15px 0 0;
+    position: relative;
+}
+a{
+    text-decoration: none;
+}
+.widget .widget-title:before {
+    background: rgba(0, 0, 0, 0.1);
+    content: "";
+    height: 1px;
+    left: 50px;
+    right: 0;
+    position: absolute;
+    bottom: -12px;
+}
+
+.widget .widget-title:after {
+    content: "";
+    height: 3px;
+    left: 0;
+    width: 40px;
+    position: absolute;
+    bottom: -13px;
+    background-color: #000;
+}
+.widget ul{
+    margin: 0px;
+    padding: 0px;
+}
+.widget ul li:first-child {
+    padding-top: 0;
+}
+
+.widget ul li {
+    list-style: none;
+    border-bottom: 1px dotted rgba(0, 0, 0, 0.15);
+    padding: 10px 0;
+}
+
+.widget ul li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.widget ul li a {
+    color: #777;
+    font-size: 14px;
+}
+
+.widget ul li a:hover {
+    color: #000000;
+}
+/* Widget categories */
+.widget.widget_categories ul li {
+    color: #999;
+}
+
+/* Widget tags */
+.widget.widget_tag_cloud .tagcloud {
+    overflow: hidden;
+}
+
+.widget.widget_tag_cloud .tagcloud a {
+    color: #cccccc;
+    background: #333333;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 25px;
+    margin: 0 5px 5px 0;
+    float: left;
+    position: relative;
+    font-size: 13px;
+    -webkit-border-radius: 50px;
+       -moz-border-radius: 50px;
+        -ms-border-radius: 50px;
+         -o-border-radius: 50px;
+            border-radius: 50px;
+}
+
+.widget.widget_tag_cloud .tagcloud a:hover {
+	color: #fff;
+}
+
+/* Navigation */
+.navigation.post-navigation .nav-links {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.navigation.post-navigation .nav-links li {
+    list-style: none;
+    display: inline-block;
+    width: 49%;
+    text-align: center;
+}
+
+.navigation.post-navigation .nav-links li a {
+    color: #333333;
+    display: block;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.1);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.navigation.post-navigation .nav-links li a:hover {
+    background: #333333;
+    color: #ffffff;
+}
+
+.navigation.post-navigation .nav-links li a span {
+    color: #777;
+}
+
+.navigation.post-navigation .nav-links li a:hover span {
+    color: #ffffff;
+}
+
+.navigation.post-navigation .nav-links li.next-post {
+    float: right;
+}
+
+/* Contact Form */
+
+
+#contact input[type="text"], #contact input[type="email"], #contact input[type="tel"], #contact input[type="url"], #contact textarea, #contact button[type="submit"] { font:400 12px/16px "Open Sans", Helvetica, Arial, sans-serif; }
+
+#contact {
+	background:#F9F9F9;
+	padding:25px;
+}
+
+#contact small{
+    padding-bottom: 20px;
+}
+#contact h3 {
+	color: #F96;
+	display: block;
+	font-size: 30px;
+	font-weight: 400;
+}
+
+#contact h4 {
+	margin:5px 0 15px;
+	display:block;
+	font-size:13px;
+}
+
+fieldset {
+	border: medium none !important;
+	margin: 0 0 10px;
+	min-width: 100%;
+	padding: 0;
+	width: 100%;
+}
+
+#contact input[type="text"], #contact input[type="email"], #contact input[type="tel"], #contact input[type="url"], #contact textarea {
+	width:96%;
+	border:1px solid #CCC;
+	background:#FFF;
+	margin:0 0 5px;
+	padding:10px;
+}
+
+#contact input[type="text"]:hover, #contact input[type="email"]:hover, #contact input[type="tel"]:hover, #contact input[type="url"]:hover, #contact textarea:hover {
+	-webkit-transition:border-color 0.3s ease-in-out;
+	-moz-transition:border-color 0.3s ease-in-out;
+	transition:border-color 0.3s ease-in-out;
+	border:1px solid #AAA;
+}
+
+#contact textarea {
+	height:100px;
+	max-width:100%;
+  resize:none;
+}
+
+#contact button[type="submit"] {
+	cursor: pointer;
+    width: 100%;
+    display: block;
+	border:none;
+	background: rgba(0, 0, 0, 0.4);
+	color:#FFF;
+	margin:0 0 5px;
+	padding:10px;
+	font-size:15px;
+}
+
+#contact button[type="submit"]:hover {
+	background: rgba(0, 0, 0, 0.6);
+	-webkit-transition:background 0.3s ease-in-out;
+	-moz-transition:background 0.3s ease-in-out;
+	transition:background-color 0.3s ease-in-out;
+}
+
+#contact button[type="submit"]:active { box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.5); }
+
+#contact input:focus, #contact textarea:focus {
+	outline:0;
+	border:1px solid #999;
+}
+::-webkit-input-placeholder {
+ color:#888;
+}
+:-moz-placeholder {
+ color:#888;
+}
+::-moz-placeholder {
+ color:#888;
+}
+:-ms-input-placeholder {
+ color:#888;
+}
 
 /* Medium Devices, Desktops */
 
 @media only screen and (max-width: 950px) {
-    body {
-        width: 100%;
-    }
-    .parallax {
-        width: 100%;
-        height: 350px;
-    }
-    .post-box {
-        width: 31%;
-        margin-left: 8px;
-    }
-    .post {
-        width: 100%;
-    }
-    .image-post a img {
-        width: 100%;
-        height: 200px;
-    }
-    footer {
-        margin-left: 10px;
-    }
+    
 }
 
 @media only screen and (max-width: 768px) {
-    body {
-        width: 100%;
-    }
-    .parallax {
-        width: 100%;
-        height: 350px;
-    }
-    .parallax img {
-        height: 100%;
-        margin-left: 10px;
-    }
-    .post-box {
-        margin-left: 10px;
-        width: 47%;
-    }
-    .post {
-        width: 100%;
-    }
-    .image-post a img {
-        width: 100%;
-        height: 200px;
-    }
-    footer {
-        margin-left: 10px;
-    }
+    
 }
 
 
 /* Extra Small Devices, Phones */
 
 @media only screen and (max-width: 480px) {
-    body {
-        width: 100%;
-    }
+    
     .parallax {
         width: 100%;
         height: 250px;
     }
     .parallax img {
         height: 100%;
-        margin-left: 10px;
-    }
-    .post-box {
-        margin-left: 10px;
-        width: 95%;
     }
     .post {
-        width: 100%;
+        width: 30%;
+        height: auto;
+        overflow: auto;
+        margin-top: 8px;
+        margin-left: 9px;
     }
     .image-post a img {
         width: 100%;
-        height: 200px;
+        height: 100%;
     }
-    footer {
-        margin-left: 10px;
-    }
+    
 }
 
 
 /* Custom, iPhone Retina */
 
 @media only screen and (max-width: 320px) {
-    body {
+    ul{
         width: 100%;
+        list-style: none;
+        padding: 0px;
+        margin: 0px;
+        float: right;
     }
     .parallax {
         width: 100%;
-        height: 170px;
+        height: 170px;       
     }
     .parallax img {
         height: 100%;
-        margin-left: 10px;
-    }
-    .post-box {
-        width: 95%;
-        margin-left: 10px;
     }
     .post {
-        width: 100%;
-        height: 200px;
+        width: 95%;
+        margin-top: 10px;
+        margin-left: 8px;
     }
     .image-post a img {
         width: 100%;
