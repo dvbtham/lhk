@@ -1,5 +1,5 @@
 function scrolltop() {
-    var id_button = '#scrolltop';
+    var scrollTop = '.scrollTop';
 
     // Kéo xuống khoảng cách 220px thì xuất hiện button
     var offset = 220;
@@ -11,14 +11,14 @@ function scrolltop() {
     // kiểm tra sự ẩn hiện của button
     jQuery(window).scroll(function() {
         if (jQuery(this).scrollTop() > offset) {
-            jQuery(id_button).fadeIn(duration);
+            jQuery(scrollTop).fadeIn(duration);
         } else {
-            jQuery(id_button).fadeOut(duration);
+            jQuery(scrollTop).fadeOut(duration);
         }
     });
 
     // Thêm sự kiện click vào button để khi click là trượt lên top
-    jQuery(id_button).click(function(event) {
+    jQuery(scrollTop).click(function(event) {
         event.preventDefault();
         jQuery('html, body').animate({ scrollTop: 0 }, duration);
         return false;
