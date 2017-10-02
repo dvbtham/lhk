@@ -1,0 +1,119 @@
+﻿@model IEnumerable<LeHuuKhoa.Core.Models.Post>
+
+@{
+    ViewBag.AdminTitle = "Danh sách bài viết";
+    Layout = "~/Areas/Administrations/Views/Shared/_Layout.cshtml";
+}
+@section breadcrumb
+{
+    <section class="content-header">
+        <h1>
+            @ViewBag.AdminTitle
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="@Url.Action("Index", "DashBoard")"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">@ViewBag.AdminTitle</li>
+        </ol>
+    </section>
+}
+<div class="box">
+    <div class="box-header with-border">
+        <a href="@Url.Action("Create","ManagePost", new {area = "Administrations"})" style="margin-left: 8px;"
+           class="btn btn-info btn-sm">
+            Thêm mới bài viết
+        </a>
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                <i class="fa fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                <i class="fa fa-times"></i>
+            </button>
+        </div>
+    </div>
+    <div class="box-body table-responsive">
+        <table id="myTable" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Tiêu đề</th>
+                    <th>Tên danh mục</th>
+                    <th>Tác giả</th>
+                    <th>Lượt xem</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var post in Model)
+            {
+                    <tr>
+                        <td>
+                            <a href="@Url.Action("Edit", "ManagePost", new { id = post.Id})">
+                                @post.Title
+                            </a>
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Edit", "ManagePost", new { id = post.Id})">
+                                @post.Category.Name
+                            </a>
+                        </td>
+                        <td>@post.AuthorName</td>
+                        <td>@post.Views</td>
+                        <td>
+                            <a href="@Url.Action("Edit", "ManagePost", new { id = post.Id})">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <a style="padding-left: 10px;" class="text-danger" href="javascript:void(0);">
+                                <i data-name="@post.Title" data-id="@post.Id" class="fa fa-trash margin-left-8 btn-delete-post"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <!-- /.box-body -->
+</div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+
+            $('#myTable').on("click", ".btn-delete-post", function (e) {
+                e.preventDefault();
+                var link = $(e.target);
+                bootbox.dialog({
+                    message: "Bạn chắc chắn muốn xóa bài viết <strong>" + link.attr('data-name') + "</strong>?",
+                    title: "Xác nhận xóa",
+                    buttons: {
+                        no: {
+                            label: "Hủy",
+                            className: "btn-default",
+                            callback: function () {
+                                bootbox.hideAll();
+                            }
+                        },
+                        yes: {
+                            label: "Xóa ",
+                            className: "btn-danger",
+                            callback: function () {
+                                $.ajax({
+                                    url: "/Administrations/ManagePost/Delete/" + link.attr('data-id'),
+                                    method: "post",
+                                    success: function () {
+                                        link.parents("tr").fadeOut(function () {
+                                            $(this).remove();
+                                        });
+                                    },
+                                    error: function () {
+                                        bootbox.alert("Lỗi xảy ra. Vui lòng liên hệ với bộ phận dev.");
+                                    }
+                                });
+                            }
+                        }
+                    }
+                });
+            });
+
+        });
+    </script>
+}

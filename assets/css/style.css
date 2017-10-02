@@ -28,6 +28,14 @@ header ul{
     margin: 0px;
     float: right;
 }
+header a.logo{
+    color: #fff;
+    padding-left: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 12px;
+    text-decoration: none;
+}
 header ul li{
     display: inline;
     margin-left: 30px;
@@ -70,10 +78,13 @@ header ul li a{
 .post {
     float: left;
     width: 18.7%;
+    display: block;
     margin-top: 18px;
     margin-left: 10px;
 }
-
+.clear-fix{
+    clear: both;
+}
 .image-post {
     width: 100%;
     position: relative;

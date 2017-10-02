@@ -1,0 +1,129 @@
+﻿using System;
+using System.Linq;
+using System.Web.Mvc;
+using LeHuuKhoa.Core;
+using LeHuuKhoa.Core.Models;
+using LeHuuKhoa.Core.Utilities;
+using LeHuuKhoa.Core.Utilities.ExcelManager;
+using LeHuuKhoa.Core.ViewModels;
+
+namespace LeHuuKhoa.Areas.Administrations.Controllers
+{
+    public class PostCategoryController : BaseController
+    {
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IExportManager _exportManager;
+        private readonly IImportManager _importManager;
+
+        public PostCategoryController(IUnitOfWork unitOfWork, IImportManager importManager, IExportManager exportManager)
+        {
+            _unitOfWork = unitOfWork;
+            _exportManager = exportManager;
+            _importManager = importManager;
+        }
+        public ActionResult Index()
+        {
+            var categories = _unitOfWork.Categories.GetCategories().OrderBy(x => x.DisplayOrder);
+            return View(categories);
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult Create(PostCategoryViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+                return View(viewModel);
+
+            var category = new PostCategory
+            {
+                Id = Guid.NewGuid().ToString(),
+                Name = viewModel.Name,
+                DisplayOrder = viewModel.DisplayOrder,
+                Descriptions = viewModel.Descriptions,
+                ImageUrl = viewModel.ImageUrl
+            };
+
+            _unitOfWork.Categories.Add(category);
+            _unitOfWork.Complete();
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Edit(string id)
+        {
+            var category = _unitOfWork.Categories.Get(id);
+            var viewModel = new PostCategoryViewModel
+            {
+                Id = category.Id,
+                Name = category.Name,
+                DisplayOrder = category.DisplayOrder,
+                Descriptions = category.Descriptions,
+                ImageUrl = category.ImageUrl
+            };
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Update(PostCategoryViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Edit", viewModel);
+            }
+            var category = _unitOfWork.Categories.Get(viewModel.Id);
+
+            category.Modify(viewModel.Name, viewModel.DisplayOrder, viewModel.ImageUrl, viewModel.Descriptions);
+
+            _unitOfWork.Complete();
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public JsonResult Delete(string id)
+        {
+            var category = _unitOfWork.Categories.Get(id);
+            _unitOfWork.Categories.Delete(category);
+            _unitOfWork.Complete();
+            return Json(category);
+        }
+
+        #region Import/Export
+
+        [HttpGet]
+        public FileContentResult ExportCategories()
+        {
+            var categories = _unitOfWork.Categories.GetCategories().ToList();
+
+            var bytes = _exportManager.ExportPostCategoriesToXlsx(categories);
+            return File(bytes, MimeTypes.TextXlsx, $"danh_muc_{DateTime.Now:yyyyMMddhhmmsss}.xlsx");
+        }
+
+        [HttpPost]
+        public JsonResult ImportCategories()
+        {
+            var file = Request.Files["importedCategories"];
+            if (file != null && file.ContentLength > 0)
+            {
+                _importManager.ImportCategoriesFromXlsx(file.InputStream);
+                return Json(new
+                {
+                    message = "Nhập liệu thành công."
+                });
+            }
+            else
+                return Json(new
+                {
+                    message = "Đã xảy ra lỗi trong quá trình nhập liệu! Vui lòng liên hệ với nhà phát triển."
+                });
+        }
+
+        #endregion
+    }
+}

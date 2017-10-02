@@ -1,0 +1,94 @@
+
+@media only screen and (max-width: 616px) {
+    .right,
+    .left {
+        width: 95%;
+    }
+    .right {
+        padding-left: 10px;
+    }
+}
+
+@media only screen and (max-width: 766px) {
+    .search button {
+        margin-top: 5px;
+        width: 185px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    
+    .post {
+        width: 23%;
+    }
+}
+
+
+/* Extra Small Devices, Phones */
+
+@media only screen and (max-width: 480px) {
+    .parallax {
+        width: 100%;
+        height: 250px;
+    }
+    .parallax img {
+        height: 100%;
+    }
+    .post {
+        width: 30%;
+        height: auto;
+        overflow: auto;
+        margin-top: 8px;
+        margin-left: 9px;
+    }
+    .image-post a img {
+        width: 100%;
+        height: 100%;
+    }
+    .right,
+    .left {
+        width: 100%;
+    }
+    .right,
+    .left {
+        width: 95%;
+    }
+    .right {
+        padding-left: 10px;
+    }
+    .widget ul {
+        margin-bottom: 35px;
+    }
+}
+
+
+/* Custom, iPhone Retina */
+
+@media only screen and (max-width: 320px) {
+    .breadcrumb {
+        height: 30px;
+    }
+    header ul {
+        width: 100%;
+        list-style: none;
+        padding: 0px;
+        margin: 0px;
+        float: right;
+    }
+    .parallax {
+        width: 100%;
+        height: 170px;
+    }
+    .parallax img {
+        height: 100%;
+    }
+    .post {
+        width: 95%;
+        margin-top: 10px;
+        margin-left: 8px;
+    }
+    .image-post a img {
+        width: 100%;
+        height: 200px;
+    }
+}

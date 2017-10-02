@@ -1,0 +1,72 @@
+﻿@model LeHuuKhoa.Core.ViewModels.PostCategoryViewModel
+@{
+    ViewBag.AdminTitle = "Thêm mới danh mục luận";
+    Layout = "~/Areas/Administrations/Views/Shared/_Layout.cshtml";
+}
+<div class="box">
+    <div class="box-header with-border">
+        <h3 class="box-title">@ViewBag.AdminTitle</h3>
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                <i class="fa fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                <i class="fa fa-times"></i>
+            </button>
+        </div>
+    </div>
+    <div class="box-body table-responsive">
+        @using (Html.BeginForm("Create", "PostCategory"))
+            {
+            <div class="col-md-6">
+                <p class="alert alert-info">Tất cả thông tin là bắt buộc.</p>
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                @Html.HiddenFor(x => x.Id)
+                <div class="input-group">
+                    <span class="input-group-addon" data-toggle='tooltip' title="Nhập tên danh mục">
+                        <i class="fa fa-user"></i>
+                    </span>
+                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control", placeholder = "Tên danh mục" })
+                </div>
+                <br />
+
+                <div class="input-group">
+                    <span class="input-group-addon" data-toggle='tooltip' title="Thứ tự hiển thị">
+                        123
+                    </span>
+                    @Html.TextBoxFor(x => x.DisplayOrder, new { @class = "form-control", type = "number", placeholder = "Thứ tự hiển thị" })
+                </div>
+                <br />
+                <div class="input-group">
+                    <span class="input-group-addon" data-toggle='tooltip' title="Chọn hình">
+                        <i class="fa fa-picture-o"></i>
+                    </span>
+                    @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control", placeholder = "Hình", @id = "txtImageUrl" })
+                    <span class="input-group-addon" id="toggleFinder" style="cursor: pointer" data-toggle='tooltip' title="Bấm để chọn hình">
+                        ... <i class="fa fa-folder-open-o"></i>
+                    </span>
+                </div>
+                <br />
+                <div class="input-group">
+                    <span class="input-group-addon" data-toggle='tooltip' title="Mô tả">
+                        <i class="fa fa-book"></i>
+                    </span>
+                    @Html.TextAreaFor(x => x.Descriptions, new { @class = "form-control", type = "number", placeholder = "Mô tả" })
+                </div>
+                <br />
+                <button type="submit" class="btn btn-primary">Lưu</button>
+                <button type="button" onclick="window.location.href='/administrations/postcategory'" class="btn btn-danger">Hủy</button>
+            </div>
+            <div class="col-md-6">
+                <img class="img-responsive" id="bindingImage" src="https://www.poolfilters.biz/media/catalog/product/300x300/no-image.jpg" />
+            </div>
+        }
+    </div>
+
+</div>
+
+@section scripts
+{
+    <script src="~/Scripts/admin/controllers/postCategoryController.js"></script>
+}

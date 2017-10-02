@@ -1,0 +1,11 @@
+﻿using System.Data.Entity;
+using LeHuuKhoa.Core.Models;
+
+namespace LeHuuKhoa.Persistence
+{
+    public interface IApplicationDbContext
+    {
+        DbSet<Post> Posts { get; set; }
+        DbSet<PostCategory> Categories { get; set; }
+    }
+}
