@@ -10,6 +10,9 @@ body {
     font-family: "Roboto", sans-serif;
     position: relative;
 }
+img{
+    display: flex;
+}
 
 /* Header */
 
@@ -80,11 +83,12 @@ header ul li a{
 
 .post {
     float: left;
-    width: 18.7%;
+    width: calc(20% - 12px);
     display: block;
-    height: 155px;
-    margin-top: 18px;
+    height: 100%;
+    margin-top: 15px;
     margin-left: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,.15), 0 3px 3px rgba(0,0,0,.15);
 }
 .clear-fix{
     clear: both;
@@ -93,6 +97,7 @@ header ul li a{
     width: 100%;
     height: 100%;
     position: relative;
+
 }
 
 .single-post-container{
