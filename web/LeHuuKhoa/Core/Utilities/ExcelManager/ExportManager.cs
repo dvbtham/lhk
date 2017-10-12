@@ -56,6 +56,7 @@ namespace LeHuuKhoa.Core.Utilities.ExcelManager
                 new PropertyByName<PostCategory>("Name", p => p.Name),
                 new PropertyByName<PostCategory>("DisplayOrder", p => p.DisplayOrder),
                 new PropertyByName<PostCategory>("ImageUrl", p => p.ImageUrl),
+                new PropertyByName<PostCategory>("BackgroundImage", p => p.BackgroundImage),
                 new PropertyByName<PostCategory>("Descriptions", p => p.Descriptions)
             };
             return ExportToXlsx(properties, categories, "Danh mục");

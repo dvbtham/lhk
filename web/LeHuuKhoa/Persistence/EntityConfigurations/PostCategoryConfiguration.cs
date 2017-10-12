@@ -21,9 +21,12 @@ namespace LeHuuKhoa.Persistence.EntityConfigurations
                 .IsRequired()
                 .HasMaxLength(256);
 
-            Property(u => u.Descriptions)
+            Property(u => u.BackgroundImage)
                 .IsRequired()
-                .HasMaxLength(700);
+                .HasMaxLength(256);
+
+            Property(u => u.Descriptions)
+                .IsRequired();
 
         }
     }

@@ -27,6 +27,7 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
             return View(categories);
         }
 
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
@@ -34,14 +35,15 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
 
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult Create(PostCategoryViewModel viewModel)
+        [ValidateInput(false)]
+        public ActionResult Add(PostCategoryViewModel viewModel)
         {
             if (!ModelState.IsValid)
-                return View(viewModel);
+                return View("Create", viewModel);
 
             var category = new PostCategory
             {
-                Id = Guid.NewGuid().ToString(),
+                Id = SlugHelper.ToUnsignString(viewModel.Name),
                 Name = viewModel.Name,
                 DisplayOrder = viewModel.DisplayOrder,
                 Descriptions = viewModel.Descriptions,
@@ -57,18 +59,23 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
         public ActionResult Edit(string id)
         {
             var category = _unitOfWork.Categories.Get(id);
+
+            if (category == null) return NotFoundResult();
+
             var viewModel = new PostCategoryViewModel
             {
                 Id = category.Id,
                 Name = category.Name,
                 DisplayOrder = category.DisplayOrder,
                 Descriptions = category.Descriptions,
-                ImageUrl = category.ImageUrl
+                ImageUrl = category.ImageUrl,
+                BackgroundImage = category.BackgroundImage
             };
             return View(viewModel);
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         public ActionResult Update(PostCategoryViewModel viewModel)
         {
@@ -78,7 +85,9 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
             }
             var category = _unitOfWork.Categories.Get(viewModel.Id);
 
-            category.Modify(viewModel.Name, viewModel.DisplayOrder, viewModel.ImageUrl, viewModel.Descriptions);
+            if (category == null) return NotFoundResult();
+
+            category.Modify(viewModel.Name, viewModel.DisplayOrder, viewModel.ImageUrl,viewModel.BackgroundImage, viewModel.Descriptions);
 
             _unitOfWork.Complete();
 
@@ -109,19 +118,17 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
         public JsonResult ImportCategories()
         {
             var file = Request.Files["importedCategories"];
-            if (file != null && file.ContentLength > 0)
-            {
-                _importManager.ImportCategoriesFromXlsx(file.InputStream);
-                return Json(new
-                {
-                    message = "Nhập liệu thành công."
-                });
-            }
-            else
+            if (file == null || file.ContentLength <= 0)
                 return Json(new
                 {
                     message = "Đã xảy ra lỗi trong quá trình nhập liệu! Vui lòng liên hệ với nhà phát triển."
                 });
+            _importManager.ImportCategoriesFromXlsx(file.InputStream);
+
+            return Json(new
+            {
+                message = "Nhập liệu thành công."
+            });
         }
 
         #endregion

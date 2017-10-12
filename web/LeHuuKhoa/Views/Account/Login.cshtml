@@ -1,5 +1,5 @@
 ﻿@using LeHuuKhoa.Core.Models
-@model LoginViewModel
+@model LeHuuKhoa.Core.ViewModels.LoginViewModel
 @{
     ViewBag.Title = "Đăng nhập hệ thống";
 }
@@ -16,7 +16,7 @@
             <article class="single-post ">
                 <div class="header-post">
                     <p class="time-post"><strong>Thông tin tài khoản</strong></p>
-                    @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { id = "contact" }))
+                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { id = "contact" }))
                     {
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true, "", new { style="color: red" })

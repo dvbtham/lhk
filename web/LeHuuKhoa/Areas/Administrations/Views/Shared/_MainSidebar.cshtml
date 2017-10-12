@@ -4,10 +4,10 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="/Content/admin/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="@ViewData["UserAvatar"]" class="img-circle">
             </div>
             <div class="pull-left info">
-                <p>Lê Hữu Khóa</p>
+                <p>@ViewData["Name"]</p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
@@ -16,12 +16,14 @@
         <ul class="sidebar-menu">
             <li class="header">MENU CHÍNH</li>
             <li>
-                <a href="@Url.Action("Index","PostCategory")">
-                    <i class="fa fa-th"></i> <span>Danh mục bài viết</span>
+                <a href="@Url.Action("Index","PostCategory", new { area = "Administrations" })">
+                    <i class="fa fa-th"></i> <span>Danh mục luận</span>
                 </a>
             </li>
             <li>
-                <a href="@Url.Action("Index","ManagePost")"><i class="fa fa-book"></i> <span> Bài viết</span></a>
+                <a href="@Url.Action("Index","Page", new { area = "Administrations" })">
+                    <i class="fa fa-paragraph"></i> <span>Quản lý trang</span>
+                </a>
             </li>
         </ul>
     </section>

@@ -9,7 +9,9 @@ namespace LeHuuKhoa.Persistence
     public class UnitOfWork : IUnitOfWork
     {
         public IPostRespository Posts { get; }
+        public IPageRepository Pages { get; }
         public IPostCategoryRespository Categories { get; }
+        public IUserRepository ApplicationUsers { get; }
 
         private readonly ApplicationDbContext _context;
 
@@ -18,6 +20,8 @@ namespace LeHuuKhoa.Persistence
             _context = context;
             Posts= new PostRepository(context);
             Categories = new PostCategoryRepository(context);
+            ApplicationUsers = new UserRepository(context);
+            Pages = new PageRepository(context);
         }
         public void Complete()
         {

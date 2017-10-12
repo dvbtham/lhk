@@ -17,9 +17,12 @@ namespace LeHuuKhoa.Core.ViewModels
         [MaxLength(256, ErrorMessage = "Chỉ nhập nhiều nhất 256 ký tự")]
         public string ImageUrl { get; set; }
 
+        [Required(ErrorMessage = "Bắt buộc phải chọn ảnh bìa")]
+        [MaxLength(256, ErrorMessage = "Chỉ nhập nhiều nhất 256 ký tự")]
+        public string BackgroundImage { get; set; }
+
         [Required(ErrorMessage = "Bắt buộc phải nhập mô tả")]
-        [MinLength(10, ErrorMessage = "Phải nhập ít nhất 10 ký tự")]
-        [MaxLength(700, ErrorMessage = "Chỉ nhập nhiều nhất 700 ký tự")]
+        [MinLength(5, ErrorMessage = "Phải nhập ít nhất 5 ký tự")]
         public string Descriptions { get; set; }
 
     }

@@ -27,6 +27,7 @@ namespace LeHuuKhoa.Core.Utilities.ExcelManager
                 new PropertyByName<PostCategory>("Name"),
                 new PropertyByName<PostCategory>("DisplayOrder"),
                 new PropertyByName<PostCategory>("ImageUrl"),
+                new PropertyByName<PostCategory>("BackgroundImage"),
                 new PropertyByName<PostCategory>("Descriptions")
             };
             #endregion
@@ -52,11 +53,13 @@ namespace LeHuuKhoa.Core.Utilities.ExcelManager
                     manager.ReadFromXlsx(worksheet, iRow);
                     var id = manager.GetProperty("Id").StringValue;
                     var category = _unitOfWork.Categories.Get(id);
-                    var isNew = category == null || id == null;
+
+                    var isNew = category == null;
                     category = category ?? new PostCategory();
 
                     category.Name = manager.GetProperty("Name").StringValue;
                     category.ImageUrl = manager.GetProperty("ImageUrl").StringValue;
+                    category.BackgroundImage = manager.GetProperty("BackgroundImage").StringValue;
                     category.Descriptions = manager.GetProperty("Descriptions").StringValue;
                     category.DisplayOrder = manager.GetProperty("DisplayOrder").ByteValue;
 
@@ -64,7 +67,7 @@ namespace LeHuuKhoa.Core.Utilities.ExcelManager
                     {
                         try
                         {
-                            category.Id = Guid.NewGuid().ToString();
+                            category.Id = SlugHelper.ToUnsignString(category.Name);
                             _unitOfWork.Categories.Add(category);
                         }
                         catch (Exception e)
@@ -73,7 +76,7 @@ namespace LeHuuKhoa.Core.Utilities.ExcelManager
                         }
                     }
                     else
-                        category.Modify(category.Name, category.DisplayOrder, category.ImageUrl, category.Descriptions);
+                        category.Modify(category.Name, category.DisplayOrder, category.ImageUrl, category.BackgroundImage, category.Descriptions);
 
                     iRow++;
                     _unitOfWork.Complete();

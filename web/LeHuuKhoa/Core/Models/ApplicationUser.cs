@@ -16,6 +16,14 @@ namespace LeHuuKhoa.Core.Models
 
         public string Gender { get; set; }
 
+        public void Modify(string name, string email, string image, DateTime birthday, string gender)
+        {
+            Email = email;
+            Name = name;
+            ImageUrl = image;
+            Birthday = birthday;
+            Gender = gender;
+        }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

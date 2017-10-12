@@ -16,6 +16,7 @@
     <link href="~/Content/libs/datatables/dataTables.bootstrap.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="/Content/admin/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="/Content/admin/dist/css/custom.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="/Content/admin/dist/css/skins/_all-skins.min.css">
@@ -31,14 +32,14 @@
     <div class="wrapper">
         <header class="main-header">
             <!-- Logo -->
-            <a href="/Content/admin/index2.html" class="logo">
+            <a href="@Url.Action("Index", "Home", new { area = "" })" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>L.H.K</b></span>
                 <!-- logo for regular state and mobile devices -->
                 <span class="logo-lg"><b>L.H.K</b></span>
             </a>
             <!-- Header Navbar: style can be found in header.less -->
-           @Html.Partial("_HeaderNavbar")
+            @Html.Partial("_HeaderNavbar")
         </header>
         <!-- =============================================== -->
         <!-- Left side column. contains the sidebar -->
@@ -50,14 +51,14 @@
             @RenderSection("breadcrumb", false)
             <!-- Main content -->
             <section class="content">
-                @if (ViewData["AlertMessage"] != null)
+                @if (TempData["AlertMessage"] != null)
                 {
-                    <div id="AlertBox" class="alert @ViewData["AlertType"] alert-dismissable hide">
+                    <div id="AlertBox" class="alert @TempData["AlertType"] alert-dismissable hide">
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        @ViewData["AlertMessage"]
+                        @TempData["AlertMessage"]
                     </div>
                 }
-                
+
                 @RenderBody()
             </section>
             <!-- /.content -->
@@ -90,7 +91,7 @@
     <script src="/Content/admin/plugins/fastclick/fastclick.js"></script>
 
     <script src="~/Content/libs/ckfinder/ckfinder.js"></script>
-    <script src="~/Content/libs/ckeditor/ckeditor.js"></script>
+    <script src="//cdn.ckeditor.com/4.7.3/full/ckeditor.js"></script>
     <!-- AdminLTE App -->
     <script src="/Content/admin/dist/js/app.min.js"></script>
 

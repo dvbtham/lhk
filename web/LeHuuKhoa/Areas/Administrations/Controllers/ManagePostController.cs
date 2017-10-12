@@ -60,6 +60,7 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
         public ActionResult Edit(string id)
         {
             var post = _unitOfWork.Posts.Get(id);
+            if (post == null) return NotFoundResult();
             var model = new PostViewModel
             {
                 Id = post.Id,
@@ -85,6 +86,9 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
             if (!ModelState.IsValid) return View("Edit", viewModel);
 
             var post = _unitOfWork.Posts.Get(viewModel.Id);
+
+            if (post == null) return NotFoundResult();
+
             post.DateUpdated = DateTime.Now;
             post.Slug = SlugHelper.ToUnsignString(viewModel.Title);
             post.Modify(viewModel.Title, viewModel.Descriptions,

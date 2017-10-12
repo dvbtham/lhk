@@ -7,7 +7,7 @@
 
 @media (min-width: 768px) {
     .post {
-        width: calc(25% - 12.5px);
+        width: calc(25% - 12.5px);        
     }
 }
 

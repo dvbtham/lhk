@@ -7,5 +7,7 @@ namespace LeHuuKhoa.Persistence
     {
         DbSet<Post> Posts { get; set; }
         DbSet<PostCategory> Categories { get; set; }
+        DbSet<Page> Pages { get; set; }
+        IDbSet<ApplicationUser> Users { get; set; }
     }
 }

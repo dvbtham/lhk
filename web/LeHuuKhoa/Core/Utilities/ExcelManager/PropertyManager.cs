@@ -58,15 +58,9 @@ namespace LeHuuKhoa.Core.Utilities.ExcelManager
         /// </summary>
         /// <param name="propertyName">Property name</param>
         /// <returns>Property value</returns>
-        public object this[string propertyName]
-        {
-            get
-            {
-                return _properties.ContainsKey(propertyName) && CurrentObject != null
-                    ? _properties[propertyName].GetProperty(CurrentObject)
-                    : null;
-            }
-        }
+        public object this[string propertyName] => _properties.ContainsKey(propertyName) && CurrentObject != null
+            ? _properties[propertyName].GetProperty(CurrentObject)
+            : null;
 
         /// <summary>
         /// Write object data to XLSX worksheet
@@ -116,7 +110,7 @@ namespace LeHuuKhoa.Core.Utilities.ExcelManager
         /// /// <param name="cellOffset">Cell offset</param>
         public void ReadFromXlsx(ExcelWorksheet worksheet, int row, int cellOffset = 0)
         {
-            if (worksheet == null || worksheet.Cells == null)
+            if (worksheet?.Cells == null)
                 return;
 
             foreach (var prop in _properties.Values)
@@ -145,10 +139,7 @@ namespace LeHuuKhoa.Core.Utilities.ExcelManager
         /// <summary>
         /// Count of properties
         /// </summary>
-        public int Count
-        {
-            get { return _properties.Count; }
-        }
+        public int Count => _properties.Count;
 
         /// <summary>
         /// Get property by name
@@ -163,10 +154,7 @@ namespace LeHuuKhoa.Core.Utilities.ExcelManager
         /// <summary>
         /// Get property array
         /// </summary>
-        public PropertyByName<T>[] GetProperties
-        {
-            get { return _properties.Values.ToArray(); }
-        }
+        public PropertyByName<T>[] GetProperties => _properties.Values.ToArray();
 
 
         public void SetSelectList(string propertyName, SelectList list)

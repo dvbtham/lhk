@@ -1,4 +1,5 @@
-﻿using Microsoft.Owin;
+﻿using System.Web.Mvc;
+using Microsoft.Owin;
 using Owin;
 
 [assembly: OwinStartupAttribute(typeof(LeHuuKhoa.Startup))]
@@ -9,6 +10,7 @@ namespace LeHuuKhoa
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
         }
     }
 }
