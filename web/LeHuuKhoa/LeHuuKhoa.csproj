@@ -46,6 +46,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.1.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="CKFinder, Version=2.6.0.2792, Culture=neutral, PublicKeyToken=579e7adc719a1423, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>App_Data\CKFinder.dll</HintPath>
@@ -72,12 +75,21 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -209,11 +221,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\MappingProfile.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Administrations\AdministrationsAreaRegistration.cs" />
     <Compile Include="Areas\Administrations\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Administrations\Controllers\MenuController.cs" />
     <Compile Include="Areas\Administrations\Controllers\PageController.cs" />
     <Compile Include="Areas\Administrations\Controllers\PostCategoryController.cs" />
     <Compile Include="Areas\Administrations\Controllers\ManagePostController.cs" />
@@ -227,9 +242,12 @@
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Core\IUnitOfWork.cs" />
     <Compile Include="Core\Models\ApplicationUser.cs" />
+    <Compile Include="Core\Models\Menu.cs" />
+    <Compile Include="Core\Models\MenuPage.cs" />
     <Compile Include="Core\Models\Page.cs" />
     <Compile Include="Core\Models\Post.cs" />
     <Compile Include="Core\Models\PostCategory.cs" />
+    <Compile Include="Core\Repositories\IMenuRepository.cs" />
     <Compile Include="Core\Repositories\IPageRepository.cs" />
     <Compile Include="Core\Repositories\IPostCategoryRespository.cs" />
     <Compile Include="Core\Repositories\IPostRespository.cs" />
@@ -244,6 +262,7 @@
     <Compile Include="Core\Utilities\HtmlHelperExtensions.cs" />
     <Compile Include="Core\Utilities\MimeTypes.cs" />
     <Compile Include="Core\Utilities\SlugHelper.cs" />
+    <Compile Include="Core\ViewModels\MenuViewModel.cs" />
     <Compile Include="Core\ViewModels\PageViewModel.cs" />
     <Compile Include="Core\ViewModels\PostCategoryViewModel.cs" />
     <Compile Include="Core\ViewModels\UserViewModel.cs" />
@@ -252,7 +271,9 @@
     </Compile>
     <Compile Include="Core\ViewModels\AccountViewModels.cs" />
     <Compile Include="Core\ViewModels\ManageViewModels.cs" />
+    <Compile Include="Persistence\EntityConfigurations\MenuConfiguration.cs" />
     <Compile Include="Persistence\EntityConfigurations\PageConfiguration.cs" />
+    <Compile Include="Persistence\EntityConfigurations\MenuPageConfiguration.cs" />
     <Compile Include="Persistence\Migrations\201709291553353_InitialDb.cs" />
     <Compile Include="Persistence\Migrations\201709291553353_InitialDb.Designer.cs">
       <DependentUpon>201709291553353_InitialDb.cs</DependentUpon>
@@ -285,12 +306,25 @@
     <Compile Include="Persistence\Migrations\201710121432429_UpdatePageTable1.Designer.cs">
       <DependentUpon>201710121432429_UpdatePageTable1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Persistence\Migrations\201710130141507_AddMenuTable.cs" />
+    <Compile Include="Persistence\Migrations\201710130141507_AddMenuTable.Designer.cs">
+      <DependentUpon>201710130141507_AddMenuTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Persistence\Migrations\201710130257568_UpdateMenuTable.cs" />
+    <Compile Include="Persistence\Migrations\201710130257568_UpdateMenuTable.Designer.cs">
+      <DependentUpon>201710130257568_UpdateMenuTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Persistence\Migrations\201710130451437_UpdateMenuPageTable.cs" />
+    <Compile Include="Persistence\Migrations\201710130451437_UpdateMenuPageTable.Designer.cs">
+      <DependentUpon>201710130451437_UpdateMenuPageTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Persistence\Migrations\Configuration.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
     <Compile Include="Persistence\EntityConfigurations\ApplicationUserConfiguration.cs" />
     <Compile Include="Persistence\EntityConfigurations\PostCategoryConfiguration.cs" />
     <Compile Include="Persistence\EntityConfigurations\PostConfiguration.cs" />
     <Compile Include="Persistence\IApplicationDbContext.cs" />
+    <Compile Include="Persistence\Repositories\MenuRepository.cs" />
     <Compile Include="Persistence\Repositories\PageRepository.cs" />
     <Compile Include="Persistence\Repositories\PostCategoryRepository.cs" />
     <Compile Include="Persistence\Repositories\PostRepository.cs" />
@@ -2273,6 +2307,8 @@
     <Content Include="Areas\Administrations\Views\Page\Edit.cshtml" />
     <Content Include="Areas\Administrations\Views\Shared\500.cshtml" />
     <Content Include="Areas\Administrations\Views\Shared\404.cshtml" />
+    <Content Include="Areas\Administrations\Views\Menu\Index.cshtml" />
+    <Content Include="Areas\Administrations\Views\Menu\MenuForm.cshtml" />
     <None Include="Properties\PublishProfiles\LeHuuKhoa20171011081835 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\LeHuuKhoa20171011081835 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\trangthaykhoa - FTP.pubxml" />
@@ -2376,6 +2412,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Persistence\Migrations\201710121432429_UpdatePageTable1.resx">
       <DependentUpon>201710121432429_UpdatePageTable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Persistence\Migrations\201710130141507_AddMenuTable.resx">
+      <DependentUpon>201710130141507_AddMenuTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Persistence\Migrations\201710130257568_UpdateMenuTable.resx">
+      <DependentUpon>201710130257568_UpdateMenuTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Persistence\Migrations\201710130451437_UpdateMenuPageTable.resx">
+      <DependentUpon>201710130451437_UpdateMenuPageTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,0 +1,152 @@
+﻿@using Microsoft.AspNet.Identity
+@model LeHuuKhoa.Core.ViewModels.UserViewModel
+
+@{
+    ViewBag.AdminTitle = "Cập nhật thông tin";
+    Layout = "~/Areas/Administrations/Views/Shared/_Layout.cshtml";
+}
+
+@section breadcrumb
+{
+    <section class="content-header">
+        <h1>
+            @ViewBag.AdminTitle
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="@Url.Action("Index", "PostCategory", new { area = "Administrations" })"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+            <li class="active">@ViewBag.AdminTitle</li>
+        </ol>
+    </section>
+}
+
+<!-- Main content -->
+<section class="content">
+
+    <div class="row">
+
+        <!-- /.col -->
+        <div class="col-md-12">
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#info" data-toggle="tab" aria-expanded="true">Thông tin</a></li>
+                    <li><a href="#settings" data-toggle="tab" aria-expanded="false">Cài đặt</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="info">
+
+                        <img class="profile-user-img img-responsive img-circle" src="@ViewData["UserAvatar"]" />
+
+                        <h3 class="profile-username text-center">@ViewData["Name"]</h3>
+
+                        <p class="text-muted text-center">
+                            <strong>Email:</strong>&nbsp; @Model.Email
+                            <br />
+                            <strong>Giới tính:</strong>&nbsp; @Model.Gender
+                            <br />
+                            <strong>Ngày sinh:</strong>&nbsp; @Model.Birthday.ToShortDateString()
+                        </p>
+
+                    </div>
+
+                    <div class="tab-pane" id="settings">
+                        <img class="profile-user-img img-responsive img-circle" style="margin-bottom: 20px" src="@ViewData["UserAvatar"]" />
+                        @using (Html.BeginForm("Update", "User", FormMethod.Post, new {@class = "form-horizontal"}))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.HiddenFor(x => x.Id)
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Họ tên</label>
+
+                                <div class="col-sm-10">
+                                    @Html.TextBoxFor(x => x.Name, new {@class = "form-control", id = "inputName", placeholder = "Họ tên"})
+                                    @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Ngày sinh</label>
+
+                                <div class="col-sm-10">
+                                    @Html.TextBoxFor(x => x.Birthday, "{0:dd/MM/yyyy}", new {@class = "form-control", id = "inputName", placeholder = "Ngày sinh"})
+                                    @Html.ValidationMessageFor(x => x.Birthday, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Ảnh đại diện</label>
+                                <div class="col-sm-10">
+                                    <div class="input-group">
+                                        @Html.TextBoxFor(x => x.ImageUrl, new {@class = "form-control", id = "inputImage", placeholder = "Ảnh đại diện"})
+                                        <span class="input-group-addon" style="cursor: pointer" id="chooseImage">
+                                            <i class="fa fa-folder"></i> ...
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(x => x.ImageUrl, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Giới tính</label>
+
+                                <div class="col-sm-10">
+                                    <label class="radio-inline">
+                                        @Html.RadioButtonFor(x => x.Gender, "Nam", new {@checked = true}) Nam
+                                    </label>
+                                    <label class="radio-inline">
+                                        @Html.RadioButtonFor(x => x.Gender, "Nữ", new {}) Nữ
+                                    </label>
+                                    <label class="radio-inline">
+                                        @Html.RadioButtonFor(x => x.Gender, "Khác", new {}) Khác
+                                    </label>
+                                    @Html.ValidationMessageFor(x => x.Gender, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+
+                                <div class="col-sm-10">
+                                    @Html.TextBoxFor(x => x.Email, new {type = "email", @class = "form-control", id = "inputEmail", placeholder = "Email"})
+                                    @Html.ValidationMessageFor(x => x.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+                                    <a href="@Url.Action("ChangePassword", "User")" class="btn btn-info">Đổi mật khẩu</a>
+                                    <a href="@Url.Action("Edit", "User", new { id = User.Identity.GetUserId() })" class="btn btn-danger"> Hủy </a>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                    <!-- /.tab-pane -->
+                </div>
+                <!-- /.tab-content -->
+            </div>
+            <!-- /.nav-tabs-custom -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+
+</section>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $("#chooseImage").on("click",
+                function() {
+                    var finder = new CKFinder();
+                    finder.selectActionFunction = function(url) {
+                        $("#inputImage").val(url); 
+                        $(".profile-user-img").prop("src", url); 
+                    }
+                    finder.popup();
+                });
+        })
+    </script>
+}

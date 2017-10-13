@@ -27,6 +27,9 @@ body {
 .pointer {
     cursor: pointer;
 }
+#myTable th, #myTable td {
+    text-align: center;
+}
 /* Layout */
 .wrapper {
   height: 100%;

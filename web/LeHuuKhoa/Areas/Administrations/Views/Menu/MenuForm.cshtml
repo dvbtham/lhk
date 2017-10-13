@@ -1,0 +1,99 @@
+﻿@model LeHuuKhoa.Core.ViewModels.MenuViewModel
+@{
+    ViewBag.AdminTitle = Model.Heading;
+    Layout = "~/Areas/Administrations/Views/Shared/_Layout.cshtml";
+}
+
+@section breadcrumb
+{
+    <section class="content-header">
+        <h1>
+            @ViewBag.AdminTitle
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="@Url.Action("Index", "PostCategory", new { area = "Administrations" })"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+            <li class="active">@ViewBag.AdminTitle</li>
+        </ol>
+    </section>
+}
+
+<div class="box">
+    <div class="box-body">
+
+        @using (Html.BeginForm(Model.Action, "Menu", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(x => x.Id)
+            <div class="form-horizontal">
+                <h4>Thông tin Menu</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Pages, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-6">
+                        @foreach (var page in Model.PageList)
+                        {
+                            var isChecked = Model.Pages.Contains(page.Id) ? "checked" : "";
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" @isChecked value="@page.Id">@page.Name
+                                </label>
+                            </div>
+                            <input name="PagesId" value="@Model.PagesId" type="hidden" id="pagesId" />
+                        }
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-6">
+                        <input type="submit" value="Lưu lại" class="btn btn-primary" />
+                        <a href="@Url.Action("Index", "Menu")" class="btn btn-danger"> Hủy </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="box-footer"></div>
+</div>
+
+@section scripts
+{
+    <script>
+        $(function () {
+            var data = [];
+            var original = $("#pagesId").val();
+            
+            var newdata = original.split(',');
+
+            newdata.forEach(addData);
+
+            function addData(item) {
+                if (item !== "")
+                    data.push(item);
+            }
+            
+            $("input[type='checkbox']").on("change",
+                function (e) {
+                    var item = $(this).val();
+                    if (e.target.checked)
+                        data.push(item);
+                    else {
+                        var index = data.indexOf(item);
+                        data.splice(index, 1);
+                    }
+                    var demo = $("#pagesId").val(data);
+                    console.log(demo.val());
+                });
+            console.log(data);
+        })
+    </script>
+}

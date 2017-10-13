@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.AdminTitle = "Lỗi";
+    Layout = "~/Areas/Administrations/Views/Shared/_Layout.cshtml";
+}
+<div class="error-page">
+    <h2 class="headline text-red">500</h2>
+
+    <div class="error-content">
+        <h3><i class="fa fa-warning text-red"></i> Oops! Đã có lỗi xảy ra!</h3>
+        <p>Vui lòng liên hệ với nhà phát triển hệ thống.</p>
+        <a href="@Url.Action("Index", "PostCategory")">Về trang chủ</a>
+    </div>
+</div>

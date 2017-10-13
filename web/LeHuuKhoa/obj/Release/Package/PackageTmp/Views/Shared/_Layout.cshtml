@@ -17,8 +17,6 @@
     <link href="/Content/front/assets/css/style.css" rel="stylesheet" />
     <link href="/Content/front/assets/css/responsive.css" rel="stylesheet" />
 
-
-
 </head>
 
 <body>
@@ -36,7 +34,7 @@
         <span class="fa fa-bars bars"></span>
         <ul>
             <li class="@Html.IsSelected(action: "Index")"><a href="/">trang chủ</a></li>
-            <li><a href="/">về tác giả</a></li>
+            <li class="@Html.IsSelected(action: "Index", controller: "Page")"><a href="@Url.Action("Read","Page", new { id = "ve-tac-gia", area = "" })">về tác giả</a></li>
             <li class="@Html.IsSelected(action: "Contact")"><a href="@Url.Action("Contact", "Home")">liên hệ</a></li>
             @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
             {

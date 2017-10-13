@@ -45,7 +45,7 @@ namespace LeHuuKhoa.Areas.Administrations
 
             context.MapRoute(
                 "Create page",
-                "quan-ly/trang/them.html",
+                "quan-ly/them-trang.html",
                 new { action = "Create", controller = "Page", area = "Administrations", id = UrlParameter.Optional },
                 new[] { "LeHuuKhoa.Areas.Administrations.Controllers" }
             );

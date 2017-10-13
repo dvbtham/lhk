@@ -135,3 +135,6 @@ D:\dev\projects\lhk\web\LeHuuKhoa\obj\Release\LeHuuKhoa.csproj.GenerateResource.
 D:\dev\projects\lhk\web\LeHuuKhoa\obj\Release\LeHuuKhoa.csproj.CoreCompileInputs.cache
 D:\dev\projects\lhk\web\LeHuuKhoa\obj\Release\LeHuuKhoa.dll
 D:\dev\projects\lhk\web\LeHuuKhoa\obj\Release\LeHuuKhoa.pdb
+D:\dev\projects\lhk\web\LeHuuKhoa\obj\Release\LeHuuKhoa.Persistence.Migrations.AddPageTable.resources
+D:\dev\projects\lhk\web\LeHuuKhoa\obj\Release\LeHuuKhoa.Persistence.Migrations.UpdatePageTable.resources
+D:\dev\projects\lhk\web\LeHuuKhoa\obj\Release\LeHuuKhoa.Persistence.Migrations.UpdatePageTable1.resources

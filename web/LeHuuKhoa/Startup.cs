@@ -10,6 +10,7 @@ namespace LeHuuKhoa
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+            MappingProfile.MappingConfig();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
         }
     }

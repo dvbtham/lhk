@@ -1,0 +1,92 @@
+﻿@model LeHuuKhoa.Core.ViewModels.PageViewModel
+
+@{
+    ViewBag.AdminTitle = "Cập nhât trang";
+    Layout = "~/Areas/Administrations/Views/Shared/_Layout.cshtml";
+}
+
+@section breadcrumb
+{
+    <section class="content-header">
+        <h1>
+            @ViewBag.AdminTitle
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="@Url.Action("Index", "PostCategory", new { area = "Administrations" })"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+            <li class="active">@ViewBag.AdminTitle</li>
+        </ol>
+    </section>
+}
+
+<div class="box">
+    <div class="box-body">
+
+        @using (Html.BeginForm("Update", "Page", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(x => x.Id)
+            <div class="form-horizontal">
+                <h4>Thông tin trang</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Ảnh đại diện</label>
+                    <div class="col-sm-10">
+                        <div class="input-group">
+                            @Html.TextBoxFor(x => x.BackgroundImage, new { @class = "form-control", id = "inputImage", placeholder = "Ảnh nền" })
+                            <span class="input-group-addon" style="cursor: pointer" id="chooseImage">
+                                <i class="fa fa-folder"></i> ...
+                            </span>
+                        </div>
+                        @Html.ValidationMessageFor(x => x.BackgroundImage, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.Content, new { @class = "form-control", id = "txtContent" })
+                        @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Lưu lại" class="btn btn-primary" />
+                        <a href="@Url.Action("Index", "Page")" class="btn btn-danger"> Hủy </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="box-footer"></div>
+</div>
+@section scripts
+{
+    <script>
+        $(function () {
+            $("#chooseImage").on("click",
+                function () {
+                    var finder = new CKFinder();
+                    finder.selectActionFunction = function (url) {
+                        $("#inputImage").val(url);
+                        $(".profile-user-img").prop("src", url);
+                    }
+                    finder.popup();
+                });
+
+            CKEDITOR.replace("txtContent",
+                {
+                    customConfig: "/Scripts/config.js"
+                });
+        })
+    </script>
+}

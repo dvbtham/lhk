@@ -16,6 +16,7 @@
     <link href="~/Content/libs/datatables/dataTables.bootstrap.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="/Content/admin/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="/Content/admin/dist/css/custom.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="/Content/admin/dist/css/skins/_all-skins.min.css">
@@ -31,7 +32,7 @@
     <div class="wrapper">
         <header class="main-header">
             <!-- Logo -->
-            <a href="@Url.Action("Index", "PostCategory")" class="logo">
+            <a href="@Url.Action("Index", "Home", new { area = "" })" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>L.H.K</b></span>
                 <!-- logo for regular state and mobile devices -->
@@ -50,11 +51,11 @@
             @RenderSection("breadcrumb", false)
             <!-- Main content -->
             <section class="content">
-                @if (ViewData["AlertMessage"] != null)
+                @if (TempData["AlertMessage"] != null)
                 {
-                    <div id="AlertBox" class="alert @ViewData["AlertType"] alert-dismissable hide">
+                    <div id="AlertBox" class="alert @TempData["AlertType"] alert-dismissable hide">
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        @ViewData["AlertMessage"]
+                        @TempData["AlertMessage"]
                     </div>
                 }
 

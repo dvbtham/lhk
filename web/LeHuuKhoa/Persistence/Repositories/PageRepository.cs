@@ -9,7 +9,7 @@ namespace LeHuuKhoa.Persistence.Repositories
     {
         private readonly IApplicationDbContext _context;
 
-        public PageRepository(ApplicationDbContext context)
+        public PageRepository(IApplicationDbContext context)
         {
             _context = context;
         }

@@ -11,6 +11,8 @@ namespace LeHuuKhoa.Persistence
 
         public DbSet<Page> Pages { get; set; }
 
+        public DbSet<Menu> Menus { get; set; }
+
         public override IDbSet<ApplicationUser> Users { get; set; }
 
         public DbSet<PostCategory> Categories { get; set; }
@@ -30,6 +32,7 @@ namespace LeHuuKhoa.Persistence
             modelBuilder.Configurations.Add(new ApplicationUserConfiguration());
             modelBuilder.Configurations.Add(new PostConfiguration());
             modelBuilder.Configurations.Add(new PageConfiguration());
+            modelBuilder.Configurations.Add(new MenuPageConfiguration());
             modelBuilder.Configurations.Add(new PostCategoryConfiguration());
             base.OnModelCreating(modelBuilder);
         }

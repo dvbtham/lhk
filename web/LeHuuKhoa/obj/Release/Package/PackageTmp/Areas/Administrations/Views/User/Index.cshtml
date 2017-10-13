@@ -1,0 +1,75 @@
+﻿@using Microsoft.AspNet.Identity
+@model IEnumerable<LeHuuKhoa.Core.ViewModels.UserViewModel>
+
+@{
+    ViewBag.AdminTitle = "Danh sách thành viên";
+    Layout = "~/Areas/Administrations/Views/Shared/_Layout.cshtml";
+}
+
+@section breadcrumb
+{
+    <section class="content-header">
+        <h1>
+            @ViewBag.AdminTitle
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="@Url.Action("Index", "PostCategory", new { area = "Administrations" })"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+            <li class="active">@ViewBag.AdminTitle</li>
+        </ol>
+    </section>
+}
+<div class="box">
+    <div class="box-body table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ImageUrl)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Birthday)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Gender)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            <img width="80" src="@item.ImageUrl" alt="@item.Name" />
+                        </td>
+                        <td>
+                            @{
+                                var birthday = item.Birthday.ToShortDateString();
+                            }
+                            @Html.DisplayFor(x => birthday)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Gender)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Sửa", "Edit", new { id = User.Identity.GetUserId() })
+                        </td>
+                    </tr>
+                                }
+            </tbody>
+        </table>
+    </div>
+    <!-- /.box-body -->
+</div>

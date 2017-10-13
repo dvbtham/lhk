@@ -1,4 +1,7 @@
-﻿namespace LeHuuKhoa.Core.Models
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+
+namespace LeHuuKhoa.Core.Models
 {
     public class Page
     {
@@ -9,7 +12,7 @@
         public string BackgroundImage { get; set; }
 
         public string Content { get; set; }
-
+        
         public void Modify(string id, string name, string backgroundImage, string content)
         {
             Id = id;

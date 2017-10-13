@@ -16,7 +16,17 @@ img {
     display: flex;
 }
 
+.error {
+    width: 100%;
+    height: 100%;
+    margin-top: 20%;
+    margin-bottom: 100%;
+}
 
+    .error h1, .error h3 {
+        text-align: center;
+        color: #FF0000
+    }
 
 /* Header */
 

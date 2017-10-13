@@ -1,4 +1,5 @@
-﻿
+﻿@using Microsoft.AspNet.Identity
+
 <nav class="navbar navbar-static-top">
     <!-- Sidebar toggle button-->
     <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
@@ -9,7 +10,7 @@
     </a>
     <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-            
+
             <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <img src="@ViewData["UserAvatar"]" class="user-image">
@@ -23,9 +24,12 @@
                             Lê Hữu Khóa
                         </p>
                     </li>
-                   
+
                     <!-- Menu Footer-->
                     <li class="user-footer">
+                        <div class="pull-left">
+                            <a class="btn btn-default btn-flat" href="@Url.Action("Edit","User", new { area = "Administrations", id = User.Identity.GetUserId() })">Thông tin của tôi</a>
+                        </div>
                         <div class="pull-right">
                             @using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm" }))
                             {

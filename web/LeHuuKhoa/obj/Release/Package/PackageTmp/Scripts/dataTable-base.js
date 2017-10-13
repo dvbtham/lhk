@@ -1,6 +1,6 @@
 ﻿$(document).ready(function() {
     $('#myTable').DataTable({
-        'lengthMenu': [[5, 10, 20, 50, -1], [5, 10, 20, 50, 'All']],
+        'lengthMenu': [[10, 20, 30, 50, -1], [10, 20, 30, 50, 'Tất cả']],
         "paging": true,
         "searching": true,
         "ordering": true,

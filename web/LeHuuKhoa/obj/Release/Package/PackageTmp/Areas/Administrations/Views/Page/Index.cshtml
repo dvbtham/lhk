@@ -1,0 +1,112 @@
+﻿@model IEnumerable<LeHuuKhoa.Core.Models.Page>
+@{
+    ViewBag.AdminTitle = "Danh sách trang";
+    Layout = "~/Areas/Administrations/Views/Shared/_Layout.cshtml";
+}
+
+@section breadcrumb
+{
+    <section class="content-header">
+        <h1>
+            @ViewBag.AdminTitle
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="@Url.Action("Index", "PostCategory", new { area = "Administrations" })"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+            <li class="active">@ViewBag.AdminTitle</li>
+        </ol>
+    </section>
+}
+
+<div class="box">
+    <div class="box-header with-border">
+        <a href="@Url.Action("Create","Page", new {area = "Administrations"})" style="margin-left: 8px;"
+           class="btn btn-info btn-sm">
+            Thêm trang mới
+        </a>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box-body table-responsive">
+                <table id="myTable" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                Tên trang
+                            </th>
+                            <th>
+                               Ảnh nền
+                            </th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.ActionLink(item.Name, "Edit", new { id = item.Id, area ="Administrations" })
+                                </td>
+                                <td>
+                                    <img  width="80" src="@item.BackgroundImage"/>
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Edit", "Page" , new { id = item.Id, area ="Administrations" })">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a style="padding-left: 10px;" class="text-danger" href="javascript:void(0);">
+                                        <i data-name="@item.Name" dat data-id="@item.Id" cla class="fa fa-trash margin-left-8 btn-delete-page"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="box-footer"></div>
+</div>
+@section scripts
+{
+    <script>
+        $(function() {
+            $('#myTable').on("click",
+                ".btn-delete-page",
+                function (e) {
+                    e.preventDefault();
+                    var link = $(e.target);
+                    bootbox.dialog({
+                        message: "Bạn chắc chắn muốn xóa trang <strong>" + link.attr('data-name') + "</strong>?",
+                        title: "Xác nhận xóa",
+                        buttons: {
+                            no: {
+                                label: "Hủy",
+                                className: "btn-default",
+                                callback: function () {
+                                    bootbox.hideAll();
+                                }
+                            },
+                            yes: {
+                                label: "Xóa ",
+                                className: "btn-danger",
+                                callback: function () {
+                                    $.ajax({
+                                        url: "/Administrations/Page/Delete/" + link.attr('data-id'),
+                                        method: "post",
+                                        success: function () {
+                                            link.parents("tr").fadeOut(function () {
+                                                $(this).remove();
+                                            });
+                                        },
+                                        error: function () {
+                                            bootbox.alert("Lỗi xảy ra. Vui lòng liên hệ với bộ phận dev.");
+                                        }
+                                    });
+                                }
+                            }
+                        }
+                    });
+                });
+        })
+    </script>
+}
