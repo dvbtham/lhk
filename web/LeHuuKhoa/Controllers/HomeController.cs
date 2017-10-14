@@ -1,7 +1,10 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using AutoMapper;
 using LeHuuKhoa.Core;
+using LeHuuKhoa.Core.Models;
+using LeHuuKhoa.Core.ViewModels;
 
 namespace LeHuuKhoa.Controllers
 {
@@ -26,6 +29,13 @@ namespace LeHuuKhoa.Controllers
         public ActionResult Contact()
         {
             return View();
+        }
+
+        public ActionResult RenderMenu()
+        {
+            var menus = _unitOfWork.Menus.GetMenus();
+            var viewModel = Mapper.Map<IEnumerable<Menu>, IEnumerable<MenuViewModel>>(menus);
+            return PartialView("_Menu", viewModel);
         }
     }
 }

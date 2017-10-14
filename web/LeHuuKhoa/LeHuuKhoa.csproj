@@ -243,7 +243,6 @@
     <Compile Include="Core\IUnitOfWork.cs" />
     <Compile Include="Core\Models\ApplicationUser.cs" />
     <Compile Include="Core\Models\Menu.cs" />
-    <Compile Include="Core\Models\MenuPage.cs" />
     <Compile Include="Core\Models\Page.cs" />
     <Compile Include="Core\Models\Post.cs" />
     <Compile Include="Core\Models\PostCategory.cs" />
@@ -273,7 +272,6 @@
     <Compile Include="Core\ViewModels\ManageViewModels.cs" />
     <Compile Include="Persistence\EntityConfigurations\MenuConfiguration.cs" />
     <Compile Include="Persistence\EntityConfigurations\PageConfiguration.cs" />
-    <Compile Include="Persistence\EntityConfigurations\MenuPageConfiguration.cs" />
     <Compile Include="Persistence\Migrations\201709291553353_InitialDb.cs" />
     <Compile Include="Persistence\Migrations\201709291553353_InitialDb.Designer.cs">
       <DependentUpon>201709291553353_InitialDb.cs</DependentUpon>
@@ -317,6 +315,10 @@
     <Compile Include="Persistence\Migrations\201710130451437_UpdateMenuPageTable.cs" />
     <Compile Include="Persistence\Migrations\201710130451437_UpdateMenuPageTable.Designer.cs">
       <DependentUpon>201710130451437_UpdateMenuPageTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Persistence\Migrations\201710140735282_UpdateMenuToPageRelationship.cs" />
+    <Compile Include="Persistence\Migrations\201710140735282_UpdateMenuToPageRelationship.Designer.cs">
+      <DependentUpon>201710140735282_UpdateMenuToPageRelationship.cs</DependentUpon>
     </Compile>
     <Compile Include="Persistence\Migrations\Configuration.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
@@ -2365,6 +2367,7 @@
     <Content Include="Views\Category\Read.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Page\Read.cshtml" />
+    <Content Include="Views\Shared\_Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Administrations\Models\" />
@@ -2421,6 +2424,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Persistence\Migrations\201710130451437_UpdateMenuPageTable.resx">
       <DependentUpon>201710130451437_UpdateMenuPageTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Persistence\Migrations\201710140735282_UpdateMenuToPageRelationship.resx">
+      <DependentUpon>201710140735282_UpdateMenuToPageRelationship.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Data.Entity;
 using LeHuuKhoa.Core.Models;
 using LeHuuKhoa.Core.Repositories;
 
@@ -18,22 +17,12 @@ namespace LeHuuKhoa.Persistence.Repositories
 
         public IEnumerable<Menu> GetMenus()
         {
-            return _context.Menus.ToList();
-        }
-
-        public IEnumerable<Menu> GetMenusRelated()
-        {
-            return _context.Menus.Include(x => x.MenuPages.Select(p => p.Page));
+            return _context.Menus.Include(x => x.Page).ToList();
         }
 
         public Menu Get(int id)
         {
             return _context.Menus.SingleOrDefault(x => x.Id == id);
-        }
-
-        public Menu GetRelated(int id)
-        {
-            return _context.Menus.Include(x => x.MenuPages).SingleOrDefault(x => x.Id == id);
         }
 
         public void Delete(Menu menu)

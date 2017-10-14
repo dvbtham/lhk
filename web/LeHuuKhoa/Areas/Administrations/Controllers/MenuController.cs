@@ -3,7 +3,6 @@ using AutoMapper;
 using LeHuuKhoa.Core;
 using LeHuuKhoa.Core.Models;
 using LeHuuKhoa.Core.ViewModels;
-using System.Linq;
 
 namespace LeHuuKhoa.Areas.Administrations.Controllers
 {
@@ -13,12 +12,11 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
         public MenuController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-
         }
 
         public ActionResult Index()
         {
-            var menus = _unitOfWork.Menus.GetMenusRelated();
+            var menus = _unitOfWork.Menus.GetMenus();
             return View(menus);
         }
 
@@ -27,7 +25,7 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
             var viewModel = new MenuViewModel
             {
                 Heading = "Thêm mới menu",
-                PageList = _unitOfWork.Pages.GetPages()
+                Pages = new SelectList(_unitOfWork.Pages.GetPages(), "Id", "Name")
             };
             return View("MenuForm", viewModel);
         }
@@ -36,13 +34,11 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(MenuViewModel viewModel)
         {
-            if (!ModelState.IsValid) return View("MenuForm", viewModel);
-
-            if (viewModel.PagesId != null)
+            if (!ModelState.IsValid)
             {
-                var pagesId = viewModel.PagesId.Split(',');
-                foreach (var id in pagesId)
-                    viewModel.Pages.Add(id);
+                viewModel.Heading = "Thêm mới menu";
+                PrepareDropdownListForMenu(viewModel);
+                return View("MenuForm", viewModel);
             }
 
             var menu = Mapper.Map<MenuViewModel, Menu>(viewModel);
@@ -55,17 +51,13 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
 
         public ActionResult Edit(int id)
         {
-            var menu = _unitOfWork.Menus.GetRelated(id);
+            var menu = _unitOfWork.Menus.Get(id);
             if (menu == null) return NotFoundResult();
+
             var menuViewModel = Mapper.Map<Menu, MenuViewModel>(menu);
             menuViewModel.Id = menu.Id;
             menuViewModel.Heading = "Cập nhật menu " + menu.Name;
-            menuViewModel.PageList = _unitOfWork.Pages.GetPages();
-            var hasPages = menu.MenuPages.Select(x=>x.Page).AsEnumerable();
-            menuViewModel.Pages = hasPages.Select(x => x.Id).ToList();
-
-            foreach (var pageid in menuViewModel.Pages)
-                menuViewModel.PagesId += pageid + ",";
+            PrepareDropdownListForMenu(menuViewModel);
             return View("MenuForm", menuViewModel);
         }
 
@@ -73,16 +65,13 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Update(MenuViewModel viewModel)
         {
-            if (!ModelState.IsValid) return View("MenuForm", viewModel);
-            var menu = _unitOfWork.Menus.GetRelated(viewModel.Id);
-
-            if (viewModel.PagesId != null)
+            if (!ModelState.IsValid)
             {
-                var pagesId = viewModel.PagesId.Split(',');
-                foreach (var id in pagesId)
-                    if (id != string.Empty)
-                        viewModel.Pages.Add(id);
+                viewModel.Heading = "Thêm mới menu";
+                PrepareDropdownListForMenu(viewModel);
+                return View("MenuForm", viewModel);
             }
+            var menu = _unitOfWork.Menus.Get(viewModel.Id);
 
             Mapper.Map(viewModel, menu);
 
@@ -101,6 +90,12 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
             _unitOfWork.Complete();
 
             return Json("Xóa thành công!");
+        }
+
+        [NonAction]
+        private void PrepareDropdownListForMenu(MenuViewModel viewModel)
+        {
+            viewModel.Pages = new SelectList(_unitOfWork.Pages.GetPages(), "Id", "Name");
         }
     }
 }

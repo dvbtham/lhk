@@ -30,15 +30,15 @@
             <div class="box-body table-responsive">
                 <table id="myTable" class="table table-bordered table-striped">
                     <thead>
-                    <tr>
-                        <th>
-                            Tên Menu
-                        </th>
-                        <th>
-                            Trang
-                        </th>
-                        <th>Thao tác</th>
-                    </tr>
+                        <tr>
+                            <th>
+                                Tên Menu
+                            </th>
+                            <th>
+                                Trang
+                            </th>
+                            <th>Thao tác</th>
+                        </tr>
                     </thead>
                     @if (Model.Any())
                     {
@@ -50,9 +50,9 @@
                                         @Html.ActionLink(item.Name, "Edit", new { id = item.Id })
                                     </td>
                                     <td>
-                                        @foreach (var page in item.MenuPages.Select(x => x.Page))
+                                        @if (item.Page != null)
                                         {
-                                            <label class="label label-info"> @page.Name</label>
+                                            @Html.ActionLink(item.Page.Name, "Edit", new { id = item.Id })
                                         }
 
                                     </td>

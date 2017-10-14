@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq.Expressions;
 using System.Web.Mvc;
+using AutoMapper;
 using LeHuuKhoa.Areas.Administrations.Controllers;
-using LeHuuKhoa.Core.Models;
 
 namespace LeHuuKhoa.Core.ViewModels
 {
@@ -17,21 +15,18 @@ namespace LeHuuKhoa.Core.ViewModels
         [Required(ErrorMessage = "Họ tên bắt buộc phải nhập")]
         [StringLength(256, ErrorMessage = "Họ tên chỉ được phép nhập 256 ký tự")]
         public string Name { get; set; }
-        
+
+        [Required(ErrorMessage = "Bạn chưa chọn Trang")]
+        [Display(Name = "Trang")]
+        public string PageId { get; set; }
+
+        [IgnoreMap]
+        public SelectList Pages { get; set; }
+
+        [IgnoreMap]
         public string Heading { get; set; }
 
-        [Display(Name = "Trang")]
-        public ICollection<string> Pages { get; set; }
-
-        public string PagesId { get; set; }
-
-        public IEnumerable<Page> PageList { get; set; }
-
-        public MenuViewModel()
-        {
-            Pages = new Collection<string>();
-        }
-
+        [IgnoreMap]
         public string Action
         {
             get
