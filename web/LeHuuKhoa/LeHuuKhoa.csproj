@@ -253,6 +253,7 @@
     <Compile Include="Core\Repositories\IUserRepository.cs" />
     <Compile Include="Core\ServiceFactory.cs" />
     <Compile Include="Core\Utilities\AdditionMethods.cs" />
+    <Compile Include="Core\Utilities\Constants.cs" />
     <Compile Include="Core\Utilities\ExcelManager\ExportManager.cs" />
     <Compile Include="Core\Utilities\ExcelManager\ImportManager.cs" />
     <Compile Include="Core\Utilities\ExcelManager\PropertyByName.cs" />
@@ -2368,6 +2369,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Page\Read.cshtml" />
     <Content Include="Views\Shared\_Menu.cshtml" />
+    <Content Include="Views\Shared\_StartPageHeader.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Administrations\Models\" />

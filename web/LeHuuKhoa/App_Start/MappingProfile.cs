@@ -12,9 +12,10 @@ namespace LeHuuKhoa
             {
                 //Domain to view Model
                 mapper.CreateMap<Menu, MenuViewModel>();
+                mapper.CreateMap<Page, PageViewModel>();
                 // View Model to Domain
                 mapper.CreateMap<MenuViewModel, Menu>();
-                    
+
             });
         }
     }

@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using AutoMapper;
 using LeHuuKhoa.Core;
 using LeHuuKhoa.Core.Models;
+using LeHuuKhoa.Core.Utilities;
 using LeHuuKhoa.Core.ViewModels;
 
 namespace LeHuuKhoa.Controllers
@@ -19,6 +20,13 @@ namespace LeHuuKhoa.Controllers
         {
             var categories = _unitOfWork.Categories.GetCategories().OrderBy(x => x.DisplayOrder);
             return View(categories);
+        }
+
+        public ActionResult StartPageHeader()
+        {
+            var page = _unitOfWork.Pages.Get(Constants.DefaultPage);
+            var viewModel = Mapper.Map<Page, PageViewModel>(page);
+            return PartialView("_StartPageHeader", viewModel);
         }
 
         public ActionResult About()

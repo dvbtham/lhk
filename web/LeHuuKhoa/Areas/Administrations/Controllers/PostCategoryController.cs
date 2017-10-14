@@ -53,6 +53,8 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
             _unitOfWork.Categories.Add(category);
             _unitOfWork.Complete();
 
+            SetAlert($"Bạn đã thêm { viewModel.Name } thành công", "success");
+
             return RedirectToAction("Index");
         }
 
@@ -91,6 +93,7 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
 
             _unitOfWork.Complete();
 
+            SetAlert($"Bạn đã cập nhật { viewModel.Name } thành công", "success");
             return RedirectToAction("Index");
         }
 
