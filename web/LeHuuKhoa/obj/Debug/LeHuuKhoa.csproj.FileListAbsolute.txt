@@ -285,3 +285,4 @@ D:\dev\projects\lhk\web\LeHuuKhoa\bin\System.Net.Http.Formatting.xml
 D:\dev\projects\lhk\web\LeHuuKhoa\bin\System.Web.Http.xml
 D:\dev\projects\lhk\web\LeHuuKhoa\bin\System.Web.Http.WebHost.xml
 D:\dev\projects\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.UpdateMenuToPageRelationship.resources
+D:\dev\projects\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.AddShortDescriptionsColunm.resources

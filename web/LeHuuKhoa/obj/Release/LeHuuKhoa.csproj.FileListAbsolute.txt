@@ -150,3 +150,4 @@ D:\dev\projects\lhk\web\LeHuuKhoa\obj\Release\LeHuuKhoa.Persistence.Migrations.A
 D:\dev\projects\lhk\web\LeHuuKhoa\obj\Release\LeHuuKhoa.Persistence.Migrations.UpdateMenuTable.resources
 D:\dev\projects\lhk\web\LeHuuKhoa\obj\Release\LeHuuKhoa.Persistence.Migrations.UpdateMenuPageTable.resources
 D:\dev\projects\lhk\web\LeHuuKhoa\obj\Release\LeHuuKhoa.Persistence.Migrations.UpdateMenuToPageRelationship.resources
+D:\dev\projects\lhk\web\LeHuuKhoa\obj\Release\LeHuuKhoa.Persistence.Migrations.AddShortDescriptionsColunm.resources

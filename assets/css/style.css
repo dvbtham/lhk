@@ -15,8 +15,6 @@ img{
     display: flex;
 }
 
-
-
 /* Header */
 
 header {
@@ -182,6 +180,7 @@ footer> p {
     width: 65%;
     margin: 0;
     float: left;
+    overflow: hidden;
 }
 .breadcrumb{
     margin-left: 10px;
@@ -241,14 +240,24 @@ footer> p {
 
 .single-post .header-post h2.title-post a {
 	color: #333333;
+    padding: 10px;
 }
-
+.beauty{
+    word-wrap: break-word;
+    word-spacing: 3px;
+    line-height: 18px;
+    font-size: 15px;
+}
 .single-post a{
     text-decoration: none;
 }
 
 .single-post .content-post {
     position: relative;
+}
+.single-post .content-post img{
+    width: 100%;
+    height: auto;
 }
 .single-post .content-post small{
     text-align: center;

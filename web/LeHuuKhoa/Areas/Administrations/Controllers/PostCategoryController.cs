@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
+using AutoMapper;
 using LeHuuKhoa.Core;
 using LeHuuKhoa.Core.Models;
 using LeHuuKhoa.Core.Utilities;
@@ -41,14 +42,7 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
             if (!ModelState.IsValid)
                 return View("Create", viewModel);
 
-            var category = new PostCategory
-            {
-                Id = SlugHelper.ToUnsignString(viewModel.Name),
-                Name = viewModel.Name,
-                DisplayOrder = viewModel.DisplayOrder,
-                Descriptions = viewModel.Descriptions,
-                ImageUrl = viewModel.ImageUrl
-            };
+            var category = Mapper.Map<PostCategoryViewModel, PostCategory>(viewModel);
 
             _unitOfWork.Categories.Add(category);
             _unitOfWork.Complete();
@@ -64,15 +58,8 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
 
             if (category == null) return NotFoundResult();
 
-            var viewModel = new PostCategoryViewModel
-            {
-                Id = category.Id,
-                Name = category.Name,
-                DisplayOrder = category.DisplayOrder,
-                Descriptions = category.Descriptions,
-                ImageUrl = category.ImageUrl,
-                BackgroundImage = category.BackgroundImage
-            };
+            var viewModel = Mapper.Map<PostCategory, PostCategoryViewModel>(category);
+
             return View(viewModel);
         }
 
@@ -89,7 +76,7 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
 
             if (category == null) return NotFoundResult();
 
-            category.Modify(viewModel.Name, viewModel.DisplayOrder, viewModel.ImageUrl,viewModel.BackgroundImage, viewModel.Descriptions);
+            category.Modify(viewModel.Name, viewModel.DisplayOrder, viewModel.ImageUrl,viewModel.BackgroundImage,viewModel.ShortDescriptions, viewModel.Descriptions);
 
             _unitOfWork.Complete();
 

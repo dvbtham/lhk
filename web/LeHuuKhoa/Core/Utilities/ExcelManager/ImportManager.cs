@@ -28,6 +28,7 @@ namespace LeHuuKhoa.Core.Utilities.ExcelManager
                 new PropertyByName<PostCategory>("DisplayOrder"),
                 new PropertyByName<PostCategory>("ImageUrl"),
                 new PropertyByName<PostCategory>("BackgroundImage"),
+                new PropertyByName<PostCategory>("ShortDescriptions"),
                 new PropertyByName<PostCategory>("Descriptions")
             };
             #endregion
@@ -60,6 +61,7 @@ namespace LeHuuKhoa.Core.Utilities.ExcelManager
                     category.Name = manager.GetProperty("Name").StringValue;
                     category.ImageUrl = manager.GetProperty("ImageUrl").StringValue;
                     category.BackgroundImage = manager.GetProperty("BackgroundImage").StringValue;
+                    category.ShortDescriptions = manager.GetProperty("ShortDescriptions").StringValue;
                     category.Descriptions = manager.GetProperty("Descriptions").StringValue;
                     category.DisplayOrder = manager.GetProperty("DisplayOrder").ByteValue;
 
@@ -76,7 +78,7 @@ namespace LeHuuKhoa.Core.Utilities.ExcelManager
                         }
                     }
                     else
-                        category.Modify(category.Name, category.DisplayOrder, category.ImageUrl, category.BackgroundImage, category.Descriptions);
+                        category.Modify(category.Name, category.DisplayOrder, category.ImageUrl, category.BackgroundImage,category.ShortDescriptions, category.Descriptions);
 
                     iRow++;
                     _unitOfWork.Complete();

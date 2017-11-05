@@ -3,5 +3,5 @@
 
 @foreach (var menu in Model)
 {
-    <li class="@Html.IsSelected(action: "Index", controller: "Page")"><a href="@Url.Action("Read", "Page", new {id = menu.PageId, area = ""})">@menu.Name</a></li>
+    <li class="@Html.IsSelected(action: "Read", controller: "Page")"><a href="@Url.Action("Read", "Page", new {id = menu.PageId, area = ""})">@menu.Name</a></li>
 }

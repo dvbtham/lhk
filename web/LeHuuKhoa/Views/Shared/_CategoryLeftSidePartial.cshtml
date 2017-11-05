@@ -1,18 +1,20 @@
 ﻿@model IEnumerable<LeHuuKhoa.Core.Models.PostCategory>
-<div class="right">
-    <div class="search">
-        <input type="text" placeholder="Nhập từ khóa..." name="search">
-        <button type="submit">Tìm</button>
+    
+<div class="col-md-3" id="right">
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="Nhập từ khóa để tìm...">
+        <span class="input-group-btn">
+            <button class="btn btn-info" type="button">Tìm!</button>
+        </span>
     </div>
+    <!-- /input-group -->
     <div class="widget widget_categories">
         <h3 class="widget-title">Danh mục luận</h3>
         <ul>
             @foreach (var cate in Model)
             {
-                <li class="cat-item"><a href="@Url.Action("Read","Category", new { id = cate.Id })">@cate.Name</a></li>
+                <li><a href="@Url.Action("Read","Category", new { id = cate.Id })">@cate.Name</a></li>
             }
         </ul>
     </div>
-    <!-- /.widget_categories -->
-        
 </div>
