@@ -39,6 +39,8 @@ namespace LeHuuKhoa.Persistence
             modelBuilder.Configurations.Add(new ArticleAttributeValueConfiguration());
             modelBuilder.Configurations.Add(new ArticleFileConfiguration());
             modelBuilder.Configurations.Add(new PageConfiguration());
+            modelBuilder.Configurations.Add(new FileConfiguration());
+            modelBuilder.Configurations.Add(new ArticleGroupConfiguration());
             modelBuilder.Configurations.Add(new CategoryConfiguration());
             modelBuilder.Configurations.Add(new ArticleGroupArticleAttributeConfiguration());
             base.OnModelCreating(modelBuilder);

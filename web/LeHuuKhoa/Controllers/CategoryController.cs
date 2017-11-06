@@ -14,9 +14,9 @@ namespace LeHuuKhoa.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        public ActionResult Read(string id)
+        public ActionResult Read(int id)
         {
-            var category = _unitOfWork.Categories.Get(id);
+            var category = _unitOfWork.Categories.Get(id, checkPublished: true);
             return View(category);
         }
 

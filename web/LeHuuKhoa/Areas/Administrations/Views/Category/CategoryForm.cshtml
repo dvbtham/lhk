@@ -1,7 +1,9 @@
-﻿@model LeHuuKhoa.Core.ViewModels.PostCategoryViewModel
+﻿@model LeHuuKhoa.Core.ViewModels.CategoryViewModel
 @{
-    ViewBag.AdminTitle = "Cập nhật danh mục " + Model.Name;
+    ViewBag.AdminTitle = "Thêm mới danh mục luận";
     Layout = "~/Areas/Administrations/Views/Shared/_Layout.cshtml";
+    var image = !string.IsNullOrEmpty(Model.Avatar) ? Model.Avatar : "https://www.jordans.com/~/media/jordans%20redesign/no-image-found.ashx?h=275&la=en&w=275&hash=F87BC23F17E37D57E2A0B1CC6E2E3EEE312AAD5B";
+   
 }
 <div class="box">
     <div class="box-header with-border">
@@ -16,7 +18,7 @@
         </div>
     </div>
     <div class="box-body table-responsive">
-        @using (Html.BeginForm("Update", "PostCategory"))
+        @using (Html.BeginForm(Model.Action, "Category"))
             {
             <div class="col-md-6">
                 <p class="alert alert-info">Tất cả thông tin là bắt buộc.</p>
@@ -42,49 +44,28 @@
                     <span class="input-group-addon" data-toggle='tooltip' title="Ảnh chủ mục">
                         <i class="fa fa-picture-o"></i>
                     </span>
-                    @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control", placeholder = "Ảnh chủ mục", @id = "txtImageUrl" })
+                    @Html.TextBoxFor(x => x.Avatar, new { @class = "form-control", placeholder = "Ảnh chủ mục", @id = "txtImageUrl" })
                     <span class="input-group-addon" id="toggleFinder" style="cursor: pointer" data-toggle='tooltip' title="Bấm để chọn hình">
                         ... <i class="fa fa-folder-open-o"></i>
                     </span>
                 </div>
+
                 <br />
+               
                 <div class="input-group">
-                    <span class="input-group-addon" data-toggle='tooltip' title="Ảnh nền giới thiệu">
-                        <i class="fa fa-picture-o"></i>
-                    </span>
-                    @Html.TextBoxFor(x => x.BackgroundImage, new { @class = "form-control", placeholder = "Ảnh nền giới thiệu", @id = "txtBackgroundImage" })
-                    <span class="input-group-addon" id="toggleBackgroundImage" style="cursor: pointer" data-toggle='tooltip' title="Bấm để chọn hình">
-                        ... <i class="fa fa-folder-open-o"></i>
-                    </span>
-                </div>
-                <br />
-                <div class="input-group">
-                    <span class="input-group-addon" data-toggle='tooltip' title="Giới thiệu">
+                    <span class="input-group-addon" data-toggle='tooltip' title="Mô tả">
                         <i class="fa fa-book"></i>
                     </span>
-                    @Html.TextAreaFor(x => x.ShortDescriptions, new { @class = "form-control", id = "txtShortDescription", type = "number", placeholder = "Giới thiệu" })
-                </div>
-                <br />
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" id="contentToggle"> Soạn nội dung
-                    </label>
-                </div>
-                <br />
-                <div class="input-group hide" id="content">
-                    <span class="input-group-addon" data-toggle='tooltip' title="Nội dung">
-                        <i class="fa fa-book"></i>
-                    </span>
-                    @Html.TextAreaFor(x => x.Descriptions, new { @class = "form-control", id = "txtDescription", type = "number", placeholder = "Nội dung" })
+                    @Html.TextAreaFor(x => x.Descriptions, new { @class = "form-control", id = "txtDescription", type = "number", placeholder = "Mô tả" })
                 </div>
                 <br />
                 <button type="submit" class="btn btn-primary">Lưu</button>
                 <button type="button" onclick="window.location.href='/quan-ly/danh-muc.html'" class="btn btn-danger">Hủy</button>
             </div>
-            <div class="col-md-6">
-                <img class="img-bordered" id="bindingImage" width="320" src="@Model.ImageUrl" />
-                <img class="img-bordered" id="bindingBgImage" width="320" src="@Model.BackgroundImage" />
-            </div>
+                <div class="col-md-6">
+                    
+                    <img class="img-responsive" id="bindingImage" width="320" src="@image"/>
+                </div>
         }
     </div>
 

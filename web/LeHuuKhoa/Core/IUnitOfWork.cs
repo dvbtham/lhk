@@ -6,7 +6,7 @@ namespace LeHuuKhoa.Core
     {
         IMenuRepository Menus { get; }
         IPageRepository Pages { get; }
-        IPostCategoryRespository Categories { get; }
+        ICategoryRespository Categories { get; }
         IUserRepository ApplicationUsers { get; }
         void Complete();
     }

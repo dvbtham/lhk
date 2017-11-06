@@ -25,7 +25,7 @@ namespace LeHuuKhoa.Areas.Administrations
             context.MapRoute(
                 "category",
                 "quan-ly/danh-muc.html",
-                new { action = "Index", controller = "PostCategory", area = "Administrations", id = UrlParameter.Optional },
+                new { action = "Index", controller = "Category", area = "Administrations", id = UrlParameter.Optional },
                 new[] { "LeHuuKhoa.Areas.Administrations.Controllers" }
             );
 
@@ -53,14 +53,14 @@ namespace LeHuuKhoa.Areas.Administrations
             context.MapRoute(
                 "edit category",
                 "quan-ly/danh-muc/{id}.html",
-                new { action = "Edit", controller = "PostCategory", area = "Administrations", id = UrlParameter.Optional },
+                new { action = "Edit", controller = "Category", area = "Administrations", id = UrlParameter.Optional },
                 new[] { "LeHuuKhoa.Areas.Administrations.Controllers" }
             );
 
             context.MapRoute(
                 "add category",
                 "quan-ly/them-danh-muc.html",
-                new { action = "Create", controller = "PostCategory", area = "Administrations", id = UrlParameter.Optional },
+                new { action = "Create", controller = "Category", area = "Administrations", id = UrlParameter.Optional },
                 new[] { "LeHuuKhoa.Areas.Administrations.Controllers" }
             );
 

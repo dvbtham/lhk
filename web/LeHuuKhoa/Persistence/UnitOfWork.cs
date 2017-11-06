@@ -10,7 +10,7 @@ namespace LeHuuKhoa.Persistence
     {
         public IMenuRepository Menus { get; }
         public IPageRepository Pages { get; }
-        public IPostCategoryRespository Categories { get; }
+        public ICategoryRespository Categories { get; }
         public IUserRepository ApplicationUsers { get; }
 
         private readonly ApplicationDbContext _context;
@@ -18,7 +18,7 @@ namespace LeHuuKhoa.Persistence
         public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
-            Categories = new PostCategoryRepository(context);
+            Categories = new CategoryRepository(context);
             ApplicationUsers = new UserRepository(context);
             Pages = new PageRepository(context);
             Menus = new MenuRepository(context);

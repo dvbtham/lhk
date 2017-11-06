@@ -228,7 +228,6 @@
     <Compile Include="Areas\Administrations\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Administrations\Controllers\MenuController.cs" />
     <Compile Include="Areas\Administrations\Controllers\PageController.cs" />
-    <Compile Include="Areas\Administrations\Controllers\PostCategoryController.cs" />
     <Compile Include="Areas\Administrations\Controllers\UserController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
@@ -253,7 +252,7 @@
     <Compile Include="Core\Models\Seoable.cs" />
     <Compile Include="Core\Repositories\IMenuRepository.cs" />
     <Compile Include="Core\Repositories\IPageRepository.cs" />
-    <Compile Include="Core\Repositories\IPostCategoryRespository.cs" />
+    <Compile Include="Core\Repositories\ICategoryRespository.cs" />
     <Compile Include="Core\Repositories\IUserRepository.cs" />
     <Compile Include="Core\ServiceFactory.cs" />
     <Compile Include="Core\Utilities\AdditionMethods.cs" />
@@ -268,18 +267,16 @@
     <Compile Include="Core\Utilities\SlugHelper.cs" />
     <Compile Include="Core\ViewModels\MenuViewModel.cs" />
     <Compile Include="Core\ViewModels\PageViewModel.cs" />
-    <Compile Include="Core\ViewModels\PostCategoryViewModel.cs" />
+    <Compile Include="Core\ViewModels\CategoryViewModel.cs" />
     <Compile Include="Core\ViewModels\UserViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Core\ViewModels\AccountViewModels.cs" />
     <Compile Include="Core\ViewModels\ManageViewModels.cs" />
-    <Compile Include="Persistence\Migrations\201711061038210_UpdateNewDb.cs" />
-    <Compile Include="Persistence\Migrations\201711061038210_UpdateNewDb.Designer.cs">
-      <DependentUpon>201711061038210_UpdateNewDb.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Persistence\Migrations\Configuration.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Persistence\EntityConfigurations\ArticleGroupConfiguration.cs" />
+    <Compile Include="Persistence\EntityConfigurations\FileConfiguration.cs" />
     <Compile Include="Persistence\EntityConfigurations\ArticleAttributeValueConfiguration.cs" />
     <Compile Include="Persistence\EntityConfigurations\ArticleFileConfiguration.cs" />
     <Compile Include="Persistence\EntityConfigurations\ArticleGroupArticleAttributeConfiguration.cs" />
@@ -290,9 +287,17 @@
     <Compile Include="Persistence\EntityConfigurations\CategoryConfiguration.cs" />
     <Compile Include="Persistence\EntityConfigurations\ArticleConfiguration.cs" />
     <Compile Include="Persistence\IApplicationDbContext.cs" />
+    <Compile Include="Persistence\Migrations\201711061256165_InitialDb.cs" />
+    <Compile Include="Persistence\Migrations\201711061256165_InitialDb.Designer.cs">
+      <DependentUpon>201711061256165_InitialDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Persistence\Migrations\201711061315151_UpdateIdKey#1.cs" />
+    <Compile Include="Persistence\Migrations\201711061315151_UpdateIdKey#1.Designer.cs">
+      <DependentUpon>201711061315151_UpdateIdKey#1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Persistence\Repositories\MenuRepository.cs" />
     <Compile Include="Persistence\Repositories\PageRepository.cs" />
-    <Compile Include="Persistence\Repositories\PostCategoryRepository.cs" />
+    <Compile Include="Persistence\Repositories\CategoryRepository.cs" />
     <Compile Include="Persistence\Repositories\UserRepository.cs" />
     <Compile Include="Persistence\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -2225,7 +2230,6 @@
     <Content Include="Content\admin\README.md" />
     <Content Include="Content\admin\yarn.lock" />
     <Content Include="Areas\Administrations\Views\DashBoard\Index.cshtml" />
-    <Content Include="Areas\Administrations\Views\PostCategory\Index.cshtml" />
     <Content Include="Content\libs\datatables\extensions\ColReorder\Readme.md" />
     <Content Include="Content\libs\datatables\extensions\ColVis\Readme.md" />
     <Content Include="Content\libs\datatables\extensions\FixedColumns\Readme.md" />
@@ -2236,8 +2240,6 @@
     <Content Include="Content\libs\datatables\extensions\TableTools\images\psd\file_types.psd" />
     <Content Include="Content\libs\datatables\extensions\TableTools\images\psd\printer.psd" />
     <Content Include="Content\libs\datatables\extensions\TableTools\Readme.md" />
-    <Content Include="Areas\Administrations\Views\PostCategory\Edit.cshtml" />
-    <Content Include="Areas\Administrations\Views\PostCategory\Create.cshtml" />
     <Content Include="Content\libs\bootbox\.bower.json" />
     <Content Include="Content\libs\bootbox\.jshintrc" />
     <Content Include="Content\libs\bootbox\.npmignore" />
@@ -2306,6 +2308,7 @@
     <Content Include="Content\front\assets\vendor\font-awesome\scss\_variables.scss" />
     <Content Include="Content\sample_doc.pdf" />
     <Content Include="Areas\Administrations\Views\Category\Index.cshtml" />
+    <Content Include="Areas\Administrations\Views\Category\CategoryForm.cshtml" />
     <None Include="Properties\PublishProfiles\LeHuuKhoa20171011081835 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\LeHuuKhoa20171011081835 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\trangthaykhoa - FTP.pubxml" />
@@ -2370,7 +2373,6 @@
     <Folder Include="Areas\Administrations\Models\" />
     <Folder Include="Areas\Administrations\Views\Base\" />
     <Folder Include="Content\UserFiles\" />
-    <Folder Include="Migrations\" />
     <Folder Include="Views\Error\" />
   </ItemGroup>
   <ItemGroup>
@@ -2390,8 +2392,11 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Persistence\Migrations\201711061038210_UpdateNewDb.resx">
-      <DependentUpon>201711061038210_UpdateNewDb.cs</DependentUpon>
+    <EmbeddedResource Include="Persistence\Migrations\201711061256165_InitialDb.resx">
+      <DependentUpon>201711061256165_InitialDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Persistence\Migrations\201711061315151_UpdateIdKey#1.resx">
+      <DependentUpon>201711061315151_UpdateIdKey#1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

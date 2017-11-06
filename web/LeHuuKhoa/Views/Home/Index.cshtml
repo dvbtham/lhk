@@ -1,4 +1,4 @@
-﻿@model IEnumerable<LeHuuKhoa.Core.Models.PostCategory>
+﻿@model IEnumerable<LeHuuKhoa.Core.Models.Category>
 @{
     ViewBag.Title = "Trang Chủ";
     ViewBag.MetaDescription = "Trang thầy khóa, Lê Hữu Khóa Blog, Giáo sư Lê Hữu Khóa";
@@ -16,7 +16,7 @@
             <div class="col-md-15 col-xs-3">
                 <div class="box-body">
                     <a href="@Url.Action("Read", "Category", new {id = category.Id})">
-                        <img class="match-parent" data-src="@category.ImageUrl" alt="@category.Name">
+                        <img class="match-parent" data-src="@category.Avatar" alt="@category.Name">
                     </a>
                     <div class="title-overlay">
                         <a href="@Url.Action("Read", "Category", new {id = category.Id})"> @category.Name </a>

@@ -1,8 +1,9 @@
-using System.Data.Entity.Migrations;
-
-namespace LeHuuKhoa.Persistence.Migrations
+namespace LeHuuKhoa.Migrations
 {
-    public partial class UpdateNewDb : DbMigration
+    using System;
+    using System.Data.Entity.Migrations;
+    
+    public partial class InitialDb : DbMigration
     {
         public override void Up()
         {
@@ -62,7 +63,7 @@ namespace LeHuuKhoa.Persistence.Migrations
                         Descriptions = c.String(nullable: false, maxLength: 1000),
                         BackgroundImage = c.String(),
                         Content = c.String(nullable: false),
-                        CategoryId = c.String(nullable: false, maxLength: 100),
+                        CategoryId = c.Int(nullable: false),
                         Views = c.Int(nullable: false),
                         IsPopularPost = c.Boolean(nullable: false),
                         IsPublished = c.Boolean(nullable: false),
@@ -145,7 +146,7 @@ namespace LeHuuKhoa.Persistence.Migrations
                 "dbo.Categories",
                 c => new
                     {
-                        Id = c.String(nullable: false, maxLength: 100),
+                        Id = c.Int(nullable: false, identity: true),
                         Name = c.String(nullable: false, maxLength: 100),
                         Slug = c.String(),
                         Avatar = c.String(nullable: false, maxLength: 256),
@@ -153,13 +154,10 @@ namespace LeHuuKhoa.Persistence.Migrations
                         Descriptions = c.String(nullable: false),
                         IsPublished = c.Boolean(nullable: false),
                         IsDeleted = c.Boolean(nullable: false),
-                        ArticleGroup_Id = c.Int(),
                         File_Id = c.Long(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.ArticleGroups", t => t.ArticleGroup_Id)
                 .ForeignKey("dbo.Files", t => t.File_Id)
-                .Index(t => t.ArticleGroup_Id)
                 .Index(t => t.File_Id);
             
             CreateTable(
@@ -230,7 +228,6 @@ namespace LeHuuKhoa.Persistence.Migrations
             DropForeignKey("dbo.ArticleAttributeValues", "AttributeId", "dbo.ArticleAttributes");
             DropForeignKey("dbo.Articles", "CategoryId", "dbo.Categories");
             DropForeignKey("dbo.Categories", "File_Id", "dbo.Files");
-            DropForeignKey("dbo.Categories", "ArticleGroup_Id", "dbo.ArticleGroups");
             DropForeignKey("dbo.Articles", "Author_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
@@ -243,7 +240,6 @@ namespace LeHuuKhoa.Persistence.Migrations
             DropIndex("dbo.ArticleFiles", new[] { "FileId" });
             DropIndex("dbo.ArticleFiles", new[] { "ArticleId" });
             DropIndex("dbo.Categories", new[] { "File_Id" });
-            DropIndex("dbo.Categories", new[] { "ArticleGroup_Id" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });

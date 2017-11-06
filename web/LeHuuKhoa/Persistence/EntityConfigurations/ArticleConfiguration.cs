@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity.ModelConfiguration;
 using LeHuuKhoa.Core.Models;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LeHuuKhoa.Persistence.EntityConfigurations
 {
@@ -8,6 +9,8 @@ namespace LeHuuKhoa.Persistence.EntityConfigurations
         public ArticleConfiguration()
         {
             HasKey(x => x.Id);
+
+            Property(x => x.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
             HasRequired(x => x.Category).WithMany().HasForeignKey(x => x.CategoryId);
             
@@ -26,8 +29,7 @@ namespace LeHuuKhoa.Persistence.EntityConfigurations
             Property(u => u.Content).IsRequired();
 
             Property(u => u.CategoryId)
-                .IsRequired()
-                .HasMaxLength(256);
+                .IsRequired();
 
             Property(u => u.DateCreated)
                 .IsRequired()

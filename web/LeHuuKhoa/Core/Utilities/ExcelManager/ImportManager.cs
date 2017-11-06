@@ -25,11 +25,11 @@ namespace LeHuuKhoa.Core.Utilities.ExcelManager
             {
                 new PropertyByName<Category>("Id"),
                 new PropertyByName<Category>("Name"),
+                new PropertyByName<Category>("Avatar"),
                 new PropertyByName<Category>("DisplayOrder"),
-                new PropertyByName<Category>("ImageUrl"),
-                new PropertyByName<Category>("BackgroundImage"),
-                new PropertyByName<Category>("ShortDescriptions"),
-                new PropertyByName<Category>("Descriptions")
+                new PropertyByName<Category>("Descriptions"),
+                new PropertyByName<Category>("IsPublished"),
+                new PropertyByName<Category>("IsDeleted")
             };
             #endregion
 
@@ -52,7 +52,7 @@ namespace LeHuuKhoa.Core.Utilities.ExcelManager
                         break;
 
                     manager.ReadFromXlsx(worksheet, iRow);
-                    var id = manager.GetProperty("Id").StringValue;
+                    var id = manager.GetProperty("Id").IntValue;
                     var category = _unitOfWork.Categories.Get(id);
 
                     var isNew = category == null;
@@ -62,12 +62,13 @@ namespace LeHuuKhoa.Core.Utilities.ExcelManager
                     category.Avatar = manager.GetProperty("Avatar").StringValue;
                     category.Descriptions = manager.GetProperty("Descriptions").StringValue;
                     category.DisplayOrder = manager.GetProperty("DisplayOrder").ByteValue;
+                    category.IsDeleted = manager.GetProperty("IsDeleted").BooleanValue;
+                    category.IsPublished = manager.GetProperty("IsPublished").BooleanValue;
 
                     if (isNew)
                     {
                         try
                         {
-                            category.Id = SlugHelper.ToUnsignString(category.Name);
                             _unitOfWork.Categories.Add(category);
                         }
                         catch (Exception e)
@@ -76,7 +77,9 @@ namespace LeHuuKhoa.Core.Utilities.ExcelManager
                         }
                     }
                     else
-                        category.Modify(category.Name, category.DisplayOrder, category.Avatar, category.Descriptions);
+                    {
+                        category.Modify(category.Name, category.DisplayOrder, category.Avatar, category.Descriptions, category.IsDeleted, category.IsPublished);
+                    }
 
                     iRow++;
                     _unitOfWork.Complete();

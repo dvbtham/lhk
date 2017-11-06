@@ -44,7 +44,7 @@
                     <li class="@Html.IsSelected(action: "Contact")"><a href="@Url.Action("Contact", "Home")">liên hệ</a></li>
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                     {
-                        <li class="last-child" ,><a href="@Url.Action("Index", "PostCategory", new { area = "Administrations"})">admin</a></li>
+                        <li class="last-child" ,><a href="@Url.Action("Index", "Category", new { area = "Administrations"})">admin</a></li>
                     }
                     else
                     {

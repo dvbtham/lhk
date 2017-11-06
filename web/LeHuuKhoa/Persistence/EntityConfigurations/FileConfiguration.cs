@@ -4,19 +4,13 @@ using LeHuuKhoa.Core.Models;
 
 namespace LeHuuKhoa.Persistence.EntityConfigurations
 {
-    public class MenuConfiguration : EntityTypeConfiguration<Menu>
+    public class FileConfiguration : EntityTypeConfiguration<File>
     {
-        public MenuConfiguration()
+        public FileConfiguration()
         {
             HasKey(x => x.Id);
 
             Property(x => x.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-
-            Property(x => x.Name).IsRequired().HasMaxLength(255);
-
-            HasRequired(x => x.Page)
-                .WithMany(x => x.Menus)
-                .HasForeignKey(x => x.PageId);
         }
     }
 }

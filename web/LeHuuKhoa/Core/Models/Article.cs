@@ -16,7 +16,7 @@ namespace LeHuuKhoa.Core.Models
 
         public string Content { get; set; }
 
-        public string CategoryId { get; set; }
+        public int CategoryId { get; set; }
 
         public Category Category { get; set; }
         

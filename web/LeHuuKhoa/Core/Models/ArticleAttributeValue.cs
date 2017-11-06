@@ -1,4 +1,5 @@
-﻿namespace LeHuuKhoa.Core.Models
+﻿
+namespace LeHuuKhoa.Core.Models
 {
     public class ArticleAttributeValue
     {

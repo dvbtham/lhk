@@ -34,8 +34,5 @@
         {
             customConfig: '/Scripts/config.js'
         });
-    CKEDITOR.replace("txtShortDescription",
-        {
-            customConfig: '/Scripts/config.js'
-        });
+   
 });

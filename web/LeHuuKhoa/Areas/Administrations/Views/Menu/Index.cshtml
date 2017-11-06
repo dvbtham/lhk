@@ -11,7 +11,7 @@
             @ViewBag.AdminTitle
         </h1>
         <ol class="breadcrumb">
-            <li><a href="@Url.Action("Index", "PostCategory", new { area = "Administrations" })"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+            <li><a href="@Url.Action("Index", "Category", new { area = "Administrations" })"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
             <li class="active">@ViewBag.AdminTitle</li>
         </ol>
     </section>
@@ -22,7 +22,7 @@
     <div class="box-header with-border">
         <a href="@Url.Action("Create","Menu", new {area = "Administrations"})" style="margin-left: 8px;"
            class="btn btn-info btn-sm">
-            Thêm trang mới
+            Thêm Menu mới
         </a>
     </div>
     <div class="row">

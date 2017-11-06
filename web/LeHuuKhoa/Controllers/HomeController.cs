@@ -18,7 +18,7 @@ namespace LeHuuKhoa.Controllers
         }
         public ActionResult Index()
         {
-            var categories = _unitOfWork.Categories.GetCategories().OrderBy(x => x.DisplayOrder);
+            var categories = _unitOfWork.Categories.GetCategories(checkPublished: true).OrderBy(x => x.DisplayOrder);
             return View(categories);
         }
 

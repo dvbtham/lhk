@@ -1,8 +1,9 @@
-﻿namespace LeHuuKhoa.Core.Models
+﻿
+namespace LeHuuKhoa.Core.Models
 {
     public class Category
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         public string Name { get; set; }
 
@@ -20,11 +21,15 @@
 
         public bool IsDeleted { get; set; }
 
-        public ArticleGroup ArticleGroup { get; set; }
 
-        public void Modify(string categoryName, byte categoryDisplayOrder, string categoryAvatar, string categoryDescriptions)
+        public void Modify(string name, byte displayOrder, string avatar, string descriptions, bool isDeleted, bool isPublished)
         {
-           
+            Name = name;
+            DisplayOrder = displayOrder;
+            Avatar = avatar;
+            Descriptions = descriptions;
+            IsDeleted = isDeleted;
+            IsPublished = isPublished;
         }
     }
 }

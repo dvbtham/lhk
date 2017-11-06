@@ -22,7 +22,7 @@ namespace LeHuuKhoa.Core.Utilities.ExcelManager
         /// Ctor
         /// </summary>
         /// <param name="properties">All acsess properties</param>
-        public PropertyManager(PropertyByName<T>[] properties)
+        public PropertyManager(IEnumerable<PropertyByName<T>> properties)
         {
             _properties = new Dictionary<string, PropertyByName<T>>();
 
@@ -68,7 +68,7 @@ namespace LeHuuKhoa.Core.Utilities.ExcelManager
         /// <param name="worksheet">worksheet</param>
         /// <param name="row">Row index</param>
         /// <param name="cellOffset">Cell offset</param>
-        public void WriteToXlsx(ExcelWorksheet worksheet, int row, int cellOffset = 0)
+        public void WriteToXlsx(ExcelWorksheet worksheet, int row, ExcelWorksheet fWorksheet = null, int cellOffset = 0)
         {
             if (CurrentObject == null)
                 return;
@@ -87,13 +87,24 @@ namespace LeHuuKhoa.Core.Utilities.ExcelManager
 
                     var validator = cell.DataValidation.AddListDataValidation();
 
+                    if (fWorksheet == null)
+                        continue;
+
                     cell.Value = prop.GetItemText(prop.GetProperty(CurrentObject));
                     validator.AllowBlank = prop.AllowBlank;
 
-                    foreach (var enumItem in dropDownElements)
+                    var fRow = 1;
+                    foreach (var dropDownElement in dropDownElements)
                     {
-                        validator.Formula.Values.Add(enumItem);
+                        var fCell = fWorksheet.Cells[fRow++, prop.PropertyOrderPosition];
+
+                        if (fCell.Value != null && fCell.Value.ToString() == dropDownElement)
+                            break;
+
+                        fCell.Value = dropDownElement;
                     }
+
+                    validator.Formula.ExcelFormula = $"{fWorksheet.Name}!{fWorksheet.Cells[1, prop.PropertyOrderPosition].Address}:{fWorksheet.Cells[dropDownElements.Length, prop.PropertyOrderPosition].Address}";
                 }
                 else
                 {

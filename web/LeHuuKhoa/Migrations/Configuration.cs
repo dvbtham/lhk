@@ -1,14 +1,16 @@
-﻿using System;
-using System.Data.Entity.Migrations;
-using System.Globalization;
-using System.Linq;
+﻿using System.Globalization;
 using LeHuuKhoa.Core.Models;
+using LeHuuKhoa.Persistence;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace LeHuuKhoa.Persistence.Migrations
+namespace LeHuuKhoa.Migrations
 {
-    internal sealed class Configuration : DbMigrationsConfiguration<LeHuuKhoa.Persistence.ApplicationDbContext>
+    using System;
+    using System.Data.Entity.Migrations;
+    using System.Linq;
+
+    public class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
         public Configuration()
         {
@@ -45,12 +47,12 @@ namespace LeHuuKhoa.Persistence.Migrations
             if (!roleManager.Roles.Any())
             {
                 roleManager.Create(new IdentityRole { Name = "Admin" });
-                roleManager.Create(new IdentityRole { Name = "Mod" });
+                roleManager.Create(new IdentityRole { Name = "User" });
             }
 
             var adminUser = manager.FindByEmail("huu-khoa.le@univ-lille3.fr");
 
-            manager.AddToRoles(adminUser.Id, "Admin", "Mod");
+            manager.AddToRoles(adminUser.Id, "Admin", "User");
         }
     }
 }

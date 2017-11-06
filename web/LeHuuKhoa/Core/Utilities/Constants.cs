@@ -2,6 +2,6 @@
 {
     public class Constants
     {
-        public static string DefaultPage = "demo";
+        public static string DefaultPage = "trang-chu";
     }
 }

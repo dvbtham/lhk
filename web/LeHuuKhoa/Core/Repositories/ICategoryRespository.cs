@@ -3,11 +3,11 @@ using LeHuuKhoa.Core.Models;
 
 namespace LeHuuKhoa.Core.Repositories
 {
-    public interface IPostCategoryRespository
+    public interface ICategoryRespository
     {
-        IEnumerable<Category> GetCategories();
+        IEnumerable<Category> GetCategories(bool checkPublished = false);
         void Add(Category postCategory);
-        Category Get(string id);
+        Category Get(int id, bool checkPublished = false);
         void Delete(Category postCategory);
     }
 }
