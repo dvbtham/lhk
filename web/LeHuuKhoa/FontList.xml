@@ -1,0 +1,232 @@
+<FontList>
+  <Font FaceName="Algerian" Style="Regular" File="C:\Windows\Fonts\ALGER.TTF" />
+  <Font FaceName="Book Antiqua" Style="Bold" File="C:\Windows\Fonts\ANTQUAB.TTF" />
+  <Font FaceName="Book Antiqua" Style="BoldItalic" File="C:\Windows\Fonts\ANTQUABI.TTF" />
+  <Font FaceName="Book Antiqua" Style="Italic" File="C:\Windows\Fonts\ANTQUAI.TTF" />
+  <Font FaceName="Arial" Style="Regular" File="C:\Windows\Fonts\arial.ttf" />
+  <Font FaceName="Arial" Style="Bold" File="C:\Windows\Fonts\arialbd.ttf" />
+  <Font FaceName="Arial" Style="BoldItalic" File="C:\Windows\Fonts\arialbi.ttf" />
+  <Font FaceName="Arial" Style="Italic" File="C:\Windows\Fonts\ariali.ttf" />
+  <Font FaceName="Arial Narrow" Style="Regular" File="C:\Windows\Fonts\ARIALN.TTF" />
+  <Font FaceName="Arial Narrow" Style="Bold" File="C:\Windows\Fonts\ARIALNB.TTF" />
+  <Font FaceName="Arial Narrow" Style="BoldItalic" File="C:\Windows\Fonts\ARIALNBI.TTF" />
+  <Font FaceName="Arial Narrow" Style="Italic" File="C:\Windows\Fonts\ARIALNI.TTF" />
+  <Font FaceName="Arial Unicode MS" Style="Regular" File="C:\Windows\Fonts\ARIALUNI.TTF" />
+  <Font FaceName="Arial Black" Style="Regular" File="C:\Windows\Fonts\ariblk.ttf" />
+  <Font FaceName="Baskerville Old Face" Style="Regular" File="C:\Windows\Fonts\BASKVILL.TTF" />
+  <Font FaceName="Bauhaus 93" Style="Regular" File="C:\Windows\Fonts\BAUHS93.TTF" />
+  <Font FaceName="Bell MT" Style="Regular" File="C:\Windows\Fonts\BELL.TTF" />
+  <Font FaceName="Bell MT" Style="Bold" File="C:\Windows\Fonts\BELLB.TTF" />
+  <Font FaceName="Bell MT" Style="Italic" File="C:\Windows\Fonts\BELLI.TTF" />
+  <Font FaceName="Bernard MT Condensed" Style="Regular" File="C:\Windows\Fonts\BERNHC.TTF" />
+  <Font FaceName="Book Antiqua" Style="Regular" File="C:\Windows\Fonts\BKANT.TTF" />
+  <Font FaceName="Bodoni MT Poster Compressed" Style="Regular" File="C:\Windows\Fonts\BOD_PSTC.TTF" />
+  <Font FaceName="Bookman Old Style" Style="Regular" File="C:\Windows\Fonts\BOOKOS.TTF" />
+  <Font FaceName="Bookman Old Style" Style="Bold" File="C:\Windows\Fonts\BOOKOSB.TTF" />
+  <Font FaceName="Bookman Old Style" Style="BoldItalic" File="C:\Windows\Fonts\BOOKOSBI.TTF" />
+  <Font FaceName="Bookman Old Style" Style="Italic" File="C:\Windows\Fonts\BOOKOSI.TTF" />
+  <Font FaceName="Britannic Bold" Style="Bold" File="C:\Windows\Fonts\BRITANIC.TTF" />
+  <Font FaceName="Berlin Sans FB" Style="Bold" File="C:\Windows\Fonts\BRLNSB.TTF" />
+  <Font FaceName="Berlin Sans FB Demi" Style="Bold" File="C:\Windows\Fonts\BRLNSDB.TTF" />
+  <Font FaceName="Berlin Sans FB" Style="Regular" File="C:\Windows\Fonts\BRLNSR.TTF" />
+  <Font FaceName="Broadway" Style="Regular" File="C:\Windows\Fonts\BROADW.TTF" />
+  <Font FaceName="Brush Script MT" Style="Regular" File="C:\Windows\Fonts\BRUSHSCI.TTF" />
+  <Font FaceName="Bookshelf Symbol 7" Style="Regular" File="C:\Windows\Fonts\BSSYM7.TTF" />
+  <Font FaceName="Calibri" Style="Regular" File="C:\Windows\Fonts\calibri.ttf" />
+  <Font FaceName="Calibri" Style="Bold" File="C:\Windows\Fonts\calibrib.ttf" />
+  <Font FaceName="Calibri" Style="Italic" File="C:\Windows\Fonts\calibrii.ttf" />
+  <Font FaceName="Calibri Light" Style="Regular" File="C:\Windows\Fonts\calibril.ttf" />
+  <Font FaceName="Calibri Light" Style="Italic" File="C:\Windows\Fonts\calibrili.ttf" />
+  <Font FaceName="Calibri" Style="BoldItalic" File="C:\Windows\Fonts\calibriz.ttf" />
+  <Font FaceName="Californian FB" Style="Bold" File="C:\Windows\Fonts\CALIFB.TTF" />
+  <Font FaceName="Californian FB" Style="Italic" File="C:\Windows\Fonts\CALIFI.TTF" />
+  <Font FaceName="Californian FB" Style="Regular" File="C:\Windows\Fonts\CALIFR.TTF" />
+  <Font FaceName="Cambria" Style="Regular" File="C:\Windows\Fonts\cambria.ttc" />
+  <Font FaceName="Cambria" Style="Bold" File="C:\Windows\Fonts\cambriab.ttf" />
+  <Font FaceName="Cambria" Style="Italic" File="C:\Windows\Fonts\cambriai.ttf" />
+  <Font FaceName="Cambria" Style="BoldItalic" File="C:\Windows\Fonts\cambriaz.ttf" />
+  <Font FaceName="Candara" Style="Regular" File="C:\Windows\Fonts\Candara.ttf" />
+  <Font FaceName="Candara" Style="Bold" File="C:\Windows\Fonts\Candarab.ttf" />
+  <Font FaceName="Candara" Style="Italic" File="C:\Windows\Fonts\Candarai.ttf" />
+  <Font FaceName="Candara" Style="BoldItalic" File="C:\Windows\Fonts\Candaraz.ttf" />
+  <Font FaceName="Centaur" Style="Regular" File="C:\Windows\Fonts\CENTAUR.TTF" />
+  <Font FaceName="Century" Style="Regular" File="C:\Windows\Fonts\CENTURY.TTF" />
+  <Font FaceName="Chiller" Style="Regular" File="C:\Windows\Fonts\CHILLER.TTF" />
+  <Font FaceName="Colonna MT" Style="Regular" File="C:\Windows\Fonts\COLONNA.TTF" />
+  <Font FaceName="Comic Sans MS" Style="Regular" File="C:\Windows\Fonts\comic.ttf" />
+  <Font FaceName="Comic Sans MS" Style="Bold" File="C:\Windows\Fonts\comicbd.ttf" />
+  <Font FaceName="Comic Sans MS" Style="Italic" File="C:\Windows\Fonts\comici.ttf" />
+  <Font FaceName="Comic Sans MS" Style="BoldItalic" File="C:\Windows\Fonts\comicz.ttf" />
+  <Font FaceName="Consolas" Style="Regular" File="C:\Windows\Fonts\consola.ttf" />
+  <Font FaceName="Consolas" Style="Bold" File="C:\Windows\Fonts\consolab.ttf" />
+  <Font FaceName="Consolas" Style="Italic" File="C:\Windows\Fonts\consolai.ttf" />
+  <Font FaceName="Consolas" Style="BoldItalic" File="C:\Windows\Fonts\consolaz.ttf" />
+  <Font FaceName="Constantia" Style="Regular" File="C:\Windows\Fonts\constan.ttf" />
+  <Font FaceName="Constantia" Style="Bold" File="C:\Windows\Fonts\constanb.ttf" />
+  <Font FaceName="Constantia" Style="Italic" File="C:\Windows\Fonts\constani.ttf" />
+  <Font FaceName="Constantia" Style="BoldItalic" File="C:\Windows\Fonts\constanz.ttf" />
+  <Font FaceName="Cooper Black" Style="Regular" File="C:\Windows\Fonts\COOPBL.TTF" />
+  <Font FaceName="Corbel" Style="Regular" File="C:\Windows\Fonts\corbel.ttf" />
+  <Font FaceName="Corbel" Style="Bold" File="C:\Windows\Fonts\corbelb.ttf" />
+  <Font FaceName="Corbel" Style="Italic" File="C:\Windows\Fonts\corbeli.ttf" />
+  <Font FaceName="Corbel" Style="BoldItalic" File="C:\Windows\Fonts\corbelz.ttf" />
+  <Font FaceName="Courier New" Style="Regular" File="C:\Windows\Fonts\cour.ttf" />
+  <Font FaceName="Courier New" Style="Bold" File="C:\Windows\Fonts\courbd.ttf" />
+  <Font FaceName="Courier New" Style="BoldItalic" File="C:\Windows\Fonts\courbi.ttf" />
+  <Font FaceName="Courier New" Style="Italic" File="C:\Windows\Fonts\couri.ttf" />
+  <Font FaceName="Ebrima" Style="Regular" File="C:\Windows\Fonts\ebrima.ttf" />
+  <Font FaceName="Ebrima" Style="Bold" File="C:\Windows\Fonts\ebrimabd.ttf" />
+  <Font FaceName="Franklin Gothic Medium" Style="Regular" File="C:\Windows\Fonts\framd.ttf" />
+  <Font FaceName="Franklin Gothic Medium" Style="Italic" File="C:\Windows\Fonts\framdit.ttf" />
+  <Font FaceName="Freestyle Script" Style="Regular" File="C:\Windows\Fonts\FREESCPT.TTF" />
+  <Font FaceName="Footlight MT Light" Style="Regular" File="C:\Windows\Fonts\FTLTLT.TTF" />
+  <Font FaceName="Gabriola" Style="Regular" File="C:\Windows\Fonts\Gabriola.ttf" />
+  <Font FaceName="Gadugi" Style="Regular" File="C:\Windows\Fonts\gadugi.ttf" />
+  <Font FaceName="Gadugi" Style="Bold" File="C:\Windows\Fonts\gadugib.ttf" />
+  <Font FaceName="Garamond" Style="Regular" File="C:\Windows\Fonts\GARA.TTF" />
+  <Font FaceName="Garamond" Style="Bold" File="C:\Windows\Fonts\GARABD.TTF" />
+  <Font FaceName="Garamond" Style="Italic" File="C:\Windows\Fonts\GARAIT.TTF" />
+  <Font FaceName="Georgia" Style="Regular" File="C:\Windows\Fonts\georgia.ttf" />
+  <Font FaceName="Georgia" Style="Bold" File="C:\Windows\Fonts\georgiab.ttf" />
+  <Font FaceName="Georgia" Style="Italic" File="C:\Windows\Fonts\georgiai.ttf" />
+  <Font FaceName="Georgia" Style="BoldItalic" File="C:\Windows\Fonts\georgiaz.ttf" />
+  <Font FaceName="Century Gothic" Style="Regular" File="C:\Windows\Fonts\GOTHIC.TTF" />
+  <Font FaceName="Century Gothic" Style="Bold" File="C:\Windows\Fonts\GOTHICB.TTF" />
+  <Font FaceName="Century Gothic" Style="BoldItalic" File="C:\Windows\Fonts\GOTHICBI.TTF" />
+  <Font FaceName="Century Gothic" Style="Italic" File="C:\Windows\Fonts\GOTHICI.TTF" />
+  <Font FaceName="Harlow Solid Italic" Style="Regular" File="C:\Windows\Fonts\HARLOWSI.TTF" />
+  <Font FaceName="Harrington" Style="Regular" File="C:\Windows\Fonts\HARNGTON.TTF" />
+  <Font FaceName="Microsoft Himalaya" Style="Regular" File="C:\Windows\Fonts\himalaya.ttf" />
+  <Font FaceName="High Tower Text" Style="Regular" File="C:\Windows\Fonts\HTOWERT.TTF" />
+  <Font FaceName="High Tower Text" Style="Italic" File="C:\Windows\Fonts\HTOWERTI.TTF" />
+  <Font FaceName="Impact" Style="Regular" File="C:\Windows\Fonts\impact.ttf" />
+  <Font FaceName="Informal Roman" Style="Regular" File="C:\Windows\Fonts\INFROMAN.TTF" />
+  <Font FaceName="Kristen ITC" Style="Regular" File="C:\Windows\Fonts\ITCKRIST.TTF" />
+  <Font FaceName="Javanese Text" Style="Regular" File="C:\Windows\Fonts\javatext.ttf" />
+  <Font FaceName="Jokerman" Style="Regular" File="C:\Windows\Fonts\JOKERMAN.TTF" />
+  <Font FaceName="Juice ITC" Style="Regular" File="C:\Windows\Fonts\JUICE___.TTF" />
+  <Font FaceName="Kunstler Script" Style="Regular" File="C:\Windows\Fonts\KUNSTLER.TTF" />
+  <Font FaceName="Wide Latin" Style="Regular" File="C:\Windows\Fonts\LATINWD.TTF" />
+  <Font FaceName="Lucida Bright" Style="Regular" File="C:\Windows\Fonts\LBRITE.TTF" />
+  <Font FaceName="Lucida Bright" Style="Regular" File="C:\Windows\Fonts\LBRITED.TTF" />
+  <Font FaceName="Lucida Bright" Style="Italic" File="C:\Windows\Fonts\LBRITEDI.TTF" />
+  <Font FaceName="Lucida Bright" Style="Italic" File="C:\Windows\Fonts\LBRITEI.TTF" />
+  <Font FaceName="Lucida Calligraphy" Style="Italic" File="C:\Windows\Fonts\LCALLIG.TTF" />
+  <Font FaceName="Leelawadee UI" Style="Bold" File="C:\Windows\Fonts\LeelaUIb.ttf" />
+  <Font FaceName="Leelawadee" Style="Regular" File="C:\Windows\Fonts\LEELAWAD.TTF" />
+  <Font FaceName="Leelawadee" Style="Bold" File="C:\Windows\Fonts\LEELAWDB.TTF" />
+  <Font FaceName="Leelawadee UI" Style="Regular" File="C:\Windows\Fonts\LeelawUI.ttf" />
+  <Font FaceName="Leelawadee UI Semilight" Style="Regular" File="C:\Windows\Fonts\LeelUIsl.ttf" />
+  <Font FaceName="Lucida Fax" Style="Regular" File="C:\Windows\Fonts\LFAX.TTF" />
+  <Font FaceName="Lucida Fax" Style="Regular" File="C:\Windows\Fonts\LFAXD.TTF" />
+  <Font FaceName="Lucida Fax" Style="Italic" File="C:\Windows\Fonts\LFAXDI.TTF" />
+  <Font FaceName="Lucida Fax" Style="Italic" File="C:\Windows\Fonts\LFAXI.TTF" />
+  <Font FaceName="Lucida Handwriting" Style="Italic" File="C:\Windows\Fonts\LHANDW.TTF" />
+  <Font FaceName="Lucida Console" Style="Regular" File="C:\Windows\Fonts\lucon.ttf" />
+  <Font FaceName="Lucida Sans Unicode" Style="Regular" File="C:\Windows\Fonts\l_10646.ttf" />
+  <Font FaceName="Magneto" Style="Bold" File="C:\Windows\Fonts\MAGNETOB.TTF" />
+  <Font FaceName="Malgun Gothic" Style="Regular" File="C:\Windows\Fonts\malgun.ttf" />
+  <Font FaceName="Malgun Gothic" Style="Bold" File="C:\Windows\Fonts\malgunbd.ttf" />
+  <Font FaceName="Malgun Gothic Semilight" Style="Regular" File="C:\Windows\Fonts\malgunsl.ttf" />
+  <Font FaceName="Marlett" Style="Regular" File="C:\Windows\Fonts\marlett.ttf" />
+  <Font FaceName="Matura MT Script Capitals" Style="Regular" File="C:\Windows\Fonts\MATURASC.TTF" />
+  <Font FaceName="Microsoft Sans Serif" Style="Regular" File="C:\Windows\Fonts\micross.ttf" />
+  <Font FaceName="MingLiU-ExtB" Style="Regular" File="C:\Windows\Fonts\mingliub.ttc" />
+  <Font FaceName="Mistral" Style="Regular" File="C:\Windows\Fonts\MISTRAL.TTF" />
+  <Font FaceName="Myanmar Text" Style="Regular" File="C:\Windows\Fonts\mmrtext.ttf" />
+  <Font FaceName="Myanmar Text" Style="Bold" File="C:\Windows\Fonts\mmrtextb.ttf" />
+  <Font FaceName="Modern No. 20" Style="Regular" File="C:\Windows\Fonts\MOD20.TTF" />
+  <Font FaceName="Mongolian Baiti" Style="Regular" File="C:\Windows\Fonts\monbaiti.ttf" />
+  <Font FaceName="MS Gothic" Style="Regular" File="C:\Windows\Fonts\msgothic.ttc" />
+  <Font FaceName="_®ßkcÑÔ" Style="Regular" File="C:\Windows\Fonts\msjh.ttc" />
+  <Font FaceName="_®ßkcÑÔ" Style="Bold" File="C:\Windows\Fonts\msjhbd.ttc" />
+  <Font FaceName="_®ßkcÑÔ Light" Style="Regular" File="C:\Windows\Fonts\msjhl.ttc" />
+  <Font FaceName="Microsoft Uighur" Style="Bold" File="C:\Windows\Fonts\MSUIGHUB.TTF" />
+  <Font FaceName="Microsoft Uighur" Style="Regular" File="C:\Windows\Fonts\MSUIGHUR.TTF" />
+  <Font FaceName="Microsoft YaHei" Style="Regular" File="C:\Windows\Fonts\msyh.ttc" />
+  <Font FaceName="Microsoft YaHei" Style="Bold" File="C:\Windows\Fonts\msyhbd.ttc" />
+  <Font FaceName="Microsoft YaHei Light" Style="Regular" File="C:\Windows\Fonts\msyhl.ttc" />
+  <Font FaceName="Microsoft Yi Baiti" Style="Regular" File="C:\Windows\Fonts\msyi.ttf" />
+  <Font FaceName="Monotype Corsiva" Style="Regular" File="C:\Windows\Fonts\MTCORSVA.TTF" />
+  <Font FaceName="MV Boli" Style="Regular" File="C:\Windows\Fonts\mvboli.ttf" />
+  <Font FaceName="Niagara Engraved" Style="Regular" File="C:\Windows\Fonts\NIAGENG.TTF" />
+  <Font FaceName="Niagara Solid" Style="Regular" File="C:\Windows\Fonts\NIAGSOL.TTF" />
+  <Font FaceName="Nirmala UI" Style="Regular" File="C:\Windows\Fonts\Nirmala.ttf" />
+  <Font FaceName="Nirmala UI" Style="Bold" File="C:\Windows\Fonts\NirmalaB.ttf" />
+  <Font FaceName="Nirmala UI Semilight" Style="Regular" File="C:\Windows\Fonts\NirmalaS.ttf" />
+  <Font FaceName="Microsoft New Tai Lue" Style="Regular" File="C:\Windows\Fonts\ntailu.ttf" />
+  <Font FaceName="Microsoft New Tai Lue" Style="Bold" File="C:\Windows\Fonts\ntailub.ttf" />
+  <Font FaceName="Old English Text MT" Style="Regular" File="C:\Windows\Fonts\OLDENGL.TTF" />
+  <Font FaceName="Onyx" Style="Regular" File="C:\Windows\Fonts\ONYX.TTF" />
+  <Font FaceName="Palatino Linotype" Style="Regular" File="C:\Windows\Fonts\pala.ttf" />
+  <Font FaceName="Palatino Linotype" Style="Bold" File="C:\Windows\Fonts\palab.ttf" />
+  <Font FaceName="Palatino Linotype" Style="BoldItalic" File="C:\Windows\Fonts\palabi.ttf" />
+  <Font FaceName="Palatino Linotype" Style="Italic" File="C:\Windows\Fonts\palai.ttf" />
+  <Font FaceName="Parchment" Style="Regular" File="C:\Windows\Fonts\PARCHM.TTF" />
+  <Font FaceName="Microsoft PhagsPa" Style="Regular" File="C:\Windows\Fonts\phagspa.ttf" />
+  <Font FaceName="Microsoft PhagsPa" Style="Bold" File="C:\Windows\Fonts\phagspab.ttf" />
+  <Font FaceName="Playbill" Style="Regular" File="C:\Windows\Fonts\PLAYBILL.TTF" />
+  <Font FaceName="Poor Richard" Style="Regular" File="C:\Windows\Fonts\POORICH.TTF" />
+  <Font FaceName="Ravie" Style="Regular" File="C:\Windows\Fonts\RAVIE.TTF" />
+  <Font FaceName="MS Reference Sans Serif" Style="Regular" File="C:\Windows\Fonts\REFSAN.TTF" />
+  <Font FaceName="MS Reference Specialty" Style="Regular" File="C:\Windows\Fonts\REFSPCL.TTF" />
+  <Font FaceName="Segoe MDL2 Assets" Style="Regular" File="C:\Windows\Fonts\segmdl2.ttf" />
+  <Font FaceName="Segoe Print" Style="Regular" File="C:\Windows\Fonts\segoepr.ttf" />
+  <Font FaceName="Segoe Print" Style="Bold" File="C:\Windows\Fonts\segoeprb.ttf" />
+  <Font FaceName="Segoe Script" Style="Regular" File="C:\Windows\Fonts\segoesc.ttf" />
+  <Font FaceName="Segoe Script" Style="Bold" File="C:\Windows\Fonts\segoescb.ttf" />
+  <Font FaceName="Segoe UI" Style="Regular" File="C:\Windows\Fonts\segoeui.ttf" />
+  <Font FaceName="Segoe UI" Style="Bold" File="C:\Windows\Fonts\segoeuib.ttf" />
+  <Font FaceName="Segoe UI" Style="Italic" File="C:\Windows\Fonts\segoeuii.ttf" />
+  <Font FaceName="Segoe UI Light" Style="Regular" File="C:\Windows\Fonts\segoeuil.ttf" />
+  <Font FaceName="Segoe UI Semilight" Style="Regular" File="C:\Windows\Fonts\segoeuisl.ttf" />
+  <Font FaceName="Segoe UI" Style="BoldItalic" File="C:\Windows\Fonts\segoeuiz.ttf" />
+  <Font FaceName="Segoe UI Black" Style="Regular" File="C:\Windows\Fonts\seguibl.ttf" />
+  <Font FaceName="Segoe UI Black" Style="Italic" File="C:\Windows\Fonts\seguibli.ttf" />
+  <Font FaceName="Segoe UI Emoji" Style="Regular" File="C:\Windows\Fonts\seguiemj.ttf" />
+  <Font FaceName="Segoe UI Historic" Style="Regular" File="C:\Windows\Fonts\seguihis.ttf" />
+  <Font FaceName="Segoe UI Light" Style="Italic" File="C:\Windows\Fonts\seguili.ttf" />
+  <Font FaceName="Segoe UI Semibold" Style="Regular" File="C:\Windows\Fonts\seguisb.ttf" />
+  <Font FaceName="Segoe UI Semibold" Style="Italic" File="C:\Windows\Fonts\seguisbi.ttf" />
+  <Font FaceName="Segoe UI Semilight" Style="Italic" File="C:\Windows\Fonts\seguisli.ttf" />
+  <Font FaceName="Segoe UI Symbol" Style="Regular" File="C:\Windows\Fonts\seguisym.ttf" />
+  <Font FaceName="Showcard Gothic" Style="Regular" File="C:\Windows\Fonts\SHOWG.TTF" />
+  <Font FaceName="SimSun" Style="Regular" File="C:\Windows\Fonts\simsun.ttc" />
+  <Font FaceName="SimSun-ExtB" Style="Regular" File="C:\Windows\Fonts\simsunb.ttf" />
+  <Font FaceName="Sitka Small" Style="Regular" File="C:\Windows\Fonts\Sitka.ttc" />
+  <Font FaceName="Sitka Small" Style="Bold" File="C:\Windows\Fonts\SitkaB.ttc" />
+  <Font FaceName="Sitka Small" Style="Italic" File="C:\Windows\Fonts\SitkaI.ttc" />
+  <Font FaceName="Sitka Small" Style="BoldItalic" File="C:\Windows\Fonts\SitkaZ.ttc" />
+  <Font FaceName="Snap ITC" Style="Regular" File="C:\Windows\Fonts\SNAP____.TTF" />
+  <Font FaceName="Stencil" Style="Regular" File="C:\Windows\Fonts\STENCIL.TTF" />
+  <Font FaceName="Sylfaen" Style="Regular" File="C:\Windows\Fonts\sylfaen.ttf" />
+  <Font FaceName="Symbol" Style="Regular" File="C:\Windows\Fonts\symbol.ttf" />
+  <Font FaceName="Tahoma" Style="Regular" File="C:\Windows\Fonts\tahoma.ttf" />
+  <Font FaceName="Tahoma" Style="Bold" File="C:\Windows\Fonts\tahomabd.ttf" />
+  <Font FaceName="Microsoft Tai Le" Style="Regular" File="C:\Windows\Fonts\taile.ttf" />
+  <Font FaceName="Microsoft Tai Le" Style="Bold" File="C:\Windows\Fonts\taileb.ttf" />
+  <Font FaceName="Tempus Sans ITC" Style="Regular" File="C:\Windows\Fonts\TEMPSITC.TTF" />
+  <Font FaceName="Times New Roman" Style="Regular" File="C:\Windows\Fonts\times.ttf" />
+  <Font FaceName="Times New Roman" Style="Bold" File="C:\Windows\Fonts\timesbd.ttf" />
+  <Font FaceName="Times New Roman" Style="BoldItalic" File="C:\Windows\Fonts\timesbi.ttf" />
+  <Font FaceName="Times New Roman" Style="Italic" File="C:\Windows\Fonts\timesi.ttf" />
+  <Font FaceName="Trebuchet MS" Style="Regular" File="C:\Windows\Fonts\trebuc.ttf" />
+  <Font FaceName="Trebuchet MS" Style="Bold" File="C:\Windows\Fonts\trebucbd.ttf" />
+  <Font FaceName="Trebuchet MS" Style="BoldItalic" File="C:\Windows\Fonts\trebucbi.ttf" />
+  <Font FaceName="Trebuchet MS" Style="Italic" File="C:\Windows\Fonts\trebucit.ttf" />
+  <Font FaceName="Verdana" Style="Regular" File="C:\Windows\Fonts\verdana.ttf" />
+  <Font FaceName="Verdana" Style="Bold" File="C:\Windows\Fonts\verdanab.ttf" />
+  <Font FaceName="Verdana" Style="Italic" File="C:\Windows\Fonts\verdanai.ttf" />
+  <Font FaceName="Verdana" Style="BoldItalic" File="C:\Windows\Fonts\verdanaz.ttf" />
+  <Font FaceName="Viner Hand ITC" Style="Regular" File="C:\Windows\Fonts\VINERITC.TTF" />
+  <Font FaceName="Vivaldi" Style="Regular" File="C:\Windows\Fonts\VIVALDII.TTF" />
+  <Font FaceName="Vladimir Script" Style="Regular" File="C:\Windows\Fonts\VLADIMIR.TTF" />
+  <Font FaceName="Webdings" Style="Regular" File="C:\Windows\Fonts\webdings.ttf" />
+  <Font FaceName="Wingdings" Style="Regular" File="C:\Windows\Fonts\wingding.ttf" />
+  <Font FaceName="Wingdings 2" Style="Regular" File="C:\Windows\Fonts\WINGDNG2.TTF" />
+  <Font FaceName="Wingdings 3" Style="Regular" File="C:\Windows\Fonts\WINGDNG3.TTF" />
+  <Font FaceName="Yu Gothic" Style="Bold" File="C:\Windows\Fonts\YuGothB.ttc" />
+  <Font FaceName="Yu Gothic Light" Style="Regular" File="C:\Windows\Fonts\YuGothL.ttc" />
+  <Font FaceName="Yu Gothic Medium" Style="Regular" File="C:\Windows\Fonts\YuGothM.ttc" />
+  <Font FaceName="Yu Gothic" Style="Regular" File="C:\Windows\Fonts\YuGothR.ttc" />
+</FontList>

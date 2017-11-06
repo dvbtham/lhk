@@ -7,8 +7,9 @@ namespace LeHuuKhoa
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+           
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
+            routes.IgnoreRoute("{*DocumentHandler}", new { DocumentHandler = @".*\.axd(/.*)?" });
             routes.MapRoute(
                 "Detail Category",
                 "danh-muc-luan/{id}.html",

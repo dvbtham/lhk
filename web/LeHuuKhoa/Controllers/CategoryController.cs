@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.IO;
+using System.Linq;
 using System.Web.Mvc;
 using LeHuuKhoa.Core;
 
@@ -16,6 +18,34 @@ namespace LeHuuKhoa.Controllers
         {
             var category = _unitOfWork.Categories.Get(id);
             return View(category);
+        }
+
+        public PartialViewResult PdfPartialView()
+        {
+            return PartialView();
+        }
+        
+        public static byte[] GetBytesFromFile(string fullFilePath)
+        {
+            // this method is limited to 2^32 byte files (4.2 GB)
+
+            FileStream fs = null;
+            try
+            {
+                fs = System.IO.File.OpenRead(fullFilePath);
+                byte[] bytes = new byte[fs.Length];
+                fs.Read(bytes, 0, Convert.ToInt32(fs.Length));
+                return bytes;
+            }
+            finally
+            {
+                if (fs != null)
+                {
+                    fs.Close();
+                    fs.Dispose();
+                }
+            }
+
         }
 
         [ChildActionOnly]

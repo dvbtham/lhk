@@ -147,9 +147,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -2346,6 +2343,7 @@
     <Content Include="Content\front\assets\vendor\font-awesome\scss\_screen-reader.scss" />
     <Content Include="Content\front\assets\vendor\font-awesome\scss\_stacked.scss" />
     <Content Include="Content\front\assets\vendor\font-awesome\scss\_variables.scss" />
+    <Content Include="Content\sample_doc.pdf" />
     <None Include="Properties\PublishProfiles\LeHuuKhoa20171011081835 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\LeHuuKhoa20171011081835 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\trangthaykhoa - FTP.pubxml" />
@@ -2404,6 +2402,7 @@
     <Content Include="Views\Page\Read.cshtml" />
     <Content Include="Views\Shared\_Menu.cshtml" />
     <Content Include="Views\Shared\_StartPageHeader.cshtml" />
+    <Content Include="Views\Category\PDFPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Administrations\Models\" />

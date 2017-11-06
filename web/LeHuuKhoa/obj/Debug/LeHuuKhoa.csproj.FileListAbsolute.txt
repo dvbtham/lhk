@@ -240,7 +240,6 @@ D:\dev\projects\lhk\web\LeHuuKhoa\bin\System.Web.WebPages.xml
 D:\dev\projects\lhk\web\LeHuuKhoa\bin\System.Web.WebPages.Deployment.xml
 D:\dev\projects\lhk\web\LeHuuKhoa\bin\System.Web.WebPages.Razor.xml
 D:\dev\projects\lhk\web\LeHuuKhoa\bin\Antlr3.Runtime.pdb
-D:\dev\projects\lhk\web\LeHuuKhoa\bin\Newtonsoft.Json.xml
 D:\dev\projects\lhk\web\LeHuuKhoa\bin\EntityFramework.xml
 D:\dev\projects\lhk\web\LeHuuKhoa\bin\EntityFramework.SqlServer.xml
 D:\dev\projects\lhk\web\LeHuuKhoa\bin\Microsoft.AspNet.Identity.Core.xml

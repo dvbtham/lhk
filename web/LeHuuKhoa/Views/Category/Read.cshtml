@@ -16,6 +16,8 @@
                 <li><a href="/">Trang chủ</a></li>
                 <li class="active">@Model.Name</li>
             </ol>
+            @Ajax.ActionLink("Xem file", "PdfPartialView", "Category", new AjaxOptions { UpdateTargetId = "pdfContainer" })
+
             @Html.Raw(Model.Descriptions)
         </div>
         @{Html.RenderAction("Categories", "Category");}
