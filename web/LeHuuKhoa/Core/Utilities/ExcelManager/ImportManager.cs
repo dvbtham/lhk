@@ -23,17 +23,17 @@ namespace LeHuuKhoa.Core.Utilities.ExcelManager
             #region properties
             var properties = new[]
             {
-                new PropertyByName<PostCategory>("Id"),
-                new PropertyByName<PostCategory>("Name"),
-                new PropertyByName<PostCategory>("DisplayOrder"),
-                new PropertyByName<PostCategory>("ImageUrl"),
-                new PropertyByName<PostCategory>("BackgroundImage"),
-                new PropertyByName<PostCategory>("ShortDescriptions"),
-                new PropertyByName<PostCategory>("Descriptions")
+                new PropertyByName<Category>("Id"),
+                new PropertyByName<Category>("Name"),
+                new PropertyByName<Category>("DisplayOrder"),
+                new PropertyByName<Category>("ImageUrl"),
+                new PropertyByName<Category>("BackgroundImage"),
+                new PropertyByName<Category>("ShortDescriptions"),
+                new PropertyByName<Category>("Descriptions")
             };
             #endregion
 
-            var manager = new PropertyManager<PostCategory>(properties);
+            var manager = new PropertyManager<Category>(properties);
             using (var xlPackage = new ExcelPackage(stream))
             {
                 var worksheet = xlPackage.Workbook.Worksheets.FirstOrDefault();
@@ -56,12 +56,10 @@ namespace LeHuuKhoa.Core.Utilities.ExcelManager
                     var category = _unitOfWork.Categories.Get(id);
 
                     var isNew = category == null;
-                    category = category ?? new PostCategory();
+                    category = category ?? new Category();
 
                     category.Name = manager.GetProperty("Name").StringValue;
-                    category.ImageUrl = manager.GetProperty("ImageUrl").StringValue;
-                    category.BackgroundImage = manager.GetProperty("BackgroundImage").StringValue;
-                    category.ShortDescriptions = manager.GetProperty("ShortDescriptions").StringValue;
+                    category.Avatar = manager.GetProperty("Avatar").StringValue;
                     category.Descriptions = manager.GetProperty("Descriptions").StringValue;
                     category.DisplayOrder = manager.GetProperty("DisplayOrder").ByteValue;
 
@@ -78,7 +76,7 @@ namespace LeHuuKhoa.Core.Utilities.ExcelManager
                         }
                     }
                     else
-                        category.Modify(category.Name, category.DisplayOrder, category.ImageUrl, category.BackgroundImage,category.ShortDescriptions, category.Descriptions);
+                        category.Modify(category.Name, category.DisplayOrder, category.Avatar, category.Descriptions);
 
                     iRow++;
                     _unitOfWork.Complete();

@@ -4,7 +4,6 @@ namespace LeHuuKhoa.Core
 {
     public interface IUnitOfWork
     {
-        IPostRespository Posts { get; }
         IMenuRepository Menus { get; }
         IPageRepository Pages { get; }
         IPostCategoryRespository Categories { get; }

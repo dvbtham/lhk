@@ -42,7 +42,7 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
             if (!ModelState.IsValid)
                 return View("Create", viewModel);
 
-            var category = Mapper.Map<PostCategoryViewModel, PostCategory>(viewModel);
+            var category = Mapper.Map<PostCategoryViewModel, Category>(viewModel);
 
             _unitOfWork.Categories.Add(category);
             _unitOfWork.Complete();
@@ -58,7 +58,7 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
 
             if (category == null) return NotFoundResult();
 
-            var viewModel = Mapper.Map<PostCategory, PostCategoryViewModel>(category);
+            var viewModel = Mapper.Map<Category, PostCategoryViewModel>(category);
 
             return View(viewModel);
         }
@@ -76,7 +76,7 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
 
             if (category == null) return NotFoundResult();
 
-            category.Modify(viewModel.Name, viewModel.DisplayOrder, viewModel.ImageUrl,viewModel.BackgroundImage,viewModel.ShortDescriptions, viewModel.Descriptions);
+           
 
             _unitOfWork.Complete();
 

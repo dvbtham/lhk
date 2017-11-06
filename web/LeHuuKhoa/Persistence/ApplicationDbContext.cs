@@ -7,15 +7,20 @@ namespace LeHuuKhoa.Persistence
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplicationDbContext
     {
-        public DbSet<Post> Posts { get; set; }
+        public DbSet<Article> Articles { get; set; }
 
         public DbSet<Page> Pages { get; set; }
 
         public DbSet<Menu> Menus { get; set; }
+        public DbSet<ArticleAttribute> ArticleAttributes { get; set; }
+        public DbSet<ArticleAttributeValue> ArticleAttributeValues { get; set; }
+        public DbSet<ArticleFile> ArticleFiles { get; set; }
+        public DbSet<File> Files { get; set; }
+        public DbSet<ArticleGroupArticleAttribute> ArticleGroupArticleAttributes { get; set; }
 
         public override IDbSet<ApplicationUser> Users { get; set; }
 
-        public DbSet<PostCategory> Categories { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -30,9 +35,12 @@ namespace LeHuuKhoa.Persistence
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new ApplicationUserConfiguration());
-            modelBuilder.Configurations.Add(new PostConfiguration());
+            modelBuilder.Configurations.Add(new ArticleConfiguration());
+            modelBuilder.Configurations.Add(new ArticleAttributeValueConfiguration());
+            modelBuilder.Configurations.Add(new ArticleFileConfiguration());
             modelBuilder.Configurations.Add(new PageConfiguration());
-            modelBuilder.Configurations.Add(new PostCategoryConfiguration());
+            modelBuilder.Configurations.Add(new CategoryConfiguration());
+            modelBuilder.Configurations.Add(new ArticleGroupArticleAttributeConfiguration());
             base.OnModelCreating(modelBuilder);
         }
     }

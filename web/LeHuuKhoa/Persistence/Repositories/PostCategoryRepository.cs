@@ -13,23 +13,23 @@ namespace LeHuuKhoa.Persistence.Repositories
         {
             _context = context;
         }
-        public IEnumerable<PostCategory> GetCategories()
+        public IEnumerable<Category> GetCategories()
         {
             return _context.Categories.ToList();
         }
 
-        public void Add(PostCategory postCategory)
+        public void Add(Category postCategory)
         {
             _context.Categories.Add(postCategory);
         }
 
-        public PostCategory Get(string id)
+        public Category Get(string id)
         {
             return _context.Categories.SingleOrDefault(x => x.Id == id);
         }
 
 
-        public void Delete(PostCategory postCategory)
+        public void Delete(Category postCategory)
         {
             _context.Categories.Remove(postCategory);
         }

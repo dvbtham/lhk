@@ -225,10 +225,10 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Administrations\AdministrationsAreaRegistration.cs" />
     <Compile Include="Areas\Administrations\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Administrations\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Administrations\Controllers\MenuController.cs" />
     <Compile Include="Areas\Administrations\Controllers\PageController.cs" />
     <Compile Include="Areas\Administrations\Controllers\PostCategoryController.cs" />
-    <Compile Include="Areas\Administrations\Controllers\ManagePostController.cs" />
     <Compile Include="Areas\Administrations\Controllers\UserController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
@@ -239,14 +239,21 @@
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Core\IUnitOfWork.cs" />
     <Compile Include="Core\Models\ApplicationUser.cs" />
+    <Compile Include="Core\Models\Article.cs" />
+    <Compile Include="Core\Models\ArticleAttribute.cs" />
+    <Compile Include="Core\Models\ArticleAttributeValue.cs" />
+    <Compile Include="Core\Models\ArticleFile.cs" />
+    <Compile Include="Core\Models\ArticleGroup.cs" />
+    <Compile Include="Core\Models\ArticleGroupArticleAttribute.cs" />
+    <Compile Include="Core\Models\File.cs" />
+    <Compile Include="Core\Models\ISeoable.cs" />
     <Compile Include="Core\Models\Menu.cs" />
     <Compile Include="Core\Models\Page.cs" />
-    <Compile Include="Core\Models\Post.cs" />
-    <Compile Include="Core\Models\PostCategory.cs" />
+    <Compile Include="Core\Models\Category.cs" />
+    <Compile Include="Core\Models\Seoable.cs" />
     <Compile Include="Core\Repositories\IMenuRepository.cs" />
     <Compile Include="Core\Repositories\IPageRepository.cs" />
     <Compile Include="Core\Repositories\IPostCategoryRespository.cs" />
-    <Compile Include="Core\Repositories\IPostRespository.cs" />
     <Compile Include="Core\Repositories\IUserRepository.cs" />
     <Compile Include="Core\ServiceFactory.cs" />
     <Compile Include="Core\Utilities\AdditionMethods.cs" />
@@ -268,70 +275,24 @@
     </Compile>
     <Compile Include="Core\ViewModels\AccountViewModels.cs" />
     <Compile Include="Core\ViewModels\ManageViewModels.cs" />
-    <Compile Include="Persistence\EntityConfigurations\MenuConfiguration.cs" />
-    <Compile Include="Persistence\EntityConfigurations\PageConfiguration.cs" />
-    <Compile Include="Persistence\Migrations\201709291553353_InitialDb.cs" />
-    <Compile Include="Persistence\Migrations\201709291553353_InitialDb.Designer.cs">
-      <DependentUpon>201709291553353_InitialDb.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Persistence\Migrations\201709301435341_SetDateUpdatedNull.cs" />
-    <Compile Include="Persistence\Migrations\201709301435341_SetDateUpdatedNull.Designer.cs">
-      <DependentUpon>201709301435341_SetDateUpdatedNull.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Persistence\Migrations\201709301525089_ChangeDateTimeType.cs" />
-    <Compile Include="Persistence\Migrations\201709301525089_ChangeDateTimeType.Designer.cs">
-      <DependentUpon>201709301525089_ChangeDateTimeType.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Persistence\Migrations\201710090616207_UpdateCategoryTable.cs" />
-    <Compile Include="Persistence\Migrations\201710090616207_UpdateCategoryTable.Designer.cs">
-      <DependentUpon>201710090616207_UpdateCategoryTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Persistence\Migrations\201710110759049_UpdateCategoryTable1.cs" />
-    <Compile Include="Persistence\Migrations\201710110759049_UpdateCategoryTable1.Designer.cs">
-      <DependentUpon>201710110759049_UpdateCategoryTable1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Persistence\Migrations\201710121115443_AddPageTable.cs" />
-    <Compile Include="Persistence\Migrations\201710121115443_AddPageTable.Designer.cs">
-      <DependentUpon>201710121115443_AddPageTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Persistence\Migrations\201710121130271_UpdatePageTable.cs" />
-    <Compile Include="Persistence\Migrations\201710121130271_UpdatePageTable.Designer.cs">
-      <DependentUpon>201710121130271_UpdatePageTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Persistence\Migrations\201710121432429_UpdatePageTable1.cs" />
-    <Compile Include="Persistence\Migrations\201710121432429_UpdatePageTable1.Designer.cs">
-      <DependentUpon>201710121432429_UpdatePageTable1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Persistence\Migrations\201710130141507_AddMenuTable.cs" />
-    <Compile Include="Persistence\Migrations\201710130141507_AddMenuTable.Designer.cs">
-      <DependentUpon>201710130141507_AddMenuTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Persistence\Migrations\201710130257568_UpdateMenuTable.cs" />
-    <Compile Include="Persistence\Migrations\201710130257568_UpdateMenuTable.Designer.cs">
-      <DependentUpon>201710130257568_UpdateMenuTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Persistence\Migrations\201710130451437_UpdateMenuPageTable.cs" />
-    <Compile Include="Persistence\Migrations\201710130451437_UpdateMenuPageTable.Designer.cs">
-      <DependentUpon>201710130451437_UpdateMenuPageTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Persistence\Migrations\201710140735282_UpdateMenuToPageRelationship.cs" />
-    <Compile Include="Persistence\Migrations\201710140735282_UpdateMenuToPageRelationship.Designer.cs">
-      <DependentUpon>201710140735282_UpdateMenuToPageRelationship.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Persistence\Migrations\201710211116192_AddShortDescriptionsColunm.cs" />
-    <Compile Include="Persistence\Migrations\201710211116192_AddShortDescriptionsColunm.Designer.cs">
-      <DependentUpon>201710211116192_AddShortDescriptionsColunm.cs</DependentUpon>
+    <Compile Include="Persistence\Migrations\201711061038210_UpdateNewDb.cs" />
+    <Compile Include="Persistence\Migrations\201711061038210_UpdateNewDb.Designer.cs">
+      <DependentUpon>201711061038210_UpdateNewDb.cs</DependentUpon>
     </Compile>
     <Compile Include="Persistence\Migrations\Configuration.cs" />
+    <Compile Include="Persistence\EntityConfigurations\ArticleAttributeValueConfiguration.cs" />
+    <Compile Include="Persistence\EntityConfigurations\ArticleFileConfiguration.cs" />
+    <Compile Include="Persistence\EntityConfigurations\ArticleGroupArticleAttributeConfiguration.cs" />
+    <Compile Include="Persistence\EntityConfigurations\MenuConfiguration.cs" />
+    <Compile Include="Persistence\EntityConfigurations\PageConfiguration.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
     <Compile Include="Persistence\EntityConfigurations\ApplicationUserConfiguration.cs" />
-    <Compile Include="Persistence\EntityConfigurations\PostCategoryConfiguration.cs" />
-    <Compile Include="Persistence\EntityConfigurations\PostConfiguration.cs" />
+    <Compile Include="Persistence\EntityConfigurations\CategoryConfiguration.cs" />
+    <Compile Include="Persistence\EntityConfigurations\ArticleConfiguration.cs" />
     <Compile Include="Persistence\IApplicationDbContext.cs" />
     <Compile Include="Persistence\Repositories\MenuRepository.cs" />
     <Compile Include="Persistence\Repositories\PageRepository.cs" />
     <Compile Include="Persistence\Repositories\PostCategoryRepository.cs" />
-    <Compile Include="Persistence\Repositories\PostRepository.cs" />
     <Compile Include="Persistence\Repositories\UserRepository.cs" />
     <Compile Include="Persistence\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -2344,6 +2305,7 @@
     <Content Include="Content\front\assets\vendor\font-awesome\scss\_stacked.scss" />
     <Content Include="Content\front\assets\vendor\font-awesome\scss\_variables.scss" />
     <Content Include="Content\sample_doc.pdf" />
+    <Content Include="Areas\Administrations\Views\Category\Index.cshtml" />
     <None Include="Properties\PublishProfiles\LeHuuKhoa20171011081835 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\LeHuuKhoa20171011081835 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\trangthaykhoa - FTP.pubxml" />
@@ -2408,6 +2370,7 @@
     <Folder Include="Areas\Administrations\Models\" />
     <Folder Include="Areas\Administrations\Views\Base\" />
     <Folder Include="Content\UserFiles\" />
+    <Folder Include="Migrations\" />
     <Folder Include="Views\Error\" />
   </ItemGroup>
   <ItemGroup>
@@ -2427,44 +2390,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Persistence\Migrations\201709291553353_InitialDb.resx">
-      <DependentUpon>201709291553353_InitialDb.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Persistence\Migrations\201709301435341_SetDateUpdatedNull.resx">
-      <DependentUpon>201709301435341_SetDateUpdatedNull.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Persistence\Migrations\201709301525089_ChangeDateTimeType.resx">
-      <DependentUpon>201709301525089_ChangeDateTimeType.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Persistence\Migrations\201710090616207_UpdateCategoryTable.resx">
-      <DependentUpon>201710090616207_UpdateCategoryTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Persistence\Migrations\201710110759049_UpdateCategoryTable1.resx">
-      <DependentUpon>201710110759049_UpdateCategoryTable1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Persistence\Migrations\201710121115443_AddPageTable.resx">
-      <DependentUpon>201710121115443_AddPageTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Persistence\Migrations\201710121130271_UpdatePageTable.resx">
-      <DependentUpon>201710121130271_UpdatePageTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Persistence\Migrations\201710121432429_UpdatePageTable1.resx">
-      <DependentUpon>201710121432429_UpdatePageTable1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Persistence\Migrations\201710130141507_AddMenuTable.resx">
-      <DependentUpon>201710130141507_AddMenuTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Persistence\Migrations\201710130257568_UpdateMenuTable.resx">
-      <DependentUpon>201710130257568_UpdateMenuTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Persistence\Migrations\201710130451437_UpdateMenuPageTable.resx">
-      <DependentUpon>201710130451437_UpdateMenuPageTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Persistence\Migrations\201710140735282_UpdateMenuToPageRelationship.resx">
-      <DependentUpon>201710140735282_UpdateMenuToPageRelationship.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Persistence\Migrations\201710211116192_AddShortDescriptionsColunm.resx">
-      <DependentUpon>201710211116192_AddShortDescriptionsColunm.cs</DependentUpon>
+    <EmbeddedResource Include="Persistence\Migrations\201711061038210_UpdateNewDb.resx">
+      <DependentUpon>201711061038210_UpdateNewDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

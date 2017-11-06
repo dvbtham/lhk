@@ -8,7 +8,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace LeHuuKhoa.Persistence.Migrations
 {
-    internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<LeHuuKhoa.Persistence.ApplicationDbContext>
     {
         public Configuration()
         {
@@ -45,13 +45,12 @@ namespace LeHuuKhoa.Persistence.Migrations
             if (!roleManager.Roles.Any())
             {
                 roleManager.Create(new IdentityRole { Name = "Admin" });
-                roleManager.Create(new IdentityRole { Name = "User" });
+                roleManager.Create(new IdentityRole { Name = "Mod" });
             }
 
             var adminUser = manager.FindByEmail("huu-khoa.le@univ-lille3.fr");
 
-            manager.AddToRoles(adminUser.Id, "Admin", "User");
+            manager.AddToRoles(adminUser.Id, "Admin", "Mod");
         }
-
     }
 }

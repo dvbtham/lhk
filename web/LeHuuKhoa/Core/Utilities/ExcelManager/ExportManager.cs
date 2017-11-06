@@ -11,7 +11,7 @@ namespace LeHuuKhoa.Core.Utilities.ExcelManager
 {
     public interface IExportManager
     {
-        byte[] ExportPostCategoriesToXlsx(List<PostCategory> categories);
+        byte[] ExportPostCategoriesToXlsx(List<Category> categories);
 
     }
     public class ExportManager : IExportManager
@@ -48,17 +48,15 @@ namespace LeHuuKhoa.Core.Utilities.ExcelManager
                 return stream.ToArray();
             }
         }
-        public byte[] ExportPostCategoriesToXlsx(List<PostCategory> categories)
+        public byte[] ExportPostCategoriesToXlsx(List<Category> categories)
         {
             var properties = new[]
             {
-                new PropertyByName<PostCategory>("Id", p => p.Id),
-                new PropertyByName<PostCategory>("Name", p => p.Name),
-                new PropertyByName<PostCategory>("DisplayOrder", p => p.DisplayOrder),
-                new PropertyByName<PostCategory>("ImageUrl", p => p.ImageUrl),
-                new PropertyByName<PostCategory>("BackgroundImage", p => p.BackgroundImage),
-                new PropertyByName<PostCategory>("ShortDescriptions", p => p.ShortDescriptions),
-                new PropertyByName<PostCategory>("Descriptions", p => p.Descriptions)
+                new PropertyByName<Category>("Id", p => p.Id),
+                new PropertyByName<Category>("Name", p => p.Name),
+                new PropertyByName<Category>("DisplayOrder", p => p.DisplayOrder),
+                new PropertyByName<Category>("Avatar", p => p.Avatar),
+                new PropertyByName<Category>("Descriptions", p => p.Descriptions)
             };
             return ExportToXlsx(properties, categories, "Danh mục");
         }

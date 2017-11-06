@@ -26,7 +26,7 @@ namespace LeHuuKhoa.Core.ViewModels
         [Required(ErrorMessage = "Bạn phải chọn danh mục bài viết")]
         public string CategoryId { get; set; }
 
-        public PostCategory Category { get; set; }
+        public Category Category { get; set; }
 
         public DateTime DateCreated { get; set; }
 

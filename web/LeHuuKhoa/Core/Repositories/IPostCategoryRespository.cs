@@ -5,9 +5,9 @@ namespace LeHuuKhoa.Core.Repositories
 {
     public interface IPostCategoryRespository
     {
-        IEnumerable<PostCategory> GetCategories();
-        void Add(PostCategory postCategory);
-        PostCategory Get(string id);
-        void Delete(PostCategory postCategory);
+        IEnumerable<Category> GetCategories();
+        void Add(Category postCategory);
+        Category Get(string id);
+        void Delete(Category postCategory);
     }
 }
