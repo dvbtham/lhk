@@ -11,6 +11,8 @@ namespace LeHuuKhoa.Persistence.EntityConfigurations
             HasKey(x => x.Id);
 
             Property(x => x.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+
+            Property(x => x.Name).IsRequired().HasMaxLength(256);
         }
         
     }

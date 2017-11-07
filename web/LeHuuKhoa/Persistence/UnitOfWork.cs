@@ -8,6 +8,7 @@ namespace LeHuuKhoa.Persistence
 {
     public class UnitOfWork : IUnitOfWork
     {
+        public IArticleRepository Articles { get; set; }
         public IMenuRepository Menus { get; }
         public IPageRepository Pages { get; }
         public ICategoryRespository Categories { get; }
@@ -22,6 +23,7 @@ namespace LeHuuKhoa.Persistence
             ApplicationUsers = new UserRepository(context);
             Pages = new PageRepository(context);
             Menus = new MenuRepository(context);
+            Articles = new ArticleRepository(context);
         }
         public void Complete()
         {

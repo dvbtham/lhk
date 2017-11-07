@@ -9,6 +9,7 @@ namespace LeHuuKhoa.Persistence
         DbSet<Category> Categories { get; set; }
         DbSet<Page> Pages { get; set; }
         DbSet<Menu> Menus { get; set; }
+        DbSet<ArticleGroup> ArticleGroups { get; set; }
 
         DbSet<ArticleAttribute> ArticleAttributes { get; set; }
         DbSet<ArticleAttributeValue> ArticleAttributeValues { get; set; }

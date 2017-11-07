@@ -274,3 +274,4 @@ D:\dev\projects\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.pdb
 D:\dev\projects\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Migrations.InitialDb.resources
 D:\dev\projects\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.csproj.GenerateResource.Cache
 D:\dev\projects\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Migrations.UpdateIdKey1.resources
+D:\dev\projects\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Migrations.UpdateDb1.resources

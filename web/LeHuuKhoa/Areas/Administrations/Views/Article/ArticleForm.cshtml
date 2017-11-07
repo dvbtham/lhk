@@ -1,0 +1,123 @@
+﻿@model LeHuuKhoa.Core.ViewModels.ArticleSaveViewModel
+@{
+    ViewBag.AdminTitle = "Cập nhật bài viết";
+    Layout = "~/Areas/Administrations/Views/Shared/_Layout.cshtml";
+}
+
+<div class="box">
+    <div class="box-header with-border">
+        <h3 class="box-title">@ViewBag.AdminTitle</h3>
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                <i class="fa fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                <i class="fa fa-times"></i>
+            </button>
+        </div>
+    </div>
+    <div class="box-body table-responsive">
+        @using (Html.BeginForm(Model.Action, "Article"))
+            {
+            <div class="col-md-6">
+                <p class="alert alert-info">Tất cả thông tin là bắt buộc.</p>
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                @Html.HiddenFor(x => x.Id)
+                <div class="input-group">
+                    <span class="input-group-addon" data-toggle='tooltip' title="Tiêu đề">
+                        <i class="fa fa-user"></i>
+                    </span>
+                    @Html.TextBoxFor(x => x.Title, new { @class = "form-control", placeholder = "Tiêu đề" })
+                </div>
+                <br />
+
+                <br />
+                <div class="input-group">
+                    <span class="input-group-addon" data-toggle='tooltip' title="Ảnh nền">
+                        <i class="fa fa-picture-o"></i>
+                    </span>
+                    @Html.TextBoxFor(x => x.BackgroundImage, new { @class = "form-control", placeholder = "Ảnh nền", @id = "txtImageUrl" })
+                    <span class="input-group-addon" id="toggleFinder" style="cursor: pointer" data-toggle='tooltip' title="Bấm để chọn hình">
+                        ... <i class="fa fa-folder-open-o"></i>
+                    </span>
+                </div>
+
+                <br />
+
+                <div class="input-group">
+                    <span class="input-group-addon" data-toggle='tooltip' title="Mô tả">
+                        <i class="fa fa-book"></i>
+                    </span>
+                    @Html.TextAreaFor(x => x.Descriptions, new { @class = "form-control", placeholder = "Mô tả" })
+                </div>
+                <br />
+                <button type="submit" class="btn btn-primary">Lưu</button>
+                <button type="button" onclick="window.location.href='/quan-ly/danh-muc.html'" class="btn btn-danger">Hủy</button>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-addon" data-toggle='tooltip' title="Mô tả">
+                        <i class="fa fa-book"></i>
+                    </span>
+                    @Html.DropDownList("template", Model.ArticleGroups, "--- Chọn mẫu bài viết ---", new { @class=  "form-control template" })
+                </div>
+                <br/>
+                <div class="input-group hide" id = "file" >
+                    <span class="input-group-addon" data-toggle='tooltip' title="Mô tả">
+                        <i class="fa fa-file"></i>
+                    </span>
+                   <input class="form-control" type="file" name="Files"/>
+                </div>
+                <br />
+                <div class="input-group hide" id = "content" >
+                    <span class="input-group-addon" data-toggle='tooltip' title="Mô tả">
+                        <i class="fa fa-book"></i>
+                    </span>
+                    @Html.TextAreaFor(x => x.Descriptions, new { @class = "form-control", placeholder = "Mô tả" })
+                </div>
+                <br />
+            </div>
+        }
+    </div>
+
+</div>
+
+@section scripts
+{
+    <script>
+        $(function() {
+            $("select").on('change',
+                function (e) {
+                    e.preventDefault();
+                    var id = e.target.value;
+                    if (id === undefined || id === null) return;
+                    if (id === "1") {
+                        $("#file").removeClass("hide");
+                        $("#content").addClass("hide");
+                    }
+                    else if (id === "2") {
+                        $("#file").addClass("hide");
+                        $("#content").removeClass("hide");
+                    } else {
+                        $("#file").addClass("hide");
+                        $("#content").addClass("hide");
+                        return;
+                    }
+
+                    $.ajax({
+                        url: "/Administrations/Article/GetAttributes/" + id,
+                        method: "get",
+                        success: function(res) {
+                            console.log(res);
+                        },
+                        error: function (res) {
+                            console.log(res);
+                        }
+                    });
+                });
+        })
+    </script>
+}
+
+

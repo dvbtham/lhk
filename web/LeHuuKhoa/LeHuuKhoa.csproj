@@ -224,6 +224,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Administrations\AdministrationsAreaRegistration.cs" />
+    <Compile Include="Areas\Administrations\Controllers\ArticleController.cs" />
     <Compile Include="Areas\Administrations\Controllers\BaseController.cs" />
     <Compile Include="Areas\Administrations\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Administrations\Controllers\MenuController.cs" />
@@ -250,6 +251,7 @@
     <Compile Include="Core\Models\Page.cs" />
     <Compile Include="Core\Models\Category.cs" />
     <Compile Include="Core\Models\Seoable.cs" />
+    <Compile Include="Core\Repositories\IArticleRepository.cs" />
     <Compile Include="Core\Repositories\IMenuRepository.cs" />
     <Compile Include="Core\Repositories\IPageRepository.cs" />
     <Compile Include="Core\Repositories\ICategoryRespository.cs" />
@@ -265,6 +267,8 @@
     <Compile Include="Core\Utilities\HtmlHelperExtensions.cs" />
     <Compile Include="Core\Utilities\MimeTypes.cs" />
     <Compile Include="Core\Utilities\SlugHelper.cs" />
+    <Compile Include="Core\ViewModels\ArticleAttributeVm.cs" />
+    <Compile Include="Core\ViewModels\ArticleSaveViewModel.cs" />
     <Compile Include="Core\ViewModels\MenuViewModel.cs" />
     <Compile Include="Core\ViewModels\PageViewModel.cs" />
     <Compile Include="Core\ViewModels\CategoryViewModel.cs" />
@@ -295,6 +299,11 @@
     <Compile Include="Persistence\Migrations\201711061315151_UpdateIdKey#1.Designer.cs">
       <DependentUpon>201711061315151_UpdateIdKey#1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Persistence\Migrations\201711070504043_UpdateDb#1.cs" />
+    <Compile Include="Persistence\Migrations\201711070504043_UpdateDb#1.Designer.cs">
+      <DependentUpon>201711070504043_UpdateDb#1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Persistence\Repositories\ArticleRepository.cs" />
     <Compile Include="Persistence\Repositories\MenuRepository.cs" />
     <Compile Include="Persistence\Repositories\PageRepository.cs" />
     <Compile Include="Persistence\Repositories\CategoryRepository.cs" />
@@ -2309,6 +2318,8 @@
     <Content Include="Content\sample_doc.pdf" />
     <Content Include="Areas\Administrations\Views\Category\Index.cshtml" />
     <Content Include="Areas\Administrations\Views\Category\CategoryForm.cshtml" />
+    <Content Include="Areas\Administrations\Views\Article\Index.cshtml" />
+    <Content Include="Areas\Administrations\Views\Article\ArticleForm.cshtml" />
     <None Include="Properties\PublishProfiles\LeHuuKhoa20171011081835 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\LeHuuKhoa20171011081835 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\trangthaykhoa - FTP.pubxml" />
@@ -2397,6 +2408,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Persistence\Migrations\201711061315151_UpdateIdKey#1.resx">
       <DependentUpon>201711061315151_UpdateIdKey#1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Persistence\Migrations\201711070504043_UpdateDb#1.resx">
+      <DependentUpon>201711070504043_UpdateDb#1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

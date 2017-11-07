@@ -11,6 +11,8 @@ namespace LeHuuKhoa.Persistence
 
         public DbSet<Page> Pages { get; set; }
 
+        public DbSet<ArticleGroup> ArticleGroups { get; set; }
+
         public DbSet<Menu> Menus { get; set; }
         public DbSet<ArticleAttribute> ArticleAttributes { get; set; }
         public DbSet<ArticleAttributeValue> ArticleAttributeValues { get; set; }

@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.Collections.Generic;
+using System.Globalization;
 using LeHuuKhoa.Core.Models;
 using LeHuuKhoa.Persistence;
 using Microsoft.AspNet.Identity;
@@ -21,7 +22,38 @@ namespace LeHuuKhoa.Migrations
         protected override void Seed(ApplicationDbContext context)
         {
             CreateUser(context);
+            CreateAttribute(context);
+            CreateArticleGroup(context);
         }
+
+        #region InitializeData
+
+        private void CreateAttribute(ApplicationDbContext context)
+        {
+            if (!context.ArticleAttributes.Any())
+            {
+                var attributes = new List<ArticleAttribute>
+                {
+                    new ArticleAttribute{ Name = "File" },
+                    new ArticleAttribute{ Name = "Content" }
+                };
+                context.ArticleAttributes.AddRange(attributes);
+            }
+        }
+
+        private void CreateArticleGroup(ApplicationDbContext context)
+        {
+            if (!context.ArticleGroups.Any())
+            {
+                var articleGroups = new List<ArticleGroup>
+                {
+                    new ArticleGroup{ Name = "Mẫu có sẵn" },
+                    new ArticleGroup{ Name = "Nội dung tùy chỉnh" }
+                };
+                context.ArticleGroups.AddRange(articleGroups);
+            }
+        }
+
         private void CreateUser(ApplicationDbContext context)
         {
             if (context.Users.Any()) return;
@@ -54,5 +86,8 @@ namespace LeHuuKhoa.Migrations
 
             manager.AddToRoles(adminUser.Id, "Admin", "User");
         }
+
+        #endregion
+
     }
 }

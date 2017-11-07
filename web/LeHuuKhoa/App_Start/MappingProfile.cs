@@ -16,6 +16,8 @@ namespace LeHuuKhoa
                 mapper.CreateMap<Page, PageViewModel>();
                 mapper.CreateMap<Category, CategoryViewModel>();
                 // View Model to Domain
+                mapper.CreateMap<ArticleSaveViewModel, Article>()
+                    .ForMember(x => x.Slug, opt => opt.MapFrom(x => SlugHelper.ToUnsignString(x.Title)));
                 mapper.CreateMap<MenuViewModel, Menu>();
                 mapper.CreateMap<CategoryViewModel, Category>()
                 .ForMember(c => c.Id, opt => opt.Ignore())
