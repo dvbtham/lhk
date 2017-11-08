@@ -11,6 +11,6 @@ namespace LeHuuKhoa.Core.Repositories
 
         void Delete(Post post);
 
-        Post Get(string id);
+        Post Get(long id);
     }
 }

@@ -242,6 +242,7 @@
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Core\IUnitOfWork.cs" />
     <Compile Include="Core\Models\ApplicationUser.cs" />
+    <Compile Include="Core\Models\File.cs" />
     <Compile Include="Core\Models\Menu.cs" />
     <Compile Include="Core\Models\MenuPage.cs" />
     <Compile Include="Core\Models\Page.cs" />
@@ -317,6 +318,14 @@
     <Compile Include="Persistence\Migrations\201710130451437_UpdateMenuPageTable.cs" />
     <Compile Include="Persistence\Migrations\201710130451437_UpdateMenuPageTable.Designer.cs">
       <DependentUpon>201710130451437_UpdateMenuPageTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Persistence\Migrations\201711080923374_NewDb.cs" />
+    <Compile Include="Persistence\Migrations\201711080923374_NewDb.Designer.cs">
+      <DependentUpon>201711080923374_NewDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Persistence\Migrations\201711080929528_UpdateDb.cs" />
+    <Compile Include="Persistence\Migrations\201711080929528_UpdateDb.Designer.cs">
+      <DependentUpon>201711080929528_UpdateDb.cs</DependentUpon>
     </Compile>
     <Compile Include="Persistence\Migrations\Configuration.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
@@ -2421,6 +2430,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Persistence\Migrations\201710130451437_UpdateMenuPageTable.resx">
       <DependentUpon>201710130451437_UpdateMenuPageTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Persistence\Migrations\201711080923374_NewDb.resx">
+      <DependentUpon>201711080923374_NewDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Persistence\Migrations\201711080929528_UpdateDb.resx">
+      <DependentUpon>201711080929528_UpdateDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

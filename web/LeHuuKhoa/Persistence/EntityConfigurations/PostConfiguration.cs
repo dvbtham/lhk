@@ -1,4 +1,5 @@
-﻿using System.Data.Entity.ModelConfiguration;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.ModelConfiguration;
 using LeHuuKhoa.Core.Models;
 
 namespace LeHuuKhoa.Persistence.EntityConfigurations
@@ -8,26 +9,26 @@ namespace LeHuuKhoa.Persistence.EntityConfigurations
         public PostConfiguration()
         {
             HasKey(x => x.Id);
-
-            HasRequired(x => x.Category).WithMany().HasForeignKey(x => x.CategoryId);
-
+            
             Property(u => u.Id)
-                .IsRequired()
-                .HasMaxLength(128);
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
             Property(u => u.Title)
                 .IsRequired()
                 .HasMaxLength(100);
 
+            Property(u => u.PostType)
+                .IsOptional();
+
             Property(u => u.Slug)
                 .IsRequired()
                 .HasMaxLength(100);
 
-            Property(u => u.Descriptions)
-                .IsRequired()
+            Property(u => u.Description)
+                .IsOptional()
                 .HasMaxLength(1000);
 
-            Property(u => u.Content).IsRequired();
+            Property(u => u.Content).IsOptional();
 
             Property(u => u.CategoryId)
                 .IsRequired()

@@ -31,7 +31,7 @@ namespace LeHuuKhoa.Persistence.Repositories
             _context.Posts.Remove(post);
         }
 
-        public Post Get(string id)
+        public Post Get(long id)
         {
             return _context.Posts.SingleOrDefault(x => x.Id == id);
         }

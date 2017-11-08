@@ -40,7 +40,6 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
 
             var post = new Post
             {
-                Id = Guid.NewGuid().ToString(),
                 DateCreated = DateTime.Now,
                 Views = 0,
                 Slug = SlugHelper.ToUnsignString(viewModel.Title)
@@ -57,17 +56,16 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
         }
 
         [HttpGet]
-        public ActionResult Edit(string id)
+        public ActionResult Edit(long id)
         {
             var post = _unitOfWork.Posts.Get(id);
             if (post == null) return NotFoundResult();
             var model = new PostViewModel
             {
-                Id = post.Id,
                 Title = post.Title,
                 Slug = post.Slug,
                 CategoryId = post.CategoryId,
-                Descriptions = post.Descriptions,
+                Descriptions = post.Description,
                 Content = post.Content,
                 MetaDescription = post.MetaDescription,
                 MetaKeyword = post.MetaKeyword,

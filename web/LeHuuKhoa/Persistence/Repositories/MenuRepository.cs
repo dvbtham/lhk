@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Data.Entity;
 using LeHuuKhoa.Core.Models;
 using LeHuuKhoa.Core.Repositories;
 

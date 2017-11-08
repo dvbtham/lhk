@@ -8,7 +8,7 @@ namespace LeHuuKhoa.Core.ViewModels
 {
     public class PostViewModel
     {
-        public string Id { get; set; }
+        public long Id { get; set; }
 
         [Required(ErrorMessage = "Bạn phải nhập tiêu đề bài viết")]
         [MaxLength(100, ErrorMessage = "Chỉ nhập tối đa 100 ký tự")]
