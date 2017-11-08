@@ -325,6 +325,10 @@
     <Compile Include="Persistence\Migrations\201710211116192_AddShortDescriptionsColunm.Designer.cs">
       <DependentUpon>201710211116192_AddShortDescriptionsColunm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Persistence\Migrations\201711080954145_UpdateDb.cs" />
+    <Compile Include="Persistence\Migrations\201711080954145_UpdateDb.Designer.cs">
+      <DependentUpon>201711080954145_UpdateDb.cs</DependentUpon>
+    </Compile>
     <Compile Include="Persistence\Migrations\Configuration.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
     <Compile Include="Persistence\EntityConfigurations\ApplicationUserConfiguration.cs" />
@@ -2466,6 +2470,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Persistence\Migrations\201710211116192_AddShortDescriptionsColunm.resx">
       <DependentUpon>201710211116192_AddShortDescriptionsColunm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Persistence\Migrations\201711080954145_UpdateDb.resx">
+      <DependentUpon>201711080954145_UpdateDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
