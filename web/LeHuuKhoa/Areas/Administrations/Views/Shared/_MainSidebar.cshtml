@@ -11,13 +11,18 @@
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
-                
+
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
             <li class="header">MENU CHÍNH</li>
             <li>
                 <a href="@Url.Action("Index","PostCategory", new { area = "Administrations" })">
                     <i class="fa fa-th"></i> <span>Danh mục luận</span>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index","ManagePost", new { area = "Administrations" })">
+                    <i class="fa fa-book"></i> <span>Quản lý Bài viết</span>
                 </a>
             </li>
             <li>

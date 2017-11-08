@@ -19,5 +19,8 @@ namespace LeHuuKhoa.Core.ViewModels
         [Required(ErrorMessage = "Bắt buộc phải nhập nội dung")]
         [Display(Name = "Nội dung")]
         public string Content { get; set; }
+
+        [Display(Name = "Đặt nội dung ở Trang chủ")]
+        public bool PinToHomepe { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using System.Linq;
 using LeHuuKhoa.Core.Models;
 using LeHuuKhoa.Core.Repositories;
+using System.Data.Entity;
 
 namespace LeHuuKhoa.Persistence.Repositories
 {
@@ -21,6 +22,13 @@ namespace LeHuuKhoa.Persistence.Repositories
             return _context.Posts.ToList();
         }
 
+        public IEnumerable<Post> GetAllWithRelated()
+        {
+            var query = _context.Posts.Include(x => x.Author)
+                                      .Include(x => x.Category);
+            return query;
+        }
+
         public void Add(Post post)
         {
             _context.Posts.Add(post);
@@ -31,7 +39,7 @@ namespace LeHuuKhoa.Persistence.Repositories
             _context.Posts.Remove(post);
         }
 
-        public Post Get(string id)
+        public Post Get(long id)
         {
             return _context.Posts.SingleOrDefault(x => x.Id == id);
         }

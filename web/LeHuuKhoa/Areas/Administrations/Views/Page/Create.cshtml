@@ -36,7 +36,7 @@
                         @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Ảnh đại diện</label>
                     <div class="col-sm-10">
@@ -58,6 +58,14 @@
                     </div>
                 </div>
 
+                <div class="input-group" data-toggle='tooltip' title="Đặt nội dung ở trang chủ?">
+                    <span class="checkbox-addon">
+                        @Html.CheckBoxFor(x => x.PinToHomepe, new { id = "PinToHomepe" })
+                    </span>
+                    <label id="PinToHomepe" class="pointer">Đặt nội dung ở trang chủ?</label>
+                </div>
+                <br />
+               
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="submit" value="Thêm" class="btn btn-primary" />

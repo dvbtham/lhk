@@ -24,7 +24,7 @@ namespace LeHuuKhoa.Controllers
 
         public ActionResult StartPageHeader()
         {
-            var page = _unitOfWork.Pages.Get(Constants.DefaultPage);
+            var page = _unitOfWork.Pages.GetForHomePage();
             var viewModel = Mapper.Map<Page, PageViewModel>(page);
             return PartialView("_StartPageHeader", viewModel);
         }

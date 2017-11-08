@@ -24,6 +24,11 @@ namespace LeHuuKhoa.Persistence.Repositories
             return _context.Pages.SingleOrDefault(x => x.Id == id);
         }
 
+        public Page GetForHomePage()
+        {
+            return _context.Pages.SingleOrDefault(x => x.PinToHome);
+        }
+
         public void Delete(Page page)
         {
             _context.Pages.Remove(page);

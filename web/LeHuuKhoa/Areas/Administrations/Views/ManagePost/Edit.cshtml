@@ -1,6 +1,6 @@
 ﻿@model LeHuuKhoa.Core.ViewModels.PostViewModel
 @{
-    ViewBag.AdminTitle = "Cập nhật " + Model.Title;
+    ViewBag.AdminTitle = "Cập nhật bài viết";
     Layout = "~/Areas/Administrations/Views/Shared/_Layout.cshtml";
 }
 <div class="box">
@@ -15,18 +15,15 @@
             </button>
         </div>
     </div>
-    <div class="box-body table-responsive">
-        @using (Html.BeginForm("Update", "ManagePost", new { Area = "Administrations" }, FormMethod.Post))
-        {
-            <div class="col-md-6">
+    @using (Html.BeginForm("Update", "ManagePost", new { Area = "Administrations" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="box-body table-responsive">
+
+            <div class="col-md-4">
                 <p class="alert alert-info"> <strong>*</strong> là bắt buộc.</p>
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(false, "", new { @class = "text-danger" })
                 @Html.HiddenFor(x => x.Id)
-                @Html.HiddenFor(x => x.DateUpdated)
-                @Html.HiddenFor(x => x.DateCreated)
-                @Html.HiddenFor(x => x.Slug)
-                @Html.HiddenFor(x => x.AuthorName)
                 <div class="input-group">
                     <span class="input-group-addon" data-toggle='tooltip' title="Nhập tiêu đề">
                         <i class="fa fa-user"></i>
@@ -38,34 +35,9 @@
                     <span class="input-group-addon" data-toggle='tooltip' title="Danh mục bài viết">
                         <i class="fa fa-bars"></i>
                     </span>
-                    @Html.DropDownListFor(m => m.CategoryId, new SelectList(Model.CategoryList, "Value", "Text"), "--- Chọn danh mục ---", new { @class = "form-control" })
+                    @Html.DropDownListFor(m => m.CategoryId, new SelectList(Model.Categories, "Value", "Text"), "--- Chọn danh mục ---", new { @class = "form-control" })
                 </div>
                 <br />
-                <div class="input-group">
-                    <span class="input-group-addon" data-toggle='tooltip' title="Mô tả">
-                        <i class="fa fa-book"></i>
-                    </span>
-                    @Html.TextAreaFor(x => x.Descriptions, new { id = "txtDescriptions", @class = "form-control", placeholder = "Mô tả (*)" })
-                </div>
-                <br />
-                <div class="input-group">
-                    <span class="input-group-addon" data-toggle='tooltip' title="Nội dung bài viết">
-                        <i class="fa fa-edit"></i>
-                    </span>
-                    @Html.TextAreaFor(x => x.Content, new { id = "txtContent", @class = "form-control", placeholder = "Nội dung bài viết (*)" })
-                </div>
-                <br />
-                <div class="input-group" data-toggle='tooltip' title="Đặt là Bài viết phổ biến?">
-                    <span class="checkbox-addon">
-                        @Html.CheckBoxFor(x => x.IsPopularPost, new { id = "IsPopularPost" })
-                    </span>
-                    <label for="IsPopularPost" class="pointer">Đặt là Bài viết phổ biến?</label>
-                </div>
-                <br />
-                <button type="submit" class="btn btn-primary">Lưu</button>
-                <button type="button" onclick="window.location.href='/administrations/managepost'" class="btn btn-danger">Hủy</button>
-            </div>
-            <div class="col-md-6">
                 <p class="alert alert-info">Thông tin dùng để SEO.</p>
                 <div class="input-group">
                     <span class="input-group-addon" data-toggle='tooltip' title="Từ khóa SEO">
@@ -81,9 +53,53 @@
                     @Html.TextAreaFor(x => x.MetaDescription, new { @class = "form-control", placeholder = "Mô tả về Từ khóa SEO" })
                 </div>
                 <br />
+                <br />
+                <div class="input-group" data-toggle='tooltip' title="Đặt là Bài viết phổ biến?">
+                    <span class="checkbox-addon">
+                        @Html.CheckBoxFor(x => x.IsPopularPost, new { id = "IsPopularPost" })
+                    </span>
+                    <label for="IsPopularPost" class="pointer">Đặt là Bài viết phổ biến?</label>
+                </div>
+
             </div>
-        }
-    </div>
+            <div class="col-md-8">
+                <p class="alert alert-info">Soạn nội dung.</p>
+                <select class="form-control" id="selectTemplate">
+                    <option value="">-- Chọn mẫu bài viết -- </option>
+                    <option value="10">Mẫu có sẵn (.pdf)</option>
+                    <option value="20">Nội dung tự soạn online</option>
+                </select>
+                <br />
+                <div class="input-group">
+                    <span class="input-group-addon" data-toggle='tooltip' title="Giới thiệu">
+                        <i class="fa fa-book"></i>
+                    </span>
+                    @Html.TextAreaFor(x => x.Description, new { id = "txtDescription", @class = "form-control", placeholder = "Giới thiệu" })
+                </div>
+                <br />
+
+                <div class="input-group hide" id="contentBox">
+                    <span class="input-group-addon" data-toggle='tooltip' title="Nội dung bài viết">
+                        <i class="fa fa-edit"></i>
+                    </span>
+                    @Html.TextAreaFor(x => x.Content, new { id = "txtContent", @class = "form-control", placeholder = "Nội dung bài viết (*)" })
+                </div>
+
+                <div class="input-group hide" id="fileBox">
+                    <span class="input-group-addon" data-toggle='tooltip' title="Chọn từ mẫu có sẵn">
+                        <i class="fa fa-edit"></i>
+                    </span>
+                    <input name="file" id="file" type="file" class="form-control" placeholder="Chọn từ mẫu có sẵn (.pdf)" />
+                </div>
+
+            </div>
+
+        </div>
+        <div class="box-footer">
+            <button type="submit" class="btn btn-primary">Lưu</button>
+            <button type="button" onclick="window.location.href='/administrations/managepost'" class="btn btn-danger">Hủy</button>
+        </div>
+    }
 
 </div>
 
@@ -91,9 +107,37 @@
 {
     <script>
         $(document).ready(function () {
-            CKEDITOR.replace('txtContent', {
-                customConfig: '/Content/libs/ckeditor/config.js',
+
+            $("#selectTemplate").on("change",
+                function (e) {
+                    var postType = e.target.value;
+                    var fileBox = $("#fileBox");
+                    var contentBox = $("#contentBox");
+                    if (postType === "10") //file
+                    {
+                        fileBox.removeClass("hide");
+                        contentBox.addClass("hide");
+                        contentBox.val('');
+
+                    } else if (postType === "20") {
+                        contentBox.removeClass("hide");
+                        fileBox.addClass("hide");
+                        file.val('');
+
+                    } else {
+                        contentBox.addClass("hide");
+                        fileBox.addClass("hide");
+                    }
+                });
+
+            CKEDITOR.replace('txtDescription', {
+                customConfig: '/Content/libs/ckeditor/config.js'
             });
+
+            CKEDITOR.replace('txtContent', {
+                customConfig: '/Content/libs/ckeditor/config.js'
+            });
+
         })
     </script>
 }

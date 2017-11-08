@@ -1,4 +1,5 @@
-﻿using System.Data.Entity.ModelConfiguration;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.ModelConfiguration;
 using LeHuuKhoa.Core.Models;
 
 namespace LeHuuKhoa.Persistence.EntityConfigurations
@@ -11,9 +12,7 @@ namespace LeHuuKhoa.Persistence.EntityConfigurations
 
             HasRequired(x => x.Category).WithMany().HasForeignKey(x => x.CategoryId);
 
-            Property(u => u.Id)
-                .IsRequired()
-                .HasMaxLength(128);
+            Property(u => u.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
             Property(u => u.Title)
                 .IsRequired()
@@ -23,11 +22,10 @@ namespace LeHuuKhoa.Persistence.EntityConfigurations
                 .IsRequired()
                 .HasMaxLength(100);
 
-            Property(u => u.Descriptions)
-                .IsRequired()
-                .HasMaxLength(1000);
+            Property(u => u.Description)
+                .IsOptional();
 
-            Property(u => u.Content).IsRequired();
+            Property(u => u.Content).IsOptional();
 
             Property(u => u.CategoryId)
                 .IsRequired()

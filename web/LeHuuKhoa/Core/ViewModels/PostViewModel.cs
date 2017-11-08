@@ -1,26 +1,27 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq.Expressions;
+using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
+using LeHuuKhoa.Areas.Administrations.Controllers;
 using LeHuuKhoa.Core.Models;
-using LeHuuKhoa.Core.Utilities;
 
 namespace LeHuuKhoa.Core.ViewModels
 {
     public class PostViewModel
     {
-        public string Id { get; set; }
+        public long Id { get; set; }
 
         [Required(ErrorMessage = "Bạn phải nhập tiêu đề bài viết")]
         [MaxLength(100, ErrorMessage = "Chỉ nhập tối đa 100 ký tự")]
         public string Title { get; set; }
         
         public string Slug { get; set; }
-
-        [Required(ErrorMessage = "Bạn phải nhập tóm tắt bài viết")]
-        [MaxLength(1000, ErrorMessage = "Chỉ nhập tối đa 1000 ký tự")]
-        public string Descriptions { get; set; }
-
-        [Required(ErrorMessage = "Bạn phải nhập nội dung")]
+        
+        public string Description { get; set; }
+        
         public string Content { get; set; }
 
         [Required(ErrorMessage = "Bạn phải chọn danh mục bài viết")]
@@ -28,7 +29,7 @@ namespace LeHuuKhoa.Core.ViewModels
 
         public PostCategory Category { get; set; }
 
-        public DateTime DateCreated { get; set; }
+        public DateTime DateCreated { get; set; } = DateTime.Now;
 
         public DateTime DateUpdated { get; set; }
 
@@ -36,18 +37,23 @@ namespace LeHuuKhoa.Core.ViewModels
 
         public string MetaDescription { get; set; }
 
-        public string AuthorName { get; set; }
+        public string AuthorId { get; set; }
+        public ApplicationUser Author { get; set; }
 
         public int Views { get; set; } = 0;
 
-        public bool IsPopularPost { get; set; }
+        public bool IsPopularPost { get; set; } = false;
 
-        public SelectList CategoryList { get; set; }
+        public bool IsPublished { get; set; } = true;
 
-        public PostViewModel()
-        {
-            if (Title != null)
-                Slug = SlugHelper.ToUnsignString(Title);
-        }
+        public bool IsDeleted { get; set; } = false;
+
+        public PostType PostType { get; set; }
+
+        public IList<PostFile> Files { get; set; } = new List<PostFile>();
+
+        [IgnoreMap]
+        public SelectList Categories { get; set; }
+        
     }
 }

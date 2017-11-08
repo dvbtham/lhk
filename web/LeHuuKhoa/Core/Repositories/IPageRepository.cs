@@ -7,6 +7,7 @@ namespace LeHuuKhoa.Core.Repositories
     {
         IEnumerable<Page> GetPages();
         Page Get(string id);
+        Page GetForHomePage();
         void Delete(Page page);
         void Add(Page page);
     }

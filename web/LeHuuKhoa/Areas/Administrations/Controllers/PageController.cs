@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
+using AutoMapper;
 using LeHuuKhoa.Core;
 using LeHuuKhoa.Core.Models;
 using LeHuuKhoa.Core.Utilities;
@@ -32,15 +34,14 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
         {
             if (!ModelState.IsValid) return View("Create", viewModel);
 
-            var page = new Page
-            {
-                Id = SlugHelper.ToUnsignString(viewModel.Name),
-                Name = viewModel.Name,
-                BackgroundImage = viewModel.BackgroundImage,
-                Content = viewModel.Content
-            };
+            var page = new Page();
+
+            Mapper.Map(viewModel, page);
+            page.Id = SlugHelper.ToUnsignString(viewModel.Name);
+            page.PinToHome = viewModel.PinToHomepe;
 
             _unitOfWork.Pages.Add(page);
+            SetAllUnpin(page);
             _unitOfWork.Complete();
 
             SetAlert("Bạn đã thêm " + viewModel.Name + " thành công", "success");
@@ -53,13 +54,9 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
             var page = _unitOfWork.Pages.Get(id);
             if (page == null) return NotFoundResult();
 
-            var pageViewModel = new PageViewModel
-            {
-                Id = page.Id,
-                Name = page.Name,
-                BackgroundImage = page.BackgroundImage,
-                Content = page.Content
-            };
+            var pageViewModel = new PageViewModel {PinToHomepe = page.PinToHome};
+            Mapper.Map(page, pageViewModel);
+
             return View(pageViewModel);
         }
 
@@ -74,7 +71,10 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
 
             if (page == null) return NotFoundResult();
 
-            page.Modify(viewModel.Id, viewModel.Name, viewModel.BackgroundImage, viewModel.Content);
+            Mapper.Map(viewModel, page);
+            page.PinToHome = viewModel.PinToHomepe;
+
+            SetAllUnpin(page);
             _unitOfWork.Complete();
 
             SetAlert(viewModel.Name + " đã được cập nhật", "success");
@@ -90,6 +90,16 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
             _unitOfWork.Complete();
 
             return Json(page);
+        }
+
+        [NonAction]
+        private void SetAllUnpin(Page page)
+        {
+            var pages = _unitOfWork.Pages.GetPages().Where(x => x.Id != page.Id);
+            foreach (var item in pages)
+            {
+                item.PinToHome = false;
+            }
         }
     }
 }

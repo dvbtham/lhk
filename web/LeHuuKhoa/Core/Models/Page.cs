@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 namespace LeHuuKhoa.Core.Models
 {
@@ -12,6 +11,8 @@ namespace LeHuuKhoa.Core.Models
         public string BackgroundImage { get; set; }
 
         public string Content { get; set; }
+
+        public bool PinToHome { get; set; }
 
         public ICollection<Menu> Menus { get; set; }
         

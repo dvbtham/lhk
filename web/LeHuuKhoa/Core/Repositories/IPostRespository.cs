@@ -7,10 +7,12 @@ namespace LeHuuKhoa.Core.Repositories
     {
         IEnumerable<Post> GetPosts(string includes = null);
 
+        IEnumerable<Post> GetAllWithRelated();
+
         void Add(Post post);
 
         void Delete(Post post);
 
-        Post Get(string id);
+        Post Get(long id);
     }
 }

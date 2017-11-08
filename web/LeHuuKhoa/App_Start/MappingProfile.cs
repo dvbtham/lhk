@@ -15,9 +15,14 @@ namespace LeHuuKhoa
                 mapper.CreateMap<Menu, MenuViewModel>();
                 mapper.CreateMap<Page, PageViewModel>();
                 mapper.CreateMap<PostCategory, PostCategoryViewModel>();
+                mapper.CreateMap<Post, PostViewModel>();
+                
                 // View Model to Domain
                 mapper.CreateMap<MenuViewModel, Menu>();
+                mapper.CreateMap<PageViewModel, Page>()
+                    .ForMember(x => x.Id, opt => opt.Ignore());
                 mapper.CreateMap<PostCategoryViewModel, PostCategory>().ForMember(pc => pc.Id, opt => opt.MapFrom(x => SlugHelper.ToUnsignString(x.Name)));
+                mapper.CreateMap<PostViewModel, Post>().ForMember(pc => pc.Slug, opt => opt.MapFrom(x => SlugHelper.ToUnsignString(x.Title)));
 
             });
         }
