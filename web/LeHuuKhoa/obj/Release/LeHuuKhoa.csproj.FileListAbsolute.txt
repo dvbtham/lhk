@@ -138,3 +138,16 @@ D:\dev\projects\lhk\web\LeHuuKhoa\obj\Release\LeHuuKhoa.pdb
 D:\dev\projects\lhk\web\LeHuuKhoa\obj\Release\LeHuuKhoa.Persistence.Migrations.AddPageTable.resources
 D:\dev\projects\lhk\web\LeHuuKhoa\obj\Release\LeHuuKhoa.Persistence.Migrations.UpdatePageTable.resources
 D:\dev\projects\lhk\web\LeHuuKhoa\obj\Release\LeHuuKhoa.Persistence.Migrations.UpdatePageTable1.resources
+D:\dev\projects\lhk\web\LeHuuKhoa\bin\AutoMapper.dll
+D:\dev\projects\lhk\web\LeHuuKhoa\bin\System.Net.Http.Formatting.dll
+D:\dev\projects\lhk\web\LeHuuKhoa\bin\System.Web.Http.dll
+D:\dev\projects\lhk\web\LeHuuKhoa\bin\System.Web.Http.WebHost.dll
+D:\dev\projects\lhk\web\LeHuuKhoa\bin\AutoMapper.xml
+D:\dev\projects\lhk\web\LeHuuKhoa\bin\System.Net.Http.Formatting.xml
+D:\dev\projects\lhk\web\LeHuuKhoa\bin\System.Web.Http.xml
+D:\dev\projects\lhk\web\LeHuuKhoa\bin\System.Web.Http.WebHost.xml
+D:\dev\projects\lhk\web\LeHuuKhoa\obj\Release\LeHuuKhoa.Persistence.Migrations.AddMenuTable.resources
+D:\dev\projects\lhk\web\LeHuuKhoa\obj\Release\LeHuuKhoa.Persistence.Migrations.UpdateMenuTable.resources
+D:\dev\projects\lhk\web\LeHuuKhoa\obj\Release\LeHuuKhoa.Persistence.Migrations.UpdateMenuPageTable.resources
+D:\dev\projects\lhk\web\LeHuuKhoa\obj\Release\LeHuuKhoa.Persistence.Migrations.UpdateMenuToPageRelationship.resources
+D:\dev\projects\lhk\web\LeHuuKhoa\obj\Release\LeHuuKhoa.Persistence.Migrations.AddShortDescriptionsColunm.resources

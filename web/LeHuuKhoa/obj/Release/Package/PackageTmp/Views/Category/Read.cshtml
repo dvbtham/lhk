@@ -5,9 +5,14 @@
     ViewBag.MetaDescription = Model.Name;
     ViewBag.MetaKeywords = Model.Name.ToLower();
 }
+
 <div class="section section-header">
     <div class="parallax">
-        <img class="" src="@Model.BackgroundImage" alt="">
+        <div class="parallax-filter"></div>
+        <img data-src="/Content/UserFiles/images/backgroundImages/duyen%20luan%202.png" alt="@Model.Name">
+        <div class="desc-overlay desc-overlay-full">
+            @Html.Raw(Model.ShortDescriptions)
+        </div>
     </div>
 </div>
 <section class="container">

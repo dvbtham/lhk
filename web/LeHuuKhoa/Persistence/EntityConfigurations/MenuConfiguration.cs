@@ -8,6 +8,10 @@ namespace LeHuuKhoa.Persistence.EntityConfigurations
         public MenuConfiguration()
         {
             Property(x => x.Name).IsRequired().HasMaxLength(255);
+
+            HasRequired(x => x.Page)
+                .WithMany(x => x.Menus)
+                .HasForeignKey(x => x.PageId);
         }
     }
 }

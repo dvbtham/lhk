@@ -32,7 +32,6 @@ namespace LeHuuKhoa.Persistence
             modelBuilder.Configurations.Add(new ApplicationUserConfiguration());
             modelBuilder.Configurations.Add(new PostConfiguration());
             modelBuilder.Configurations.Add(new PageConfiguration());
-            modelBuilder.Configurations.Add(new MenuPageConfiguration());
             modelBuilder.Configurations.Add(new PostCategoryConfiguration());
             base.OnModelCreating(modelBuilder);
         }

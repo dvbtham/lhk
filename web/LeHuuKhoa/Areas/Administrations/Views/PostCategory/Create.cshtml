@@ -39,30 +39,37 @@
                 </div>
                 <br />
                 <div class="input-group">
-                    <span class="input-group-addon" data-toggle='tooltip' title="Chọn hình">
+                    <span class="input-group-addon" data-toggle='tooltip' title="Ảnh chủ mục">
                         <i class="fa fa-picture-o"></i>
                     </span>
-                    @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control", placeholder = "Hình", @id = "txtImageUrl" })
+                    @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control", placeholder = "Ảnh chủ mục", @id = "txtImageUrl" })
                     <span class="input-group-addon" id="toggleFinder" style="cursor: pointer" data-toggle='tooltip' title="Bấm để chọn hình">
                         ... <i class="fa fa-folder-open-o"></i>
                     </span>
                 </div>
                 <br />
                 <div class="input-group">
-                    <span class="input-group-addon" data-toggle='tooltip' title="Chọn hình">
+                    <span class="input-group-addon" data-toggle='tooltip' title="Ảnh nền giới thiệu">
                         <i class="fa fa-picture-o"></i>
                     </span>
-                    @Html.TextBoxFor(x => x.BackgroundImage, new { @class = "form-control", placeholder = "Ảnh nền", @id = "txtBackgroundImage" })
+                    @Html.TextBoxFor(x => x.BackgroundImage, new { @class = "form-control", placeholder = "Ảnh nền giới thiệu", @id = "txtBackgroundImage" })
                     <span class="input-group-addon" id="toggleBackgroundImage" style="cursor: pointer" data-toggle='tooltip' title="Bấm để chọn hình">
                         ... <i class="fa fa-folder-open-o"></i>
                     </span>
                 </div>
                 <br />
                 <div class="input-group">
-                    <span class="input-group-addon" data-toggle='tooltip' title="Mô tả">
+                    <span class="input-group-addon" data-toggle='tooltip' title="Giới thiệu">
                         <i class="fa fa-book"></i>
                     </span>
-                    @Html.TextAreaFor(x => x.Descriptions, new { @class = "form-control", id = "txtDescription", type = "number", placeholder = "Mô tả" })
+                    @Html.TextAreaFor(x => x.ShortDescriptions, new { @class = "form-control", id = "txtShortDescription", type = "number", placeholder = "Giới thiệu" })
+                </div>
+                <br />
+                <div class="input-group">
+                    <span class="input-group-addon" data-toggle='tooltip' title="Nội dung">
+                        <i class="fa fa-book"></i>
+                    </span>
+                    @Html.TextAreaFor(x => x.Descriptions, new { @class = "form-control", id = "txtDescription", type = "number", placeholder = "Nội dung" })
                 </div>
                 <br />
                 <button type="submit" class="btn btn-primary">Lưu</button>

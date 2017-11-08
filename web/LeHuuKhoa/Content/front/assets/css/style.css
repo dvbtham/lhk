@@ -16,23 +16,12 @@ img {
     display: flex;
 }
 
-.error {
-    width: 100%;
-    height: 100%;
-    margin-top: 20%;
-    margin-bottom: 100%;
-}
-
-    .error h1, .error h3 {
-        text-align: center;
-        color: #FF0000
-    }
-
 /* Header */
 
 header {
     position: absolute;
-    top: 0px;
+    z-index: 99;
+    top: 0;
     background-color: rgba(0, 0, 0, 0.6);
     width: 100%;
     height: 40px;
@@ -40,11 +29,11 @@ header {
 }
 
     header ul {
-        width: 410px;
+        width: 100%;
+        text-align: right;
         list-style: none;
-        padding: 0px;
-        margin: 0px;
-        float: right;
+        padding: 0;
+        margin: 0;
         z-index: 99;
     }
 
@@ -59,9 +48,13 @@ header {
 
     header ul li {
         display: inline;
-        margin-left: 30px;
+        margin-left: 27px;
         transition: 0.2s ease-out;
     }
+
+        .last-child {
+            margin-right: 20px;
+        }
 
         header ul li:hover, li.active {
             border-bottom: 2px solid #fff;
@@ -83,7 +76,16 @@ header {
 
 .parallax {
     width: 100%;
+    z-index: 1;
+    position: relative;
     height: 500px;
+}
+
+.parallax-filter {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    position: absolute;
 }
 
 .desc-overlay {
@@ -96,20 +98,32 @@ header {
     padding-bottom: 10px;
 }
 
-    .desc-overlay p, .desc-overlay h3 {
-        color: #fff;
-        font-style: normal;
-    }
+.desc-overlay-full {
+    width: 90%;
+}
 
-    .desc-overlay h3 {
-        font-family: 'EB Garamond', serif;
-    }
+.desc-overlay p, .desc-overlay h3, .desc-overlay h2, .desc-overlay h4, .desc-overlay h5, .desc-overlay h1 {
+    color: #fff;
+}
 
-    .desc-overlay p {
-        font-size: 12px;
-        font-style: italic;
-        text-align: justify;
-    }
+.desc-overlay h3, .desc-overlay h2, .desc-overlay h4, .desc-overlay h5, .desc-overlay h1 {
+    line-height: 0;
+    padding-bottom: 6px;
+}
+
+.home h3 {
+    padding-top: 16px;
+}
+
+.desc-overlay p {
+    font-size: 12px;
+    text-align: justify;
+    font-style: italic;
+}
+
+.desc-overlay h3 {
+    font-family: 'EB Garamond', serif;
+}
 
 .parallax img {
     width: 100%;
@@ -162,7 +176,7 @@ header {
     font-family: 'EB Garamond', serif;
     text-align: center;
     width: 100%;
-    bottom: 0px;
+    bottom: 0;
     line-height: 30px;
     background-color: rgba(147, 93, 50, 0.6);
 }
@@ -172,6 +186,7 @@ header {
         text-transform: uppercase;
         text-decoration: none;
         font-size: 13px;
+        font-style: normal;
     }
 
 
@@ -206,12 +221,14 @@ footer {
     width: 65%;
     margin: 0;
     float: left;
+    overflow: unset;
 }
 
 .breadcrumb {
     margin-left: 10px;
     margin-top: 5px;
     width: 100%;
+    overflow: unset;
     background-color: rgba(0, 0, 0, 0.4);
 }
 
@@ -235,7 +252,7 @@ footer {
             }
 
 .post-list {
-    margin-left: 10px;
+    padding: 0 20px;
     width: 100%;
 }
 
@@ -271,6 +288,7 @@ footer {
 
         .single-post .header-post h2.title-post a {
             color: #333333;
+            padding: 10px;
         }
 
     .single-post a {
@@ -281,37 +299,68 @@ footer {
         position: relative;
     }
 
-        .single-post .content-post small {
-            text-align: center;
-            margin: auto;
-        }
+.dont-break-out {
+    /* These are technically the same, but use both */
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-word-break: break-all;
+    /* This is the dangerous one in WebKit, as it breaks things wherever */
+    word-break: break-all;
+    /* Adds a hyphen where the word breaks, if supported (No Blink) */
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
 
-        .single-post .content-post .meta-post {
-            color: #777;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            padding: 10px 0;
-            margin-top: 27px;
-        }
+p .full-width, p .img-full, p em .img-full, p em .full-width {
+    width: 96%;
+    padding-right: 22px;
+    height: auto;
+}
 
-            .single-post .content-post .meta-post a {
-                color: #333333;
-            }
+.single-post .content-post img.img-center {
+    width: 100%;
+    display: block;
+    margin: auto;
+}
 
-            .single-post .content-post .meta-post .post-views {
-                border-left: 1px solid rgba(0, 0, 0, 0.1);
-                margin-left: 20px;
-                padding-left: 20px;
-            }
+.single-post .content-post small {
+    text-align: center;
+    margin: auto;
+}
 
-        .single-post .content-post .readmore a {
-            padding: 10px 0;
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            color: #333333;
-            margin-top: 30px;
-        }
+.single-post .content-post p {
+    font-size: 13px;
+}
+
+
+.single-post .content-post .meta-post {
+    color: #777;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+    margin-top: 27px;
+}
+
+    .single-post .content-post .meta-post a {
+        color: #333333;
+    }
+
+    .single-post .content-post .meta-post .post-views {
+        border-left: 1px solid rgba(0, 0, 0, 0.1);
+        margin-left: 20px;
+        padding-left: 20px;
+    }
+
+.single-post .content-post .readmore a {
+    padding: 10px 0;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #333333;
+    margin-top: 30px;
+}
 
 .about p {
     padding: 0px;
@@ -505,7 +554,7 @@ a {
 /* Contact Form */
 
 
-#contact input[type="text"], #contact input[type="email"], #contact input[type="tel"], #contact input[type="url"], #contact textarea, #contact button[type="submit"] {
+#contact input[type="text"], #contact input[type="email"], #contact input[type="password"], #contact input[type="tel"], #contact input[type="url"], #contact textarea, #contact button[type="submit"] {
     font: 400 12px/16px "Open Sans", Helvetica, Arial, sans-serif;
 }
 
@@ -547,7 +596,7 @@ fieldset {
     padding: 10px;
 }
 
-    #contact input[type="text"]:hover, #contact input[type="email"]:hover, #contact input[type="tel"]:hover, #contact input[type="url"]:hover, #contact textarea:hover {
+    #contact input[type="text"]:hover, #contact input[type="password"], #contact input[type="email"]:hover, #contact input[type="tel"]:hover, #contact input[type="url"]:hover, #contact textarea:hover {
         -webkit-transition: border-color 0.3s ease-in-out;
         -moz-transition: border-color 0.3s ease-in-out;
         transition: border-color 0.3s ease-in-out;
@@ -607,8 +656,8 @@ fieldset {
 .scrollTop {
     width: 30px;
     height: 30px;
-    position: absolute;
-    z-index: 1;
+    position: fixed;
+    z-index: 99;
     bottom: 30px;
     cursor: pointer;
     display: none;
@@ -623,3 +672,10 @@ fieldset {
         align-content: center;
         padding-left: 7px;
     }
+
+.beauty {
+    word-wrap: break-word;
+    word-spacing: 3px;
+    line-height: 18px;
+    font-size: 15px;
+}

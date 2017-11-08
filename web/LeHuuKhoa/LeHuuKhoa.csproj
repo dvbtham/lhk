@@ -244,7 +244,6 @@
     <Compile Include="Core\Models\ApplicationUser.cs" />
     <Compile Include="Core\Models\File.cs" />
     <Compile Include="Core\Models\Menu.cs" />
-    <Compile Include="Core\Models\MenuPage.cs" />
     <Compile Include="Core\Models\Page.cs" />
     <Compile Include="Core\Models\Post.cs" />
     <Compile Include="Core\Models\PostCategory.cs" />
@@ -255,6 +254,7 @@
     <Compile Include="Core\Repositories\IUserRepository.cs" />
     <Compile Include="Core\ServiceFactory.cs" />
     <Compile Include="Core\Utilities\AdditionMethods.cs" />
+    <Compile Include="Core\Utilities\Constants.cs" />
     <Compile Include="Core\Utilities\ExcelManager\ExportManager.cs" />
     <Compile Include="Core\Utilities\ExcelManager\ImportManager.cs" />
     <Compile Include="Core\Utilities\ExcelManager\PropertyByName.cs" />
@@ -274,7 +274,6 @@
     <Compile Include="Core\ViewModels\ManageViewModels.cs" />
     <Compile Include="Persistence\EntityConfigurations\MenuConfiguration.cs" />
     <Compile Include="Persistence\EntityConfigurations\PageConfiguration.cs" />
-    <Compile Include="Persistence\EntityConfigurations\MenuPageConfiguration.cs" />
     <Compile Include="Persistence\Migrations\201709291553353_InitialDb.cs" />
     <Compile Include="Persistence\Migrations\201709291553353_InitialDb.Designer.cs">
       <DependentUpon>201709291553353_InitialDb.cs</DependentUpon>
@@ -319,6 +318,7 @@
     <Compile Include="Persistence\Migrations\201710130451437_UpdateMenuPageTable.Designer.cs">
       <DependentUpon>201710130451437_UpdateMenuPageTable.cs</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="Persistence\Migrations\201711080923374_NewDb.cs" />
     <Compile Include="Persistence\Migrations\201711080923374_NewDb.Designer.cs">
       <DependentUpon>201711080923374_NewDb.cs</DependentUpon>
@@ -326,6 +326,19 @@
     <Compile Include="Persistence\Migrations\201711080929528_UpdateDb.cs" />
     <Compile Include="Persistence\Migrations\201711080929528_UpdateDb.Designer.cs">
       <DependentUpon>201711080929528_UpdateDb.cs</DependentUpon>
+=======
+    <Compile Include="Persistence\Migrations\201710140735282_UpdateMenuToPageRelationship.cs" />
+    <Compile Include="Persistence\Migrations\201710140735282_UpdateMenuToPageRelationship.Designer.cs">
+      <DependentUpon>201710140735282_UpdateMenuToPageRelationship.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Persistence\Migrations\201710211116192_AddShortDescriptionsColunm.cs" />
+    <Compile Include="Persistence\Migrations\201710211116192_AddShortDescriptionsColunm.Designer.cs">
+      <DependentUpon>201710211116192_AddShortDescriptionsColunm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Persistence\Migrations\201711080954145_UpdateDb.cs" />
+    <Compile Include="Persistence\Migrations\201711080954145_UpdateDb.Designer.cs">
+      <DependentUpon>201711080954145_UpdateDb.cs</DependentUpon>
+>>>>>>> dev
     </Compile>
     <Compile Include="Persistence\Migrations\Configuration.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
@@ -1281,40 +1294,29 @@
     <Content Include="Content\admin\starter.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\front\about.html" />
     <Content Include="Content\front\assets\css\jquery.lazyloadxt.spinner.css" />
+    <Content Include="Content\front\assets\css\main.min.css" />
     <Content Include="Content\front\assets\css\responsive.css" />
     <Content Include="Content\front\assets\css\style.css" />
-    <Content Include="Content\front\assets\img\1.png" />
-    <Content Include="Content\front\assets\img\2-a.png" />
-    <Content Include="Content\front\assets\img\2.png" />
-    <Content Include="Content\front\assets\img\ac.png" />
-    <Content Include="Content\front\assets\img\acc.png" />
-    <Content Include="Content\front\assets\img\author.jpg" />
-    <Content Include="Content\front\assets\img\duyen-luan.png" />
-    <Content Include="Content\front\assets\img\khoa-hoc-luan.png" />
-    <Content Include="Content\front\assets\img\kiep-luan.png" />
     <Content Include="Content\front\assets\img\loading.gif" />
-    <Content Include="Content\front\assets\img\ly-thuyet-luan.png" />
-    <Content Include="Content\front\assets\img\nghe-luan.png" />
-    <Content Include="Content\front\assets\img\nhan-luan.png" />
-    <Content Include="Content\front\assets\img\phuong-phap-luan.png" />
-    <Content Include="Content\front\assets\img\thi-luan.png" />
-    <Content Include="Content\front\assets\img\tinh-luan.png" />
-    <Content Include="Content\front\assets\img\van-luan.png" />
-    <Content Include="Content\front\assets\img\vkl.png" />
-    <Content Include="Content\front\assets\img\vung-kha-luan.jpg" />
-    <Content Include="Content\front\assets\img\vungkhaluan.png" />
     <Content Include="Content\front\assets\js\jquery.lazyloadxt.extra.min.js" />
     <Content Include="Content\front\assets\js\jquery.lazyloadxt.min.js" />
     <Content Include="Content\front\assets\js\jquery.min.js" />
     <Content Include="Content\front\assets\js\main.js" />
     <Content Include="Content\front\assets\js\modernizr.js" />
     <Content Include="Content\front\assets\js\scrollTop.js" />
-    <Content Include="Content\front\contact.html" />
-    <Content Include="Content\front\home.html" />
-    <Content Include="Content\front\posts.html" />
-    <Content Include="Content\front\single.html" />
+    <Content Include="Content\front\assets\vendor\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="Content\front\assets\vendor\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="Content\front\assets\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\front\assets\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\front\assets\vendor\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\front\assets\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\front\assets\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\front\assets\vendor\bootstrap\js\npm.js" />
+    <Content Include="Content\front\assets\vendor\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\front\assets\vendor\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\front\assets\vendor\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\front\assets\vendor\jquery\jquery.min.js" />
     <Content Include="Content\libs\bootbox\.gitignore" />
     <Content Include="Content\libs\bootbox\bootbox.js" />
     <Content Include="Content\libs\ckfinder\ckfinder.html" />
@@ -2318,6 +2320,47 @@
     <Content Include="Areas\Administrations\Views\Shared\404.cshtml" />
     <Content Include="Areas\Administrations\Views\Menu\Index.cshtml" />
     <Content Include="Areas\Administrations\Views\Menu\MenuForm.cshtml" />
+    <Content Include="Content\front\assets\vendor\bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="Content\front\assets\vendor\bootstrap\css\bootstrap-theme.min.css.map" />
+    <Content Include="Content\front\assets\vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Content\front\assets\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Content\front\assets\vendor\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\front\assets\vendor\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\front\assets\vendor\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\front\assets\vendor\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\front\assets\vendor\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\front\assets\vendor\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\front\assets\vendor\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\front\assets\vendor\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\front\assets\vendor\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Content\front\assets\vendor\font-awesome\less\animated.less" />
+    <Content Include="Content\front\assets\vendor\font-awesome\less\bordered-pulled.less" />
+    <Content Include="Content\front\assets\vendor\font-awesome\less\core.less" />
+    <Content Include="Content\front\assets\vendor\font-awesome\less\fixed-width.less" />
+    <Content Include="Content\front\assets\vendor\font-awesome\less\font-awesome.less" />
+    <Content Include="Content\front\assets\vendor\font-awesome\less\icons.less" />
+    <Content Include="Content\front\assets\vendor\font-awesome\less\larger.less" />
+    <Content Include="Content\front\assets\vendor\font-awesome\less\list.less" />
+    <Content Include="Content\front\assets\vendor\font-awesome\less\mixins.less" />
+    <Content Include="Content\front\assets\vendor\font-awesome\less\path.less" />
+    <Content Include="Content\front\assets\vendor\font-awesome\less\rotated-flipped.less" />
+    <Content Include="Content\front\assets\vendor\font-awesome\less\screen-reader.less" />
+    <Content Include="Content\front\assets\vendor\font-awesome\less\stacked.less" />
+    <Content Include="Content\front\assets\vendor\font-awesome\less\variables.less" />
+    <Content Include="Content\front\assets\vendor\font-awesome\scss\font-awesome.scss" />
+    <Content Include="Content\front\assets\vendor\font-awesome\scss\_animated.scss" />
+    <Content Include="Content\front\assets\vendor\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="Content\front\assets\vendor\font-awesome\scss\_core.scss" />
+    <Content Include="Content\front\assets\vendor\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="Content\front\assets\vendor\font-awesome\scss\_icons.scss" />
+    <Content Include="Content\front\assets\vendor\font-awesome\scss\_larger.scss" />
+    <Content Include="Content\front\assets\vendor\font-awesome\scss\_list.scss" />
+    <Content Include="Content\front\assets\vendor\font-awesome\scss\_mixins.scss" />
+    <Content Include="Content\front\assets\vendor\font-awesome\scss\_path.scss" />
+    <Content Include="Content\front\assets\vendor\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="Content\front\assets\vendor\font-awesome\scss\_screen-reader.scss" />
+    <Content Include="Content\front\assets\vendor\font-awesome\scss\_stacked.scss" />
+    <Content Include="Content\front\assets\vendor\font-awesome\scss\_variables.scss" />
     <None Include="Properties\PublishProfiles\LeHuuKhoa20171011081835 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\LeHuuKhoa20171011081835 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\trangthaykhoa - FTP.pubxml" />
@@ -2374,6 +2417,8 @@
     <Content Include="Views\Category\Read.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Page\Read.cshtml" />
+    <Content Include="Views\Shared\_Menu.cshtml" />
+    <Content Include="Views\Shared\_StartPageHeader.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Administrations\Models\" />
@@ -2431,11 +2476,22 @@
     <EmbeddedResource Include="Persistence\Migrations\201710130451437_UpdateMenuPageTable.resx">
       <DependentUpon>201710130451437_UpdateMenuPageTable.cs</DependentUpon>
     </EmbeddedResource>
+<<<<<<< HEAD
     <EmbeddedResource Include="Persistence\Migrations\201711080923374_NewDb.resx">
       <DependentUpon>201711080923374_NewDb.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Persistence\Migrations\201711080929528_UpdateDb.resx">
       <DependentUpon>201711080929528_UpdateDb.cs</DependentUpon>
+=======
+    <EmbeddedResource Include="Persistence\Migrations\201710140735282_UpdateMenuToPageRelationship.resx">
+      <DependentUpon>201710140735282_UpdateMenuToPageRelationship.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Persistence\Migrations\201710211116192_AddShortDescriptionsColunm.resx">
+      <DependentUpon>201710211116192_AddShortDescriptionsColunm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Persistence\Migrations\201711080954145_UpdateDb.resx">
+      <DependentUpon>201711080954145_UpdateDb.cs</DependentUpon>
+>>>>>>> dev
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

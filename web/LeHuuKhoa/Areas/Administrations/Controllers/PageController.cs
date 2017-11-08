@@ -1,5 +1,4 @@
-﻿using System.Web.Helpers;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using LeHuuKhoa.Core;
 using LeHuuKhoa.Core.Models;
 using LeHuuKhoa.Core.Utilities;
@@ -44,6 +43,8 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
             _unitOfWork.Pages.Add(page);
             _unitOfWork.Complete();
 
+            SetAlert("Bạn đã thêm " + viewModel.Name + " thành công", "success");
+
             return RedirectToAction("Index");
         }
 
@@ -73,9 +74,10 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
 
             if (page == null) return NotFoundResult();
 
-            page.Modify(viewModel.Id, viewModel.Name, viewModel.BackgroundImage , viewModel.Content);
+            page.Modify(viewModel.Id, viewModel.Name, viewModel.BackgroundImage, viewModel.Content);
             _unitOfWork.Complete();
 
+            SetAlert(viewModel.Name + " đã được cập nhật", "success");
             return RedirectToAction("Index");
         }
 

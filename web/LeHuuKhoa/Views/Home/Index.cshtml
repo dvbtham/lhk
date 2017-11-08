@@ -1,37 +1,28 @@
 ﻿@model IEnumerable<LeHuuKhoa.Core.Models.PostCategory>
 @{
     ViewBag.Title = "Trang Chủ";
+    ViewBag.MetaDescription = "Trang thầy khóa, Lê Hữu Khóa Blog, Giáo sư Lê Hữu Khóa";
+    ViewBag.MetaKeywords = "trang thầy khóa, lê hữu khóa, lê hữu khóa blog lê hữu khóa";
 }
 @section header
 {
-    <div class="section section-header">
-        <div class="parallax">
-            <img class="" src="/Content/front/assets/img/vkl.png" alt="">
-            <div class="desc-overlay">
-                <h3>Vùng Khả Luận</h3>
-                <p>
-                    Vùng xin được hiểu như không gian trong đó nhân loại, nhân thế, nhân sinh ăn ở sao cho có hậu với nhân đạo, nhân từ, nhân nghĩa, mà không quên nhân tri, nhân trí, nhân tính. Khả mang lực của khả thi do có khả thật, lấy sự thật tạo dựng chân lý, lấy chân lý để bảo vệ lẻ phải. Luận dụng khả năng của kiến thức để tạo nên tri thức, dùng lý luận để lập luận, lấy giãi luận để diễn luận, nhận tranh luận để trao luận. <br> <br>
-                    Tiền dạng của Vùng khả luận, mang tên Trang thầy Khóa, do các sinh viên cao học và tiến sỉ của tôi tại  u châu đọc các bài của tôi từ hơn 20 năm qua, rồi trao truyền cho nhau trong giới đại học, bây giờ các bài này lan ra giới học thuật trong và ngoài nước Việt Nam, tôi xin phép được tổ chức hậu dạng trang này thành hệ thống, có thứ tự, theo tuần tự, mang dạng luận, nên đặt tên nó là Vùng khả luận, nhưng vẫn luôn giữ nội dung của học luận. <br><br>
-                    Tại sao lại luận ? Vì luận dựa trên lý, mỗi chuyện trên đời này, trong kiếp người này đều có cái lý của nó, làm ra rễ, cội, gốc, nguồn cho luận : lý luận để tìm sự thật ; lập luận để nâng chân lý; giãi luận để hiểu lẻ phải; diễn luận để tìm tương lai đúng. Tìm lối ra đúng, mỗi lần vượt thoát một ngõ cụt trong lý là mỗi lần vượt thắng được bế tắc trong luận. <br> <br>
-                    Luận trong giới trí thức và khoa học hoàn toàn ngược với sinh hoạt của giới thương mại là «có tiền mua tiên cũng được», trái ngược hẳn với sinh hoạt của giới chính trị «ăn làm vua, thua làm giặc», vì các loại tiền, tiên, vua, giặc… này mang bất công, rồi dẩn bạo động vào nhân sinh, biến chất nhân tính, thoái hóa nhân nghĩa, xói mòn nhân cách, nạo rỗng nhân trí… <br> <br>
-                    Luận của lý lấy chứng thực để tạo chứng minh. Tin tức phải có cơ sở của dữ kiện để có nội lực của chứng từ;  chứng từ có phương pháp luận, có lý thuyết luận, có khoa học luận sẽ tạo ra luận cứ; luận làm sáng lý qua chính lý để bảo vệ chính nghĩa; khi thành lý sẻ có chính ý để bảo trì cho chính tâm. <br> <br>
-                    Vùng khả luận chọn nhân lý, nhân trí, nhân tri, nên đứng về phía nhân đạo, nhân tình, nhân nghĩa, để nhân sinh, nhân thế, nhân gian nhận diện được cái hay, đẹp, tốt, lành luôn thẳng lưng, thẳng thế, thẳng bước trước cái thâm, ác, độc, hiểm, sinh ra cái xấu, tồi, tục, dở đe dọa nhân tính. Vùng khả luận đứng về phía nước mắt các nạn nhân của bất công, tham nhũng, độc tài… Vùng khả luận đứng hẳn về phía nhân quyền !
-
-                </p>
-            </div>
-        </div>
-    </div>
+    @{Html.RenderAction("StartPageHeader", "Home");}
 }
-<section class="container">
-    @foreach (var category in Model)
-    {
-        <div class="post">
-            <div class="image-post">
-                <a href="@Url.Action("Read","Category", new { id = category.Id })"><img class="img-responsive" data-src="@category.ImageUrl" width="300" height="200" alt="@category.Name"></a>
-                <div class="post-title-overlay">
-                    <a href="@Url.Action("Read","Category", new { id = category.Id })"> @category.Name </a>
+
+<div class="container">
+    <div class="row box">
+        @foreach (var category in Model)
+        {
+            <div class="col-md-15 col-xs-3">
+                <div class="box-body">
+                    <a href="@Url.Action("Read", "Category", new {id = category.Id})">
+                        <img class="match-parent" data-src="@category.ImageUrl" alt="@category.Name">
+                    </a>
+                    <div class="title-overlay">
+                        <a href="@Url.Action("Read", "Category", new {id = category.Id})"> @category.Name </a>
+                    </div>
                 </div>
             </div>
-        </div>
-    }
-</section>
+        }
+    </div>
+</div>

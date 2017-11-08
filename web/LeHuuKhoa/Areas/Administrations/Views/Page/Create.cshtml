@@ -36,6 +36,19 @@
                         @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                     </div>
                 </div>
+                
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Ảnh đại diện</label>
+                    <div class="col-sm-10">
+                        <div class="input-group">
+                            @Html.TextBoxFor(x => x.BackgroundImage, new { @class = "form-control", id = "inputImage", placeholder = "Ảnh nền" })
+                            <span class="input-group-addon" style="cursor: pointer" id="chooseImage">
+                                <i class="fa fa-folder"></i> ...
+                            </span>
+                        </div>
+                        @Html.ValidationMessageFor(x => x.BackgroundImage, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -60,6 +73,14 @@
 {
     <script>
         $(function () {
+            $("#chooseImage").on("click",
+                function () {
+                    var finder = new CKFinder();
+                    finder.selectActionFunction = function (url) {
+                        $("#inputImage").val(url);
+                    }
+                    finder.popup();
+                });
             CKEDITOR.replace("txtContent",
                 {
                     customConfig: "/Scripts/config.js"

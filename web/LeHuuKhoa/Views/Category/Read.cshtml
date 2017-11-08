@@ -5,31 +5,21 @@
     ViewBag.MetaDescription = Model.Name;
     ViewBag.MetaKeywords = Model.Name.ToLower();
 }
-<div class="section section-header">
-    <div class="parallax">
-        <img class="" src="@Model.BackgroundImage" alt="">
+<div class="parallax">
+    <img data-src="@Model.BackgroundImage" alt="@Model.Name">
+    
+</div>
+<div class="container">
+    <div class="row box">
+        <div class="col-md-9" id="left">
+            <ol class="breadcrumb">
+                <li><a href="/">Trang chủ</a></li>
+                <li class="active">@Model.Name</li>
+            </ol>
+            @Html.Raw(Model.Descriptions)
+        </div>
+        @{Html.RenderAction("Categories", "Category");}
     </div>
 </div>
-<section class="container">
-    <div class="left">
-        <div class="breadcrumb">
-            <ul>
-                <li><a href="/">Trang chủ >></a> </li>
-                <li> @Model.Name</li>
-            </ul>
-        </div>
-        <div class="post-list">
-            <article class="single-post ">
-                <div class="content-post">
-                    @Html.Raw(Model.Descriptions)
-                </div>
-            </article>
-            
-            <div class="widget widget_recent_entries">
-                <h3 class="widget-title">Bình luận</h3>
-                <div class="fb-comments" data-href="http://trangthaykhoa.azurewebsites.net/" data-numposts="10"></div>
-            </div>
-        </div>
-    </div>
-    @{Html.RenderAction("Categories", "Category");}
-</section>
+
+

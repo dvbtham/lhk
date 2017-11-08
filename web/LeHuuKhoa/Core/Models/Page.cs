@@ -12,6 +12,8 @@ namespace LeHuuKhoa.Core.Models
         public string BackgroundImage { get; set; }
 
         public string Content { get; set; }
+
+        public ICollection<Menu> Menus { get; set; }
         
         public void Modify(string id, string name, string backgroundImage, string content)
         {

@@ -1,0 +1,8 @@
+﻿@model LeHuuKhoa.Core.ViewModels.PageViewModel
+
+<div class="parallax">
+    <img data-src="@Model.BackgroundImage" alt="@Model.Name">
+    <div class="desc-overlay home">
+        @Html.Raw(Model.Content)
+    </div>
+</div>

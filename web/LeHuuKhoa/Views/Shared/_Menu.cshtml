@@ -1,0 +1,7 @@
+﻿@using LeHuuKhoa.Core.Utilities
+@model IEnumerable<LeHuuKhoa.Core.ViewModels.MenuViewModel>
+
+@foreach (var menu in Model)
+{
+    <li class="@Html.IsSelected(action: "Read", controller: "Page")"><a href="@Url.Action("Read", "Page", new {id = menu.PageId, area = ""})">@menu.Name</a></li>
+}

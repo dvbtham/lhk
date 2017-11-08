@@ -5,48 +5,57 @@
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>@ViewBag.Title | Trang Thầy Khóa</title>
+    <title>@ViewBag.Title - Vùng Khả Luận | Trang Thầy Khóa</title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name='viewport' />
     <meta name="description" content="@ViewBag.MetaDescription">
     <meta name="keywords" content="@ViewBag.MetaKeywords">
     <link rel="shortcut icon" href="/favicon.ico" title="Favicon" />
 
+    <link rel="stylesheet" href="/Content/front/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Content/front/assets/vendor/font-awesome/css/font-awesome.min.css" />
     <link rel="stylesheet" href="/Content/front/assets/css/jquery.lazyloadxt.spinner.css">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="/Content/front/assets/css/style.css" rel="stylesheet" />
-    <link href="/Content/front/assets/css/responsive.css" rel="stylesheet" />
+
+    <link href="/Content/front/assets/css/main.min.css" rel="stylesheet" />
 
 </head>
 
 <body>
     <div id="fb-root"></div>
     <script>
-    (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=1964460460505464";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=1964460460505464";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
     </script>
     <header>
-        <span class="fa fa-bars bars"></span>
-        <ul>
-            <li class="@Html.IsSelected(action: "Index")"><a href="/">trang chủ</a></li>
-            <li class="@Html.IsSelected(action: "Index", controller: "Page")"><a href="@Url.Action("Read","Page", new { id = "ve-tac-gia", area = "" })">về tác giả</a></li>
-            <li class="@Html.IsSelected(action: "Contact")"><a href="@Url.Action("Contact", "Home")">liên hệ</a></li>
-            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-            {
-                <li><a href="@Url.Action("Index", "PostCategory", new {area = "Administrations"})">admin</a></li>
-            }
-            else
-            {
-                <li class="@Html.IsSelected(action: "Login", controller: "Account")"><a href="@Url.Action("Login", "Account")">đăng nhập</a></li>
-            }
-            <span class="fa fa-times close-colapse"></span>
-        </ul>
+        <nav class="navbar navbar-default raise-navbar">
+            <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="@Html.IsSelected(action: "Index")"><a href="/">trang chủ</a></li>
+                    @{Html.RenderAction("RenderMenu", "Home");}
+                    <li class="@Html.IsSelected(action: "Contact")"><a href="@Url.Action("Contact", "Home")">liên hệ</a></li>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <li class="last-child" ,><a href="@Url.Action("Index", "PostCategory", new { area = "Administrations"})">admin</a></li>
+                    }
+                    else
+                    {
+                        <li class="@Html.IsSelected(action: "Login", controller: "Account") last-child"><a href="@Url.Action("Login", "Account")">đăng nhập</a></li>
+                    }
+                </ul>
+            </div>
+        </nav>
     </header>
+
 
     @RenderSection("header", false)
 
@@ -59,6 +68,7 @@
     <footer></footer>
     <!-- core js files -->
     <script src="/Content/front/assets/js/jquery.min.js" type="text/javascript"></script>
+    <script src="/Content/front/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="/Content/front/assets/js/jquery.lazyloadxt.min.js"></script>
     <script src="/Content/front/assets/js/scrollTop.js"></script>
     <script src="/Content/front/assets/js/main.js"></script>

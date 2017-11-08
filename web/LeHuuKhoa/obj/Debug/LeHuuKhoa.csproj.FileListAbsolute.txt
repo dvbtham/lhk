@@ -284,6 +284,11 @@ D:\dev\projects\lhk\web\LeHuuKhoa\bin\System.Web.Http.WebHost.dll
 D:\dev\projects\lhk\web\LeHuuKhoa\bin\System.Net.Http.Formatting.xml
 D:\dev\projects\lhk\web\LeHuuKhoa\bin\System.Web.Http.xml
 D:\dev\projects\lhk\web\LeHuuKhoa\bin\System.Web.Http.WebHost.xml
+<<<<<<< HEAD
+=======
+D:\dev\projects\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.UpdateMenuToPageRelationship.resources
+D:\dev\projects\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.AddShortDescriptionsColunm.resources
+>>>>>>> dev
 C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\bin\ApplicationInsights.config
 C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\bin\roslyn\csc.exe
 C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\bin\roslyn\csc.exe.config
@@ -431,9 +436,18 @@ C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Mi
 C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.AddMenuTable.resources
 C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.UpdateMenuTable.resources
 C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.UpdateMenuPageTable.resources
+<<<<<<< HEAD
+=======
+C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.UpdateMenuToPageRelationship.resources
+C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.AddShortDescriptionsColunm.resources
+C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.UpdateDb.resources
+>>>>>>> dev
 C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.csproj.GenerateResource.Cache
 C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.csproj.CoreCompileInputs.cache
 C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.dll
 C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.pdb
+<<<<<<< HEAD
 C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.NewDb.resources
 C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.UpdateDb.resources
+=======
+>>>>>>> dev

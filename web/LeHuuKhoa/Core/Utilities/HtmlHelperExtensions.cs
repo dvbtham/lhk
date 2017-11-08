@@ -1,6 +1,5 @@
-﻿using System;
-using System.Linq;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using static System.String;
 
 namespace LeHuuKhoa.Core.Utilities
 {
@@ -12,14 +11,14 @@ namespace LeHuuKhoa.Core.Utilities
             var currentAction = (string)html.ViewContext.RouteData.Values["action"];
             var currentController = (string)html.ViewContext.RouteData.Values["controller"];
 
-            if (String.IsNullOrEmpty(controller))
+            if (IsNullOrEmpty(controller))
                 controller = currentController;
 
-            if (String.IsNullOrEmpty(action))
+            if (IsNullOrEmpty(action))
                 action = currentAction;
 
             return controller == currentController && action == currentAction ?
-                cssClass : String.Empty;
+                cssClass : Empty;
         }
     }
 }

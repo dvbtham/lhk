@@ -3,43 +3,39 @@
     ViewBag.MetaDescription = "Liên hệ, trang thầy khóa, Lê Hữu Khóa";
     ViewBag.MetaKeywords = "liên hệ, lê hữu khóa";
 }
-<section class="container single-post-container">
-    <div class="left">
-        <div class="breadcrumb">
-            <ul>
-                <li><a href="#">Trang chủ >></a> </li>
-                <li> Liên hệ</li>
-            </ul>
+<div class="parallax">
+    <img data-src="" alt="">
+</div>
+<div class="container">
+    <div class="row box">
+        <div class="col-md-9" id="left">
+            <ol class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Library</a></li>
+                <li class="active">Data</li>
+            </ol>
+            <form id="contact" action="" method="post">
+                <p style="color: red">Tôi sẽ liên hệ với bạn nhanh nhất có thể (trong vòng 24h)</p>
+                <fieldset>
+                    <input placeholder="Họ và tên" type="text" tabindex="1" required="" autofocus="">
+                </fieldset>
+                <fieldset>
+                    <input placeholder="Email" type="email" tabindex="2" required="">
+                </fieldset>
+                <fieldset>
+                    <input placeholder="Điện thoại" type="tel" tabindex="3" required="">
+                </fieldset>
+                <fieldset>
+                    <input placeholder="Website của bạn, bắt đầu với http://" type="url" tabindex="4" required="">
+                </fieldset>
+                <fieldset>
+                    <textarea placeholder="Nhập nội dung ..." tabindex="5" required=""></textarea>
+                </fieldset>
+                <fieldset>
+                    <button name="submit" type="submit" id="contact-submit" data-submit="...Đang gửi">Gửi</button>
+                </fieldset>
+            </form>
         </div>
-        <div class="post-list">
-            <article class="single-post ">
-                <div class="header-post">
-                    <p class="time-post"><strong>Thông tin liên hệ</strong></p>
-                    <form id="contact" action="" method="post">
-                        <p style="color: red">Tôi sẽ liên hệ với bạn nhanh nhất có thể (trong vòng 24h)</p>
-
-                        <fieldset>
-                            <input placeholder="Họ và tên" type="text" tabindex="1" required autofocus>
-                        </fieldset>
-                        <fieldset>
-                            <input placeholder="Email" type="email" tabindex="2" required>
-                        </fieldset>
-                        <fieldset>
-                            <input placeholder="Điện thoại" type="tel" tabindex="3" required>
-                        </fieldset>
-                        <fieldset>
-                            <input placeholder="Website của bạn, bắt đầu với http://" type="url" tabindex="4" required>
-                        </fieldset>
-                        <fieldset>
-                            <textarea placeholder="Nhập nội dung ..." tabindex="5" required></textarea>
-                        </fieldset>
-                        <fieldset>
-                            <button name="submit" type="submit" id="contact-submit" data-submit="...Đang gửi">Gửi</button>
-                        </fieldset>
-                    </form>
-                </div>
-            </article>
-        </div>
+        @{Html.RenderAction("Categories", "Category");}
     </div>
-    @{Html.RenderAction("Categories", "Category");}
-</section>
+</diV>

@@ -6,9 +6,18 @@
             ckFinder.selectActionFunction = function (url) {
                 $("#txtImageUrl").val(url);
                 $("#bindingImage").attr("src", url);
-            }
+            };
             ckFinder.popup();
         });
+    $("#contentToggle").on('click', function () {
+        var x = document.getElementById("content");
+        if (x.className === "input-group hide") {
+            $("#content").removeClass("hide");
+        } else {
+            $("#content").addClass("hide");
+        }
+    });
+    
 
     $("#toggleBackgroundImage").on("click",
         function () {
@@ -16,7 +25,7 @@
             ckFinder.selectActionFunction = function (url) {
                 $("#txtBackgroundImage").val(url);
                 $("#bindingBgImage").attr("src", url);
-            }
+            };
             ckFinder.popup();
         });
 
@@ -25,4 +34,8 @@
         {
             customConfig: '/Scripts/config.js'
         });
-})
+    CKEDITOR.replace("txtShortDescription",
+        {
+            customConfig: '/Scripts/config.js'
+        });
+});
