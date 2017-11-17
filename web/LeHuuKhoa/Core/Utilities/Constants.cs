@@ -1,7 +1,9 @@
 ﻿namespace LeHuuKhoa.Core.Utilities
 {
-    public class Constants
+    public static class Constants
     {
-        public static string DefaultPage = "demo";
+        public static int MaxBytes = 20971520;
+        public static string[] AcceptedDocType = { ".pdf", ".pptx", ".ppt", ".ppsx", ".pps" };
+
     }
 }

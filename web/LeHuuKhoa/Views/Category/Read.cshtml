@@ -1,4 +1,4 @@
-﻿@model LeHuuKhoa.Core.Models.PostCategory
+﻿@model LeHuuKhoa.Core.ViewModels.PostCategoryClientViewModel
 
 @{
     ViewBag.Title = Model.Name;
@@ -15,10 +15,25 @@
                 <li><a href="/">Trang chủ</a></li>
                 <li class="active">@Model.Name</li>
             </ol>
-            @Html.Raw(Model.Descriptions)
+            @if (Model.Posts.Count > 0)
+            {
+                <p>Chủ mục có @Model.Posts.Count bài giảng</p>
+                <ul>
+                    @foreach (var item in Model.Posts)
+                    {
+                        <li>
+                            @Ajax.ActionLink(item.Title, "PdfPartialView",
+                                new { postId = item.Id },
+                                new AjaxOptions { UpdateTargetId = "pdfContainer" })
+                        </li>
+                    }
+                </ul>
+
+                <div id="pdfContainer"></div>
+            }
+
         </div>
         @{Html.RenderAction("Categories", "Category");}
     </div>
 </div>
-
 

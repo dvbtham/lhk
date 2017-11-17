@@ -1,4 +1,6 @@
-﻿using LeHuuKhoa.Core.Models;
+﻿using System.Collections.Generic;
+using System.Linq;
+using LeHuuKhoa.Core.Models;
 using LeHuuKhoa.Core.Repositories;
 
 namespace LeHuuKhoa.Persistence.Repositories
@@ -14,6 +16,11 @@ namespace LeHuuKhoa.Persistence.Repositories
         public void Add(File file)
         {
             _context.Files.Add(file);
+        }
+
+        public IList<File> GetFiles()
+        {
+            return _context.Files.ToList();
         }
     }
 }

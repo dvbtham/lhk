@@ -276,25 +276,9 @@
     </Compile>
     <Compile Include="Core\ViewModels\AccountViewModels.cs" />
     <Compile Include="Core\ViewModels\ManageViewModels.cs" />
-    <Compile Include="Persistence\Migrations\201711081251266_InitialDb.cs" />
-    <Compile Include="Persistence\Migrations\201711081251266_InitialDb.Designer.cs">
-      <DependentUpon>201711081251266_InitialDb.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Persistence\Migrations\201711081329488_UpdatePostTable.cs" />
-    <Compile Include="Persistence\Migrations\201711081329488_UpdatePostTable.Designer.cs">
-      <DependentUpon>201711081329488_UpdatePostTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Persistence\Migrations\201711081335529_UpdatePageTable.cs" />
-    <Compile Include="Persistence\Migrations\201711081335529_UpdatePageTable.Designer.cs">
-      <DependentUpon>201711081335529_UpdatePageTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Persistence\Migrations\201711081426078_PostTypeColunm.cs" />
-    <Compile Include="Persistence\Migrations\201711081426078_PostTypeColunm.Designer.cs">
-      <DependentUpon>201711081426078_PostTypeColunm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Persistence\Migrations\201711081528520_UpdateFileTable.cs" />
-    <Compile Include="Persistence\Migrations\201711081528520_UpdateFileTable.Designer.cs">
-      <DependentUpon>201711081528520_UpdateFileTable.cs</DependentUpon>
+    <Compile Include="Persistence\Migrations\201711171125313_InitialDB.cs" />
+    <Compile Include="Persistence\Migrations\201711171125313_InitialDB.Designer.cs">
+      <DependentUpon>201711171125313_InitialDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Persistence\Migrations\Configuration.cs" />
     <Compile Include="Persistence\EntityConfigurations\FileConfiguration.cs" />
@@ -2332,6 +2316,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -2380,6 +2366,7 @@
     <Content Include="Views\Page\Read.cshtml" />
     <Content Include="Views\Shared\_Menu.cshtml" />
     <Content Include="Views\Shared\_StartPageHeader.cshtml" />
+    <Content Include="Views\Category\PdfPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Administrations\Models\" />
@@ -2405,20 +2392,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Persistence\Migrations\201711081251266_InitialDb.resx">
-      <DependentUpon>201711081251266_InitialDb.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Persistence\Migrations\201711081329488_UpdatePostTable.resx">
-      <DependentUpon>201711081329488_UpdatePostTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Persistence\Migrations\201711081335529_UpdatePageTable.resx">
-      <DependentUpon>201711081335529_UpdatePageTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Persistence\Migrations\201711081426078_PostTypeColunm.resx">
-      <DependentUpon>201711081426078_PostTypeColunm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Persistence\Migrations\201711081528520_UpdateFileTable.resx">
-      <DependentUpon>201711081528520_UpdateFileTable.cs</DependentUpon>
+    <EmbeddedResource Include="Persistence\Migrations\201711171125313_InitialDB.resx">
+      <DependentUpon>201711171125313_InitialDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

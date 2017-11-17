@@ -2,6 +2,7 @@
 using System.Linq;
 using LeHuuKhoa.Core.Models;
 using LeHuuKhoa.Core.Repositories;
+using System.Data.Entity;
 
 namespace LeHuuKhoa.Persistence.Repositories
 {
@@ -23,9 +24,9 @@ namespace LeHuuKhoa.Persistence.Repositories
             _context.Categories.Add(postCategory);
         }
 
-        public PostCategory Get(string id)
+        public PostCategory Get(string id, bool include = false)
         {
-            return _context.Categories.SingleOrDefault(x => x.Id == id);
+            return include ? _context.Categories.Include(x => x.Posts).SingleOrDefault(x => x.Id == id) : _context.Categories.SingleOrDefault(x => x.Id == id);
         }
 
 

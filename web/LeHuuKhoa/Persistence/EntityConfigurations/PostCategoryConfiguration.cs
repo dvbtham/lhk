@@ -8,7 +8,7 @@ namespace LeHuuKhoa.Persistence.EntityConfigurations
         public PostCategoryConfiguration()
         {
             HasKey(x => x.Id);
-
+            
             Property(u => u.Id)
                 .IsRequired()
                 .HasMaxLength(100);

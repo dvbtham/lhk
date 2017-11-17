@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq.Expressions;
-using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
-using LeHuuKhoa.Areas.Administrations.Controllers;
 using LeHuuKhoa.Core.Models;
 
 namespace LeHuuKhoa.Core.ViewModels
@@ -55,5 +52,11 @@ namespace LeHuuKhoa.Core.ViewModels
         [IgnoreMap]
         public SelectList Categories { get; set; }
         
+    }
+
+    public class PdfViewModel
+    {
+        public string Path { get; set; }
+        public IList<string> FileName { get; set; } = new List<string>();
     }
 }

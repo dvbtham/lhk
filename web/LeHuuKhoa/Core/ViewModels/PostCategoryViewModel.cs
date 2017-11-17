@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using LeHuuKhoa.Core.Models;
 
 namespace LeHuuKhoa.Core.ViewModels
 {
@@ -26,6 +28,25 @@ namespace LeHuuKhoa.Core.ViewModels
         [Required(ErrorMessage = "Bắt buộc phải nhập Nội dung")]
         [MinLength(5, ErrorMessage = "Nội dung phải nhập ít nhất 5 ký tự")]
         public string Descriptions { get; set; }
+
+    }
+    public class PostCategoryClientViewModel
+    {
+        public string Id { get; set; }
+
+        public string Name { get; set; }
+        
+        public byte DisplayOrder { get; set; }
+        
+        public string ImageUrl { get; set; }
+
+        public string BackgroundImage { get; set; }
+
+        public string ShortDescriptions { get; set; }
+
+        public string Descriptions { get; set; }
+
+        public IList<Post> Posts { get; set; } = new List<Post>();
 
     }
 }

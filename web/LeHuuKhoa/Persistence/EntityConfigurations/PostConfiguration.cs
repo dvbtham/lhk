@@ -10,7 +10,7 @@ namespace LeHuuKhoa.Persistence.EntityConfigurations
         {
             HasKey(x => x.Id);
 
-            HasRequired(x => x.Category).WithMany().HasForeignKey(x => x.CategoryId);
+            HasRequired(x => x.Category).WithMany(x => x.Posts).HasForeignKey(x => x.CategoryId);
 
             Property(u => u.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 

@@ -8,7 +8,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace LeHuuKhoa.Persistence.Migrations
 {
-    internal sealed class Configuration : DbMigrationsConfiguration<LeHuuKhoa.Persistence.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
         public Configuration()
         {

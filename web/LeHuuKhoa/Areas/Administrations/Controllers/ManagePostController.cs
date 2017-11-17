@@ -8,6 +8,7 @@ using LeHuuKhoa.Core;
 using LeHuuKhoa.Core.Models;
 using LeHuuKhoa.Core.ViewModels;
 using Microsoft.AspNet.Identity;
+using Constants = LeHuuKhoa.Core.Utilities.Constants;
 
 namespace LeHuuKhoa.Areas.Administrations.Controllers
 {
@@ -28,7 +29,7 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            var viewModel = new PostViewModel ();
+            var viewModel = new PostViewModel();
             PrepareDropdownList(viewModel);
             return View(viewModel);
         }
@@ -38,7 +39,7 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
         [ValidateInput(false)]
         public ActionResult Create(PostViewModel viewModel, HttpPostedFileBase file)
         {
-            if (!ModelState.IsValid) 
+            if (!ModelState.IsValid)
             {
                 PrepareDropdownList(viewModel);
                 return View(viewModel);
@@ -52,8 +53,27 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
             {
                 if (file != null && file.ContentLength > 0)
                 {
-                    var fileName = Path.GetFileName(file.FileName);
-                    var path = Path.Combine(Server.MapPath("~/Content/user-content"), fileName ?? throw new InvalidOperationException());
+                    if (file.ContentLength > Constants.MaxBytes)
+                    {
+                        SetAlert("Dung lượng file quá lớn so với yêu cầu! Vui lòng chọn file nhỏ hơn 25 mb.", "error");
+                        return View(viewModel);
+                    }
+                    if (Constants.AcceptedDocType.All(f => f.ToLower() != Path.GetExtension(file.FileName)?.ToLower()))
+                    {
+                        PrepareDropdownList(viewModel);
+                        SetAlert("Không hỗ trợ loại file này! Vui lòng chọn file .pdf hoặc .pptx.", "error");
+                        return View("Edit", viewModel);
+                    }
+                    var fileName = Path.GetFileName(file.FileName) ?? "file_" + DateTime.Now.ToString("yyyyMMddhhmmsss");
+                    var files = _unitOfWork.Files.GetFiles();
+                    if (files.Any(x => string.Equals(x.Name.ToLower(), fileName.ToLower(), StringComparison.Ordinal)))
+                    {
+                        PrepareDropdownList(viewModel);
+                        SetAlert("Tệp đã tồn tại.", "error");
+                        return View("Edit", viewModel);
+                    }
+
+                    var path = Path.Combine(Server.MapPath("~/Content/user-content"), fileName);
                     file.SaveAs(path);
                     var fileSave = new Core.Models.File
                     {
@@ -103,17 +123,75 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
                 PrepareDropdownList(viewModel);
                 return View("Edit", viewModel);
             }
-
             var post = _unitOfWork.Posts.Get(viewModel.Id);
+
+            var postFile = new PostFile();
 
             if (post == null) return NotFoundResult();
 
+            try
+            {
+                if (file != null && file.ContentLength > 0)
+                {
+                    if (file.ContentLength > Constants.MaxBytes)
+                    {
+                        PrepareDropdownList(viewModel);
+                        SetAlert("Dung lượng file quá lớn so với yêu cầu! Vui lòng chọn file nhỏ hơn 25 mb.", "error");
+                        return View("Edit", viewModel);
+                    }
+
+                    if (Constants.AcceptedDocType.All(f => f.ToLower() != Path.GetExtension(file.FileName)?.ToLower()))
+                    {
+                        PrepareDropdownList(viewModel);
+                        SetAlert("Không hỗ trợ loại file này! Vui lòng chọn file .pdf hoặc .pptx.", "error");
+                        return View("Edit", viewModel);
+                    }
+
+                    var postFileToDelete = _unitOfWork.PostFiles.GetPostFiles(post.Id);
+                    foreach (var item in postFileToDelete)
+                    {
+                        _unitOfWork.PostFiles.Delete(item);
+                    }
+
+                    var files = _unitOfWork.Files.GetFiles();
+                    
+                    var fileName = Path.GetFileName(file.FileName) ?? "file_"+ DateTime.Now.ToString("yyyyMMddhhmmsss");
+                    if (files.Any(x => string.Equals(x.Name.ToLower(), fileName.ToLower(), StringComparison.Ordinal)))
+                    {
+                        PrepareDropdownList(viewModel);
+                        SetAlert("Tệp đã tồn tại.", "error");
+                        return View("Edit", viewModel);
+                    }
+                    var path = Path.Combine(Server.MapPath("~/Content/user-content"), fileName);
+
+                    file.SaveAs(path);
+                    var fileSave = new Core.Models.File
+                    {
+                        Name = fileName,
+                        FileSize = file.ContentLength,
+                        FileType = FileType.Document
+                    };
+
+                    _unitOfWork.Files.Add(fileSave);
+                    _unitOfWork.Complete();
+                    postFile.FileId = fileSave.Id;
+                    postFile.PostId = post.Id;
+                }
+            }
+            catch
+            {
+                SetAlert("Tải lên tệp không thành công.", "error");
+                PrepareDropdownList(viewModel);
+                return View("Edit", viewModel);
+            }
+
             Mapper.Map(viewModel, post);
-            post.CategoryId = viewModel.CategoryId;
             post.DateUpdated = DateTime.Now;
             post.AuthorId = User.Identity.GetUserId();
 
+            _unitOfWork.PostFiles.Add(ref postFile);
             _unitOfWork.Complete();
+
             SetAlert($"Cập nhật { post.Title } thành công.", "success");
             return RedirectToAction("Index");
         }

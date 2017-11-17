@@ -1,0 +1,11 @@
+﻿@model LeHuuKhoa.Core.ViewModels.PdfViewModel
+@{
+    Layout = null;
+}
+@if (Model != null)
+{
+    foreach (var fileName in Model.FileName)
+    {
+        <embed style="width: 100%; height: 700px; margin-bottom: 20px" src="/Content/user-content/@fileName" type="application/pdf"></embed>
+    }
+}

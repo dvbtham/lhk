@@ -7,7 +7,7 @@ namespace LeHuuKhoa.Core.Repositories
     {
         IEnumerable<PostCategory> GetCategories();
         void Add(PostCategory postCategory);
-        PostCategory Get(string id);
+        PostCategory Get(string id, bool include = false);
         void Delete(PostCategory postCategory);
     }
 }

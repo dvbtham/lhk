@@ -579,9 +579,5 @@ C:\Users\thamd\source\repos\VungKhaLuan\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.cs
 C:\Users\thamd\source\repos\VungKhaLuan\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.dll
 C:\Users\thamd\source\repos\VungKhaLuan\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.pdb
 C:\Users\thamd\source\repos\VungKhaLuan\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.csprojResolveAssemblyReference.cache
-C:\Users\thamd\source\repos\VungKhaLuan\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.InitialDb.resources
+C:\Users\thamd\source\repos\VungKhaLuan\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.InitialDB.resources
 C:\Users\thamd\source\repos\VungKhaLuan\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.csproj.GenerateResource.Cache
-C:\Users\thamd\source\repos\VungKhaLuan\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.UpdatePostTable.resources
-C:\Users\thamd\source\repos\VungKhaLuan\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.UpdatePageTable.resources
-C:\Users\thamd\source\repos\VungKhaLuan\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.PostTypeColunm.resources
-C:\Users\thamd\source\repos\VungKhaLuan\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.UpdateFileTable.resources

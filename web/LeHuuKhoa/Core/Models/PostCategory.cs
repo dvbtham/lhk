@@ -1,4 +1,6 @@
-﻿namespace LeHuuKhoa.Core.Models
+﻿using System.Collections.Generic;
+
+namespace LeHuuKhoa.Core.Models
 {
     public class PostCategory
     {
@@ -15,6 +17,8 @@
         public string ShortDescriptions { get; set; }
 
         public string Descriptions { get; set; }
+
+        public virtual IList<Post> Posts { get; set; } = new List<Post>();
 
         public void Modify(string name, byte displayOrder, string imageUrl, string backgroundImage, string shortDescriptions, string descriptions)
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LeHuuKhoa.Core.Models
 {
@@ -17,7 +18,8 @@ namespace LeHuuKhoa.Core.Models
 
         public string CategoryId { get; set; }
 
-        public PostCategory Category { get; set; }
+        [ForeignKey("CategoryId")]
+        public virtual PostCategory Category { get; set; }
 
         public DateTime DateCreated { get; set; }
 
