@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using AutoMapper;
 using LeHuuKhoa.Core;
 using LeHuuKhoa.Core.Models;
+using LeHuuKhoa.Core.Utilities;
 using LeHuuKhoa.Core.ViewModels;
 using Microsoft.AspNet.Identity;
 using Constants = LeHuuKhoa.Core.Utilities.Constants;
@@ -31,6 +32,7 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
         {
             var viewModel = new PostViewModel();
             PrepareDropdownList(viewModel);
+            ApplyPostType(viewModel);
             return View(viewModel);
         }
 
@@ -42,6 +44,7 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
             if (!ModelState.IsValid)
             {
                 PrepareDropdownList(viewModel);
+                ApplyPostType(viewModel);
                 return View(viewModel);
             }
 
@@ -61,6 +64,7 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
                     if (Constants.AcceptedDocType.All(f => f.ToLower() != Path.GetExtension(file.FileName)?.ToLower()))
                     {
                         PrepareDropdownList(viewModel);
+                        ApplyPostType(viewModel);
                         SetAlert("Không hỗ trợ loại file này! Vui lòng chọn file .pdf hoặc .pptx.", "error");
                         return View("Edit", viewModel);
                     }
@@ -69,6 +73,7 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
                     if (files.Any(x => string.Equals(x.Name.ToLower(), fileName.ToLower(), StringComparison.Ordinal)))
                     {
                         PrepareDropdownList(viewModel);
+                        ApplyPostType(viewModel);
                         SetAlert("Tệp đã tồn tại.", "error");
                         return View("Edit", viewModel);
                     }
@@ -90,6 +95,7 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
             {
                 SetAlert("File upload failed!!", "error");
                 PrepareDropdownList(viewModel);
+                ApplyPostType(viewModel);
                 return View(viewModel);
             }
 
@@ -110,6 +116,7 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
             Mapper.Map(post, postVm);
 
             PrepareDropdownList(postVm);
+            ApplyPostType(postVm);
             return View(postVm);
         }
 
@@ -120,6 +127,7 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
         {
             if (!ModelState.IsValid)
             {
+                ApplyPostType(viewModel);
                 PrepareDropdownList(viewModel);
                 return View("Edit", viewModel);
             }
@@ -135,6 +143,7 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
                 {
                     if (file.ContentLength > Constants.MaxBytes)
                     {
+                        ApplyPostType(viewModel);
                         PrepareDropdownList(viewModel);
                         SetAlert("Dung lượng file quá lớn so với yêu cầu! Vui lòng chọn file nhỏ hơn 25 mb.", "error");
                         return View("Edit", viewModel);
@@ -142,6 +151,7 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
 
                     if (Constants.AcceptedDocType.All(f => f.ToLower() != Path.GetExtension(file.FileName)?.ToLower()))
                     {
+                        ApplyPostType(viewModel);
                         PrepareDropdownList(viewModel);
                         SetAlert("Không hỗ trợ loại file này! Vui lòng chọn file .pdf hoặc .pptx.", "error");
                         return View("Edit", viewModel);
@@ -151,6 +161,7 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
                     foreach (var item in postFileToDelete)
                     {
                         _unitOfWork.PostFiles.Delete(item);
+                        _unitOfWork.Complete();
                     }
 
                     var files = _unitOfWork.Files.GetFiles();
@@ -158,6 +169,7 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
                     var fileName = Path.GetFileName(file.FileName) ?? "file_"+ DateTime.Now.ToString("yyyyMMddhhmmsss");
                     if (files.Any(x => string.Equals(x.Name.ToLower(), fileName.ToLower(), StringComparison.Ordinal)))
                     {
+                        ApplyPostType(viewModel);
                         PrepareDropdownList(viewModel);
                         SetAlert("Tệp đã tồn tại.", "error");
                         return View("Edit", viewModel);
@@ -182,6 +194,7 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
             {
                 SetAlert("Tải lên tệp không thành công.", "error");
                 PrepareDropdownList(viewModel);
+                ApplyPostType(viewModel);
                 return View("Edit", viewModel);
             }
 
@@ -189,7 +202,8 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
             post.DateUpdated = DateTime.Now;
             post.AuthorId = User.Identity.GetUserId();
 
-            _unitOfWork.PostFiles.Add(ref postFile);
+            if (file != null && file.ContentLength > 0)
+                _unitOfWork.PostFiles.Add(ref postFile);
             _unitOfWork.Complete();
 
             SetAlert($"Cập nhật { post.Title } thành công.", "success");
@@ -210,6 +224,13 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
         {
             var categories = _unitOfWork.Categories.GetCategories().OrderBy(x => x.DisplayOrder);
             viewModel.Categories = new SelectList(categories, "Id", "Name");
+        }
+
+        [NonAction]
+        private void ApplyPostType(PostViewModel viewModel)
+        {
+            var data = new PostTypeData().Data;
+            viewModel.PostTypeList = new SelectList(data, "Id", "Name");
         }
     }
 }

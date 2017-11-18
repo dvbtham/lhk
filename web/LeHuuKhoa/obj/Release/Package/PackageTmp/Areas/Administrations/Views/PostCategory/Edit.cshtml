@@ -62,22 +62,10 @@
                     <span class="input-group-addon" data-toggle='tooltip' title="Giới thiệu">
                         <i class="fa fa-book"></i>
                     </span>
-                    @Html.TextAreaFor(x => x.ShortDescriptions, new { @class = "form-control", id = "txtShortDescription", type = "number", placeholder = "Giới thiệu" })
+                    @Html.TextAreaFor(x => x.Descriptions, new { @class = "form-control", id = "txtDescription", type = "number", placeholder = "Giới thiệu" })
                 </div>
                 <br />
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" id="contentToggle"> Soạn nội dung
-                    </label>
-                </div>
-                <br />
-                <div class="input-group hide" id="content">
-                    <span class="input-group-addon" data-toggle='tooltip' title="Nội dung">
-                        <i class="fa fa-book"></i>
-                    </span>
-                    @Html.TextAreaFor(x => x.Descriptions, new { @class = "form-control", id = "txtDescription", type = "number", placeholder = "Nội dung" })
-                </div>
-                <br />
+               
                 <button type="submit" class="btn btn-primary">Lưu</button>
                 <button type="button" onclick="window.location.href='/quan-ly/danh-muc.html'" class="btn btn-danger">Hủy</button>
             </div>

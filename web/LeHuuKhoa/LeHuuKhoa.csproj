@@ -265,6 +265,7 @@
     <Compile Include="Core\Utilities\ExcelManager\WorkSheetNotFoundException.cs" />
     <Compile Include="Core\Utilities\HtmlHelperExtensions.cs" />
     <Compile Include="Core\Utilities\MimeTypes.cs" />
+    <Compile Include="Core\Utilities\PostTypeTemplate.cs" />
     <Compile Include="Core\Utilities\SlugHelper.cs" />
     <Compile Include="Core\ViewModels\CategoryViewModel.cs" />
     <Compile Include="Core\ViewModels\MenuViewModel.cs" />
@@ -1240,6 +1241,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\front\assets\css\jquery.lazyloadxt.spinner.css" />
+    <Content Include="Content\front\assets\css\main.css" />
     <Content Include="Content\front\assets\css\main.min.css" />
     <Content Include="Content\front\assets\css\responsive.css" />
     <Content Include="Content\front\assets\css\style.css" />
@@ -2079,6 +2081,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\admin\controllers\postCategoryController.js" />
+    <Content Include="Scripts\admin\controllers\postController.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -2310,6 +2313,8 @@
     <None Include="Properties\PublishProfiles\LeHuuKhoa20171011081835 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\trangthaykhoa - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\trangthaykhoa - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\vungkhaluan - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\vungkhaluan - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\config.js" />
     <Content Include="Scripts\dataTable-base.js" />
@@ -2367,6 +2372,7 @@
     <Content Include="Views\Shared\_Menu.cshtml" />
     <Content Include="Views\Shared\_StartPageHeader.cshtml" />
     <Content Include="Views\Category\PdfPartialView.cshtml" />
+    <Content Include="Views\Category\ContentPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Administrations\Models\" />

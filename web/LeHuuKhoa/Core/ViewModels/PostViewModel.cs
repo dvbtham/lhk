@@ -45,18 +45,27 @@ namespace LeHuuKhoa.Core.ViewModels
 
         public bool IsDeleted { get; set; } = false;
 
+        [Required(ErrorMessage = "Vui lòng chọn nội dung mẫu")]
         public PostType PostType { get; set; }
 
         public IList<PostFile> Files { get; set; } = new List<PostFile>();
 
         [IgnoreMap]
         public SelectList Categories { get; set; }
-        
+
+        [IgnoreMap]
+        public SelectList PostTypeList { get; set; }
+
     }
 
     public class PdfViewModel
     {
         public string Path { get; set; }
         public IList<string> FileName { get; set; } = new List<string>();
+    }
+
+    public class ContentViewModel
+    {
+        public string Content { get; set; }
     }
 }

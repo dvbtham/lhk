@@ -1,4 +1,5 @@
-﻿@model LeHuuKhoa.Core.ViewModels.PostCategoryClientViewModel
+﻿@using LeHuuKhoa.Core.Models
+@model LeHuuKhoa.Core.ViewModels.PostCategoryClientViewModel
 
 @{
     ViewBag.Title = Model.Name;
@@ -6,6 +7,11 @@
     ViewBag.MetaKeywords = Model.Name.ToLower();
 }
 <div class="parallax">
+    <div class="overlay">
+        <div class="text-content">
+           @Html.Raw(Model.Descriptions)
+        </div>
+    </div>
     <img data-src="@Model.BackgroundImage" alt="@Model.Name">
 </div>
 <div class="container">
@@ -22,14 +28,23 @@
                     @foreach (var item in Model.Posts)
                     {
                         <li>
-                            @Ajax.ActionLink(item.Title, "PdfPartialView",
-                                new { postId = item.Id },
-                                new AjaxOptions { UpdateTargetId = "pdfContainer" })
+                            @if (item.PostType == PostType.File)
+                            {
+                                @Ajax.ActionLink(item.Title, "PdfPartialView",
+                                    new { postId = item.Id },
+                                    new AjaxOptions {UpdateTargetId = "container"})
+                            }
+                            else if (item.PostType == PostType.Content)
+                            {
+                                @Ajax.ActionLink(item.Title, "ContentPartialView",
+                                    new { postId = item.Id },
+                                    new AjaxOptions { UpdateTargetId = "container" })
+                            }
                         </li>
                     }
                 </ul>
 
-                <div id="pdfContainer"></div>
+                <div id="container"></div>
             }
 
         </div>

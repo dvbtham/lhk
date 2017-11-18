@@ -29,11 +29,11 @@ header {
 }
 
     header ul {
-        width: 410px;
+        width: 100%;
+        text-align: right;
         list-style: none;
-        padding: 0px;
-        margin: 0px;
-        float: right;
+        padding: 0;
+        margin: 0;
         z-index: 99;
     }
 
@@ -48,9 +48,13 @@ header {
 
     header ul li {
         display: inline;
-        margin-left: 30px;
+        margin-left: 27px;
         transition: 0.2s ease-out;
     }
+
+        .last-child {
+            margin-right: 20px;
+        }
 
         header ul li:hover, li.active {
             border-bottom: 2px solid #fff;
@@ -98,28 +102,28 @@ header {
     width: 90%;
 }
 
-    .desc-overlay p, .desc-overlay h3, .desc-overlay h2, .desc-overlay h4, .desc-overlay h5, .desc-overlay h1 {
-        color: #fff;
-    }
+.desc-overlay p, .desc-overlay h3, .desc-overlay h2, .desc-overlay h4, .desc-overlay h5, .desc-overlay h1 {
+    color: #fff;
+}
 
-    .desc-overlay h3, .desc-overlay h2, .desc-overlay h4, .desc-overlay h5, .desc-overlay h1 {
-        line-height: 0;
-        padding-bottom: 6px;
-    }
+.desc-overlay h3, .desc-overlay h2, .desc-overlay h4, .desc-overlay h5, .desc-overlay h1 {
+    line-height: 0;
+    padding-bottom: 6px;
+}
 
 .home h3 {
     padding-top: 16px;
 }
 
-    .desc-overlay p {
-        font-size: 12px;
-        text-align: justify;
-        font-style: italic;
-    }
+.desc-overlay p {
+    font-size: 12px;
+    text-align: justify;
+    font-style: italic;
+}
 
-    .desc-overlay h3 {
-        font-family: 'EB Garamond', serif;
-    }
+.desc-overlay h3 {
+    font-family: 'EB Garamond', serif;
+}
 
 .parallax img {
     width: 100%;
@@ -673,5 +677,29 @@ fieldset {
     word-wrap: break-word;
     word-spacing: 3px;
     line-height: 18px;
+    font-size: 15px;
+}
+.overlay{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.text-content{
+    text-align: justify;
+    width: 71%;
+    color: #fff;
+    font-size: 13px;
+    padding-top: 50px;
+    padding-left: 10px;
+    height: 100%;
+}
+.text-content p {
+    font-size: 10px !important;
+    margin: 0 0 6px !important;
+}
+.text-content h4{
+    text-align: center;
     font-size: 15px;
 }

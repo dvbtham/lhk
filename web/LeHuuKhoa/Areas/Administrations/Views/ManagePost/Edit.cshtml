@@ -64,11 +64,8 @@
             </div>
             <div class="col-md-8">
                 <p class="alert alert-info">Soạn nội dung.</p>
-                <select class="form-control" id="selectTemplate">
-                    <option value="">-- Chọn mẫu bài viết -- </option>
-                    <option value="10">Mẫu có sẵn (.pdf)</option>
-                    <option value="20">Nội dung tự soạn online</option>
-                </select>
+                @Html.DropDownListFor(m => m.PostType, new SelectList(Model.PostTypeList, "Value", "Text"), "--- Chọn nội dung mẫu ---", new { @class = "form-control", id = "selectTemplate" })
+
                 <br />
                 <div class="input-group">
                     <span class="input-group-addon" data-toggle='tooltip' title="Giới thiệu">
@@ -93,6 +90,8 @@
                 </div>
 
             </div>
+            
+            <input type="hidden" id="mode" value="edit" />
 
         </div>
         <div class="box-footer">
@@ -105,40 +104,6 @@
 
 @section scripts
 {
-    <script>
-        $(document).ready(function () {
-
-            $("#selectTemplate").on("change",
-                function (e) {
-                    var postType = e.target.value;
-                    var fileBox = $("#fileBox");
-                    var contentBox = $("#contentBox");
-                    if (postType === "10") //file
-                    {
-                        fileBox.removeClass("hide");
-                        contentBox.addClass("hide");
-                        contentBox.val('');
-
-                    } else if (postType === "20") {
-                        contentBox.removeClass("hide");
-                        fileBox.addClass("hide");
-                        file.val('');
-
-                    } else {
-                        contentBox.addClass("hide");
-                        fileBox.addClass("hide");
-                    }
-                });
-
-            CKEDITOR.replace('txtDescription', {
-                customConfig: '/Content/libs/ckeditor/config.js'
-            });
-
-            CKEDITOR.replace('txtContent', {
-                customConfig: '/Content/libs/ckeditor/config.js'
-            });
-
-        })
-    </script>
+    <script src="~/Scripts/admin/controllers/postController.js"></script>
 }
 

@@ -1,10 +1,21 @@
 ﻿@model LeHuuKhoa.Core.ViewModels.PageViewModel
-    
-<div class="section section-header">
+@if (Model != null)
+{
     <div class="parallax">
         <img data-src="@Model.BackgroundImage" alt="@Model.Name">
         <div class="desc-overlay home">
             @Html.Raw(Model.Content)
         </div>
     </div>
-</div>
+}
+else
+{
+    <div class="parallax">
+        <img src="/Content/UserFiles/images/backgroundImages/vkl-min.jpg" alt="Trang thầy khóa, Vùng Khả Luận">
+        <div class="desc-overlay home">
+            <h3>Vùng Khả Luận</h3>
+            <p>Bạn chưa cập nhật nội dung. Vui lòng đi tới trang Admin để cập nhật.</p>
+        </div>
+    </div>
+}
+

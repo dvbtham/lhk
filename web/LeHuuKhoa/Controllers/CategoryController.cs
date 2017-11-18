@@ -41,5 +41,11 @@ namespace LeHuuKhoa.Controllers
             
             return View(pdfVm);
         }
+        public ActionResult ContentPartialView(long postId)
+        {
+            var post = _unitOfWork.Posts.Get(postId);
+            var contentVm = new ContentViewModel{ Content = post.Content};
+            return View(contentVm);
+        }
     }
 }

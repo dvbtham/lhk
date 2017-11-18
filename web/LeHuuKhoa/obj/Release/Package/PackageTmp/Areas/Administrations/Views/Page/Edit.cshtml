@@ -57,6 +57,14 @@
                         @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
                     </div>
                 </div>
+                
+                <div class="input-group" data-toggle='tooltip' title="Đặt nội dung ở trang chủ?">
+                    <span class="checkbox-addon">
+                        @Html.CheckBoxFor(x => x.PinToHomepe, new { id = "PinToHomepe" })
+                    </span>
+                    <label id="PinToHomepe" class="pointer">Đặt nội dung ở trang chủ?</label>
+                </div>
+                <br />
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">

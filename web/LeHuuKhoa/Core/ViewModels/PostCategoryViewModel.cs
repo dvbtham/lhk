@@ -25,7 +25,7 @@ namespace LeHuuKhoa.Core.ViewModels
         
         public string ShortDescriptions { get; set; }
 
-        [Required(ErrorMessage = "Bắt buộc phải nhập Nội dung")]
+        [Required(ErrorMessage = "Bắt buộc phải nhập giới thiệu")]
         [MinLength(5, ErrorMessage = "Nội dung phải nhập ít nhất 5 ký tự")]
         public string Descriptions { get; set; }
 
