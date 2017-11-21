@@ -72,14 +72,11 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
                     var files = _unitOfWork.Files.GetFiles();
                     if (files.Any(x => string.Equals(x.Name.ToLower(), fileName.ToLower(), StringComparison.Ordinal)))
                     {
-                        PrepareDropdownList(viewModel);
-                        ApplyPostType(viewModel);
-                        SetAlert("Tệp đã tồn tại.", "error");
-                        return View("Edit", viewModel);
+                        DeleteFile(fileName);
                     }
 
-                    var path = Path.Combine(Server.MapPath("~/Content/user-content"), fileName);
-                    file.SaveAs(path);
+                   SaveFile(fileName, file);
+
                     var fileSave = new Core.Models.File
                     {
                         Name = fileName,
@@ -91,9 +88,9 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
                     _unitOfWork.PostFiles.Add(post.Id, fileSave.Id);
                 }
             }
-            catch
+            catch(Exception ex)
             {
-                SetAlert("File upload failed!!", "error");
+                SetAlert("Tải tệp lên không thành công!!\t" + ex.Message, "error");
                 PrepareDropdownList(viewModel);
                 ApplyPostType(viewModel);
                 return View(viewModel);
@@ -169,14 +166,11 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
                     var fileName = Path.GetFileName(file.FileName) ?? "file_"+ DateTime.Now.ToString("yyyyMMddhhmmsss");
                     if (files.Any(x => string.Equals(x.Name.ToLower(), fileName.ToLower(), StringComparison.Ordinal)))
                     {
-                        ApplyPostType(viewModel);
-                        PrepareDropdownList(viewModel);
-                        SetAlert("Tệp đã tồn tại.", "error");
-                        return View("Edit", viewModel);
+                        DeleteFile(fileName);
                     }
-                    var path = Path.Combine(Server.MapPath("~/Content/user-content"), fileName);
 
-                    file.SaveAs(path);
+                   SaveFile(fileName, file);
+
                     var fileSave = new Core.Models.File
                     {
                         Name = fileName,
@@ -231,6 +225,21 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
         {
             var data = new PostTypeData().Data;
             viewModel.PostTypeList = new SelectList(data, "Id", "Name");
+        }
+
+        private void SaveFile(string fileName, HttpPostedFileBase file)
+        {
+            var path = Server.MapPath("~/Content");
+            if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+            file.SaveAs(Path.Combine(path, fileName));
+        }
+        private void DeleteFile(string fileName)
+        {
+            var filePath = Path.Combine(Server.MapPath("~/Content"), fileName);
+            if (System.IO.File.Exists(filePath))
+            {
+                System.IO.File.Delete(filePath);
+            }
         }
     }
 }
