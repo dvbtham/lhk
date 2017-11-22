@@ -66,7 +66,7 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
                         PrepareDropdownList(viewModel);
                         ApplyPostType(viewModel);
                         SetAlert("Không hỗ trợ loại file này! Vui lòng chọn file .pdf hoặc .pptx.", "error");
-                        return View("Edit", viewModel);
+                        return View(viewModel);
                     }
                     var fileName = Path.GetFileName(file.FileName) ?? "file_" + DateTime.Now.ToString("yyyyMMddhhmmsss");
                     var files = _unitOfWork.Files.GetFiles();
@@ -88,9 +88,9 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
                     _unitOfWork.PostFiles.Add(post.Id, fileSave.Id);
                 }
             }
-            catch(Exception ex)
+            catch
             {
-                SetAlert("Tải tệp lên không thành công!!\t" + ex.Message, "error");
+                SetAlert("Tải tệp lên không thành công!!", "error");
                 PrepareDropdownList(viewModel);
                 ApplyPostType(viewModel);
                 return View(viewModel);
@@ -213,6 +213,19 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
             return Json(post);
         }
 
+        public PartialViewResult CarouselPartialView(long postId)
+        {
+            var post = _unitOfWork.Posts.Get(postId);
+            var slideVm = new SlideViewModel();
+            var images = post.Images.Split('|');
+            foreach (var path in images)
+            {
+                if (!string.IsNullOrEmpty(path))
+                    slideVm.ImagesPath.Add(path);
+            }
+            return PartialView(slideVm);
+        }
+
         [NonAction]
         private void PrepareDropdownList(PostViewModel viewModel)
         {
@@ -223,8 +236,7 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
         [NonAction]
         private void ApplyPostType(PostViewModel viewModel)
         {
-            var data = new PostTypeData().Data;
-            viewModel.PostTypeList = new SelectList(data, "Id", "Name");
+            viewModel.PostTypeList = new SelectList(new PostTypeData().Data, "Id", "Name");
         }
 
         private void SaveFile(string fileName, HttpPostedFileBase file)

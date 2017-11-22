@@ -29,6 +29,8 @@ namespace LeHuuKhoa.Core.Models
 
         public string MetaDescription { get; set; }
 
+        public string Images { get; set; }
+        
         public string AuthorId { get; set; }
         public ApplicationUser Author { get; set; }
         
@@ -59,7 +61,8 @@ namespace LeHuuKhoa.Core.Models
 
     public enum PostType
     {
-        File = 10,
-        Content = 20
+        Pdf = 10,
+        Content = 20,
+        PowerPoint = 30
     }
 }

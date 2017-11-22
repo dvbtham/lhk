@@ -15,7 +15,8 @@ namespace LeHuuKhoa.Core.Utilities
         {
             Data = new List<PostTypeTemplate>
             {
-                new PostTypeTemplate{ Id = (int)PostType.File, Name = "Nội dung qua tệp" },
+                new PostTypeTemplate{ Id = (int)PostType.Pdf, Name = "Nội dung qua tệp (.pdf)" },
+                new PostTypeTemplate{ Id = (int)PostType.PowerPoint, Name = "Hình ảnh" },
                 new PostTypeTemplate{ Id = (int)PostType.Content, Name = "Nội dung soạn online" }
             };
         }

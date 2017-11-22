@@ -14,8 +14,10 @@
     <link rel="stylesheet" href="/Content/front/assets/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/Content/front/assets/vendor/font-awesome/css/font-awesome.min.css" />
     <link rel="stylesheet" href="/Content/front/assets/css/jquery.lazyloadxt.spinner.css">
-    
+
     <link href="/Content/front/assets/css/main.css" rel="stylesheet" />
+    
+    @RenderSection("styles", required: false)
 
 </head>
 
@@ -72,6 +74,8 @@
     <script src="/Content/front/assets/js/jquery.lazyloadxt.min.js"></script>
     <script src="/Content/front/assets/js/scrollTop.js"></script>
     <script src="/Content/front/assets/js/main.js"></script>
+
+    @RenderSection("scripts", required: false)
 </body>
 
 </html>

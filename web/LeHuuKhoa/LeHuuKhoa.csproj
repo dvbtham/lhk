@@ -281,6 +281,10 @@
     <Compile Include="Persistence\Migrations\201711171125313_InitialDB.Designer.cs">
       <DependentUpon>201711171125313_InitialDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Persistence\Migrations\201711221219319_AddImagesColunmToPost.cs" />
+    <Compile Include="Persistence\Migrations\201711221219319_AddImagesColunmToPost.Designer.cs">
+      <DependentUpon>201711221219319_AddImagesColunmToPost.cs</DependentUpon>
+    </Compile>
     <Compile Include="Persistence\Migrations\Configuration.cs" />
     <Compile Include="Persistence\EntityConfigurations\FileConfiguration.cs" />
     <Compile Include="Persistence\EntityConfigurations\MenuConfiguration.cs" />
@@ -1240,6 +1244,7 @@
     <Content Include="Content\admin\starter.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\carousel.css" />
     <Content Include="Content\front\assets\css\jquery.lazyloadxt.spinner.css" />
     <Content Include="Content\front\assets\css\main.css" />
     <Content Include="Content\front\assets\css\main.min.css" />
@@ -2309,6 +2314,7 @@
     <Content Include="Content\front\assets\vendor\font-awesome\scss\_variables.scss" />
     <Content Include="Areas\Administrations\Views\ManagePost\Create.cshtml" />
     <Content Include="Areas\Administrations\Views\ManagePost\Edit.cshtml" />
+    <Content Include="Areas\Administrations\Views\ManagePost\CarouselPartialView.cshtml" />
     <None Include="Properties\PublishProfiles\LeHuuKhoa20171011081835 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\LeHuuKhoa20171011081835 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\trangthaykhoa - FTP.pubxml" />
@@ -2316,8 +2322,10 @@
     <None Include="Properties\PublishProfiles\vungkhaluan - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\vungkhaluan - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\carousel.min.js" />
     <Content Include="Scripts\config.js" />
     <Content Include="Scripts\dataTable-base.js" />
+    <Content Include="Scripts\hammer.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -2373,6 +2381,7 @@
     <Content Include="Views\Shared\_StartPageHeader.cshtml" />
     <Content Include="Views\Category\PdfPartialView.cshtml" />
     <Content Include="Views\Category\ContentPartialView.cshtml" />
+    <Content Include="Views\Category\SlideContentPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Administrations\Models\" />
@@ -2400,6 +2409,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Persistence\Migrations\201711171125313_InitialDB.resx">
       <DependentUpon>201711171125313_InitialDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Persistence\Migrations\201711221219319_AddImagesColunmToPost.resx">
+      <DependentUpon>201711221219319_AddImagesColunmToPost.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

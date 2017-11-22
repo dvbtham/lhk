@@ -38,14 +38,27 @@ namespace LeHuuKhoa.Controllers
             {
                 pdfVm.FileName.Add(item.File.Name);
             }
-            
+
             return View(pdfVm);
         }
         public ActionResult ContentPartialView(long postId)
         {
             var post = _unitOfWork.Posts.Get(postId);
-            var contentVm = new ContentViewModel{ Content = post.Content};
+            var contentVm = new ContentViewModel { Content = post.Content };
             return View(contentVm);
+        }
+
+        public ActionResult SlideContentPartialView(long postId)
+        {
+            var post = _unitOfWork.Posts.Get(postId);
+            var slideVm = new SlideViewModel();
+            var images = post.Images.Split('|');
+            foreach (var path in images)
+            {
+                if (!string.IsNullOrEmpty(path))
+                    slideVm.ImagesPath.Add(path);
+            }
+            return View(slideVm);
         }
     }
 }

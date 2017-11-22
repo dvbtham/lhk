@@ -1,0 +1,50 @@
+﻿@model LeHuuKhoa.Core.ViewModels.SlideViewModel
+@{
+    Layout = null;
+    <link href="~/Content/carousel.css" rel="stylesheet" />
+}
+
+@if (Model.ImagesPath.Count > 0)
+{
+    <div class="js-carousel">
+        <div class="js-carousel-slides-wrapper">
+            @foreach (var path in Model.ImagesPath)
+            {
+                <div>
+                    <div class="slide-wrapper" style="background-image: url(@path)"></div>
+                </div>
+            }
+        </div>
+        <a href="javascript:void(0)" class="carousel-arrow carousel-arrow-prev js-carousel-prev">previous</a>
+        <a href="javascript:void(0)" class="carousel-arrow carousel-arrow-next js-carousel-next">next</a>
+        <div class="carousel-pagination js-carousel-pagination"></div>
+    </div>
+
+}
+else
+{
+    <p class="text-danger text-center">Không có slide nào!</p>
+}
+
+<script src="~/Scripts/carousel.min.js"></script>
+<script src="~/Scripts/hammer.min.js"></script>
+<script>
+    var myCarousel = document.querySelector('.js-carousel');
+
+    var c = new VNCarousel(myCarousel, {
+
+        // infinite loop
+        circular: true,
+
+        // CSS selector
+        slidesWrapper: '.js-carousel-slides-wrapper',
+        carouselPrev: '.js-carousel-prev',
+        carouselNext: '.js-carousel-next',
+        carouselPagination: '.js-carousel-pagination',
+
+        // // 0 to 20
+        peekingPercentage: 10
+
+    });
+</script>
+

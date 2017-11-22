@@ -3,6 +3,7 @@
     var postTypeVal = $("#selectTemplate").val();
     var fileBox = $("#fileBox");
     var contentBox = $("#contentBox");
+    var imageBox = $("#imageBox");
 
     applyPostType(postTypeVal);
 
@@ -37,6 +38,8 @@
                 $("#fileBox").css("border", "none");
             }, 3000);
             contentBox.addClass("hide");
+            imageBox.addClass("hide");
+            imageBox.val("");
             if (resetContent)
                 CKEDITOR.instances["txtContent"].setData("");
 
@@ -46,14 +49,42 @@
             if (mode === "create")
                 $("#file").prop("required", false);
             fileBox.addClass("hide");
+            imageBox.addClass("hide");
             $("#file").val("");
 
 
-        } else {
+        }
+        else if (postType === "30") {
+            imageBox.removeClass("hide");
+            goToByScroll(imageBox.attr("id"));
+            if (mode === "create")
+                $("#file").prop("required", false);
+            fileBox.addClass("hide");
+            $("#file").val("");
+            contentBox.addClass("hide");
+
+        }
+        else {
             contentBox.addClass("hide");
             fileBox.addClass("hide");
+            imageBox.addClass("hide");
         }
     }
+
+    $("#toggleImages").on("click",
+        function() {
+            var imagesSrc = "";
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (url, file, files) {
+                for (var i = 0; i < files.length; i++) {
+                    imagesSrc += files[i].url + "|";
+                    $("#slideImages").val(imagesSrc);
+                }
+            };
+            
+            finder.popup();
+        });
+    
 
     CKEDITOR.replace("txtDescription", {
         customConfig: "/Scripts/config.js"

@@ -581,3 +581,4 @@ C:\Users\thamd\source\repos\VungKhaLuan\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.pd
 C:\Users\thamd\source\repos\VungKhaLuan\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.csprojResolveAssemblyReference.cache
 C:\Users\thamd\source\repos\VungKhaLuan\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.InitialDB.resources
 C:\Users\thamd\source\repos\VungKhaLuan\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.csproj.GenerateResource.Cache
+C:\Users\thamd\source\repos\VungKhaLuan\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.AddImagesColunmToPost.resources

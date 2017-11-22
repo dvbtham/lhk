@@ -25,6 +25,10 @@ namespace LeHuuKhoa.Persistence.EntityConfigurations
             Property(u => u.Description)
                 .IsOptional();
 
+
+            Property(u => u.Images)
+                .IsOptional();
+
             Property(u => u.Content).IsOptional();
 
             Property(u => u.CategoryId)

@@ -18,7 +18,9 @@ namespace LeHuuKhoa.Core.ViewModels
         public string Slug { get; set; }
         
         public string Description { get; set; }
-        
+
+        public string Images { get; set; }
+
         public string Content { get; set; }
 
         [Required(ErrorMessage = "Bạn phải chọn danh mục bài viết")]
@@ -56,7 +58,7 @@ namespace LeHuuKhoa.Core.ViewModels
         [IgnoreMap]
         public SelectList PostTypeList { get; set; }
 
-    }
+        }
 
     public class PdfViewModel
     {
@@ -67,5 +69,9 @@ namespace LeHuuKhoa.Core.ViewModels
     public class ContentViewModel
     {
         public string Content { get; set; }
+    }
+    public class SlideViewModel
+    {
+        public IList<string> ImagesPath { get; set; } = new List<string>();
     }
 }

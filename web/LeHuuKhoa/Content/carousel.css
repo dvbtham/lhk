@@ -1,0 +1,53 @@
+/* 
+   Changing the styles below can affect the carousel functionality.
+   Proceed with caution.
+*/
+
+.carousel {
+  overflow: hidden;
+}
+
+.carousel-slides-wrapper {
+  display: flex;
+  will-change: transform, transition;
+}
+
+.carousel-pagination-item {
+  position: relative;
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  outline: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  text-indent: -9999px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.carousel-pagination-item:after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: .375rem;
+  height: .375rem;
+  margin-left: -.1875rem;
+  margin-top: -.1875rem;
+  background-color: rgba(0,0,0,.2);
+  border-radius: 50%;
+  transition: .3s;
+}
+
+.carousel-pagination-selected:after {
+  -webkit-transform: scale(1.666);
+  transform: scale(1.666);
+  background-color: rgba(0,0,0,.5);
+}
+
+.no-carousel .carousel-arrow {
+  display: none;
+}
