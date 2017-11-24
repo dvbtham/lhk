@@ -6,6 +6,7 @@ namespace LeHuuKhoa.Core
     {
         IFileRepository Files { get; set; }
         IPostFileRepository PostFiles { get; set; }
+        IFileDownLoadRepository FileDownLoads { get; set; }
         IPostRespository Posts { get; }
         IMenuRepository Menus { get; }
         IPageRepository Pages { get; }

@@ -26,10 +26,10 @@ namespace LeHuuKhoa.Persistence.Repositories
 
         public PostCategory Get(string id, bool include = false)
         {
-            return include ? _context.Categories.Include(x => x.Posts).SingleOrDefault(x => x.Id == id) : _context.Categories.SingleOrDefault(x => x.Id == id);
+            return include ? _context.Categories
+                .SingleOrDefault(x => x.Id == id) : _context.Categories.SingleOrDefault(x => x.Id == id);
         }
-
-
+        
         public void Delete(PostCategory postCategory)
         {
             _context.Categories.Remove(postCategory);

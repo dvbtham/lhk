@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.IO;
+using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
 using LeHuuKhoa.Core;
@@ -48,6 +50,24 @@ namespace LeHuuKhoa.Controllers
             return View(contentVm);
         }
 
+        public FileResult Download(string fileId)
+        {
+            var contentType = string.Empty;
+            var file = _unitOfWork.FileDownLoads.Get(fileId);
+            if (file == null) return null;
+
+            if (file.Name.Contains(".pdf"))
+            {
+                contentType = "application/pdf";
+            }
+
+            else if (file.Name.Contains(".docx"))
+            {
+                contentType = "application/docx";
+            }
+            return File(Path.Combine(Server.MapPath("~/Content"), file.Name), contentType, file.Name);
+        }
+
         public ActionResult SlideContentPartialView(long postId)
         {
             var post = _unitOfWork.Posts.Get(postId);
@@ -58,7 +78,18 @@ namespace LeHuuKhoa.Controllers
                 if (!string.IsNullOrEmpty(path))
                     slideVm.ImagesPath.Add(path);
             }
-            return View(slideVm);
+            slideVm.ImagesPath = slideVm.ImagesPath.Distinct().ToList();
+            return PartialView("CarouselPartialView", slideVm);
+        }
+
+        public ActionResult FileDownLoadPartialView(long postId)
+        {
+            var post = _unitOfWork.Posts.Get(postId, include: true);
+            var viewModel = new DownLoadViewModel
+            {
+                Post = post
+            };
+            return PartialView(viewModel);
         }
     }
 }

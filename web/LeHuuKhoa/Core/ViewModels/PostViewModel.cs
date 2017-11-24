@@ -47,8 +47,13 @@ namespace LeHuuKhoa.Core.ViewModels
 
         public bool IsDeleted { get; set; } = false;
 
+        public string FileDownLoadLink { get; set; }
+
         [Required(ErrorMessage = "Vui lòng chọn nội dung mẫu")]
         public PostType PostType { get; set; }
+
+        public string FileDownLoadId { get; set; }
+        public FileDownLoad FileDownLoad { get; set; }
 
         public IList<PostFile> Files { get; set; } = new List<PostFile>();
 
@@ -73,5 +78,9 @@ namespace LeHuuKhoa.Core.ViewModels
     public class SlideViewModel
     {
         public IList<string> ImagesPath { get; set; } = new List<string>();
+    }
+    public class DownLoadViewModel
+    {
+        public Post Post { get; set; }
     }
 }

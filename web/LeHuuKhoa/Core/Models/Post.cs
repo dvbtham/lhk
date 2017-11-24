@@ -42,7 +42,12 @@ namespace LeHuuKhoa.Core.Models
 
         public bool IsDeleted { get; set; }
 
+        public string FileDownLoadLink { get; set; }
+
         public PostType PostType { get; set; }
+
+        public string FileDownLoadId { get; set; }
+        public FileDownLoad FileDownLoad { get; set; }
 
         public IList<PostFile> Files { get; set; } = new List<PostFile>();
 

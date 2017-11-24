@@ -10,6 +10,8 @@ namespace LeHuuKhoa.Persistence.EntityConfigurations
         {
             HasKey(x => x.Id);
 
+            Property(x => x.FileDownLoadId).IsOptional();
+
             HasRequired(x => x.Category).WithMany(x => x.Posts).HasForeignKey(x => x.CategoryId);
 
             Property(u => u.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
@@ -25,6 +27,8 @@ namespace LeHuuKhoa.Persistence.EntityConfigurations
             Property(u => u.Description)
                 .IsOptional();
 
+            Property(u => u.FileDownLoadLink)
+                .IsOptional();
 
             Property(u => u.Images)
                 .IsOptional();
@@ -42,7 +46,7 @@ namespace LeHuuKhoa.Persistence.EntityConfigurations
             Property(u => u.DateUpdated)
                 .IsOptional()
                 .HasColumnType("datetime2");
-
+            
         }
     }
 }

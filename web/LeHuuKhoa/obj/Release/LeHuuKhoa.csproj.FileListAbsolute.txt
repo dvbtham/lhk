@@ -292,3 +292,4 @@ C:\Users\thamd\source\repos\VungKhaLuan\lhk\web\LeHuuKhoa\obj\Release\LeHuuKhoa.
 C:\Users\thamd\source\repos\VungKhaLuan\lhk\web\LeHuuKhoa\obj\Release\LeHuuKhoa.csproj.CoreCompileInputs.cache
 C:\Users\thamd\source\repos\VungKhaLuan\lhk\web\LeHuuKhoa\obj\Release\LeHuuKhoa.dll
 C:\Users\thamd\source\repos\VungKhaLuan\lhk\web\LeHuuKhoa\obj\Release\LeHuuKhoa.pdb
+C:\Users\thamd\source\repos\VungKhaLuan\lhk\web\LeHuuKhoa\obj\Release\LeHuuKhoa.Persistence.Migrations.AddImagesColunmToPost.resources

@@ -4,6 +4,8 @@
     var fileBox = $("#fileBox");
     var contentBox = $("#contentBox");
     var imageBox = $("#imageBox");
+    var fileDownLoadBox = $("#fileDownLoadBox");
+    var fileDownLoadLinkBox = $("#fileDownLoadLinkBox");
 
     applyPostType(postTypeVal);
 
@@ -28,8 +30,12 @@
         var mode = $("#mode").val();
         if (postType === "10") //file
         {
+            fileDownLoadLinkBox.addClass("hide");
+            $("#fileDownLoadLink").val("");
+            $("#fileDownLoad").val("");
             console.log(mode);
             fileBox.removeClass("hide");
+            fileDownLoadBox.addClass("hide");
             goToByScroll(fileBox.attr("id"));
             if (mode === "create")
                 $("#file").prop("required", true);
@@ -44,6 +50,10 @@
                 CKEDITOR.instances["txtContent"].setData("");
 
         } else if (postType === "20") {
+            $("#fileDownLoad").val("");
+            fileDownLoadLinkBox.addClass("hide");
+            $("#fileDownLoadLink").val("");
+            fileDownLoadBox.removeClass("hide");
             contentBox.removeClass("hide");
             goToByScroll(contentBox.attr("id"));
             if (mode === "create")
@@ -52,22 +62,24 @@
             imageBox.addClass("hide");
             $("#file").val("");
 
-
         }
         else if (postType === "30") {
+            fileDownLoadBox.addClass("hide");
+            $("#fileDownLoad").val("");
             imageBox.removeClass("hide");
+            fileDownLoadLinkBox.removeClass("hide");
             goToByScroll(imageBox.attr("id"));
             if (mode === "create")
                 $("#file").prop("required", false);
             fileBox.addClass("hide");
             $("#file").val("");
             contentBox.addClass("hide");
-
         }
         else {
             contentBox.addClass("hide");
             fileBox.addClass("hide");
             imageBox.addClass("hide");
+            fileDownLoadLinkBox.addClass("hide");
         }
     }
 
@@ -79,9 +91,9 @@
                 for (var i = 0; i < files.length; i++) {
                     imagesSrc += files[i].url + "|";
                     $("#slideImages").val(imagesSrc);
+                    console.log(imagesSrc);
                 }
             };
-            
             finder.popup();
         });
     

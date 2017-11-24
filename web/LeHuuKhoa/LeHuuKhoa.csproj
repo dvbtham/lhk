@@ -243,11 +243,13 @@
     <Compile Include="Core\IUnitOfWork.cs" />
     <Compile Include="Core\Models\ApplicationUser.cs" />
     <Compile Include="Core\Models\File.cs" />
+    <Compile Include="Core\Models\FileDownLoad.cs" />
     <Compile Include="Core\Models\Menu.cs" />
     <Compile Include="Core\Models\Page.cs" />
     <Compile Include="Core\Models\Post.cs" />
     <Compile Include="Core\Models\PostCategory.cs" />
     <Compile Include="Core\Models\PostFile.cs" />
+    <Compile Include="Core\Repositories\IFileDownLoadRepository.cs" />
     <Compile Include="Core\Repositories\IFileRepository.cs" />
     <Compile Include="Core\Repositories\IMenuRepository.cs" />
     <Compile Include="Core\Repositories\IPageRepository.cs" />
@@ -277,13 +279,14 @@
     </Compile>
     <Compile Include="Core\ViewModels\AccountViewModels.cs" />
     <Compile Include="Core\ViewModels\ManageViewModels.cs" />
-    <Compile Include="Persistence\Migrations\201711171125313_InitialDB.cs" />
-    <Compile Include="Persistence\Migrations\201711171125313_InitialDB.Designer.cs">
-      <DependentUpon>201711171125313_InitialDB.cs</DependentUpon>
+    <Compile Include="Persistence\EntityConfigurations\FileDownLoadConfiguration.cs" />
+    <Compile Include="Persistence\Migrations\201711230529555_InitialDb.cs" />
+    <Compile Include="Persistence\Migrations\201711230529555_InitialDb.Designer.cs">
+      <DependentUpon>201711230529555_InitialDb.cs</DependentUpon>
     </Compile>
-    <Compile Include="Persistence\Migrations\201711221219319_AddImagesColunmToPost.cs" />
-    <Compile Include="Persistence\Migrations\201711221219319_AddImagesColunmToPost.Designer.cs">
-      <DependentUpon>201711221219319_AddImagesColunmToPost.cs</DependentUpon>
+    <Compile Include="Persistence\Migrations\201711240333033_AddLinkPostDownLoad.cs" />
+    <Compile Include="Persistence\Migrations\201711240333033_AddLinkPostDownLoad.Designer.cs">
+      <DependentUpon>201711240333033_AddLinkPostDownLoad.cs</DependentUpon>
     </Compile>
     <Compile Include="Persistence\Migrations\Configuration.cs" />
     <Compile Include="Persistence\EntityConfigurations\FileConfiguration.cs" />
@@ -294,6 +297,7 @@
     <Compile Include="Persistence\EntityConfigurations\PostCategoryConfiguration.cs" />
     <Compile Include="Persistence\EntityConfigurations\PostConfiguration.cs" />
     <Compile Include="Persistence\IApplicationDbContext.cs" />
+    <Compile Include="Persistence\Repositories\FileDownLoadRepository.cs" />
     <Compile Include="Persistence\Repositories\FileRepository.cs" />
     <Compile Include="Persistence\Repositories\MenuRepository.cs" />
     <Compile Include="Persistence\Repositories\PageRepository.cs" />
@@ -2314,7 +2318,7 @@
     <Content Include="Content\front\assets\vendor\font-awesome\scss\_variables.scss" />
     <Content Include="Areas\Administrations\Views\ManagePost\Create.cshtml" />
     <Content Include="Areas\Administrations\Views\ManagePost\Edit.cshtml" />
-    <Content Include="Areas\Administrations\Views\ManagePost\CarouselPartialView.cshtml" />
+    <Content Include="Views\Shared\CarouselPartialView.cshtml" />
     <None Include="Properties\PublishProfiles\LeHuuKhoa20171011081835 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\LeHuuKhoa20171011081835 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\trangthaykhoa - FTP.pubxml" />
@@ -2382,6 +2386,7 @@
     <Content Include="Views\Category\PdfPartialView.cshtml" />
     <Content Include="Views\Category\ContentPartialView.cshtml" />
     <Content Include="Views\Category\SlideContentPartialView.cshtml" />
+    <Content Include="Views\Category\FileDownLoadPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Administrations\Models\" />
@@ -2407,11 +2412,11 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Persistence\Migrations\201711171125313_InitialDB.resx">
-      <DependentUpon>201711171125313_InitialDB.cs</DependentUpon>
+    <EmbeddedResource Include="Persistence\Migrations\201711230529555_InitialDb.resx">
+      <DependentUpon>201711230529555_InitialDb.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Persistence\Migrations\201711221219319_AddImagesColunmToPost.resx">
-      <DependentUpon>201711221219319_AddImagesColunmToPost.cs</DependentUpon>
+    <EmbeddedResource Include="Persistence\Migrations\201711240333033_AddLinkPostDownLoad.resx">
+      <DependentUpon>201711240333033_AddLinkPostDownLoad.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

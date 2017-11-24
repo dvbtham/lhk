@@ -39,7 +39,7 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Create(PostViewModel viewModel, HttpPostedFileBase file)
+        public ActionResult Create(PostViewModel viewModel, HttpPostedFileBase file = null, HttpPostedFileBase fileDown = null)
         {
             if (!ModelState.IsValid)
             {
@@ -87,6 +87,42 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
                     _unitOfWork.Complete();
                     _unitOfWork.PostFiles.Add(post.Id, fileSave.Id);
                 }
+
+                if (fileDown != null && fileDown.ContentLength > 0)
+                {
+                    if (fileDown.ContentLength > Constants.MaxBytes)
+                    {
+                        SetAlert("Dung lượng file quá lớn so với yêu cầu! Vui lòng chọn file nhỏ hơn 25 mb.", "error");
+                        return View(viewModel);
+                    }
+                    if (Constants.AcceptedDocsType.All(f => f.ToLower() != Path.GetExtension(fileDown.FileName)?.ToLower()))
+                    {
+                        PrepareDropdownList(viewModel);
+                        ApplyPostType(viewModel);
+                        SetAlert("Không hỗ trợ loại file này! Vui lòng chọn file word hoặc power point.", "error");
+                        return View(viewModel);
+                    }
+
+                    var fileName = Path.GetFileName(fileDown.FileName) ?? "file_" + DateTime.Now.ToString("yyyyMMddhhmmsss");
+                    var files = _unitOfWork.FileDownLoads.GetAll();
+                    if (files.Any(x => string.Equals(x.Name.ToLower(), fileName.ToLower(), StringComparison.Ordinal)))
+                    {
+                        DeleteFile(fileName);
+                    }
+
+                    SaveFile(fileName, fileDown);
+                    var fileDowbLoadSave = new FileDownLoad
+                    {
+                        Id = Guid.NewGuid().ToString(),
+                        Name = fileName,
+                        Caption = fileName,
+                        FileSize = fileDown.ContentLength,
+                        FileType = FileType.Document
+                    };
+                    _unitOfWork.FileDownLoads.Add(fileDowbLoadSave);
+                    _unitOfWork.Complete();
+                    post.FileDownLoadId = fileDowbLoadSave.Id;
+                }
             }
             catch
             {
@@ -120,7 +156,7 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Update(PostViewModel viewModel, HttpPostedFileBase file)
+        public ActionResult Update(PostViewModel viewModel, HttpPostedFileBase file, HttpPostedFileBase fileDown)
         {
             if (!ModelState.IsValid)
             {
@@ -182,6 +218,43 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
                     _unitOfWork.Complete();
                     postFile.FileId = fileSave.Id;
                     postFile.PostId = post.Id;
+                }
+
+                if (fileDown != null && fileDown.ContentLength > 0)
+                {
+                    if (fileDown.ContentLength > Constants.MaxBytes)
+                    {
+                        SetAlert("Dung lượng file quá lớn so với yêu cầu! Vui lòng chọn file nhỏ hơn 25 mb.", "error");
+                        return View("Edit", viewModel);
+                    }
+                    if (Constants.AcceptedDocsType.All(f => f.ToLower() != Path.GetExtension(fileDown.FileName)?.ToLower()))
+                    {
+                        PrepareDropdownList(viewModel);
+                        ApplyPostType(viewModel);
+                        SetAlert("Không hỗ trợ loại file này! Vui lòng chọn file word hoặc power point.", "error");
+                        return View("Edit", viewModel);
+                    }
+
+                    var fileName = Path.GetFileName(fileDown.FileName) ?? "file_" + DateTime.Now.ToString("yyyyMMddhhmmsss");
+                    var files = _unitOfWork.FileDownLoads.GetAll();
+                   
+                    if (files.Any(x => string.Equals(x.Name.ToLower(), fileName.ToLower(), StringComparison.Ordinal)))
+                    {
+                        DeleteFile(fileName);
+                    }
+
+                    SaveFile(fileName, fileDown);
+                    var fileDowbLoadSave = new FileDownLoad
+                    {
+                        Id = Guid.NewGuid().ToString(),
+                        Name = fileName,
+                        Caption = fileName,
+                        FileSize = fileDown.ContentLength,
+                        FileType = FileType.Document
+                    };
+                    _unitOfWork.FileDownLoads.Add(fileDowbLoadSave);
+                    _unitOfWork.Complete();
+                    viewModel.FileDownLoadId = fileDowbLoadSave.Id;
                 }
             }
             catch

@@ -10,6 +10,7 @@ namespace LeHuuKhoa.Persistence
     {
         public IFileRepository Files { get; set; }
         public IPostFileRepository PostFiles { get; set; }
+        public IFileDownLoadRepository FileDownLoads { get; set; }
         public IPostRespository Posts { get; }
         public IMenuRepository Menus { get; }
         public IPageRepository Pages { get; }
@@ -28,6 +29,7 @@ namespace LeHuuKhoa.Persistence
             Menus = new MenuRepository(context);
             PostFiles = new PostFileRepository(context);
             Files = new FileRepository(context);
+            FileDownLoads = new FileDownLoadRepository(context);
         }
         public void Complete()
         {

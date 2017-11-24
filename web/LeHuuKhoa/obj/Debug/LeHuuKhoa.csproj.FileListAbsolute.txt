@@ -579,6 +579,6 @@ C:\Users\thamd\source\repos\VungKhaLuan\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.cs
 C:\Users\thamd\source\repos\VungKhaLuan\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.dll
 C:\Users\thamd\source\repos\VungKhaLuan\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.pdb
 C:\Users\thamd\source\repos\VungKhaLuan\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.csprojResolveAssemblyReference.cache
-C:\Users\thamd\source\repos\VungKhaLuan\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.InitialDB.resources
+C:\Users\thamd\source\repos\VungKhaLuan\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.InitialDb.resources
 C:\Users\thamd\source\repos\VungKhaLuan\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.csproj.GenerateResource.Cache
-C:\Users\thamd\source\repos\VungKhaLuan\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.AddImagesColunmToPost.resources
+C:\Users\thamd\source\repos\VungKhaLuan\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.AddLinkPostDownLoad.resources

@@ -43,5 +43,10 @@ namespace LeHuuKhoa.Persistence.Repositories
         {
             return _context.Posts.SingleOrDefault(x => x.Id == id);
         }
+
+        public Post Get(long id, bool include = false)
+        {
+            return include ? _context.Posts.Include(x => x.FileDownLoad).SingleOrDefault(x => x.Id == id) : _context.Posts.SingleOrDefault(x => x.Id == id);
+        }
     }
 }

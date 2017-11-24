@@ -53,12 +53,10 @@
                     @Html.TextAreaFor(x => x.MetaDescription, new { @class = "form-control", placeholder = "Mô tả về Từ khóa SEO" })
                 </div>
                 <br />
-                <br />
-                <div class="input-group" data-toggle='tooltip' title="Đặt là Bài viết phổ biến?">
-                    <span class="checkbox-addon">
-                        @Html.CheckBoxFor(x => x.IsPopularPost, new { id = "IsPopularPost" })
-                    </span>
-                    <label for="IsPopularPost" class="pointer">Đặt là Bài viết phổ biến?</label>
+                <div class="checkbox">
+                    <label>
+                        @Html.CheckBoxFor(x => x.IsPopularPost, new { title = "Đặt là Bài viết phổ biến?" }) Đặt là Bài viết phổ biến?
+                    </label>
                 </div>
 
             </div>
@@ -86,6 +84,16 @@
                         <i class="fa fa-edit"></i>
                     </span>
                     <input name="file" id="file" type="file" class="form-control" placeholder="Chọn từ mẫu có sẵn (.pdf)" />
+                </div>
+                
+                <div class="input-group" id="imageBox">
+                    <span class="input-group-addon" data-toggle='tooltip' title="Ảnh của slide powerpoint">
+                        <i class="fa fa-picture-o"></i>
+                    </span>
+                    @Html.TextBoxFor(x => x.Images, new { @readonly = "readonly", @class = "form-control", placeholder = "Chọn ảnh bài giảng từ slide, Hãy đảm bảo tên ảnh không chứa ký tự đặc biệt, dấu phẩy.", id = "slideImages" })
+                    <span class="input-group-addon" id="toggleImages" style="cursor: pointer" data-toggle='tooltip' title="Bấm để chọn hình">
+                        ... <i class="fa fa-folder-open-o"></i>
+                    </span>
                 </div>
 
             </div>

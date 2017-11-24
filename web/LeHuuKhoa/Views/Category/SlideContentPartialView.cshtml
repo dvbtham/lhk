@@ -11,7 +11,7 @@
             @foreach (var path in Model.ImagesPath)
             {
                 <div>
-                    <div class="slide-wrapper" style="background-image: url(@path)"></div>
+                    <div class="slide-wrapper" style="background-image: url(@path); background-size: contain;"></div>
                 </div>
             }
         </div>
