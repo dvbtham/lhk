@@ -1,41 +1,59 @@
-﻿@{
+﻿@model LeHuuKhoa.Core.ViewModels.FeedbackViewModel
+@{
     ViewBag.Title = "Liên hệ";
     ViewBag.MetaDescription = "Liên hệ, trang thầy khóa, Lê Hữu Khóa";
     ViewBag.MetaKeywords = "liên hệ, lê hữu khóa";
 }
-<div class="parallax">
-    <img data-src="" alt="">
-</div>
+@section header
+{
+    @{Html.RenderAction("StartPageHeader", "Home");}
+}
 <div class="container">
     <div class="row box">
         <div class="col-md-9" id="left">
             <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Library</a></li>
-                <li class="active">Data</li>
+                <li><a href="/">Trang chủ</a></li>
+                <li class="active">Liên hệ</li>
             </ol>
-            <form id="contact" action="" method="post">
+            @using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { id = "contact" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+                if ((string)ViewBag.Result != null)
+                {
+                    <div class="alert alert-success">
+                        <p class="text-green">@ViewBag.Result</p>
+                    </div>
+                }
                 <p style="color: red">Tôi sẽ liên hệ với bạn nhanh nhất có thể (trong vòng 24h)</p>
                 <fieldset>
-                    <input placeholder="Họ và tên" type="text" tabindex="1" required="" autofocus="">
+                    @Html.TextBoxFor(x => x.Fullname, new { tabindex = "1", placeholder = "Họ và tên" })
                 </fieldset>
                 <fieldset>
-                    <input placeholder="Email" type="email" tabindex="2" required="">
+                    @Html.TextBoxFor(x => x.Email, new { type = "email", tabindex = "2", placeholder = "Email" })
                 </fieldset>
-                <fieldset>
-                    <input placeholder="Điện thoại" type="tel" tabindex="3" required="">
-                </fieldset>
-                <fieldset>
-                    <input placeholder="Website của bạn, bắt đầu với http://" type="url" tabindex="4" required="">
-                </fieldset>
-                <fieldset>
-                    <textarea placeholder="Nhập nội dung ..." tabindex="5" required=""></textarea>
-                </fieldset>
-                <fieldset>
-                    <button name="submit" type="submit" id="contact-submit" data-submit="...Đang gửi">Gửi</button>
-                </fieldset>
-            </form>
+                    <fieldset>
+                        @Html.TextBoxFor(x => x.Phone, new { type = "tel", tabindex = "3", placeholder = "Điện thoại" })
+                    </fieldset>
+                    <fieldset>
+                        @Html.TextBoxFor(x => x.Address, new { tabindex = "4", placeholder = "Địa chỉ" })
+                    </fieldset>
+                    <fieldset>
+                        @Html.TextBoxFor(x => x.Country, new { tabindex = "5", placeholder = "Quốc gia" })
+                    </fieldset>
+                    <fieldset>
+                        @Html.TextBoxFor(x => x.Website, new { type = "url", tabindex = "6", placeholder = "Website của bạn, bắt đầu với http://" })
+                    </fieldset>
+                    <fieldset>
+                        @Html.TextAreaFor(x => x.Message, new { type = "url", tabindex = "7", placeholder = "Nhập nội dung ..." })
+                    </fieldset>
+                    <fieldset>
+                        <button name="submit" type="submit" id="contact-submit" data-submit="...Đang gửi">Gửi</button>
+                    </fieldset>
+            }
+
         </div>
         @{Html.RenderAction("Categories", "Category");}
     </div>
-</diV>
+</div>

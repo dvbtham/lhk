@@ -11,6 +11,8 @@ namespace LeHuuKhoa.Persistence
 
         public DbSet<FileDownLoad> FileDownLoads { get; set; }
 
+        public DbSet<Feedback> Feedbacks { get; set; }
+        
         public DbSet<Post> Posts { get; set; }
 
         public DbSet<File> Files { get; set; }
@@ -42,6 +44,7 @@ namespace LeHuuKhoa.Persistence
             modelBuilder.Configurations.Add(new PostConfiguration());
             modelBuilder.Configurations.Add(new FileConfiguration());
             modelBuilder.Configurations.Add(new PageConfiguration());
+            modelBuilder.Configurations.Add(new FeedbackConfiguration());
             modelBuilder.Configurations.Add(new PostCategoryConfiguration());
             modelBuilder.Configurations.Add(new FileDownLoadConfiguration());
             base.OnModelCreating(modelBuilder);

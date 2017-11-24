@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
@@ -37,6 +38,49 @@ namespace LeHuuKhoa.Controllers
         public ActionResult Contact()
         {
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Contact(FeedbackViewModel model)
+        {
+            if(!ModelState.IsValid) return View(model);
+            var feedback = new Feedback
+            {
+                Fullname = model.Fullname,
+                Email = model.Email,
+                Address = model.Address,
+                Message = model.Message,
+                Country = model.Country,
+                Phone = model.Phone,
+                Website = model.Website
+            };
+            
+            try
+            {
+                _unitOfWork.Feedbacks.Add(feedback);
+                _unitOfWork.Complete();
+
+                var adminEmail = ConfigHelper.GetByKey("AdminEmail");
+                var content = System.IO.File.ReadAllText(Server.MapPath("/Views/Shared/contact.html"));
+
+                content = content.Replace("{{from}}", feedback.Fullname);
+                content = content.Replace("{{email}}", feedback.Email);
+                content = content.Replace("{{phone}}", feedback.Phone);
+                content = content.Replace("{{website}}", feedback.Website);
+                content = content.Replace("{{address}}", feedback.Address);
+                content = content.Replace("{{country}}", feedback.Country);
+                content = content.Replace("{{message}}", feedback.Message);
+
+                MailHelper.SendMail(adminEmail, "Phản hồi từ Blog", content);
+            }
+            catch
+            {
+                return View(model);
+            }
+
+            ViewBag.Result = "Bạn đã gửi thông tin liên hệ thành công";
+            return View(new FeedbackViewModel());
         }
 
         public ActionResult RenderMenu()

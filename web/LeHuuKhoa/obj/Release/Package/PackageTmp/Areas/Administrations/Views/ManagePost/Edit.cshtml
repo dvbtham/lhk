@@ -98,6 +98,25 @@
                     </span>
                 </div>
                 <br />
+                <div class="input-group hide" id="fileDownLoadBox">
+                    <span class="input-group-addon" data-toggle='tooltip' title="Chọn file để tải lên">
+                        <i class="fa fa-file"></i>
+                    </span>
+                    <input name="fileDown" id="fileDownLoad" type="file" class="form-control" placeholder="Tải tệp cho bài viết bày" />
+                </div>
+                <div class="input-group hide" id="fileDownLoadLinkBox">
+                    <span class="input-group-addon" data-toggle='tooltip' title="Link tải về">
+                        <i class="fa fa-download"></i>
+                    </span>
+                    @Html.TextBoxFor(x => x.FileDownLoadLink, new
+                    {
+                        id = "fileDownLoadLink",
+                        @class = "form-control",
+                        type = "url",
+                        placeholder = "Nhập link tải về (drive, dropbox, mediafire,...)"
+                    })
+                </div>
+                <br/>
                 @if (Model.PostType == PostType.PowerPoint)
                 {
                     { Html.RenderAction("CarouselPartialView", "ManagePost", new { postId = Model.Id }); }

@@ -242,6 +242,7 @@
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Core\IUnitOfWork.cs" />
     <Compile Include="Core\Models\ApplicationUser.cs" />
+    <Compile Include="Core\Models\Feedback.cs" />
     <Compile Include="Core\Models\File.cs" />
     <Compile Include="Core\Models\FileDownLoad.cs" />
     <Compile Include="Core\Models\Menu.cs" />
@@ -249,6 +250,7 @@
     <Compile Include="Core\Models\Post.cs" />
     <Compile Include="Core\Models\PostCategory.cs" />
     <Compile Include="Core\Models\PostFile.cs" />
+    <Compile Include="Core\Repositories\IFeedbackRepository.cs" />
     <Compile Include="Core\Repositories\IFileDownLoadRepository.cs" />
     <Compile Include="Core\Repositories\IFileRepository.cs" />
     <Compile Include="Core\Repositories\IMenuRepository.cs" />
@@ -259,6 +261,7 @@
     <Compile Include="Core\Repositories\IUserRepository.cs" />
     <Compile Include="Core\ServiceFactory.cs" />
     <Compile Include="Core\Utilities\AdditionMethods.cs" />
+    <Compile Include="Core\Utilities\ConfigHelper.cs" />
     <Compile Include="Core\Utilities\Constants.cs" />
     <Compile Include="Core\Utilities\ExcelManager\ExportManager.cs" />
     <Compile Include="Core\Utilities\ExcelManager\ImportManager.cs" />
@@ -266,10 +269,12 @@
     <Compile Include="Core\Utilities\ExcelManager\PropertyManager.cs" />
     <Compile Include="Core\Utilities\ExcelManager\WorkSheetNotFoundException.cs" />
     <Compile Include="Core\Utilities\HtmlHelperExtensions.cs" />
+    <Compile Include="Core\Utilities\MailHelper.cs" />
     <Compile Include="Core\Utilities\MimeTypes.cs" />
     <Compile Include="Core\Utilities\PostTypeTemplate.cs" />
     <Compile Include="Core\Utilities\SlugHelper.cs" />
     <Compile Include="Core\ViewModels\CategoryViewModel.cs" />
+    <Compile Include="Core\ViewModels\FeedbackViewModel.cs" />
     <Compile Include="Core\ViewModels\MenuViewModel.cs" />
     <Compile Include="Core\ViewModels\PageViewModel.cs" />
     <Compile Include="Core\ViewModels\PostCategoryViewModel.cs" />
@@ -279,6 +284,7 @@
     </Compile>
     <Compile Include="Core\ViewModels\AccountViewModels.cs" />
     <Compile Include="Core\ViewModels\ManageViewModels.cs" />
+    <Compile Include="Persistence\EntityConfigurations\FeedbackConfiguration.cs" />
     <Compile Include="Persistence\EntityConfigurations\FileDownLoadConfiguration.cs" />
     <Compile Include="Persistence\Migrations\201711230529555_InitialDb.cs" />
     <Compile Include="Persistence\Migrations\201711230529555_InitialDb.Designer.cs">
@@ -287,6 +293,10 @@
     <Compile Include="Persistence\Migrations\201711240333033_AddLinkPostDownLoad.cs" />
     <Compile Include="Persistence\Migrations\201711240333033_AddLinkPostDownLoad.Designer.cs">
       <DependentUpon>201711240333033_AddLinkPostDownLoad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Persistence\Migrations\201711240649443_AddFeedbackTable.cs" />
+    <Compile Include="Persistence\Migrations\201711240649443_AddFeedbackTable.Designer.cs">
+      <DependentUpon>201711240649443_AddFeedbackTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Persistence\Migrations\Configuration.cs" />
     <Compile Include="Persistence\EntityConfigurations\FileConfiguration.cs" />
@@ -297,6 +307,7 @@
     <Compile Include="Persistence\EntityConfigurations\PostCategoryConfiguration.cs" />
     <Compile Include="Persistence\EntityConfigurations\PostConfiguration.cs" />
     <Compile Include="Persistence\IApplicationDbContext.cs" />
+    <Compile Include="Persistence\Repositories\FeedbackRepository.cs" />
     <Compile Include="Persistence\Repositories\FileDownLoadRepository.cs" />
     <Compile Include="Persistence\Repositories\FileRepository.cs" />
     <Compile Include="Persistence\Repositories\MenuRepository.cs" />
@@ -2342,6 +2353,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Views\Shared\contact.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2391,7 +2403,6 @@
   <ItemGroup>
     <Folder Include="Areas\Administrations\Models\" />
     <Folder Include="Areas\Administrations\Views\Base\" />
-    <Folder Include="Content\user-content\" />
     <Folder Include="Content\UserFiles\" />
     <Folder Include="Views\Error\" />
   </ItemGroup>
@@ -2417,6 +2428,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Persistence\Migrations\201711240333033_AddLinkPostDownLoad.resx">
       <DependentUpon>201711240333033_AddLinkPostDownLoad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Persistence\Migrations\201711240649443_AddFeedbackTable.resx">
+      <DependentUpon>201711240649443_AddFeedbackTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

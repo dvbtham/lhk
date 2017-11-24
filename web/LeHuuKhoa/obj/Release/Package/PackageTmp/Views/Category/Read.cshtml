@@ -10,7 +10,7 @@
 <div class="parallax">
     <div class="overlay">
         <div class="text-content">
-           @Html.Raw(Model.Descriptions)
+            @Html.Raw(Model.Descriptions)
         </div>
     </div>
     <img data-src="@Model.BackgroundImage" alt="@Model.Name">
@@ -33,19 +33,21 @@
                             {
                                 @Ajax.ActionLink(item.Title, "PdfPartialView",
                                     new { postId = item.Id },
-                                    new AjaxOptions {UpdateTargetId = "container",  OnBegin = "onAjaxBegin", OnComplete = "onAjaxComplete" })
+                                    new AjaxOptions { UpdateTargetId = "container", OnBegin = "onAjaxBegin", OnComplete = "onAjaxComplete" })
                             }
                             else if (item.PostType == PostType.Content)
                             {
                                 @Ajax.ActionLink(item.Title, "ContentPartialView",
                                     new { postId = item.Id },
                                     new AjaxOptions { UpdateTargetId = "container", OnBegin = "onAjaxBegin", OnComplete = "onAjaxComplete" })
+                                { Html.RenderAction("FileDownLoadPartialView", "Category", new { postId = item.Id }); }
                             }
                             else if (item.PostType == PostType.PowerPoint)
                             {
                                 @Ajax.ActionLink(item.Title, "SlideContentPartialView",
                                     new { postId = item.Id },
                                     new AjaxOptions { UpdateTargetId = "container", OnBegin = "onAjaxBegin", OnComplete = "onAjaxComplete" })
+                                { Html.RenderAction("FileDownLoadPartialView", "Category", new { postId = item.Id }); }
                             }
                         </li>
                     }
@@ -71,6 +73,6 @@
         function onAjaxComplete() {
             $("#loading-container").addClass("hide");
         }
-        
+
     </script>
 }

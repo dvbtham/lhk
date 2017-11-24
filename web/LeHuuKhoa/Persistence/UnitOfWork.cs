@@ -9,6 +9,7 @@ namespace LeHuuKhoa.Persistence
     public class UnitOfWork : IUnitOfWork
     {
         public IFileRepository Files { get; set; }
+        public IFeedbackRepository Feedbacks { get; set; }
         public IPostFileRepository PostFiles { get; set; }
         public IFileDownLoadRepository FileDownLoads { get; set; }
         public IPostRespository Posts { get; }
@@ -30,6 +31,7 @@ namespace LeHuuKhoa.Persistence
             PostFiles = new PostFileRepository(context);
             Files = new FileRepository(context);
             FileDownLoads = new FileDownLoadRepository(context);
+            Feedbacks = new FeedbackRepository(context);
         }
         public void Complete()
         {
