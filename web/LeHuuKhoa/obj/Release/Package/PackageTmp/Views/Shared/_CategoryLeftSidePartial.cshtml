@@ -1,19 +1,23 @@
 ﻿@model IEnumerable<LeHuuKhoa.Core.Models.PostCategory>
-    
+
 <div class="col-md-3" id="right">
-    <div class="input-group">
-        <input type="text" class="form-control" placeholder="Nhập từ khóa để tìm...">
-        <span class="input-group-btn">
-            <button class="btn btn-info" type="button">Tìm!</button>
-        </span>
-    </div>
-    <!-- /input-group -->
+
+    @using (Html.BeginForm("Index", "Search", FormMethod.Get))
+    {
+        <div class="input-group">
+            <input type="text" autocomplete="" value="@ViewBag.SearchKeyword" name="q" required class="form-control" placeholder="Nhập từ khóa để tìm...">
+            <span class="input-group-btn">
+                <button class="btn btn-info" type="submit">Tìm!</button>
+            </span>
+        </div>
+    }
+
     <div class="widget widget_categories">
         <h3 class="widget-title">Danh mục luận</h3>
         <ul>
             @foreach (var cate in Model)
             {
-                <li><a href="@Url.Action("Read","Category", new { id = cate.Id })">@cate.Name</a></li>
+                <li><a href="@Url.Action("Read", "Category", new {id = cate.Id})">@cate.Name</a></li>
             }
         </ul>
     </div>

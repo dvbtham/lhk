@@ -240,6 +240,8 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Core\MvcCustom\PartialCacheAttribute.cs" />
     <Compile Include="Core\IUnitOfWork.cs" />
     <Compile Include="Core\Models\ApplicationUser.cs" />
     <Compile Include="Core\Models\Feedback.cs" />
@@ -2365,7 +2367,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\404.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
@@ -2395,10 +2396,11 @@
     <Content Include="Views\Page\Read.cshtml" />
     <Content Include="Views\Shared\_Menu.cshtml" />
     <Content Include="Views\Shared\_StartPageHeader.cshtml" />
-    <Content Include="Views\Category\PdfPartialView.cshtml" />
-    <Content Include="Views\Category\ContentPartialView.cshtml" />
-    <Content Include="Views\Category\SlideContentPartialView.cshtml" />
-    <Content Include="Views\Category\FileDownLoadPartialView.cshtml" />
+    <Content Include="Views\Shared\PdfPartialView.cshtml" />
+    <Content Include="Views\Shared\ContentPartialView.cshtml" />
+    <Content Include="Views\Shared\SlideContentPartialView.cshtml" />
+    <Content Include="Views\Shared\FileDownLoadPartialView.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Administrations\Models\" />

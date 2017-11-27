@@ -41,7 +41,7 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
             page.PinToHome = viewModel.PinToHomepe;
 
             _unitOfWork.Pages.Add(page);
-            SetAllUnpin(page);
+            SetUnpin(page);
             _unitOfWork.Complete();
 
             SetAlert("Bạn đã thêm " + viewModel.Name + " thành công", "success");
@@ -54,7 +54,7 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
             var page = _unitOfWork.Pages.Get(id);
             if (page == null) return NotFoundResult();
 
-            var pageViewModel = new PageViewModel {PinToHomepe = page.PinToHome};
+            var pageViewModel = new PageViewModel { PinToHomepe = page.PinToHome };
             Mapper.Map(page, pageViewModel);
 
             return View(pageViewModel);
@@ -74,7 +74,7 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
             Mapper.Map(viewModel, page);
             page.PinToHome = viewModel.PinToHomepe;
 
-            SetAllUnpin(page);
+            SetUnpin(page);
             _unitOfWork.Complete();
 
             SetAlert(viewModel.Name + " đã được cập nhật", "success");
@@ -93,12 +93,13 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
         }
 
         [NonAction]
-        private void SetAllUnpin(Page page)
+        private void SetUnpin(Page page)
         {
             var pages = _unitOfWork.Pages.GetPages().Where(x => x.Id != page.Id);
             foreach (var item in pages)
             {
-                item.PinToHome = false;
+                if (page.PinToHome)
+                    item.PinToHome = false;
             }
         }
     }

@@ -164,12 +164,13 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
                 PrepareDropdownList(viewModel);
                 return View("Edit", viewModel);
             }
-            var post = _unitOfWork.Posts.Get(viewModel.Id);
-
+            var post = _unitOfWork.Posts.Get(viewModel.Id, include: true);
+           
             var postFile = new PostFile();
 
             if (post == null) return NotFoundResult();
 
+            viewModel.FileDownLoadId = post.FileDownLoadId;
             try
             {
                 if (file != null && file.ContentLength > 0)

@@ -3,10 +3,10 @@
     ViewBag.Title = "Đăng nhập hệ thống";
 }
 
-<div class="parallax">
-    <img data-src="" alt="">
-
-</div>
+@section header
+{
+    @{Html.RenderAction("StartPageHeader", "Home");}
+}
 <div class="container">
     <div class="row box">
         <div class="col-md-9" id="left">

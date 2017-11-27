@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
 using LeHuuKhoa.Core;
 using LeHuuKhoa.Core.Models;
+using LeHuuKhoa.Core.MvcCustom;
 using LeHuuKhoa.Core.Utilities;
 using LeHuuKhoa.Core.ViewModels;
 
@@ -23,18 +23,16 @@ namespace LeHuuKhoa.Controllers
             return View(categories);
         }
 
-        public ActionResult StartPageHeader()
+        [PartialCache("Cache15Min")]
+        public PartialViewResult StartPageHeader()
         {
+            var startPageImage = ConfigHelper.GetByKey("StartPageImage");
+            ViewBag.StartPageImage = startPageImage;
             var page = _unitOfWork.Pages.GetForHomePage();
             var viewModel = Mapper.Map<Page, PageViewModel>(page);
             return PartialView("_StartPageHeader", viewModel);
         }
-
-        public ActionResult About()
-        {
-            return View();
-        }
-
+        
         public ActionResult Contact()
         {
             return View();
@@ -83,6 +81,7 @@ namespace LeHuuKhoa.Controllers
             return View(new FeedbackViewModel());
         }
 
+        [PartialCache("Cache15Min")]
         public ActionResult RenderMenu()
         {
             var menus = _unitOfWork.Menus.GetMenus();

@@ -1,0 +1,74 @@
+﻿@using LeHuuKhoa.Core.Models
+@model IEnumerable<Post>
+@{
+    ViewBag.Title = "tìm kiếm cho \"" + ViewBag.SearchKeyword + "\"";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{ Html.RenderAction("StartPageHeader", "Home"); }
+
+<div class="container">
+    <div class="row box">
+        <div class="col-md-9" id="left">
+            <ol class="breadcrumb">
+                <li><a href="/">Trang chủ</a></li>
+                <li class="active">@ViewBag.Title</li>
+            </ol>
+            @if (Model.Any())
+            {
+                <p>Có @Model.Count() <strong> @ViewBag.Title</strong></p>
+                <ul>
+                    @foreach (var item in Model)
+                    {
+                        <li>
+                            @if (item.PostType == PostType.Pdf)
+                            {
+                                @Ajax.ActionLink(item.Title, "PdfPartialView",
+                                    new { postId = item.Id, controller = "Category" },
+                                    new AjaxOptions { UpdateTargetId = "container", OnBegin = "onAjaxBegin", OnComplete = "onAjaxComplete" })
+                            }
+                            else if (item.PostType == PostType.Content)
+                            {
+                                @Ajax.ActionLink(item.Title, "ContentPartialView",
+                                    new { postId = item.Id, controller = "Category" },
+                                    new AjaxOptions { UpdateTargetId = "container", OnBegin = "onAjaxBegin", OnComplete = "onAjaxComplete" })
+                                { Html.RenderAction("FileDownLoadPartialView", "Category", new { postId = item.Id }); }
+                            }
+                            else if (item.PostType == PostType.PowerPoint)
+                            {
+                                @Ajax.ActionLink(item.Title, "SlideContentPartialView",
+                                    new { postId = item.Id, controller = "Category" },
+                                    new AjaxOptions { UpdateTargetId = "container", OnBegin = "onAjaxBegin", OnComplete = "onAjaxComplete" })
+                                { Html.RenderAction("FileDownLoadPartialView", "Category", new { postId = item.Id }); }
+                            }
+                        </li>
+                    }
+                </ul>
+
+                <div id="container"></div>
+                <div id="loading-container" class="hide">
+                    <i class="fa fa-spin fa-spinner"></i> Loading...
+                </div>
+            }
+
+        </div>
+        @{Html.RenderAction("Categories", "Category");}
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+        function onAjaxBegin() {
+            $("#loading-container").removeClass("hide");
+        }
+        function onAjaxComplete() {
+            $("#loading-container").addClass("hide");
+        }
+
+    </script>
+}
+
+
+
+

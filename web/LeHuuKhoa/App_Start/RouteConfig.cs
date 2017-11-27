@@ -31,6 +31,13 @@ namespace LeHuuKhoa
             );
 
             routes.MapRoute(
+                "Search",
+                "tim-kiem.html",
+                new { controller = "Search", action = "Index", q = UrlParameter.Optional },
+                new[] { "LeHuuKhoa.Controllers" }
+            );
+
+            routes.MapRoute(
                 "Login",
                 "dang-nhap.html",
                 new { controller = "Account", action = "Login", id = UrlParameter.Optional },
