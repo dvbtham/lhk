@@ -1,0 +1,135 @@
+﻿@model LeHuuKhoa.Core.ViewModels.UserCreateViewModel
+
+@{
+    ViewBag.AdminTitle = "Thêm mới thành viên";
+    Layout = "~/Areas/Administrations/Views/Shared/_Layout.cshtml";
+}
+
+@section breadcrumb
+{
+    <section class="content-header">
+        <h1>
+            @ViewBag.AdminTitle
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="@Url.Action("Index", "PostCategory", new { area = "Administrations" })"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+            <li class="active">@ViewBag.AdminTitle</li>
+        </ol>
+    </section>
+}
+
+<div class="box">
+    <div class="box-body ">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>Thông tin cá nhân</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @type = "email", @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(model => model.ConfirmPassword,new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Ảnh đại diện</label>
+                    <div class="col-sm-10">
+                        <div class="input-group">
+                            @Html.TextBoxFor(x => x.ImageUrl, new {@class = "form-control", id = "inputImage", placeholder = "Ảnh đại diện"})
+                            <span class="input-group-addon" style="cursor: pointer" id="chooseImage">
+                                <i class="fa fa-folder"></i> ...
+                            </span>
+                        </div>
+                        @Html.ValidationMessageFor(x => x.ImageUrl, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Birthday, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { pattern = @"\d{1,2}/\d{1,2}/\d{4}", title="Vui lòng nhập ngày theo định dạng dd/mm/yyyy", @class = "form-control datepicker" } })
+                        @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Giới tính</label>
+
+                    <div class="col-sm-10">
+                        <label class="radio-inline">
+                            @Html.RadioButtonFor(x => x.Gender, "Nam", new {@checked = true}) Nam
+                        </label>
+                        <label class="radio-inline">
+                            @Html.RadioButtonFor(x => x.Gender, "Nữ", new {}) Nữ
+                        </label>
+                        <label class="radio-inline">
+                            @Html.RadioButtonFor(x => x.Gender, "Khác", new {}) Khác
+                        </label>
+                        @Html.ValidationMessageFor(x => x.Gender, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { title = "Chỉ nhập số", pattern = @"\d{1, 20}", @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Lưu lại" class="btn btn-success" />
+                        <a href="@Url.Action("Index")" class="btn btn-danger">Hủy</a>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $("#chooseImage").on("click",
+                function() {
+                    var finder = new CKFinder();
+                    finder.selectActionFunction = function(url) {
+                        $("#inputImage").val(url);
+                        $(".profile-user-img").prop("src", url);
+                    }
+                    finder.popup();
+                });
+        })
+    </script>
+}

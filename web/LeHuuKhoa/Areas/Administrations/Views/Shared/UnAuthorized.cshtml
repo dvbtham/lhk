@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.AdminTitle = "Không có quyền truy cập";
+    Layout = "~/Areas/Administrations/Views/Shared/_Layout.cshtml";
+}
+
+@section breadcrumb
+{
+    <section class="content-header">
+        <h1>
+           Lỗi 401
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="@Url.Action("Index", "PostCategory", new { area = "Administrations" })"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+            <li class="active">@ViewBag.AdminTitle</li>
+        </ol>
+    </section>
+}
+<div class="box">
+    <div class="box-header">
+        <h4 class="text-danger">
+            <i class="fa fa-warning"></i>    Không có quyền truy cập.
+        </h4>
+    </div>
+    <div class="box-body table-responsive">
+        <p>Rất tiếc! Bạn đang cố gắng truy cập vào trang bạn không được phép, Vui lòng liên hệ với Ban quản trị hệ thống để cấp quyền.</p>
+    </div>
+    <!-- /.box-body -->
+</div>
+
+

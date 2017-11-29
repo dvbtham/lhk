@@ -4,5 +4,5 @@
  * Licensed under MIT */
 
 .lazy-hidden {
-    background: #eee url('../img/loading.gif') no-repeat 50% 50%;
+    background: #eee url('/Content/front/assets/img/loading.gif') no-repeat 50% 50%;
 }

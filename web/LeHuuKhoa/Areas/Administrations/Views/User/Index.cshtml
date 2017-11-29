@@ -19,55 +19,69 @@
     </section>
 }
 <div class="box">
+    <div class="box-header">
+        <a href="@Url.Action("Create")" class="btn btn-info btn-sm">
+            <i class="fa fa-plus"></i> Thêm mới Thành Viên
+        </a>
+    </div>
     <div class="box-body table-responsive">
         <table class="table table-bordered table-striped">
             <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Name)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Email)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ImageUrl)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Birthday)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Gender)
-                    </th>
-                    <th></th>
-                </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ImageUrl)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Birthday)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Gender)
+                </th>
+                <th>Quyền hiện có</th>
+                <th></th>
+            </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Email)
-                        </td>
-                        <td>
-                            <img width="80" src="@item.ImageUrl" alt="@item.Name" />
-                        </td>
-                        <td>
-                            @{
-                                var birthday = item.Birthday.ToShortDateString();
-                            }
-                            @Html.DisplayFor(x => birthday)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Gender)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Sửa", "Edit", new { id = User.Identity.GetUserId() })
-                        </td>
-                    </tr>
-                                }
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        <img width="80" src="@item.ImageUrl" alt="@item.Name"/>
+                    </td>
+                    <td>
+                        @{
+                            var birthday = item.Birthday.ToShortDateString();
+                        }
+                        @Html.DisplayFor(x => birthday)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Gender)
+                    </td>
+                    <td>
+                        @foreach (var role in item.MyRoles)
+                        {
+                            <label class="label label-success">@role</label>
+                        }
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Edit", "User", new {id = item.Id})">
+                            <i class="fa fa-eye"></i> Xem chi tiết
+                        </a>
+                    </td>
+                </tr>
+            }
             </tbody>
         </table>
     </div>

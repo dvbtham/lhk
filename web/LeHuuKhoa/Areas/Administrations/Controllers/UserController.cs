@@ -5,7 +5,9 @@ using System.Web.Mvc;
 using LeHuuKhoa.Core;
 using LeHuuKhoa.Core.Models;
 using LeHuuKhoa.Core.ViewModels;
+using LeHuuKhoa.Persistence;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 
 namespace LeHuuKhoa.Areas.Administrations.Controllers
@@ -26,8 +28,7 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
             UserManager = userManager;
             SignInManager = signInManager;
         }
-
-
+        
         public ApplicationSignInManager SignInManager
         {
             get => _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
@@ -39,8 +40,7 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
             get => _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
             private set => _userManager = value;
         }
-
-
+        
         public ActionResult Index()
         {
             var users = _unitOfWork.ApplicationUsers.GetUsers();
@@ -51,13 +51,53 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
                 Birthday = user.Birthday,
                 Gender = user.Gender,
                 ImageUrl = user.ImageUrl,
-                Email = user.Email
+                Email = user.Email,
+                MyRoles = UserManager.GetRoles(user.Id).ToList()
             }).ToList();
             return View(userViewModels);
         }
 
+        [AdminAuthorize(Roles = "Admin")]
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AdminAuthorize(Roles = "Admin")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Create(UserCreateViewModel viewModel)
+        {
+            if (!ModelState.IsValid) return View(viewModel);
+
+            var user = new ApplicationUser
+            {
+                UserName = viewModel.Email,
+                Email = viewModel.Email,
+                EmailConfirmed = true,
+                ImageUrl = viewModel.ImageUrl,
+                Birthday = viewModel.Birthday,
+                Gender = viewModel.Gender,
+                Name = viewModel.Name,
+                PhoneNumber = viewModel.PhoneNumber
+            };
+            
+            var result = await UserManager.CreateAsync(user, viewModel.Password);
+            if (result.Succeeded)
+            {
+                await UserManager.AddToRolesAsync(user.Id, "Mod");
+                SetAlert("Bạn đã thêm một thành viên.", "success");
+                return RedirectToAction("Index", "User");
+            }
+
+            AddErrors(result);
+
+            return View(viewModel);
+        }
+        
         public ActionResult Edit(string id)
         {
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
             var user = _unitOfWork.ApplicationUsers.Get(id);
             if (user == null) return NotFoundResult();
             var userVm = new UserViewModel
@@ -67,12 +107,15 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
                 Email = user.Email,
                 Birthday = user.Birthday,
                 Gender = user.Gender,
-                ImageUrl = user.ImageUrl
+                ImageUrl = user.ImageUrl,
+                AllRoles = roleManager.Roles.ToList(),
+                MyRoles = UserManager.GetRoles(user.Id).ToList()
             };
             return View(userVm);
         }
 
         [HttpPost]
+        [AdminAuthorize(Roles = "Admin")]
         public ActionResult Update(UserViewModel viewModel)
         {
             if (!ModelState.IsValid)
@@ -115,6 +158,46 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
             SetAlert("Mật khẩu đã được thay đổi", "success");
             return RedirectToAction("Edit", "User", new { id = User.Identity.GetUserId() });
         }
+
+        [HttpPost]
+        [AdminAuthorize(Roles = "Admin")]
+        public async Task<JsonResult> UpdateRole(string role, string userId)
+        {
+            try
+            {
+                var userRoles = await UserManager.GetRolesAsync(userId);
+
+                if (userRoles.Contains(role))
+                {
+                    var res = await UserManager.RemoveFromRoleAsync(userId, role);
+                    if (res.Succeeded)
+                        SetAlert("Hủy quyền " + role + " thành công", "warning");
+                    else
+                        SetAlert("Hủy quyền " + role + " không thành công", "error");
+                }
+                else
+                {
+                    var res = await UserManager.AddToRoleAsync(userId, role);
+                    if (res.Succeeded)
+                        SetAlert("Cấp quyền " + role + " thành công", "success");
+                    else
+                        SetAlert("Cấp quyền " + role + " không thành công", "error");
+                }
+
+                return Json(new
+                {
+                    status = true
+                });
+            }
+            catch
+            {
+                return Json(new
+                {
+                    status = false
+                });
+            }
+        }
+
         private void AddErrors(IdentityResult result)
         {
             foreach (var error in result.Errors)

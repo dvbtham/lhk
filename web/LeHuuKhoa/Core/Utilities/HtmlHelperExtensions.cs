@@ -7,18 +7,16 @@ namespace LeHuuKhoa.Core.Utilities
     {
         public static string IsSelected(this HtmlHelper html, string controller = null, string action = null)
         {
-            const string cssClass = "active";
+            var cssClass = "";
             var currentAction = (string)html.ViewContext.RouteData.Values["action"];
             var currentController = (string)html.ViewContext.RouteData.Values["controller"];
 
-            if (IsNullOrEmpty(controller))
-                controller = currentController;
+            if (currentController == controller && currentAction == action)
+            {
+                cssClass = "active";
+            }
 
-            if (IsNullOrEmpty(action))
-                action = currentAction;
-
-            return controller == currentController && action == currentAction ?
-                cssClass : Empty;
+            return cssClass;
         }
     }
 }

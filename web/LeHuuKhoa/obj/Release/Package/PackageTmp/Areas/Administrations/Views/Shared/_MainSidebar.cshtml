@@ -1,18 +1,9 @@
-﻿<aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
+﻿@using LeHuuKhoa.Areas.Administrations.Models
+<aside class="main-sidebar">
     <section class="sidebar">
-        <!-- Sidebar user panel -->
-        <div class="user-panel">
-            <div class="pull-left image">
-                <img src="@ViewData["UserAvatar"]" class="img-circle">
-            </div>
-            <div class="pull-left info">
-                <p>@ViewData["Name"]</p>
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-            </div>
-        </div>
-
-        <!-- sidebar menu: : style can be found in sidebar.less -->
+        
+        @{Html.RenderAction("UserProfile","System", new { zone = AdminZone.Sidebar });}
+        
         <ul class="sidebar-menu">
             <li class="header">MENU CHÍNH</li>
             <li>
@@ -23,6 +14,11 @@
             <li>
                 <a href="@Url.Action("Index","ManagePost", new { area = "Administrations" })">
                     <i class="fa fa-book"></i> <span>Quản lý Bài viết</span>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index","User", new { area = "Administrations" })">
+                    <i class="fa fa-users"></i> <span>Quản lý Thành viên</span>
                 </a>
             </li>
             <li>

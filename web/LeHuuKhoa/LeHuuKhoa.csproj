@@ -226,13 +226,16 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Administrations\AdminAuthorize.cs" />
     <Compile Include="Areas\Administrations\AdministrationsAreaRegistration.cs" />
     <Compile Include="Areas\Administrations\Controllers\BaseController.cs" />
     <Compile Include="Areas\Administrations\Controllers\MenuController.cs" />
     <Compile Include="Areas\Administrations\Controllers\PageController.cs" />
     <Compile Include="Areas\Administrations\Controllers\PostCategoryController.cs" />
     <Compile Include="Areas\Administrations\Controllers\ManagePostController.cs" />
+    <Compile Include="Areas\Administrations\Controllers\SystemController.cs" />
     <Compile Include="Areas\Administrations\Controllers\UserController.cs" />
+    <Compile Include="Areas\Administrations\Models\UserNavbarViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
@@ -2332,6 +2335,9 @@
     <Content Include="Areas\Administrations\Views\ManagePost\Create.cshtml" />
     <Content Include="Areas\Administrations\Views\ManagePost\Edit.cshtml" />
     <Content Include="Views\Shared\CarouselPartialView.cshtml" />
+    <Content Include="Areas\Administrations\Views\User\Create.cshtml" />
+    <Content Include="Areas\Administrations\Views\Shared\UnAuthorized.cshtml" />
+    <Content Include="Areas\Administrations\Views\System\UserProfile.cshtml" />
     <None Include="Properties\PublishProfiles\LeHuuKhoa20171011081835 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\LeHuuKhoa20171011081835 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\trangthaykhoa - FTP.pubxml" />
@@ -2403,7 +2409,6 @@
     <Content Include="Views\Search\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Administrations\Models\" />
     <Folder Include="Areas\Administrations\Views\Base\" />
     <Folder Include="Content\UserFiles\" />
     <Folder Include="Views\Error\" />

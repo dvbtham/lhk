@@ -11,27 +11,14 @@
     <meta name="keywords" content="@ViewBag.MetaKeywords">
     <link rel="shortcut icon" href="/favicon.ico" title="Favicon" />
 
-    <link rel="stylesheet" href="/Content/front/assets/vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/Content/front/assets/vendor/font-awesome/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="/Content/front/assets/css/jquery.lazyloadxt.spinner.css">
+    @Styles.Render("~/front/styles")
 
-    <link href="/Content/front/assets/css/main.css" rel="stylesheet" />
-    
     @RenderSection("styles", required: false)
 
 </head>
 
 <body>
-    <div id="fb-root"></div>
-    <script>
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=1964460460505464";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
+
     <header>
         <nav class="navbar navbar-default raise-navbar">
             <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -41,12 +28,19 @@
             </a>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="@Html.IsSelected(action: "Index")"><a href="/">trang chủ</a></li>
+                    <li class="@Html.IsSelected(action: "Index", controller: "Home" )"><a href="/">trang chủ</a></li>
                     @{Html.RenderAction("RenderMenu", "Home");}
-                    <li class="@Html.IsSelected(action: "Contact")"><a href="@Url.Action("Contact", "Home")">liên hệ</a></li>
-                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    <li class="@Html.IsSelected(action: "Contact", controller: "Home")"><a href="@Url.Action("Contact", "Home")">liên hệ</a></li>
+                    @if (User.Identity.IsAuthenticated && (User.IsInRole("Admin") || User.IsInRole("Mod")))
                     {
-                        <li class="last-child" ,><a href="@Url.Action("Index", "PostCategory", new { area = "Administrations"})">admin</a></li>
+                        <li class="last-child"><a href="@Url.Action("Index", "PostCategory", new { area = "Administrations"})">admin</a></li>
+                        <li title="Đăng xuất">
+                            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <a href="javascript:document.getElementById('logoutForm').submit()" style="color: #fff; line-height: 34px;"><i class="fa fa-sign-out"></i></a>
+                            }
+                        </li>
                     }
                     else
                     {
@@ -67,14 +61,18 @@
     </div>
 
     <footer></footer>
-    <!-- core js files -->
-    <script src="/Content/front/assets/js/jquery.min.js" type="text/javascript"></script>
-    <script src="/Content/front/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
-    <script src="/Content/front/assets/js/jquery.lazyloadxt.min.js"></script>
-    <script src="/Content/front/assets/js/scrollTop.js"></script>
-    <script src="/Content/front/assets/js/main.js"></script>
-
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/front/scripts")
+    <div id="fb-root"></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=1964460460505464";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
     @RenderSection("scripts", required: false)
 </body>
 

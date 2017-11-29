@@ -19,13 +19,20 @@ namespace LeHuuKhoa
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+            bundles.Add(new ScriptBundle("~/front/scripts").Include(
+                      "~/Content/front/assets/vendor/bootstrap/js/bootstrap.min.js",
+                      "~/Scripts/jquery.unobtrusive-ajax.js",
+                      "~/Content/front/assets/js/jquery.lazyloadxt.min.js",
+                      "~/Content/front/assets/js/scrollTop.js",
+                      "~/Content/front/assets/js/main.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/front/styles").Include(
+                      "~/Content/front/assets/vendor/bootstrap/css/bootstrap.min.css",
+                      "~/Content/front/assets/css/jquery.lazyloadxt.spinner.css",
+                      "~/Content/front/assets/css/main.css")
+                .Include("~/Content/front/assets/vendor/font-awesome/css/font-awesome.min.css", new CssRewriteUrlTransform()));
+
+            BundleTable.EnableOptimizations = true;
         }
     }
 }

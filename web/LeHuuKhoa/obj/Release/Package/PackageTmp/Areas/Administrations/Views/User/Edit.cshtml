@@ -21,22 +21,24 @@
 
 <!-- Main content -->
 <section class="content">
-
     <div class="row">
-
         <!-- /.col -->
         <div class="col-md-12">
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#info" data-toggle="tab" aria-expanded="true">Thông tin</a></li>
-                    <li><a href="#settings" data-toggle="tab" aria-expanded="false">Cài đặt</a></li>
+                    <li><a href="#settings" data-toggle="tab" aria-expanded="false">Chỉnh sửa thông tin</a></li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li><a href="#permissions" data-toggle="tab" aria-expanded="false">Cấp quyền</a></li>
+                    }
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="info">
 
-                        <img class="profile-user-img img-responsive img-circle" src="@ViewData["UserAvatar"]" />
+                        <img class="profile-user-img img-responsive img-circle" src="@Model.ImageUrl" />
 
-                        <h3 class="profile-username text-center">@ViewData["Name"]</h3>
+                        <h3 class="profile-username text-center">@Model.Name</h3>
 
                         <p class="text-muted text-center">
                             <strong>Email:</strong>&nbsp; @Model.Email
@@ -68,7 +70,7 @@
                                 <label class="col-sm-2 control-label">Ngày sinh</label>
 
                                 <div class="col-sm-10">
-                                    @Html.TextBoxFor(x => x.Birthday, "{0:dd/MM/yyyy}", new {@class = "form-control", id = "inputName", placeholder = "Ngày sinh"})
+                                    @Html.TextBoxFor(x => x.Birthday, "{0:dd/MM/yyyy}", new {@class = "form-control", pattern = @"\d{1,2}/\d{1,2}/\d{4}", id = "inputName", placeholder = "Ngày sinh"})
                                     @Html.ValidationMessageFor(x => x.Birthday, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -122,6 +124,21 @@
                         }
 
                     </div>
+                    
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <div class="tab-pane" id="permissions">
+                       
+                            @foreach (var item in Model.AllRoles)
+                            {
+                                var showChecked = Model.MyRoles.Contains(item.Name) ? "checked='checked'" : "";
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" class="roleIds" id="btnRole" data-id="@Model.Id" data-rolename="@item.Name" @showChecked/> @item.Name
+                                </label>
+                            }
+                        </div>
+                    }
+                    
                     <!-- /.tab-pane -->
                 </div>
                 <!-- /.tab-content -->
@@ -147,6 +164,24 @@
                     }
                     finder.popup();
                 });
+
+            var btnRole = $(".roleIds");
+            btnRole.click(function() {
+                var roleName = $(this).data("rolename");
+                var userId = $(this).data("id");
+                $.ajax({
+                    url: "/User/UpdateRole",
+                    type: "post",
+                    dataType: "json",
+                    data: {
+                        userId: userId,
+                        role: roleName
+                    },
+                    success: function(res) {
+                        location.reload();
+                    }
+                });
+            });
         })
     </script>
 }

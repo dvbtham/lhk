@@ -1,0 +1,51 @@
+﻿@using LeHuuKhoa.Areas.Administrations.Models
+@using Microsoft.AspNet.Identity
+@model UserNavbarViewModel
+
+@if (Model.Zone == AdminZone.TopNavbar)
+{
+    <ul class="nav navbar-nav">
+        <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <img src="@Model.Avatar" class="user-image">
+                <span class="hidden-xs">@Model.Name</span>
+            </a>
+            <ul class="dropdown-menu">
+                <!-- User image -->
+                <li class="user-header">
+                    <img src="@Model.Avatar" class="img-circle">
+                    <p>
+                        @Model.Name
+                    </p>
+                </li>
+
+                <!-- Menu Footer-->
+                <li class="user-footer">
+                    <div class="pull-left">
+                        <a class="btn btn-default btn-flat" href="@Url.Action("Edit", "User", new {area = "Administrations", id = User.Identity.GetUserId()})">Thông tin của tôi</a>
+                    </div>
+                    <div class="pull-right">
+                        @using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <a class="btn btn-default btn-flat" href="javascript:document.getElementById('logoutForm').submit()">Đăng xuất</a>
+                        }
+                    </div>
+                </li>
+            </ul>
+        </li>
+
+    </ul>
+}
+else if (Model.Zone == AdminZone.Sidebar)
+{
+    <div class="user-panel">
+        <div class="pull-left image">
+            <img src="@Model.Avatar" class="img-circle">
+        </div>
+        <div class="pull-left info">
+            <p>@Model.Name</p>
+            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+    </div>
+}
