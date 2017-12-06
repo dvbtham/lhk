@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace LeHuuKhoa
 {
@@ -29,9 +28,9 @@ namespace LeHuuKhoa
             bundles.Add(new StyleBundle("~/front/styles").Include(
                       "~/Content/front/assets/vendor/bootstrap/css/bootstrap.min.css",
                       "~/Content/front/assets/css/jquery.lazyloadxt.spinner.css",
-                      "~/Content/front/assets/css/main.css")
+                    "~/Content/front/assets/css/main.css")
                 .Include("~/Content/front/assets/vendor/font-awesome/css/font-awesome.min.css", new CssRewriteUrlTransform()));
-
+            
             BundleTable.EnableOptimizations = true;
         }
     }

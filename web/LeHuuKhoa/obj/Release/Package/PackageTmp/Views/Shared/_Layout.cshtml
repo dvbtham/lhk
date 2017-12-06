@@ -4,7 +4,8 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
     <title>@ViewBag.Title - Vùng Khả Luận | Trang Thầy Khóa</title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name='viewport' />
     <meta name="description" content="@ViewBag.MetaDescription">
@@ -12,13 +13,20 @@
     <link rel="shortcut icon" href="/favicon.ico" title="Favicon" />
 
     @Styles.Render("~/front/styles")
-
+    <link href="~/Content/front/assets/css/loading.css" rel="stylesheet" />
     @RenderSection("styles", required: false)
 
 </head>
 
 <body>
-    <div id="loading-bg"></div>
+    <div id="loading-bg" style="background-color: #ffcccc; background-color: hsla(0, 100%, 90%, 0.3); width: 100%;height: 100%;margin: 0;left: 0;position: fixed;display: table;z-index: 9999;">
+        <div class="cssload-thecube">
+            <div class="cssload-cube cssload-c1"></div>
+            <div class="cssload-cube cssload-c2"></div>
+            <div class="cssload-cube cssload-c4"></div>
+            <div class="cssload-cube cssload-c3"></div>
+        </div>
+    </div>
     <header>
         <nav class="navbar navbar-default raise-navbar">
             <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -28,23 +36,23 @@
             </a>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="@Html.IsSelected(action: "Index", controller: "Home" )"><a href="/">trang chủ</a></li>
+                    <li class="@Html.IsSelected(action: "Index", controller: "Home")"><a href="/">trang chủ</a></li>
                     @{Html.RenderAction("RenderMenu", "Home");}
                     <li class="@Html.IsSelected(action: "Contact", controller: "Home")"><a href="@Url.Action("Contact", "Home")">liên hệ</a></li>
                     @if (User.Identity.IsAuthenticated && (User.IsInRole("Admin") || User.IsInRole("Mod")))
                     {
-                    <li class="last-child"><a href="@Url.Action("Index", "PostCategory", new { area = "Administrations"})">admin</a></li>
-                    <li title="Đăng xuất">
-                        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                        <li class="last-child"><a href="@Url.Action("Index", "PostCategory", new {area = "Administrations"})">admin</a></li>
+                        <li title="Đăng xuất">
+                            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
                             {
-                            @Html.AntiForgeryToken()
-                            <a href="javascript:document.getElementById('logoutForm').submit()" style="color: #fff; line-height: 34px;"><i class="fa fa-sign-out"></i></a>
+                                @Html.AntiForgeryToken()
+                                <a href="javascript:document.getElementById('logoutForm').submit()" style="color: #fff; line-height: 34px;"><i class="fa fa-sign-out"></i></a>
                             }
-                    </li>
+                        </li>
                     }
                     else
                     {
-                    <li class="@Html.IsSelected(action: "Login", controller: "Account") last-child"><a href="@Url.Action("Login", "Account")">đăng nhập</a></li>
+                        <li class="@Html.IsSelected(action: "Login", controller: "Account") last-child"><a href="@Url.Action("Login", "Account")">đăng nhập</a></li>
                     }
                 </ul>
             </div>
@@ -65,16 +73,20 @@
     <div id="fb-root"></div>
     <script>
         (function (d, s, id) {
-            $('#loading-bg').fadeOut('slow', function () {
-                $(this).remove();
-            });
+
+            $('#loading-bg').fadeOut('slow',
+                function () {
+                     $(this).remove();
+                });
 
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
+            js = d.createElement(s);
+            js.id = id;
             js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=1964460460505464";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
+
     </script>
     @RenderSection("scripts", required: false)
 </body>
