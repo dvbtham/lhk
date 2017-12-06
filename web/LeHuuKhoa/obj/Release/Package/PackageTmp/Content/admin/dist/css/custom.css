@@ -2,5 +2,25 @@
 .table-bordered > thead > tr > td,
 .table-bordered > tbody > tr > td, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > td, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > thead > tr > th {
     text-align: center;
+    -moz-align-content: center;
+    -o-align-content: center;
+    -webkit-align-content: center;
     align-content: center;
+}
+
+html, body {
+    height: 100% !important
+}
+
+#loading-bg, #loading-bg-submit {
+    margin: auto;
+    min-height: 100% !important;
+    height: 100%;
+    display: block;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 99999;
+    background: url("/Content/admin/images/loading.gif") hsla(0, 100%, 90%, 0.3) no-repeat center;
 }

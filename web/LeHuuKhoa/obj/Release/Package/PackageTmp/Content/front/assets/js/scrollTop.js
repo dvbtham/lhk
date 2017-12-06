@@ -23,5 +23,11 @@ function scrolltop() {
         jQuery('html, body').animate({ scrollTop: 0 }, duration);
         return false;
     });
+
+    jQuery("#goto-comment-box").click(function (event) {
+        event.preventDefault();
+        jQuery('html, body').animate({ scrollTop: $("#comment-box").offset().top }, duration);
+        return false;
+    });
 }
 scrolltop();

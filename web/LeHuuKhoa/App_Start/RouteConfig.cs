@@ -38,9 +38,44 @@ namespace LeHuuKhoa
             );
 
             routes.MapRoute(
+                "Download",
+                "download-{fileId}",
+                new { controller = "Category", action = "Download", fileId = UrlParameter.Optional },
+                new[] { "LeHuuKhoa.Controllers" }
+            );
+
+            routes.MapRoute(
+                "PdfPartialView",
+                "xem-pdf-{postId}",
+                new { controller = "Category", action = "PdfPartialView", postId = UrlParameter.Optional },
+                new[] { "LeHuuKhoa.Controllers" }
+            );
+
+            routes.MapRoute(
+                "ContentPartialView",
+                "van-ban-{postId}",
+                new { controller = "Category", action = "ContentPartialView", postId = UrlParameter.Optional },
+                new[] { "LeHuuKhoa.Controllers" }
+            );
+
+            routes.MapRoute(
                 "Login",
                 "dang-nhap.html",
                 new { controller = "Account", action = "Login", id = UrlParameter.Optional },
+                new[] { "LeHuuKhoa.Controllers" }
+            );
+
+            routes.MapRoute(
+                "page not found",
+                "khong-tim-thay-trang.html",
+                new { controller = "Error", action = "NotFound", id = UrlParameter.Optional },
+                new[] { "LeHuuKhoa.Controllers" }
+            );
+
+            routes.MapRoute(
+                "internal error",
+                "loi-he-thong.html",
+                new { controller = "Error", action = "Default", id = UrlParameter.Optional },
                 new[] { "LeHuuKhoa.Controllers" }
             );
 

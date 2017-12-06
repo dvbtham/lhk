@@ -24,11 +24,17 @@
             </ol>
             @if (Model.Posts.Count > 0)
             {
-                <p>Chủ mục có @Model.Posts.Count bài giảng</p>
-                <ul>
+                <p>
+                    Chủ mục có @Model.Posts.Count bài giảng
+                    <span class="pull-right">
+                        <a id="goto-comment-box" href="#comment-box"><i class="fa fa-comment"></i> Bình luận</a>
+                    </span>
+                </p>
+                <ul style="list-style: none">
                     @foreach (var item in Model.Posts)
                     {
                         <li>
+                            <i class="fa fa-book text-info"></i>
                             @if (item.PostType == PostType.Pdf)
                             {
                                 @Ajax.ActionLink(item.Title, "PdfPartialView",
@@ -40,14 +46,18 @@
                                 @Ajax.ActionLink(item.Title, "ContentPartialView",
                                     new { postId = item.Id },
                                     new AjaxOptions { UpdateTargetId = "container", OnBegin = "onAjaxBegin", OnComplete = "onAjaxComplete" })
-                                { Html.RenderAction("FileDownLoadPartialView", "Category", new { postId = item.Id }); }
+                                {
+                                    Html.RenderAction("FileDownLoadPartialView", "Category", new { postId = item.Id });
+                                }
                             }
                             else if (item.PostType == PostType.PowerPoint)
                             {
                                 @Ajax.ActionLink(item.Title, "SlideContentPartialView",
                                     new { postId = item.Id },
                                     new AjaxOptions { UpdateTargetId = "container", OnBegin = "onAjaxBegin", OnComplete = "onAjaxComplete" })
-                                { Html.RenderAction("FileDownLoadPartialView", "Category", new { postId = item.Id }); }
+                                {
+                                    Html.RenderAction("FileDownLoadPartialView", "Category", new { postId = item.Id });
+                                }
                             }
                         </li>
                     }
@@ -55,12 +65,15 @@
 
                 <div id="container"></div>
                 <div id="loading-container" class="hide">
-                    <i class="fa fa-spin fa-spinner"></i> Loading...
+                    <span class="text-warning"><i class="fa fa-spin fa-spinner"></i> Đang tải, Vui lòng chờ trong giây lát...</span>
                 </div>
             }
 
         </div>
         @{Html.RenderAction("Categories", "Category");}
+    </div>
+    <div class="widget widget_categories" id="comment-box">
+        <div class="fb-comments" data-href="http://vungkhaluan.somee.com/danh-muc-luan/@(Model.Id).htm" data-numposts="20"></div>
     </div>
 </div>
 

@@ -27,11 +27,14 @@
     <![endif]-->
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
+    <div id="loading-bg"></div>
+    <div id="loading-bg-submit" class="hidden"></div>
     <!-- Site wrapper -->
     <div class="wrapper">
+
         <header class="main-header">
             <!-- Logo -->
-            <a href="@Url.Action("Index", "Home", new { area = "" })" class="logo">
+            <a href="@Url.Action("Index", "Home", new {area = ""})" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>L.H.K</b></span>
                 <!-- logo for regular state and mobile devices -->
@@ -51,7 +54,7 @@
             <!-- Main content -->
             <section class="content">
                 @if (TempData["AlertMessage"] != null)
-                {
+            {
                     <div id="AlertBox" class="alert @TempData["AlertType"] alert-dismissable hide">
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                         @TempData["AlertMessage"]
@@ -72,7 +75,7 @@
         @Html.Partial("_ControlSidebar")
         <!-- /.control-sidebar -->
         <!-- Add the sidebar's background. This div must be placed
-             immediately after the control sidebar -->
+        immediately after the control sidebar -->
         <div class="control-sidebar-bg"></div>
     </div>
     <!-- ./wrapper -->
@@ -97,6 +100,14 @@
     <script src="/Scripts/dataTable-base.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="/Content/admin/dist/js/demo.js"></script>
+
+    <script>
+        $(function () {
+            $('#loading-bg').fadeOut('slow', function () {
+                $(this).remove();
+            });
+        });
+    </script>
 
     @RenderSection("scripts", false)
 </body>

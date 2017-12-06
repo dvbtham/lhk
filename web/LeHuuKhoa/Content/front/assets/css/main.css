@@ -659,3 +659,16 @@ p .full-width, p .img-full, p em .img-full, p em .full-width {
 }
 
 .carousel-pagination-item:after { background-color: #ccc; }
+
+#loading-bg{
+    margin: auto;
+    min-height: 100% !important;
+    height: 100%;
+    display: block;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 99999;
+    background: url("/Content/admin/images/loading.gif") hsla(0, 100%, 90%, 0.3) no-repeat center;
+}
