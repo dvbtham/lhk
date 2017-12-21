@@ -4,7 +4,7 @@
     var height = category.height() + parallax.height();
 
     jQuery(window).scroll(function () {
-        if ($('#container').children().length <= 0) return;
+       // if ($('#container').children().length <= 0) return;
         if (jQuery(this).scrollTop() > height) {
             $("#left").removeClass("col-md-9");
             $("#left").addClass("col-md-12");

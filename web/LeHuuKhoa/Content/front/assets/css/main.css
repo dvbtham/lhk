@@ -1,13 +1,19 @@
 ﻿@import url('https://fonts.googleapis.com/css?family=EB+Garamond');
 
-html {
-    background-color: #ccc;
-    height: 100% !important;
+html, body { background-color: #ccc; }
+.bg-image {
+    background-image: url("../img/page-bg.jpg");
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-position: center;
+    background-repeat: repeat;
 }
 
-body {
+.body {
     background-color: #fff;
     max-width: 998px;
+    height: 100%;
     margin: auto;
     font-family: "Roboto", sans-serif;
     position: relative;
@@ -550,13 +556,22 @@ p .full-width, p .img-full, p em .img-full, p em .full-width {
 
     .text-content h4 {
         text-align: center;
-        font-size: 15px;
+        font-size: 15px; 
     }
 
     .text-content p {
-        margin: 0 0 6px !important;
+        margin: 0 0 2px !important;
     }
 
+    .page-content p{
+        margin: 0;
+    }
+
+.sm-item {
+    padding-left: 30px;
+    line-height: 16px !important;
+    color: #FFF;
+}
 .checkbox-addon {
     cursor: pointer;
 }

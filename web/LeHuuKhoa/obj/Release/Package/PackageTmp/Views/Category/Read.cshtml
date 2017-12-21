@@ -9,8 +9,11 @@
 
 <div class="parallax">
     <div class="overlay">
-        <div class="text-content">
-            @Html.Raw(Model.Descriptions)
+        <div class="text-content ">
+            <div class="sm-item">
+                @Html.Raw(Model.Descriptions)
+            </div>
+           
         </div>
     </div>
     <img data-src="@Model.BackgroundImage" alt="@Model.Name">

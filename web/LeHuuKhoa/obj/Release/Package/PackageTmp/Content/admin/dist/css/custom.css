@@ -8,6 +8,10 @@
     align-content: center;
 }
 
+html {
+    background-image: url(../img/photo4.jpg);
+}
+
 html, body {
     height: 100% !important
 }

@@ -23,7 +23,7 @@ namespace LeHuuKhoa.Controllers
             return View(categories);
         }
 
-        [PartialCache("Cache15Min")]
+        //[PartialCache("Cache15Min")]
         public PartialViewResult StartPageHeader()
         {
             var startPageImage = ConfigHelper.GetByKey("StartPageImage");

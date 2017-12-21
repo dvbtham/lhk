@@ -1221,6 +1221,7 @@
     <Content Include="Content\front\assets\css\main.min.css" />
     <Content Include="Content\front\assets\css\responsive.css" />
     <Content Include="Content\front\assets\img\loading.gif" />
+    <Content Include="Content\front\assets\img\page-bg.jpg" />
     <Content Include="Content\front\assets\js\jquery.lazyloadxt.extra.min.js" />
     <Content Include="Content\front\assets\js\jquery.lazyloadxt.min.js" />
     <Content Include="Content\front\assets\js\jquery.min.js" />

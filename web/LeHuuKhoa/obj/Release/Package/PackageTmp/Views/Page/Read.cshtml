@@ -11,12 +11,14 @@
 </div>
 <div class="container">
     <div class="row box">
-        <div class="col-md-9" id="left">
-            <ol class="breadcrumb">
+        <div class="col-md-9" id="left" style="background-image: url(/Content/front/assets/img/page-bg.jpg);">
+            <ol class="breadcrumb" style="background-color: transparent; border-bottom: 1px solid #935d32; border-bottom: 1px solid rgba(147, 93, 50, 0.6);">
                 <li><a href="/">Trang chủ</a></li>
                 <li class="active">@Model.Name</li>
             </ol>
-            @Html.Raw(Model.Content)
+            <div class="page-content">
+                @Html.Raw(Model.Content)
+            </div>
         </div>
         @{Html.RenderAction("Categories", "Category");}
     </div>
