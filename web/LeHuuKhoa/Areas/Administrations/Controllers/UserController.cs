@@ -115,7 +115,6 @@ namespace LeHuuKhoa.Areas.Administrations.Controllers
         }
 
         [HttpPost]
-        [AdminAuthorize(Roles = "Admin")]
         public ActionResult Update(UserViewModel viewModel)
         {
             if (!ModelState.IsValid)

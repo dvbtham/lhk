@@ -51,7 +51,7 @@
                     </div>
 
                     <div class="tab-pane" id="settings">
-                        <img class="profile-user-img img-responsive img-circle" style="margin-bottom: 20px" src="@ViewData["UserAvatar"]" />
+                        <img class="profile-user-img img-responsive img-circle" style="margin-bottom: 20px" src="@Model.ImageUrl" />
                         @using (Html.BeginForm("Update", "User", FormMethod.Post, new {@class = "form-horizontal"}))
                         {
                             @Html.AntiForgeryToken()
