@@ -692,3 +692,7 @@ p .full-width, p .img-full, p em .img-full, p em .full-width {
     background-color: #ccc;
 }
 
+#ul-read li {
+    font-size: 15px !important;
+    padding-bottom: 7px;
+}

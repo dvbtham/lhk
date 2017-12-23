@@ -27,12 +27,11 @@
             @if (Model.Posts.Count > 0)
             {
                 <p>
-                    Chủ mục có @Model.Posts.Count bài giảng
                     <span class="pull-right">
                         <a id="goto-comment-box" href="#comment-box"><i class="fa fa-comment"></i> Bình luận</a>
                     </span>
                 </p>
-                <ul style="list-style: none">
+                <ul style="list-style: none" id="ul-read">
                     @foreach (var item in Model.Posts)
                     {
                         <li>

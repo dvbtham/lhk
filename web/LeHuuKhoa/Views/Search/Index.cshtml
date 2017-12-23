@@ -16,29 +16,34 @@
             @if (Model.Any())
             {
                 <p>Có @Model.Count() <strong> @ViewBag.Title</strong></p>
-                <ul>
+                <ul style="list-style: none" id="ul-read">
                     @foreach (var item in Model)
                     {
                         <li>
+                            <i class="fa fa-book text-info"></i>
                             @if (item.PostType == LeHuuKhoa.Core.Models.PostType.Pdf)
                             {
                                 @Ajax.ActionLink(item.Title, "PdfPartialView",
-                                    new { postId = item.Id, controller = "Category" },
-                                    new AjaxOptions { UpdateTargetId = "container", OnBegin = "onAjaxBegin", OnComplete = "onAjaxComplete" })
+                                    new {postId = item.Id, controller = "Category"},
+                                    new AjaxOptions {UpdateTargetId = "container", OnBegin = "onAjaxBegin", OnComplete = "onAjaxComplete"})
                             }
                             else if (item.PostType == LeHuuKhoa.Core.Models.PostType.Content)
                             {
                                 @Ajax.ActionLink(item.Title, "ContentPartialView",
-                                    new { postId = item.Id, controller = "Category" },
-                                    new AjaxOptions { UpdateTargetId = "container", OnBegin = "onAjaxBegin", OnComplete = "onAjaxComplete" })
-                                { Html.RenderAction("FileDownLoadPartialView", "Category", new { postId = item.Id }); }
+                                    new {postId = item.Id, controller = "Category"},
+                                    new AjaxOptions {UpdateTargetId = "container", OnBegin = "onAjaxBegin", OnComplete = "onAjaxComplete"})
+                                {
+                                    Html.RenderAction("FileDownLoadPartialView", "Category", new {postId = item.Id});
+                                }
                             }
                             else if (item.PostType == LeHuuKhoa.Core.Models.PostType.PowerPoint)
                             {
                                 @Ajax.ActionLink(item.Title, "SlideContentPartialView",
-                                    new { postId = item.Id, controller = "Category" },
-                                    new AjaxOptions { UpdateTargetId = "container", OnBegin = "onAjaxBegin", OnComplete = "onAjaxComplete" })
-                                { Html.RenderAction("FileDownLoadPartialView", "Category", new { postId = item.Id }); }
+                                    new {postId = item.Id, controller = "Category"},
+                                    new AjaxOptions {UpdateTargetId = "container", OnBegin = "onAjaxBegin", OnComplete = "onAjaxComplete"})
+                                {
+                                    Html.RenderAction("FileDownLoadPartialView", "Category", new {postId = item.Id});
+                                }
                             }
                         </li>
                     }
