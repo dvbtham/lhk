@@ -13,7 +13,7 @@
     <div class="row box">
         @foreach (var category in Model)
         {
-            <div class="col-md-15 col-xs-3">
+            <div class="col-md-15 col-xs-3 col-md-3">
                 <div class="box-body">
                     <a href="@Url.Action("Read", "Category", new {id = category.Id})">
                         <img class="match-parent" data-src="@category.ImageUrl" alt="@category.Name">

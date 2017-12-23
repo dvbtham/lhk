@@ -1,7 +1,6 @@
-﻿@using LeHuuKhoa.Core.Models
-@model IEnumerable<Post>
+﻿@model IEnumerable<LeHuuKhoa.Core.Models.Post>
 @{
-    ViewBag.Title = "tìm kiếm cho \"" + ViewBag.SearchKeyword + "\"";
+    ViewBag.Title = "kết qủa tìm kiếm cho \"" + ViewBag.SearchKeyword + "\"";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -21,20 +20,20 @@
                     @foreach (var item in Model)
                     {
                         <li>
-                            @if (item.PostType == PostType.Pdf)
+                            @if (item.PostType == LeHuuKhoa.Core.Models.PostType.Pdf)
                             {
                                 @Ajax.ActionLink(item.Title, "PdfPartialView",
                                     new { postId = item.Id, controller = "Category" },
                                     new AjaxOptions { UpdateTargetId = "container", OnBegin = "onAjaxBegin", OnComplete = "onAjaxComplete" })
                             }
-                            else if (item.PostType == PostType.Content)
+                            else if (item.PostType == LeHuuKhoa.Core.Models.PostType.Content)
                             {
                                 @Ajax.ActionLink(item.Title, "ContentPartialView",
                                     new { postId = item.Id, controller = "Category" },
                                     new AjaxOptions { UpdateTargetId = "container", OnBegin = "onAjaxBegin", OnComplete = "onAjaxComplete" })
                                 { Html.RenderAction("FileDownLoadPartialView", "Category", new { postId = item.Id }); }
                             }
-                            else if (item.PostType == PostType.PowerPoint)
+                            else if (item.PostType == LeHuuKhoa.Core.Models.PostType.PowerPoint)
                             {
                                 @Ajax.ActionLink(item.Title, "SlideContentPartialView",
                                     new { postId = item.Id, controller = "Category" },
@@ -47,7 +46,7 @@
 
                 <div id="container"></div>
                 <div id="loading-container" class="hide">
-                    <i class="fa fa-spin fa-spinner"></i> Loading...
+                    <i class="fa fa-spin fa-spinner"></i> Đang tải, Vui lòng chờ trong giây lát...
                 </div>
             }
 

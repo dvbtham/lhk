@@ -243,7 +243,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PageController.cs" />
-    <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Core\MvcCustom\PartialCacheAttribute.cs" />
     <Compile Include="Core\IUnitOfWork.cs" />
@@ -2290,6 +2289,7 @@
     <Content Include="Areas\Administrations\Views\Shared\UnAuthorized.cshtml" />
     <Content Include="Areas\Administrations\Views\System\UserProfile.cshtml" />
     <Content Include="Areas\Administrations\Views\AppSettings\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\LeHuuKhoa20171011081835 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\LeHuuKhoa20171011081835 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\trangthaykhoa - FTP.pubxml" />
@@ -2347,7 +2347,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Post\Index.cshtml" />
     <Content Include="Views\Shared\_CategoryLeftSidePartial.cshtml" />
     <Content Include="Views\Category\Read.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />

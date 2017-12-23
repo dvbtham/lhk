@@ -83,4 +83,8 @@ namespace LeHuuKhoa.Core.ViewModels
     {
         public Post Post { get; set; }
     }
+    public class ViewCounterViewModel
+    {
+        public long PostId { get; set; }
+    }
 }

@@ -44,6 +44,13 @@ namespace LeHuuKhoa.Persistence.Repositories
             return _context.Posts.SingleOrDefault(x => x.Id == id);
         }
 
+        public void IncreaseView(long id)
+        {
+            var post = Get(id);
+            post.Views += 1;
+
+        }
+
         public Post Get(long id, bool include = false)
         {
             return include ? _context.Posts.Include(x => x.FileDownLoad).SingleOrDefault(x => x.Id == id) : _context.Posts.SingleOrDefault(x => x.Id == id);

@@ -7,5 +7,41 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/D9Z+vqPaUaD0JNOijvN/QAAAAACAAAAAAAQZgAAAAEAACAAAADKLQM18VTjvWJ3v3OzyPh3LtHgOXE3cCthncQxHmfGgwAAAAAOgAAAAAIAACAAAADaRflasasdPo2g9QohxhrHgNAEEd9Q2Ygsdz+N4nnER4AAAAAoPJIIlnb6VaOh0W8Inpg9dBPVZTI7hENQhlDIr1+DGy7eFgtQIR+pB9T9bgHjUDRIZR7XF/UFaONyQlc5HnI1B5g/4z++G20DCRquGHXMeh9SI8NcNdKnLgdOzBkdnwP/ve2+XJ2LQaMVoEXR1XYtu6wuOGwJIbuhZfthyBevD0AAAAD9aZc/P401g6jHrifcawg5NMMBDJaklQscLT6lt7VXD1Uu3R+BFhGQbb30KeWgXZo48vx6roQqaeVrwBsKBtaC</EncryptedPassword>
+    <_PublishTargetUrl>ftp://waws-prod-sn1-081.ftp.azurewebsites.windows.net/site/wwwroot</_PublishTargetUrl>
   </PropertyGroup>
+  <ItemGroup>
+    <File Include="ApplicationInsights.config">
+      <publishTime>12/23/2017 14:00:34</publishTime>
+    </File>
+    <File Include="App_Data/CKFinder.dll">
+      <publishTime>12/23/2017 14:00:34</publishTime>
+    </File>
+    <File Include="Areas/Administrations/Views/AppSettings/Index.cshtml">
+      <publishTime>12/23/2017 14:07:00</publishTime>
+    </File>
+    <File Include="Areas/Administrations/Views/DashBoard/Index.cshtml">
+      <publishTime>12/23/2017 14:00:34</publishTime>
+    </File>
+    <File Include="Areas/Administrations/Views/ManagePost/Create.cshtml">
+      <publishTime>12/23/2017 14:07:00</publishTime>
+    </File>
+    <File Include="Areas/Administrations/Views/ManagePost/Edit.cshtml">
+      <publishTime>12/23/2017 14:07:00</publishTime>
+    </File>
+    <File Include="Areas/Administrations/Views/web.config">
+      <publishTime>12/23/2017 14:00:34</publishTime>
+    </File>
+    <File Include="Areas/Administrations/Views/_ViewStart.cshtml">
+      <publishTime>12/23/2017 14:00:34</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>12/23/2017 14:07:01</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>12/23/2017 14:00:38</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>12/23/2017 15:06:49</publishTime>
+    </File>
+  </ItemGroup>
 </Project>

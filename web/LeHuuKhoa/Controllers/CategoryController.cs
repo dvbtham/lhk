@@ -1,9 +1,11 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
 using LeHuuKhoa.Core;
 using LeHuuKhoa.Core.Models;
+using LeHuuKhoa.Core.Utilities;
 using LeHuuKhoa.Core.ViewModels;
 
 namespace LeHuuKhoa.Controllers
@@ -39,13 +41,16 @@ namespace LeHuuKhoa.Controllers
             {
                 pdfVm.FileName.Add(item.File.Name);
             }
-
+            var viewCounter = (List<ViewCounterViewModel>)Session[Constants.ViewCounterSession];
+            IncreaseView(viewCounter, postId);
             return View(pdfVm);
         }
         public ActionResult ContentPartialView(long postId)
         {
             var post = _unitOfWork.Posts.Get(postId);
             var contentVm = new ContentViewModel { Content = post.Content };
+            var viewCounter = (List<ViewCounterViewModel>)Session[Constants.ViewCounterSession];
+            IncreaseView(viewCounter, postId);
             return View(contentVm);
         }
 
@@ -78,6 +83,8 @@ namespace LeHuuKhoa.Controllers
                     slideVm.ImagesPath.Add(path);
             }
             slideVm.ImagesPath = slideVm.ImagesPath.Distinct().ToList();
+            var viewCounter = (List<ViewCounterViewModel>)Session[Constants.ViewCounterSession];
+            IncreaseView(viewCounter, postId);
             return PartialView("CarouselPartialView", slideVm);
         }
 
@@ -90,5 +97,36 @@ namespace LeHuuKhoa.Controllers
             };
             return PartialView(viewModel);
         }
+
+        #region ViewCount Helper
+
+        private void IncreaseView(List<ViewCounterViewModel> viewCounterViewModel, long postId)
+        {
+            if (viewCounterViewModel != null)
+            {
+                if (viewCounterViewModel.All(x => x.PostId != postId))
+                {
+                    _unitOfWork.Posts.IncreaseView(postId);
+                    AddViewCounter(postId);
+                }
+            }
+            else
+            {
+                viewCounterViewModel = new List<ViewCounterViewModel>();
+                _unitOfWork.Posts.IncreaseView(postId);
+                AddViewCounter(postId);
+            }
+            _unitOfWork.Complete();
+        }
+
+        private void AddViewCounter(long productId)
+        {
+            var viewCounterViewModel = (List<ViewCounterViewModel>)Session[Constants.ViewCounterSession] ?? new List<ViewCounterViewModel>();
+            var viewCounterVm = new ViewCounterViewModel {PostId = productId};
+            viewCounterViewModel.Add(viewCounterVm);
+            Session[Constants.ViewCounterSession] = viewCounterViewModel;
+        }
+
+        #endregion
     }
 }

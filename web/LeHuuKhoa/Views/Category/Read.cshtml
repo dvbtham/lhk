@@ -1,9 +1,8 @@
-﻿@using LeHuuKhoa.Core.Models
-@model LeHuuKhoa.Core.ViewModels.PostCategoryClientViewModel
+﻿@model LeHuuKhoa.Core.ViewModels.PostCategoryClientViewModel
 
 @{
     ViewBag.Title = Model.Name;
-    ViewBag.MetaDescription = Model.Name;
+    ViewBag.MetaDescription = Model.Name + " " + Model.Descriptions;
     ViewBag.MetaKeywords = Model.Name.ToLower();
 }
 
@@ -38,13 +37,13 @@
                     {
                         <li>
                             <i class="fa fa-book text-info"></i>
-                            @if (item.PostType == PostType.Pdf)
+                            @if (item.PostType == LeHuuKhoa.Core.Models.PostType.Pdf)
                             {
                                 @Ajax.ActionLink(item.Title, "PdfPartialView",
                                     new { postId = item.Id },
                                     new AjaxOptions { UpdateTargetId = "container", OnBegin = "onAjaxBegin", OnComplete = "onAjaxComplete" })
                             }
-                            else if (item.PostType == PostType.Content)
+                            else if (item.PostType == LeHuuKhoa.Core.Models.PostType.Content)
                             {
                                 @Ajax.ActionLink(item.Title, "ContentPartialView",
                                     new { postId = item.Id },
@@ -53,7 +52,7 @@
                                     Html.RenderAction("FileDownLoadPartialView", "Category", new { postId = item.Id });
                                 }
                             }
-                            else if (item.PostType == PostType.PowerPoint)
+                            else if (item.PostType == LeHuuKhoa.Core.Models.PostType.PowerPoint)
                             {
                                 @Ajax.ActionLink(item.Title, "SlideContentPartialView",
                                     new { postId = item.Id },
@@ -62,6 +61,7 @@
                                     Html.RenderAction("FileDownLoadPartialView", "Category", new { postId = item.Id });
                                 }
                             }
+                            &nbsp; <i class="fa fa-eye text-info pointer" title="Lượt xem">&nbsp;Lượt xem (@item.Views) </i>
                         </li>
                     }
                 </ul>

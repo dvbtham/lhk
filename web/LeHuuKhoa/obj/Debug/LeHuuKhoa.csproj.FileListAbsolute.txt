@@ -423,19 +423,6 @@ C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\bin\Microsoft.AI.Web.xml
 C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.csprojResolveAssemblyReference.cache
 C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.InitialDb.resources
-C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.SetDateUpdatedNull.resources
-C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.ChangeDateTimeType.resources
-C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.UpdateCategoryTable.resources
-C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.UpdateCategoryTable1.resources
-C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.AddPageTable.resources
-C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.UpdatePageTable.resources
-C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.UpdatePageTable1.resources
-C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.AddMenuTable.resources
-C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.UpdateMenuTable.resources
-C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.UpdateMenuPageTable.resources
-C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.UpdateMenuToPageRelationship.resources
-C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.AddShortDescriptionsColunm.resources
-C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.UpdateDb.resources
 C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.csproj.GenerateResource.Cache
 C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.csproj.CoreCompileInputs.cache
 C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.dll
@@ -583,3 +570,5 @@ C:\Users\thamd\source\repos\VungKhaLuan\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Pe
 C:\Users\thamd\source\repos\VungKhaLuan\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.csproj.GenerateResource.Cache
 C:\Users\thamd\source\repos\VungKhaLuan\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.AddLinkPostDownLoad.resources
 C:\Users\thamd\source\repos\VungKhaLuan\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.AddFeedbackTable.resources
+C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.AddLinkPostDownLoad.resources
+C:\Users\thamd\Source\Repos\lhk\web\LeHuuKhoa\obj\Debug\LeHuuKhoa.Persistence.Migrations.AddFeedbackTable.resources
